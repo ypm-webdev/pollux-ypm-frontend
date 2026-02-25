@@ -55,6 +55,7 @@ const ResultsSearchContainer: React.FC<IProps> = ({
         screenWidth < theme.breakpoints.md) && (
         <React.Fragment>
           <SearchContainer
+            isBelowFold={true}
             className="resultsSearchContainer"
             bgColor="transparent"
             id="results-search-container"

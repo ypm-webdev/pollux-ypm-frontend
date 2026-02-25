@@ -26,7 +26,7 @@ const HeroImageSection = styled.div`
   .captionDiv {
     position: absolute;
     bottom: 0px;
-    font-family: Inter, sans-serif;
+    font-family: 'Mallory Light', sans-serif;
     font-size: 1em;
     color: #fff;
     letter-spacing: 0;

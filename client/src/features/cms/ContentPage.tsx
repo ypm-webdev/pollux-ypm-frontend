@@ -48,7 +48,11 @@ const ContentPage: React.FC<IProps> = ({ pageKey, pages }) => {
     <React.Fragment>
       <StyledContentPage className="mx-0" data-testid="about-page">
         <Col xs={12} className="px-0">
-          <h1 id="content-header" data-testid="content-page-header">
+          <h1
+            id="content-header"
+            className="top-gradient"
+            data-testid="content-page-header"
+          >
             {result.isLoading || result.isFetching ? 'Loading...' : title}
           </h1>
         </Col>

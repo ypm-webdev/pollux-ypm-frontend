@@ -3,7 +3,11 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Row, Col } from 'react-bootstrap'
 
 import { UnitCode } from '../../config/cms'
-import { pickRandomUnits } from '../../lib/cms/util'
+import {
+  pickRandomUnits,
+  pickYpmFeatured,
+  allYpmDivisions,
+} from '../../lib/cms/util'
 import { ErrorFallback } from '../error/ErrorFallback'
 import {
   useGetFeaturedCollectionsQuery,
@@ -19,6 +23,7 @@ import StyledHeadingOne from '../../styles/features/landing/HeadingOne'
 import StickySearchContainer from '../search/StickySearchContainer'
 
 import FeaturedCollectionsSection from './FeaturedCollectionsSection'
+import AllCollectionsSection from './AllCollectionsSection'
 import FooterBlocks from './FooterBlocksSection'
 import HeroImageSection from './HeroImageSection'
 import Infographics from './InfographicsSection'
@@ -37,16 +42,17 @@ const Landing: React.FC = () => {
     featuredResult.isSuccess &&
     units.length === 0
   ) {
-    setUnits(pickRandomUnits())
+    // setUnits(pickRandomUnits())
+    setUnits(pickYpmFeatured())
   }
 
   return (
     <StyledLandingPage id="landing-body" className="mx-0">
       <Col xs={12} className="px-0">
-        <Row className="mx-0 bg-white">
-          <HeaderContainerCol className="col-12 text-center">
-            <StyledHeadingOne>Explore Yale Collections</StyledHeadingOne>
-          </HeaderContainerCol>
+        <Row className="mx-0 py-2 bg-white">
+          {/* <HeaderContainerCol className="col-12 text-center">
+            <StyledHeadingOne>Explore The Peabody Collections</StyledHeadingOne>
+          </HeaderContainerCol> */}
         </Row>
         <StickySearchContainer />
         <Row id="srch-hero-container" className="mx-0">
@@ -72,20 +78,40 @@ const Landing: React.FC = () => {
             </Col>
           </Row>
         )}
+        {statsResult.isSuccess &&
+          statsResult.data &&
+          landingPageResult.isSuccess &&
+          landingPageResult && (
+            <Row className="mx-0">
+              <Col xs={12}>
+                <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <Infographics
+                    heading={'By the Numbers'}
+                    chartType={'bubbles'}
+                    data={statsResult.data}
+                    cmsData={landingPageResult.data}
+                  />
+                </ErrorBoundary>
+              </Col>
+            </Row>
+          )}
+        {featuredResult.isSuccess && units.length > 0 && (
+          <Row className="mx-0">
+            <Col xs={12}>
+              <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <AllCollectionsSection
+                  data={featuredResult.data}
+                  units={units}
+                />
+              </ErrorBoundary>
+            </Col>
+          </Row>
+        )}
         {landingPageResult.isSuccess && landingPageResult.data && (
           <Row className="mx-0">
             <Col xs={12}>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <MoreAboutLux data={landingPageResult.data} />
-              </ErrorBoundary>
-            </Col>
-          </Row>
-        )}
-        {statsResult.isSuccess && statsResult.data && (
-          <Row className="mx-0">
-            <Col xs={12}>
-              <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Infographics data={statsResult.data} />
               </ErrorBoundary>
             </Col>
           </Row>

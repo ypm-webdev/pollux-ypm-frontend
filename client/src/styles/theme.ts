@@ -15,7 +15,7 @@ const font = {
   },
   desktop: {
     h1: {
-      weight: weight.extraLight,
+      weight: weight.bold,
       size: '3.1em',
       lineHeight: '72px',
     },
@@ -106,8 +106,6 @@ const color = {
   borderShadow: '#d9d9d9',
   button: '#767676',
   darkBlue60: 'rgba(0, 53, 107, 0.6)', // 60% primary.darkBlue
-  dangerRed: '#C21F2F',
-  dangerRed60: 'rgba(194, 31, 47, 0.6)',
   teal90: 'rgb(0, 123, 148, 0.9)', // 90% primary.teal
   gray: '#999',
   lightBabyBlue: '#E7F1FF',
@@ -143,9 +141,6 @@ const color = {
     published: '#8D6E63',
     created: '#2E7D32',
     about: '#000000',
-    setAbout: '#2D60B4',
-    setCreated: '#700370',
-    setPublished: '#6e6e6e',
   },
 
   advancedSearch: {
@@ -176,7 +171,6 @@ const spacing = {
   // = 40px - 12px = 28px
   // sectionPaddingX: '28px',
   sectionPaddingX: '25px',
-  tabPaddingX: '10px',
 
   // Spacing between line items
   verticalItemSingleSpacing: '0.5rem',
@@ -211,7 +205,12 @@ const theme = {
 
   searchBox: {
     width: '816px',
-    borderRadius: '24px',
+    borderRadius: '0px',
+    borderStyle: 'solid 1px #cccccc',
+  },
+
+  stickyHeader: {
+    topOffset: 208,
   },
 
   landingPage: {

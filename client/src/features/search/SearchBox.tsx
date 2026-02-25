@@ -13,11 +13,15 @@ import {
 import theme from '../../styles/theme'
 import LoadingSpinner from '../common/LoadingSpinner'
 import { pushClientEvent } from '../../lib/pushClientEvent'
+import searchIcon from '../../resources/images/icons/search.svg'
 
+const SearchImg = styled.img`
+  float: left;
+`
 const StyledSearchBox = styled.div`
   display: flex;
   width: ${theme.searchBox.width};
-  border: solid 1px #979797;
+  border: ${theme.searchBox.borderStyle};
   border-radius: ${theme.searchBox.borderRadius};
   font-size: 2rem;
 
@@ -28,16 +32,33 @@ const StyledSearchBox = styled.div`
     margin-left: 0px !important;
     max-width: ${theme.searchBox.width};
     font-weight: 300;
-    height: 72px;
+    height: 48px;
     font-size: inherit;
+    font-size: 1.2rem;
+  }
+
+  input.ypm-search {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+
+  input::placeholder {
+    color: #aaa;
+  }
+
+  .search-icon {
+    font-size: 0.9em;
+    vertical-align: 0 !important;
+    color: ${theme.color.white};
   }
 
   .submitButton {
-    background-color: ${theme.color.white};
+    background-color: ${theme.color.primary.darkBlue};
     border-radius: 0 ${theme.searchBox.borderRadius}
       ${theme.searchBox.borderRadius} 0;
-    height: 72px;
+    height: 48px;
     font-size: inherit;
+    border-color: ${theme.color.primary.darkBlue};
   }
 `
 
@@ -47,11 +68,13 @@ const SearchBox: React.FC<{
   id: string
   isResults?: boolean
   setIsError: (x: boolean) => void
+  isBelowFold: boolean
   isSearchOpen?: boolean
 }> = ({
   unselectable: isUnselectable,
   closeSearchBox,
   id,
+  isBelowFold,
   isResults,
   setIsError,
   isSearchOpen = false,
@@ -60,6 +83,20 @@ const SearchBox: React.FC<{
   const currentState = useAppSelector(
     (state) => state.simpleSearch as ISimpleSearchState,
   )
+
+  // const ibf = isBelowFold?'true':'false'
+  const buttonStyle = isBelowFold
+    ? {
+        backgroundColor: theme.color.primary.blue,
+        outline: '1px ' + theme.color.primary.blue + ' solid',
+        border: 'none',
+      }
+    : {
+        backgroundColor: theme.color.primary.darkBlue,
+        outline: '1px ' + theme.color.primary.darkBlue + ' solid',
+        border: 'none',
+      }
+
   const dispatch = useAppDispatch()
 
   let simpleQuery: string | null = null
@@ -74,14 +111,12 @@ const SearchBox: React.FC<{
     }
   }, [dispatch, simpleQuery])
 
-  useEffect(() => {
-    // If on the results page, get the current search query
-    if (isResults) {
-      if (currentState.value === null) {
-        dispatch(addSimpleSearchInput({ value: simpleQuery }))
-      }
+  // If on the results page, get the current search query
+  if (isResults) {
+    if (currentState.value === null) {
+      dispatch(addSimpleSearchInput({ value: simpleQuery }))
     }
-  }, [isResults, simpleQuery])
+  }
 
   const navigate = useNavigate()
 
@@ -150,9 +185,32 @@ const SearchBox: React.FC<{
     }
   }, [isSearchOpen])
 
+  const [searchBoxStyle, setSearchBoxStyle] = useState<{
+    backgroundColor: string
+    borderColor: string
+  }>({
+    backgroundColor: theme.color.primary.darkBlue,
+    borderColor: theme.color.primary.darkBlue,
+  })
+
+  useEffect(() => {
+    if (!isBelowFold) {
+      setSearchBoxStyle({
+        backgroundColor: theme.color.primary.darkBlue,
+        borderColor: theme.color.primary.darkBlue,
+      })
+    } else {
+      setSearchBoxStyle({
+        backgroundColor: theme.color.primary.blue,
+        borderColor: theme.color.primary.blue,
+      })
+    }
+  }, [])
+
   return (
     <Row className={`${isResults ? 'py-3' : ''} mx-0`}>
       <div className="col-12 d-flex justify-content-center">
+        <p></p>
         <StyledSearchBox>
           <form
             className="w-100"
@@ -167,8 +225,9 @@ const SearchBox: React.FC<{
               <input
                 id={id}
                 type="text"
-                className="form-control"
-                placeholder="Search LUX"
+                className="form-control ypm-search"
+                placeholder="Search the Collections..."
+                // placeholder={ibf}
                 onChange={handleInputChange}
                 ref={inputRef}
                 tabIndex={isUnselectable ? -1 : 0}
@@ -182,11 +241,15 @@ const SearchBox: React.FC<{
                   className="btn submitButton"
                   aria-label="submit search input"
                   data-testid={`${id}-search-submit-button`}
+                  style={buttonStyle}
                 >
                   {isLoading ? (
                     <LoadingSpinner />
                   ) : (
-                    <i className="bi bi-search" />
+                    <React.Fragment>
+                      {/* <i className="bi bi-search search-icon" /> */}
+                      <SearchImg alt="Open Search" src={searchIcon} />
+                    </React.Fragment>
                   )}
                 </button>
               </div>

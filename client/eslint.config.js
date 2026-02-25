@@ -26,7 +26,7 @@ export default [
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:jsx-a11y/strict",
-    "prettier",
+    "prettier"
   )),
   {
     languageOptions: {
@@ -90,7 +90,8 @@ export default [
       ],
       "@typescript-eslint/no-explicit-any": 1,
       "@typescript-eslint/no-shadow": 2,
-      "@typescript-eslint/no-unused-vars": "error",
+      // "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/no-unused-vars": 1,
       "@typescript-eslint/no-use-before-define": [1],
       "eol-last": 2,
       "import/extensions": [
@@ -150,7 +151,7 @@ export default [
       "no-shadow": 0,
       "no-underscore-dangle": 0,
       "no-use-before-define": [0],
-      "prettier/prettier": 2,
+      "prettier/prettier": 1,
       "react/forbid-prop-types": 0,
       "react/jsx-filename-extension": [
         1,

@@ -22,10 +22,10 @@ const WhatIsLux = styled.div`
     padding: 25px ${theme.spacing.contentAbsMarginX};
     color: ${theme.color.white};
     background-color: ${theme.color.primary.darkBlue};
-    font-family: Inter, sans-serif;
+    font-family: 'Mallory Bold', sans-serif;
     font-size: 2.25rem;
     font-weight: ${theme.font.weight.extraLight};
-    letter-spacing: -2px;
+    letter-spacing: 0px;
     z-index: 2;
 
     @media (min-width: ${theme.breakpoints.md}px) {
@@ -37,7 +37,7 @@ const WhatIsLux = styled.div`
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 150px;
-    font-family: Inter, sans-serif;
+    font-family: 'Mallory Light', sans-serif;
     font-size: 1.2rem;
     color: ${theme.color.offWhite};
     letter-spacing: 0;
@@ -50,6 +50,20 @@ const WhatIsLux = styled.div`
       padding-left: 47px;
       padding-right: 56px;
     }
+  }
+
+  a {
+    font-family: 'Mallory Medium', sans-serif;
+  }
+
+  a:link,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: none;
   }
 
   @media (min-width: 552px) {

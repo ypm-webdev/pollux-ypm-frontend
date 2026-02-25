@@ -87,4 +87,14 @@ export class FeaturedCollectionParser {
     }
     return colls
   }
+
+  getCollectionsAll(units: UnitCode[]): ICollection[] {
+    const colls: ICollection[] = []
+    let candidates = this.data
+
+    for (let i = 0; i < 14; i += 1) {
+      ;[colls[i], candidates] = selectCollection(units[i], candidates)
+    }
+    return colls
+  }
 }

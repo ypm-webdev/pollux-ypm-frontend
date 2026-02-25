@@ -10,14 +10,14 @@ const FooterBlocksSection = styled(Row)`
   padding-left: ${theme.spacing.contentAbsMarginX};
   padding-right: ${theme.spacing.contentAbsMarginX};
   min-width: 100%;
-  background-color: ${theme.color.white};
+  background: linear-gradient(180deg, #f7f7f7 0%, #ffffff 100%);
 
   div.block {
     min-width: 240px;
   }
 
   h2 {
-    font-family: Inter, sans-serif;
+    font-family: 'Mallory Bold', sans-serif;
     font-size: 1.5em;
     color: ${theme.color.black};
     letter-spacing: 0;

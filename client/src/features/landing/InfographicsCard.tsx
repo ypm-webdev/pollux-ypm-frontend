@@ -6,12 +6,14 @@ interface IProps {
   number: number
   label: string
   dataTestId: string
+  link: string
 }
 
 const InfographicsCard: React.FC<IProps> = ({
   icon,
   number,
   label,
+  link,
   dataTestId,
 }) => (
   <Col
@@ -24,15 +26,17 @@ const InfographicsCard: React.FC<IProps> = ({
     className="col-lg-6 d-flex card-outer"
     data-testid={`${dataTestId}-infographic-card`}
   >
-    <Row className="d-flex align-items-center card-inner">
-      <Col xs={3} sm={3} md={3}>
-        <img className="icon" src={icon} alt="" />
-      </Col>
-      <Col xs={9} sm={9} md={9}>
-        <div className="number">{number.toLocaleString()}</div>
-        <div className="label">{label}</div>
-      </Col>
-    </Row>
+    <a href={link}>
+      <Row className="d-flex align-items-center card-inner">
+        <Col xs={3} sm={3} md={3}>
+          <img className="icon" src={icon} alt="" />
+        </Col>
+        <Col xs={9} sm={9} md={9}>
+          <div className="number">{number.toLocaleString()}</div>
+          <div className="label">{label}</div>
+        </Col>
+      </Row>
+    </a>
   </Col>
 )
 

@@ -1,6 +1,21 @@
 import { createGlobalStyle } from 'styled-components'
 
 import YaleNewRoman from '../resources/fonts/YaleNew-Roman.otf'
+import MalloryBlack from '../resources/fonts/Mallory-Black.otf'
+import MalloryBold from '../resources/fonts/Mallory-Bold.otf'
+import MalloryBook from '../resources/fonts/Mallory-Book.otf'
+import MalloryExtraLight from '../resources/fonts/Mallory-ExtraLight.otf'
+import MalloryLight from '../resources/fonts/Mallory-Light.otf'
+import MalloryMedium from '../resources/fonts/Mallory-Medium.otf'
+import MalloryThin from '../resources/fonts/Mallory-Thin.otf'
+import MalloryUltra from '../resources/fonts/Mallory-Ultra.otf'
+import MalloryMpBlack from '../resources/fonts/MalloryMP-Black.otf'
+import MalloryMpBold from '../resources/fonts/MalloryMP-Bold.otf'
+import MalloryMpBook from '../resources/fonts/MalloryMP-Book.otf'
+import MalloryMpLight from '../resources/fonts/MalloryMP-Light.otf'
+import MalloryMpMedium from '../resources/fonts/MalloryMP-Medium.otf'
+
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 import theme from './theme'
 
@@ -10,10 +25,77 @@ const GlobalStyle = createGlobalStyle`
     src: url(${YaleNewRoman});
   }
 
+  @font-face {
+    font-family: 'Mallory Black';
+    src: url(${MalloryBlack})
+  }
+
+  @font-face {
+    font-family: 'Mallory Bold';
+    src: url(${MalloryBold})
+  }
+
+  @font-face {
+    font-family: 'Mallory Book';
+    src: url(${MalloryBook})
+  }
+
+  @font-face {
+    font-family: 'Mallory Extra Light';
+    src: url(${MalloryExtraLight})
+  }
+
+  @font-face {
+    font-family: 'Mallory Light';
+    src: url(${MalloryLight})
+  }
+
+  @font-face {
+    font-family: 'Mallory Medium';
+    src: url(${MalloryMedium})
+  }
+
+  @font-face {
+    font-family: 'Mallory Thin';
+    src: url(${MalloryThin})
+  }
+
+  @font-face {
+    font-family: 'Mallory Ultra';
+    src: url(${MalloryUltra})
+  }
+
+  @font-face {
+    font-family: 'Mallory MP Black';
+    src: url(${MalloryMpBlack})
+  }
+
+  @font-face {
+    font-family: 'Mallory MP Bold';
+    src: url(${MalloryMpBold})
+  }
+
+  @font-face {
+    font-family: 'Mallory MP Book';
+    src: url(${MalloryMpBook})
+  }
+
+  @font-face {
+    font-family: 'Mallory MP Light';
+    src: url(${MalloryMpLight})
+  }
+
+  @font-face {
+    font-family: 'Mallory MP Medium';
+    src: url(${MalloryMpMedium})
+  }
+
+
+
   body {
     min-height: 100vh;
     margin: 0;
-    font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Mallory MP Book", sans-serif;
     font-size: ${theme.font.size.normal};
     font-weight: ${theme.font.weight.extraLight};
     letter-spacing: 0;
@@ -21,12 +103,12 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: ${theme.color.offWhite};
+    overflow-x: hidden;
   }
 
   h1 {
     font-size: 3.1em;
     color:  ${theme.color.black};
-    letter-spacing: -2px;
     font-size: ${theme.font.mobile.h1.size};
     line-height: ${theme.font.mobile.h1.lineHeight};
     font-weight: ${theme.font.mobile.h1.weight};
@@ -138,6 +220,17 @@ const GlobalStyle = createGlobalStyle`
   #route-container {
     min-height: 100vh;
   }
+
+  .top-gradient {
+    background: #f7f7f7;
+    background: linear-gradient(0deg,#F7F7F7 0%, #FFFFFF 100%);
+  }
+
+  .bottom-gradient {
+    background: #f7f7f7;
+    background: linear-gradient(180deg,#F7F7F7 0%, #FFFFFF 100%);
+  }
+
 `
 
 export default GlobalStyle

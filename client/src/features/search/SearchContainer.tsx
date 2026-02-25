@@ -15,6 +15,7 @@ interface IProps {
   className: string
   id: string
   bgColor: string
+  isBelowFold: boolean
   searchTipsStyle?: {
     color: string
     textDecoration: string
@@ -26,6 +27,7 @@ const SearchContainer: React.FC<IProps> = ({
   className,
   id,
   bgColor,
+  isBelowFold,
   searchTipsStyle = {
     color: theme.color.link,
     textDecoration: 'none',
@@ -42,7 +44,12 @@ const SearchContainer: React.FC<IProps> = ({
     >
       <Col xs={12}>
         {isError && <ErrorMessage onClose={setIsError} />}
-        <SearchBox id={id} setIsError={setIsError} isResults={isResultsPage} />
+        <SearchBox
+          id={id}
+          isBelowFold={isBelowFold}
+          setIsError={setIsError}
+          isResults={isResultsPage}
+        />
       </Col>
       {isResultsPage ? (
         <Col xs={12} className="d-flex justify-content-center">
