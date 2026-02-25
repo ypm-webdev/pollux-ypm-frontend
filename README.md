@@ -1,6 +1,6 @@
-# LUX Frontend
+# POLLUX - YPM // LUX Frontend
 
-The lux-frontend repo is used to develop and maintain the frontend code for Yale LUX. The frontend contains custom components and interfaces that allow users to interact with linked data in a meaningful way.
+This is a fork of the [lux-frontend repo](https://github.com/project-lux/lux-frontend), used to develop and maintain the frontend code for Yale LUX. The frontend contains custom components and interfaces that allow users to interact with linked data in a meaningful way.
 
 This project was bootstrapped with [Vite](https://vite.dev/), Core dependencies include [React](https://react.dev/),  [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/).
 
