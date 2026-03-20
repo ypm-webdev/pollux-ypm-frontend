@@ -21,7 +21,9 @@ import { archive } from '../../config/setsSearchTags'
 import HowDoISeeIt from '../common/HowDoISeeIt'
 import IObject from '../../types/data/IObject'
 import IDigitalObject from '../../types/data/IDigitalObject'
-import UV from '../common/UV'
+import Clover from '../common/Clover'
+import CI360 from '../common/CI360'
+import CIZStack from '../common/CIZStack'
 import WikiDataImageViewer from '../common/WikiDataImageViewer'
 import IEntity from '../../types/data/IEntity'
 
@@ -66,11 +68,28 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
       </ErrorBoundary>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {manifestId !== '' ? (
-          <UV manifest={manifestId} />
+          <Clover manifest={manifestId} />
         ) : (
           <WikiDataImageViewer entity={data} />
         )}
       </ErrorBoundary>
+
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {manifestId !== '' ? (
+          <CI360 manifest={manifestId} />
+        ) : (
+          <h2><em>error displaying 360 viewer</em></h2>
+        )}
+      </ErrorBoundary>
+
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {manifestId !== '' ? (
+          <CIZStack manifest={manifestId} />
+        ) : (
+          <h2><em>error displaying z-stack viewer</em></h2>
+        )}
+      </ErrorBoundary>
+
       <StyledEntityBody>
         <Col>
           <Row>

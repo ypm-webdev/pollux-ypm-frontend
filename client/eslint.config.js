@@ -25,6 +25,7 @@ export default [
   ...fixupConfigRules(compat.extends(
     "plugin:import/errors",
     "plugin:import/warnings",
+    "plugin:import/typescript",
     "plugin:jsx-a11y/strict",
     "prettier"
   )),
@@ -49,7 +50,8 @@ export default [
       react: fixupPluginRules(react),
       "@stylistic": stylistic,
     },
-    files: ["src/**/*.ts", "src/**/*.tsx"],
+    // files: ["src/**/*.ts", "src/**/*.tsx"],
+    files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     ignores: [
       'dist/',
       'coverage/',
@@ -91,17 +93,21 @@ export default [
       "@typescript-eslint/no-explicit-any": 1,
       "@typescript-eslint/no-shadow": 2,
       // "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/no-unused-vars": 1,
+      // "@typescript-eslint/no-unused-vars": 1,
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-unused-vars": "off",
       "@typescript-eslint/no-use-before-define": [1],
       "eol-last": 2,
       "import/extensions": [
         "error",
-        "always",
+        "ignorePackages",
         {
           js: "never",
           jsx: "never",
           ts: "never",
-          tsx: "never"
+          tsx: "never",
+          mjs: "never",
+          cjs: "never"
         }
       ],
       "import/namespace": [
@@ -156,7 +162,7 @@ export default [
       "react/jsx-filename-extension": [
         1,
         {
-          extensions: [".tsx", ".ts"]
+          extensions: [".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx"]
         }
       ],
       "react/jsx-fragments": [2, "element"],
@@ -170,7 +176,11 @@ export default [
       },
       "import/resolver": {
         node: {
-          extensions: [".js", ".jsx", ".ts", ".tsx"]
+          extensions: [".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx"]
+        },
+        typescript: {
+          alwaysTryTypes: true,
+          project: ["./tsconfig.json"]
         }
       }
     },

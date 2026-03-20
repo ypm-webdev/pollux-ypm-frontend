@@ -137,6 +137,30 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     )
     setShowAddToCollectionModal(true)
   }
+  
+  const catalogNumberDisplay = (): string => {
+      
+      // return item 0 / Catalog Number
+      
+      if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
+        return element.getIdentifiers()[0].identifier[0]
+      } else {
+        return '';
+      }    
+
+    // return item 1 / Repository number instead (for brevity ; potential errors)
+
+    // if( element.getIdentifiers().length > 1 && element.getIdentifiers()[1].identifier.length > 0) {
+    //   return element.getIdentifiers()[1].identifier[0]
+    // } else if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
+    //   return element.getIdentifiers()[0].identifier[0]
+    // } else {
+    //   return '';
+    // }
+  }
+  // console.log("catalog number: ", catalogNumberDisplay());
+  // console.log(entity);
+  console.log(primaryAgent);
 
   return (
     <React.Fragment>
@@ -167,12 +191,13 @@ const EntityHeader: React.FC<IEntityHeader> = ({
         />
       )}
       <StyledEntityHeader>
-        <Col xs={12} sm={12} md={12} lg={isMobile ? 12 : 9}>
-          <Row>
+        {/* <Col xs={12} sm={12} md={12} lg={isMobile ? 12 : 9}> */}
+        <Col xs={12} sm={12} md={12} lg={12}>
+          <Row className="mt-2">
             <Col xs={12} className="d-flex text-start p-0">
-              <h1 className="d-flex">
+              <h1 className={isMobile?"d-flex main-label-title": "d-flex-main-label-title ps-4"}>
                 <span data-testid="entity-header">
-                  <Tooltip html={helperText} placement="bottom">
+                  {/* <Tooltip html={helperText} placement="bottom">
                     <StyledImg
                       src={typeIcon}
                       alt={`icon for ${helperText}`}
@@ -182,7 +207,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       className="mx-2"
                       data-testid="entity-icon-img"
                     />
-                  </Tooltip>
+                  </Tooltip> */}
                   {displayName}
                   <Dates start={start || ''} end={end || ''} />
                   {isNameLong &&
@@ -204,15 +229,45 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       </button>
                     ))}
                 </span>
+                <span className="entity-supertype-icon">
+                  <Tooltip html={helperText} placement="bottom">
+                    <StyledImg
+                      src={typeIcon}
+                      alt={`icon for ${helperText}`}
+                      id="icon"
+                      height={70}
+                      width={70}
+                      className="mx-2"
+                      data-testid="entity-icon-img"
+                    />
+                  </Tooltip>
+                </span>
               </h1>
             </Col>
             {agentData && (
-              <Col className="text-start p-0">
+              <Col  xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-agent-header-data": "text-start p-0 entity-agent-header-data ps-4"}>
                 <AgentInHeader data={agentData} />
+              </Col>
+            )}
+            {catalogNumberDisplay() && (
+              <Col xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-catalog-number": "text-start p-0 entity-catalog-number ps-4"}>
+                <span className="catalog-number-display">
+                  <i className="bi bi-upc-scan pe-2"></i>
+                  {catalogNumberDisplay()}
+                </span>
               </Col>
             )}
             {children}
           </Row>
+          {/* {entity._label && (
+          <Row>
+            <Col className={isMobile? "text-start p-0 entity-catalog-number": "text-start p-0 entity-catalog-number ps-4"}>
+                <span>
+                  {entity._label}
+                </span>
+            </Col>
+          </Row>
+          )} */}
         </Col>
         {isAuthenticated && (
           <Col

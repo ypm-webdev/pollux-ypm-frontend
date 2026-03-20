@@ -71,7 +71,7 @@ const Footer: React.FC = () => (
           style={{ backgroundColor: theme.color.white }}
         >
           <Col xs={12} sm={6} className="px-4 py-4">
-            &copy; 2025 Yale Peabody Museum
+            &copy; 2026 Yale Peabody Museum
           </Col>
           <Col xs={12} sm={6} className="px-4 py-4">
             <ul

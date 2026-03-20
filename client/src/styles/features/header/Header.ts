@@ -20,14 +20,14 @@ const Header = styled.div`
 
   .powered-by-lux span.lux-powered-by {
     font-family: YaleDesign, serif;
-    font-size: 1.75em;
+    font-size: 1.25em;
     letter-spacing: 0px;
     color: ${theme.color.primary.darkBlue};
   }
 
   .powered-by-lux span.lux-name {
     font-family: YaleDesign, serif;
-    font-size: 1.75em;
+    font-size: 1.25em;
     letter-spacing: 0px;
     font-weight: 700;
     color: ${theme.color.primary.darkBlue};
