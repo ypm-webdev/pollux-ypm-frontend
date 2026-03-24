@@ -27,6 +27,7 @@ import { addEntity } from '../../redux/slices/myCollectionsSlice'
 import { getFormattedUuidFromPathname } from '../../lib/myCollections/helper'
 import { useGetUserResultsQuery } from '../../redux/api/ml_api'
 import { getOrderedItemsIds } from '../../lib/parse/search/searchResultParser'
+import { formatScientificName } from '../../lib/util/collectionHelper'
 
 import Dates from './Dates'
 import AgentInHeader from './AgentInHeader'
@@ -138,29 +139,48 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     setShowAddToCollectionModal(true)
   }
   
+  const isBiologicalEntity = 
+    element.isClassifiedAs(config.aat.plantSpecimens) ||
+    element.isClassifiedAs(config.aat.animalSpecimens) ||
+    element.isClassifiedAs(config.aat.fossil) ||
+    element.isClassifiedAs(config.aat.biologicalSpecimens); 
+
+  const isMineralEntity = 
+    element.isClassifiedAs(config.aat.gemstone) ||
+    element.isClassifiedAs(config.aat.mineralSpecimens) ||
+    element.isClassifiedAs(config.aat.meteoriteSpecimens) ||
+    element.isClassifiedAs(config.aat.inorganicMaterials);
+
+  const isHumanMadeEntity = 
+    element.isClassifiedAs(config.aat.culturalArtifacts) ||
+    element.isClassifiedAs(config.aat.equipmentScienceTechnology) ||
+    element.isClassifiedAs(config.aat.toolsEquipment) ||
+    element.isClassifiedAs(config.aat.scientificInstruments);
+    // TODO: add more AAT classifications for ANT, BC
+
   const catalogNumberDisplay = (): string => {
       
       // return item 0 / Catalog Number
+      // ALTERNATE: return item 1 / Repository number instead (for brevity ; potential errors)
       
-      if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
-        return element.getIdentifiers()[0].identifier[0]
+      if( isBiologicalEntity || isMineralEntity || isHumanMadeEntity) {
+        if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
+          return element.getIdentifiers()[0].identifier[0];
+        } else {
+          return '';
+        }    
       } else {
         return '';
-      }    
-
-    // return item 1 / Repository number instead (for brevity ; potential errors)
-
-    // if( element.getIdentifiers().length > 1 && element.getIdentifiers()[1].identifier.length > 0) {
-    //   return element.getIdentifiers()[1].identifier[0]
-    // } else if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
-    //   return element.getIdentifiers()[0].identifier[0]
-    // } else {
-    //   return '';
-    // }
+      }
   }
-  // console.log("catalog number: ", catalogNumberDisplay());
+  
   // console.log(entity);
-  console.log(primaryAgent);
+  console.log(element);
+  console.log("formatted scientific name: ", formatScientificName(displayName));
+  console.log(element.getPrimaryName(config.aat.langen));
+  console.log("is biological entity? ", isBiologicalEntity);
+  console.log("is mineral entity? ", isMineralEntity);
+  console.log("is human made entity? ", isHumanMadeEntity);
 
   return (
     <React.Fragment>

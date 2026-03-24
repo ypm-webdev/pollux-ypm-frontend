@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react"
 import Col from 'react-bootstrap/Col'
-import { CI360Viewer, CI360ViewerRef } from 'js-cloudimage-360-view/react'
-import 'js-cloudimage-360-view/css'
+import { CI360Viewer } from '@cloudimage/360-view/react'
+import '@cloudimage/360-view/css'
 import StyledCI360Container from '../../styles/features/common/CI360Container'
 
 type InternationalString = { [language: string]: string[] }
@@ -42,6 +42,16 @@ const CI360: React.FC<Params> = ({ manifest }) => {
     })();
   }, [manifest]);
 
+  // override return loop to temporarily hide 360 viewer (for testing purposes)
+  if( 0 ) {
+    return (
+    <StyledCI360Container className="viewer-container mx-0">
+      <Col className="360-container d-flex px-0">
+        <article><h2>360 viewer - Works!</h2></article>
+      </Col>
+    </StyledCI360Container>
+    );
+  }
 
   return (
     <StyledCI360Container className="viewer-container mx-0">
@@ -51,7 +61,7 @@ const CI360: React.FC<Params> = ({ manifest }) => {
             className={"ci360-viewer"}
             autoplay={true}
             fullscreen={true}
-            aspectRatio="16/9"
+            // aspectRatio="16/9"
             style={{ width: '100%', height: 'auto' }}
             folder={'/testData/media/2d-360/Spann_TN_082/'}
             filenameX={'a_{indexY}_{index}_3000.jpg'}
@@ -64,7 +74,11 @@ const CI360: React.FC<Params> = ({ manifest }) => {
             speed={100}
             dragSpeed={150}
             zoomMax={3}
+            zoomControlsPosition={"top-right"}
+            theme={"dark"}
             inertia={true}
+            lazyload={true}
+            initOnClick={true}
             initialIconShown={true}
             bottomCircle={true}
             keys={false}

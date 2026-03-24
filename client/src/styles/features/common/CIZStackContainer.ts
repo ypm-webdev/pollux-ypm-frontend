@@ -21,6 +21,16 @@ const CIZStackContainer = styled(Row)`
     background-color: ${theme.color.white};
     margin-bottom: 0;
 
+  .cloudimage-360-zoom-controls, .cloudimage-360-zoom-controls[data-position="top-right"] {
+    right: 75px;
+    top: 15px;
+    background:none;
+  }
+
+  .cloudimage-360-zoom-controls .cloudimage-360-zoom-btn {
+    background: rgba(0, 0, 0, 0.8);
+    margin: 0 5px;
+  }
 `
 
 export default CIZStackContainer
