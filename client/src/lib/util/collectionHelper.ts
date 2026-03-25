@@ -39,6 +39,9 @@ export function getCollections(entity: IEntity): any {
   return Promise.all(promises).then((result) => ({ data: result }))
 }
 
+
+// EDIT : Deprecated : Moved to its own component file to correctly render sanitized HTML strings 
+// (features/common/FormattedDisplayName.tsx) - AM
 export function formatScientificName(text: string): string {
   // Custom function - AM
   // Format text string to display proper scientific binomial nomenclature (species / scientific names)

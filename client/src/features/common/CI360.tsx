@@ -73,7 +73,7 @@ const CI360: React.FC<Params> = ({ manifest }) => {
             autoplayReverse={true}
             speed={100}
             dragSpeed={150}
-            zoomMax={3}
+            zoomMax={5}
             zoomControlsPosition={"top-right"}
             theme={"dark"}
             inertia={true}

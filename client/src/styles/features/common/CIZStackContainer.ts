@@ -10,7 +10,7 @@ const CIZStackContainer = styled(Row)`
 
   article {
     width: 100%;
-    border-radius: 8px;
+    // border-radius: 8px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
   }
   

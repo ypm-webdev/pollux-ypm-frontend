@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import StyledEntityHeader from '../../styles/features/common/EntityHeader'
+import formattedDisplayName from './FormattedDisplayName'
 import {
   useResizableName,
   shortenIfNeeded,
@@ -145,6 +146,9 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     element.isClassifiedAs(config.aat.fossil) ||
     element.isClassifiedAs(config.aat.biologicalSpecimens); 
 
+  const isPlantEntity = 
+    element.isClassifiedAs(config.aat.plantSpecimens);
+
   const isMineralEntity = 
     element.isClassifiedAs(config.aat.gemstone) ||
     element.isClassifiedAs(config.aat.mineralSpecimens) ||
@@ -163,7 +167,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
       // return item 0 / Catalog Number
       // ALTERNATE: return item 1 / Repository number instead (for brevity ; potential errors)
       
-      if( isBiologicalEntity || isMineralEntity || isHumanMadeEntity) {
+      if( isBiologicalEntity || isPlantEntity || isMineralEntity || isHumanMadeEntity) {
         if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
           return element.getIdentifiers()[0].identifier[0];
         } else {
@@ -179,6 +183,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
   console.log("formatted scientific name: ", formatScientificName(displayName));
   console.log(element.getPrimaryName(config.aat.langen));
   console.log("is biological entity? ", isBiologicalEntity);
+  console.log("is plant entity? ", isPlantEntity);
   console.log("is mineral entity? ", isMineralEntity);
   console.log("is human made entity? ", isHumanMadeEntity);
 
@@ -228,7 +233,8 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       data-testid="entity-icon-img"
                     />
                   </Tooltip> */}
-                  {displayName}
+                  {isBiologicalEntity || isPlantEntity ? formattedDisplayName({ text: displayName }) : displayName}
+                  {/* {displayName} */}
                   <Dates start={start || ''} end={end || ''} />
                   {isNameLong &&
                     (showLongName ? (
