@@ -26,7 +26,7 @@ type ManifestData = {
 //   return label ? <Summary summary={label} as="p" /> : <div>No summary available.</div>
 // })
 const SummaryComponent: React.FC<{ label?: InternationalString }> = ({ label }) => {
-  console.log('SummaryComponent label:', label) // Debug log
+  // console.log('SummaryComponent label:', label) // Debug log
   return label ? <Summary summary={label} className="summary-panel-inner" as="span" /> : <div className="summary-panel-inner">No summary available.</div>
 }
 SummaryComponent.displayName = 'SummaryComponent'
@@ -59,7 +59,7 @@ const plugins = useMemo(() => [
 ], [manifestData?.label])
 
   return (
-    <StyledCloverContainer className="viewer-container mx-0">
+    <StyledCloverContainer className="viewer-container mx-0 pt-0">
       {/* <Col className="clover-container d-flex justify-content-center"> */}
       <Col className="clover-container d-flex px-0">
         <article>
@@ -76,11 +76,11 @@ const plugins = useMemo(() => [
               }
             }}
           />
-          {manifestData?.label && (
+          {/* {manifestData?.label && (
             <div>
               <Summary summary={manifestData.label} as="p" />
             </div>
-          )}
+          )} */}
         </article>
       </Col>
     </StyledCloverContainer>

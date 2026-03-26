@@ -45,6 +45,7 @@ const About: React.FC<IObject> = ({ data }) => {
     exhibitionDescription,
   } = aboutData as Record<string, any>
 
+
   return (
     <StyledEntityPageSection className="row" data-testid="about-object">
       <Col xs={12}>

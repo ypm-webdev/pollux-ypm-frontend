@@ -80,6 +80,12 @@ const Footer: React.FC = () => (
             >
               <li className="nav-item">
                 <ExternalLink
+                  url="https://peabody.yale.edu"
+                  name="Peabody Museum Homepage"
+                />
+              </li>
+              {/* <li className="nav-item">
+                <ExternalLink
                   url="http://ipt.peabody.yale.edu/ipt/"
                   name="Peabody IPT"
                 />
@@ -89,7 +95,7 @@ const Footer: React.FC = () => (
                   url="http://collections.peabody.yale.edu/cgi-bin/GNIS/"
                   name="Peabody GNIS Service"
                 />
-              </li>
+              </li> */}
             </ul>
           </Col>
         </Row>

@@ -16,9 +16,10 @@ interface IIdentifiers {
 }
 
 const IdentifiersContainer: React.FC<IIdentifiers> = ({ identifiers, id }) => (
-  <StyledDataRow className="row">
-    <Col xs={12} sm={12} md={3}>
-      <dt data-testid={`${id}-identifier-label`}>Identifiers</dt>
+  <StyledDataRow className="row ">
+    <Col xs={12} sm={12} md={3} className="identifiers-header-custom">
+    <button className="anchor" id="identifiers" />
+    <dt data-testid={`${id}-identifier-label`}>Identifiers</dt>
     </Col>
     <Col xs={12} sm={12} md={9}>
       <IdentifiersList identifiers={identifiers} />

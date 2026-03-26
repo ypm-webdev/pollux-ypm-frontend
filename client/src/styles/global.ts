@@ -231,6 +231,14 @@ const GlobalStyle = createGlobalStyle`
     background: linear-gradient(180deg,#F7F7F7 0%, #FFFFFF 100%);
   }
 
+  button.anchor {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0px;
+    margin: 0px;
+  }
 `
 
 export default GlobalStyle

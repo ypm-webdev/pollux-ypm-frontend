@@ -17,6 +17,11 @@ const DataRow = styled.div`
   &#group-activity {
     margin-bottom: 0rem;
   }
+
+  .identifiers-header-custom {
+    padding-top: 0;
+    margin-top: -1rem;
+  }
 `
 
 export default DataRow

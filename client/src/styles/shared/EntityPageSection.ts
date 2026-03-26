@@ -10,18 +10,24 @@ interface IProps {
 const EntityPageSection = styled.div<IProps>`
   background: ${theme.color.white};
   box-shadow: 1px 1px 5px ${theme.color.black20};
-  border-top-left-radius: ${(props) =>
-    props.$borderTopLeftRadius || theme.border.radius};
-  border-top-right-radius: ${(props) =>
-    props.$borderTopRightRadius || theme.border.radius};
-  border-bottom-right-radius: ${theme.border.radius};
-  border-bottom-left-radius: ${theme.border.radius};
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
   margin: 0 0 ${theme.spacing.sectionGap};
   padding: 0.5rem;
 
   @media (min-width: ${theme.breakpoints.md}px) {
     padding: 1rem;
   }
+
+  h2, h2.panel-heading {
+    font-family: 'Mallory Bold', sans-serif;
+    text-transform: none;
+    font-weight: 700;
+    letter-spacing: 0px;
+  }
+
 
   .accordion-item {
     border-radius: ${theme.border.radius};

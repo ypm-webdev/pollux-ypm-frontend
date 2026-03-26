@@ -4,25 +4,27 @@ import styled from 'styled-components'
 import theme from '../theme'
 
 const PrimaryButton = styled(Button)`
-  background-color: ${theme.color.primary.teal};
+  background-color: ${theme.color.primary.blue};
   color: ${theme.color.white};
-  border-radius: 10px;
-  border-color: ${theme.color.primary.teal};
+  border-radius: 0px;
+  border-color: ${theme.color.primary.blue};
   font-size: 16px;
   font-weight: ${theme.font.weight.bold};
   padding: 1rem;
-  text-decoration: none;
+  text-decoration: underline;
+  box-shadow: 1px 1px 5px ${theme.color.black20};
 
   &:disabled {
-    background-color: ${theme.color.primary.teal};
+    background-color: ${theme.color.primary.blue};
     color: ${theme.color.white};
-    border-color: ${theme.color.primary.teal};
+    border-color: ${theme.color.primary.blue};
   }
 
   &:hover {
     background-color: ${theme.color.primary.teal};
     border-color: ${theme.color.primary.teal};
     color: ${theme.color.white};
+    text-decoration: none;
   }
 
   &.btn:active {

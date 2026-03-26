@@ -25,6 +25,7 @@ import Clover from '../common/Clover'
 import CI360 from '../common/CI360'
 import CIZStack from '../common/CIZStack'
 import WikiDataImageViewer from '../common/WikiDataImageViewer'
+import ImageryMultiContainer from '../common/ImageryMultiContainer'
 import IEntity from '../../types/data/IEntity'
 
 import Carries from './Carries'
@@ -38,7 +39,17 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
   const memberOf = element.getMemberOf()
   const objectsWithImagesHalLink = element.getHalLink(archive.searchTag)
   const halLinkTitle = archive.title
-  const manifestId = element.getManifestId()
+  const manifestId = element.getManifestId()  // original IIIF manifest from LUX (2D imagery)
+  
+  const multiImageManifests = {
+    '2d' : manifestId,  // original IIIF manifest from LUX (2D imagery)
+    '2d360': 'PATH TO 360 MANIFEST',  // rewrite this later as method such as element.get360ManifestId() to pull from LUX
+    '2dzst': 'PATH TO ZSTACK MANIFEST',  // rewrite this later as method such as element.getZStackManifestId() to pull from LUX
+    '2drti': 'PATH TO RTI MANIFEST',  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
+    '3dobj': 'PATH TO 3D MANIFEST',  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
+    '3dvol': 'PATH TO 3D VOLUME MANIFEST',  // rewrite this later as method such as element.get3DVolumeManifestId() to pull from LUX
+  }
+
   const hierarchyData: {
     entity: IEntity
     currentPageWithinParentResultsHalLink: null | string
@@ -48,7 +59,7 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
       'lux:itemCurrentHierarchyPage',
     ),
   }
-
+  
   return (
     <React.Fragment>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -66,7 +77,23 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
           )}
         </EntityHeader>
       </ErrorBoundary>
+
       <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {manifestId !== '' ? (
+          <ImageryMultiContainer
+            manifestIiif={multiImageManifests['2d']}
+            manifest2dRti={multiImageManifests['2drti']}
+            manifest2dZst={multiImageManifests['2dzst']}
+            manifest2d360={multiImageManifests['2d360']}
+            manifest3dObj={multiImageManifests['3dobj']}
+            manifest3dVol={multiImageManifests['3dvol']}
+          />
+        ) : (
+          <WikiDataImageViewer entity={data} />
+        )}
+      </ErrorBoundary>
+
+      {/* <ErrorBoundary FallbackComponent={ErrorFallback}>
         {manifestId !== '' ? (
           <Clover manifest={manifestId} />
         ) : (
@@ -77,18 +104,14 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {manifestId !== '' ? (
           <CI360 manifest={manifestId} />
-        ) : (
-          <h2><em>error displaying 360 viewer</em></h2>
-        )}
+        ) : ( <></>  )}
       </ErrorBoundary>
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {manifestId !== '' ? (
           <CIZStack manifest={manifestId} />
-        ) : (
-          <h2><em>error displaying z-stack viewer</em></h2>
-        )}
-      </ErrorBoundary>
+        ) : ( <></> )}
+      </ErrorBoundary> */}
 
       <StyledEntityBody>
         <Col>
@@ -124,7 +147,7 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
                 </Col>
               </Row>
               <StyledEntityPageSection className="row">
-                <Col xs={12} className="my-2">
+                <Col xs={12} className="my-0">
                   <DataSources entity={data} />
                 </Col>
               </StyledEntityPageSection>

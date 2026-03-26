@@ -39,7 +39,7 @@ const DataSources: React.FC<IProps> = ({ entity }) => {
 
   return (
     <div>
-      <h2 data-testid="data-sources-header">Data Sources</h2>
+      <h2 data-testid="data-sources-header" className='panel-heading'>Data Sources</h2>
       <div className="mb-2">
         <p>
           This information has been automatically generated from the sources

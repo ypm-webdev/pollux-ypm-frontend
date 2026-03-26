@@ -30,7 +30,8 @@ interface IProps {
 const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
   const entity = new EntityParser(data)
   const accessStatement = entity.getAccessStatement()
-  const links = [...entity.getAllSiteLinks(), ...entity.getHowDoISeeItLinks()]
+  // const links = [...entity.getAllSiteLinks(), ...entity.getHowDoISeeItLinks()]
+  const links = [...entity.getHowDoISeeItLinks()]
   let accessPoints: Array<{ content: string; id: string }> = []
   // Parse the entity to get the appropriate HAL links for rendering the unit(s)
   const planYourVisitLinks = entity.getPlanYourVisitLink()
@@ -75,9 +76,9 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
   }
 
   return (
-    <StyledDataRow className="row" data-testid="how-do-i-see-it">
+    <StyledDataRow className="row mt-0" data-testid="how-do-i-see-it">
       <Col xs={12}>
-        <h2>How do I see it?</h2>
+        <h2 className='panel-heading'>Access Info</h2>
       </Col>
       {accessStatement.length > 0 && (
         <StyledDl data-testid="access-statement-dl mb-0">
@@ -128,7 +129,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             hrClassName="collectionHr"
           />
         )}
-        {unitUris.length > 0 && (
+        {/* {unitUris.length > 0 && (
           <LinkContainer
             label="Responsible Unit"
             content={unitUris}
@@ -137,7 +138,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             id="campus-division-container"
             hrClassName="responsibleUnitHr"
           />
-        )}
+        )} */}
       </dl>
       {planYourVisitLinks.length > 0 &&
         planYourVisitLinks.map((link, ind) => {

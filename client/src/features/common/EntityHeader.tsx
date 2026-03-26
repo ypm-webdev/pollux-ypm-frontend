@@ -179,13 +179,13 @@ const EntityHeader: React.FC<IEntityHeader> = ({
   }
   
   // console.log(entity);
-  console.log(element);
-  console.log("formatted scientific name: ", formatScientificName(displayName));
-  console.log(element.getPrimaryName(config.aat.langen));
-  console.log("is biological entity? ", isBiologicalEntity);
-  console.log("is plant entity? ", isPlantEntity);
-  console.log("is mineral entity? ", isMineralEntity);
-  console.log("is human made entity? ", isHumanMadeEntity);
+  // console.log(element);
+  // console.log("formatted scientific name: ", formatScientificName(displayName));
+  // console.log(element.getPrimaryName(config.aat.langen));
+  // console.log("is biological entity? ", isBiologicalEntity);
+  // console.log("is plant entity? ", isPlantEntity);
+  // console.log("is mineral entity? ", isMineralEntity);
+  // console.log("is human made entity? ", isHumanMadeEntity);
 
   return (
     <React.Fragment>
@@ -277,10 +277,12 @@ const EntityHeader: React.FC<IEntityHeader> = ({
             )}
             {catalogNumberDisplay() && (
               <Col xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-catalog-number": "text-start p-0 entity-catalog-number ps-4"}>
+                <a href="#identifiers" data-testid="catalog-number-anchor-link" className="identifier-anchor-link">
                 <span className="catalog-number-display">
                   <i className="bi bi-upc-scan pe-2"></i>
                   {catalogNumberDisplay()}
                 </span>
+                </a>
               </Col>
             )}
             {children}

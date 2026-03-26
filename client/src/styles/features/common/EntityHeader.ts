@@ -16,7 +16,8 @@ const EntityHeader = styled(Row)`
     letter-spacing: 0px;
     flex-grow: 1;
     margin: 0;
-    display: flex
+    display: flex;
+    line-height: 1.1em;
     // padding-left: 1.5rem;
   }
 
@@ -37,6 +38,17 @@ const EntityHeader = styled(Row)`
     font-family: 'Mallory Medium', sans-serif;
     font-weight: 500;
     font-size: 0.95rem;
+  }
+
+  a.identifier-anchor-link {
+    color: ${theme.color.black};
+    text-decoration: none;
+    
+    &:hover {
+      color: ${theme.color.black65};
+      text-decoration: underline;
+    }
+
   }
 
 `

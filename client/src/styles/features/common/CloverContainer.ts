@@ -11,14 +11,20 @@ const CloverContainer = styled(Row)`
   article {
     width: 100%;
     // border-radius: 8px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
+    // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
   }
   
+  viewer-container {
+    // padding-top: 0!important;
+    margin-top: 0!important;
+  }
+
   .clover-container {
     position: relative;
     width: 100%;
     padding: 0 1rem;
-    background-color: ${theme.color.white};
+    // background-color: ${theme.color.white};
+    background: transparent;
     margin-bottom: 0;
 
     @media (min-width: 1200px) {
@@ -28,6 +34,14 @@ const CloverContainer = styled(Row)`
 
     .clover-viewer {
       width: 100%;
+    }
+    .clover-viewer-information-panel {
+      padding-top: 1rem;
+    }
+    
+      .clover-viewer-content {
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+      background-color: ${theme.color.white};
     }
 
     .clover-viewer-painting {
