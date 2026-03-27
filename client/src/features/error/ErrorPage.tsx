@@ -21,12 +21,22 @@ const getMessage = (code: number | undefined): string => {
   }
 }
 
+
 const ErrorPage: React.FC<IProps> = ({ code }) => {
+  const spacerStyle: React.CSSProperties = {
+    height: "1rem",
+    display: "block",
+    width: "100%",
+    background: "linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%)"
+  };
+  
   useEffect(() => {
     pushClientEvent('Error', 'Triggered', 'Page Not Found 404')
   }, [])
 
   return (
+    <div>
+    <div style={spacerStyle}></div>
     <StyledErrorPage className="row mx-0" data-testid="error-page">
       <BorderedDiv className="col section">
         <Row>
@@ -39,19 +49,21 @@ const ErrorPage: React.FC<IProps> = ({ code }) => {
                 className="errorPageSearchBox"
                 bgColor={theme.color.white}
                 id="error-page-search-box"
-              />
+                isBelowFold={false}
+                />
             </div>
           </Col>
           {/* TODO: add image
           <Col xs={12} md={4}">
-            <div className="image-container">
-              <img src="" alt="" />
-            </div>
+          <div className="image-container">
+          <img src="" alt="" />
+          </div>
           </Col>
           */}
         </Row>
       </BorderedDiv>
     </StyledErrorPage>
+    </div>
   )
 }
 

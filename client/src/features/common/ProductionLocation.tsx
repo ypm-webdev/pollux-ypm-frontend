@@ -31,13 +31,14 @@ const ProductionLocation: React.FC<IProps> = ({ location }) => {
     }
 
     const hasMapData = mapConfig.wkt !== ''
-
+    
     return (
       <React.Fragment>
         <Row className={hasMapData ? 'mb-1' : ''}>
           <RecordLink name={name} url={location} />
         </Row>
-        {hasMapData && <Map config={mapConfig} className="md row ms-1" />}
+        {/* {hasMapData && <Map config={mapConfig} className="md row ms-1" />} */}
+        {hasMapData && <Map config={mapConfig} className="lg row ms-1" />}
         <GenericBreadcrumbHierarchy
           key={data.id}
           entity={data}

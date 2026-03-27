@@ -12,6 +12,12 @@ const Term = styled.dt`
   clear: left;
   margin-right: 5px;
   white-space: normal;
+
+  .results-object-callnumber {
+    font-family: 'Mallory MP Bold';
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
 `
 
 export default Term

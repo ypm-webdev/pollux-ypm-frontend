@@ -28,6 +28,9 @@ const EntityPageSection = styled.div<IProps>`
     letter-spacing: 0px;
   }
 
+  .resultsSearchContainer {
+    background-color: cyan!important;
+  }
 
   .accordion-item {
     border-radius: ${theme.border.radius};

@@ -36,7 +36,8 @@ const ImageryMultiContainer: React.FC<Params> = ({ manifestIiif, manifest2dRti, 
                 </Tab>
                 <Tab eventKey="2dRti" title={<span><BrightnessAltHighFill />{' '}RTI</span>}>
                     {/* 2D RTI Manifest: {manifest2dRti} */}
-                    <OpenLime manifest={manifest2dRti} />
+                    {/* <OpenLime manifest={manifest2dRti} /> */}
+                    <h2>OpenLime - TODO</h2>
                 </Tab>
                 <Tab eventKey="2dZst" title={<span><LayersFill />{' '}Z-Stack</span>}>
                     {/* 2D ZStack Manifest: {manifest2dZst} */}

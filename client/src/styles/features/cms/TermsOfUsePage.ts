@@ -14,13 +14,20 @@ const TermsOfUsePage = styled(BorderedDiv)`
   padding: ${theme.spacing.sectionPaddingX};
   background-color: ${theme.color.white};
 
+  h1, h1.page-title {
+    margin-bottom: 0.5rem;
+    font-family: 'Mallory Bold', sans-serif;
+    line-height: 1.1em;
+    background-color: ${theme.color.white};
+  }
   h2 {
-    font-size: ${h2.fontSize};
+    font-size: 1.75rem;
+    font-family: "Mallory Bold", sans-serif;
     font-weight: ${h2.fontWeight};
     letter-spacing: ${h2.letterSpacing};
-    line-height: ${h2.lineHeight};
+    line-height: 1.25em;
     color: black;
-    margin-bottom: ${h2.marginBottom};
+    margin-bottom: 0.5rem;
   }
 
   ul {

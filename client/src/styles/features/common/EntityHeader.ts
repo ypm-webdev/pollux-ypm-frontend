@@ -37,7 +37,7 @@ const EntityHeader = styled(Row)`
   .catalog-number-display {
     font-family: 'Mallory Medium', sans-serif;
     font-weight: 500;
-    font-size: 0.95rem;
+    // font-size: 0.95rem;
   }
 
   a.identifier-anchor-link {

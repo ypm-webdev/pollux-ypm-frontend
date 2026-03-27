@@ -8,6 +8,13 @@ export const StyledFaqPageHeader = styled(Row)`
   background-color: ${theme.color.white};
   margin: 0;
   padding: ${theme.faqPage.h1.paddingY} ${theme.spacing.contentAbsMarginX};
+
+  h1, h1.page-title {
+      margin-bottom: 0;
+      font-family: 'Mallory Bold', sans-serif;
+      line-height: 1.1em;
+      background-color: ${theme.color.white};
+  }
 `
 
 export const StyledFaqPage = styled.div`
@@ -42,6 +49,7 @@ export const StyledFaqGroupSection = styled(BorderedDiv)`
 
   h2 {
     margin: 0;
+    font-family: 'Mallory Bold', sans-serif;
     padding: ${theme.faqPage.h2.paddingY} ${theme.spacing.sectionPaddingX};
     font-size: ${theme.faqPage.h2.fontSize};
   }

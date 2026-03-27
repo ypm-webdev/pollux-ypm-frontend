@@ -54,10 +54,11 @@ const ResultsSearchContainer: React.FC<IProps> = ({
       {(currentSearchState.searchType === 'simple' ||
         screenWidth < theme.breakpoints.md) && (
         <React.Fragment>
+          <div className="spacer"></div>
           <SearchContainer
             isBelowFold={true}
             className="resultsSearchContainer"
-            bgColor="transparent"
+            bgColor={theme.color.offWhite}
             id="results-search-container"
             isResultsPage
           />

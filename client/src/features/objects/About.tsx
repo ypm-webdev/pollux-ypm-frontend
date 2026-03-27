@@ -6,6 +6,7 @@ import NamesContainer from '../common/NamesContainer'
 import NotesContainer from '../common/NotesContainer'
 import LinkContainer from '../common/LinkContainer'
 import ObjectParser from '../../lib/parse/data/ObjectParser'
+import ConceptParser from '../../lib/parse/data/ConceptParser'
 import StyledEntityPageSection from '../../styles/shared/EntityPageSection'
 import { IEventInfo } from '../../types/derived-data/events'
 import ProductionEvent from '../common/ProductionEvent'
@@ -45,6 +46,8 @@ const About: React.FC<IObject> = ({ data }) => {
     exhibitionDescription,
   } = aboutData as Record<string, any>
 
+  // console.log("types: ", types)
+  // console.log("object: ", object)
 
   return (
     <StyledEntityPageSection className="row" data-testid="about-object">

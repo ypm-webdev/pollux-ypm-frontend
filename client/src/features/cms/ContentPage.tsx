@@ -50,7 +50,7 @@ const ContentPage: React.FC<IProps> = ({ pageKey, pages }) => {
         <Col xs={12} className="px-0">
           <h1
             id="content-header"
-            className="top-gradient"
+            className="top-gradient page-title"
             data-testid="content-page-header"
           >
             {result.isLoading || result.isFetching ? 'Loading...' : title}

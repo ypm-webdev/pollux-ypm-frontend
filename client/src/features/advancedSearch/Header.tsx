@@ -28,6 +28,8 @@ const Header: React.FC = () => {
   }
 
   return (
+    <React.Fragment>
+      {/* <div className='spacer'></div> */}
     <Row className="mx-0">
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {showModal && (
@@ -39,9 +41,9 @@ const Header: React.FC = () => {
           </Col>
         )}
         <Col xs={12} className="px-0">
-          <StyledTitleHeader className="mb-3 mx-0">
+          <StyledTitleHeader className="mb-0 mx-0 top-gradient">
             <Col sm={9} xs={12}>
-              <h2>Advanced Search</h2>
+              <h2 className="page-title">Advanced Search</h2>
             </Col>
             <Col
               sm={3}
@@ -57,6 +59,7 @@ const Header: React.FC = () => {
         </Col>
       </ErrorBoundary>
     </Row>
+    </React.Fragment>
   )
 }
 

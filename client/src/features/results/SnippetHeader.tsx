@@ -10,6 +10,7 @@ import { stripYaleIdPrefix } from '../../lib/parse/data/helper'
 import PreviewImageOrIcon from '../common/PreviewImageOrIcon'
 import { pushClientEvent } from '../../lib/pushClientEvent'
 import EntityParser from '../../lib/parse/data/EntityParser'
+import formattedDisplayName from '../common/FormattedDisplayName'
 import config from '../../config/config'
 import {
   IMyCollectionsResultsState,
@@ -67,6 +68,21 @@ const SnippetHeader: React.FC<IProps> = ({
     }
   }
 
+  // reused from EntityHeader.tsx -- Move to centralized logic?
+  // need to update this with new AATs in future
+  // i.e. Botany
+  // Human-made and Minerals don't matter in this context -- this is just for catalog number purposes
+
+    const isBiologicalEntity = 
+    entity.isClassifiedAs(config.aat.plantSpecimens) ||
+    entity.isClassifiedAs(config.aat.animalSpecimens) ||
+    entity.isClassifiedAs(config.aat.fossil) ||
+    entity.isClassifiedAs(config.aat.biologicalSpecimens); 
+
+  const isPlantEntity = 
+    entity.isClassifiedAs(config.aat.plantSpecimens);
+
+
   return (
     <React.Fragment>
       <div className="flex-shrink-0">
@@ -92,9 +108,18 @@ const SnippetHeader: React.FC<IProps> = ({
               width: 'inherit',
             }}
           >
-            {primaryName.length > 200
-              ? `${primaryName.slice(0, 200)}...`
-              : primaryName}
+            {isBiologicalEntity || isPlantEntity ? 
+              primaryName.length > 150 ? 
+                `${formattedDisplayName({ text: primaryName.slice(0,170) })}...`
+              : formattedDisplayName({ text: primaryName }) 
+            : primaryName.length > 150
+              ? `${primaryName.slice(0, 150)}...`
+              : primaryName
+            }
+
+            {/* {primaryName.length > 150
+              ? `${primaryName.slice(0, 150)}...`
+              : primaryName} */}
             {children}
           </Link>
           {userIsAuthenticate && (

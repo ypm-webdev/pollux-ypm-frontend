@@ -16,6 +16,10 @@ export const StyledContainer = styled(Col)<IProps>`
   position: relative;
   flex: 0 0 auto;
 
+  h3 {
+    font-family: 'Mallory MP Bold', sans-serif;
+  }
+
   &.advancedSearchBody {
     padding-left: 1rem;
     box-shadow: 0px 4px 5px 0px ${theme.color.black20};

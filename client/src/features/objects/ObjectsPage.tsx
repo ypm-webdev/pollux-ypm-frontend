@@ -9,6 +9,7 @@ import FeedbackButton from '../common/FeedbackButton'
 import DataSources from '../common/DataSources'
 import StyledEntityPageSection from '../../styles/shared/EntityPageSection'
 import ObjectParser from '../../lib/parse/data/ObjectParser'
+import ConceptParser from '../../lib/parse/data/ConceptParser'
 import { ErrorFallback } from '../error/ErrorFallback'
 import GenericBreadcrumbHierarchy from '../common/GenericBreadcrumbHierarchy'
 import ArchiveHierarchyContainer from '../archiveHierarchy/ArchiveHierarchyContainer'
@@ -16,14 +17,15 @@ import CanIReuseIt from '../common/CanIReuseIt'
 import {
   getNextSetUris,
   isEntityAnArchive,
+  // getAllNextConceptUris,
+  // getNextConceptUris,
 } from '../../lib/util/hierarchyHelpers'
 import { archive } from '../../config/setsSearchTags'
+// import HierarchyContainer from '../hierarchy/HierarchyContainer'
+// import TimelineContainer from '../timeline/TimelineContainer'
 import HowDoISeeIt from '../common/HowDoISeeIt'
 import IObject from '../../types/data/IObject'
 import IDigitalObject from '../../types/data/IDigitalObject'
-import Clover from '../common/Clover'
-import CI360 from '../common/CI360'
-import CIZStack from '../common/CIZStack'
 import WikiDataImageViewer from '../common/WikiDataImageViewer'
 import ImageryMultiContainer from '../common/ImageryMultiContainer'
 import IEntity from '../../types/data/IEntity'
@@ -31,10 +33,12 @@ import IEntity from '../../types/data/IEntity'
 import Carries from './Carries'
 import About from './About'
 
+
 const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
   data,
 }) => {
   const element = new ObjectParser(data)
+  const concept = new ConceptParser(data)
   const personUri = element.getAgentFromProductionEvent() || undefined
   const memberOf = element.getMemberOf()
   const objectsWithImagesHalLink = element.getHalLink(archive.searchTag)
@@ -59,7 +63,11 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
       'lux:itemCurrentHierarchyPage',
     ),
   }
-  
+  // console.log("element: ",element);
+  // console.log("concept: ",concept);
+  // console.log("data: ", data )
+  // console.log(element.getAboutData())
+
   return (
     <React.Fragment>
       <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -112,6 +120,7 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
           <CIZStack manifest={manifestId} />
         ) : ( <></> )}
       </ErrorBoundary> */}
+
 
       <StyledEntityBody>
         <Col>

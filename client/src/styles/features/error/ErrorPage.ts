@@ -26,6 +26,12 @@ const ErrorPage = styled.div`
     margin-right: ${theme.spacing.cancelDefaultPadding};
   }
 
+  .spacer {
+    height: 1rem;
+    display: block;
+    background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
+  }
+
   .image-container {
     padding: 1rem;
 

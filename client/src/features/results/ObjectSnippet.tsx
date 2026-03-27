@@ -95,6 +95,19 @@ const ObjectSnippet: React.FC<ISearchData> = ({
     const snippetDataComponent = (
       <React.Fragment>
         <StyledDl>
+          {callNumber !== null && (
+            <Row>
+              <Col>
+                {/* <StyledDt>Identifiers</StyledDt> */}
+                <StyledDt data-testid="object-snippet-identifiers">
+                  <span className="pb-2 d-block">
+                    <i className="bi bi-upc-scan pe-1"></i><strong className="results-object-callnumber">{callNumber.identifier}</strong>
+                  </span>
+                  {/* {identifiers.length > 1 && '...'} */}
+                </StyledDt>
+              </Col>
+            </Row>
+          )}
           <ProductionSnippet
             agents={eventAgents}
             date={eventDate}
@@ -114,17 +127,6 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                     linkCategory="Results Snippet"
                   />
                   {collectionData.length > 1 && '...'}
-                </StyledDd>
-              </Col>
-            </Row>
-          )}
-          {callNumber !== null && (
-            <Row>
-              <Col>
-                <StyledDt>Identifiers</StyledDt>
-                <StyledDd data-testid="object-snippet-identifiers">
-                  {callNumber.identifier}
-                  {identifiers.length > 1 && '...'}
                 </StyledDd>
               </Col>
             </Row>
@@ -208,7 +210,19 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                 />
               </StyledSnippetTitle>
               <Card.Text>
-                <StyledDl>
+                {callNumber !== null && (
+                <React.Fragment>
+                  <StyledDl className="clearfix">
+                    <StyledDt data-testid="object-snippet-identifiers">
+                      <span className="pb-2 d-block">
+                        <strong className="results-object-callnumber">{callNumber.identifier}</strong>
+                      </span>
+                      {/* {identifiers.length > 1 && '...'} */}
+                    </StyledDt>
+                  </StyledDl>
+                  </React.Fragment>
+                  )}
+                  <StyledDl>
                   {agents.length > 0 && (
                     <React.Fragment>
                       <StyledDt hidden>People and Groups</StyledDt>
