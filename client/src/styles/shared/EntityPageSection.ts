@@ -21,6 +21,11 @@ const EntityPageSection = styled.div<IProps>`
     padding: 1rem;
   }
 
+  p.no-results {
+    line-height: 1.25em;
+    font-size: 1.25rem!important;
+  }
+
   h2, h2.panel-heading {
     font-family: 'Mallory Bold', sans-serif;
     text-transform: none;
@@ -33,18 +38,18 @@ const EntityPageSection = styled.div<IProps>`
   }
 
   .accordion-item {
-    border-radius: ${theme.border.radius};
+    border-radius: 0;
     border: none;
   }
 
   .accordion-item:first-child > h2 > .accordion-button {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
   }
 
   .accordion-item:last-child > h2 > .accordion-button.collapsed {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 
   &.results,

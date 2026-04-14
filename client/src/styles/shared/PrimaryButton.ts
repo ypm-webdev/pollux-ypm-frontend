@@ -8,10 +8,11 @@ const PrimaryButton = styled(Button)`
   color: ${theme.color.white};
   border-radius: 0px;
   border-color: ${theme.color.primary.blue};
-  font-size: 16px;
+  font-size: 0.9rem;
+  font-family: 'Mallory Medium', sans-serif;
   font-weight: ${theme.font.weight.bold};
-  padding: 1rem;
-  text-decoration: underline;
+  padding: 0.75rem;
+  text-decoration: none;
   box-shadow: 1px 1px 5px ${theme.color.black20};
 
   &:disabled {
@@ -21,16 +22,20 @@ const PrimaryButton = styled(Button)`
   }
 
   &:hover {
-    background-color: ${theme.color.primary.teal};
-    border-color: ${theme.color.primary.teal};
+    background-color: ${theme.color.primary.darkBlue};
+    border-color: ${theme.color.primary.darkBlue};
     color: ${theme.color.white};
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &.btn:active {
-    background-color: ${theme.color.primary.teal};
-    border-color: ${theme.color.primary.teal};
+    background-color: ${theme.color.primary.darkBlue};
+    border-color: ${theme.color.primary.darkBlue};
     color: ${theme.color.white};
+  }
+
+  &.addNewQueryButton {
+    font-size: 1.5rem;
   }
 
   &.feedbackButton {
@@ -42,24 +47,24 @@ const PrimaryButton = styled(Button)`
     margin: 0px;
 
     &.previous {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
       border-top-right-radius: 0px;
       border-bottom-right-radius: 0px;
 
       @media (min-width: ${theme.breakpoints.md}px) {
-        border-radius: 10px;
+        border-radius: 0px;
       }
     }
 
     &.next {
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
 
       @media (min-width: ${theme.breakpoints.md}px) {
-        border-radius: 10px;
+        border-radius: 0px;
       }
     }
 
@@ -71,20 +76,25 @@ const PrimaryButton = styled(Button)`
 
   &.objectsContainerSearchLink {
     background-color: ${theme.color.white};
-    color: ${theme.color.link};
+    color: ${theme.color.primary.blue};
     padding: 0px;
     border: none;
 
     @media (min-width: ${theme.breakpoints.md}px) {
-      background-color: ${theme.color.primary.teal};
+      background-color: ${theme.color.primary.blue};
       color: ${theme.color.white};
-      border-radius: 10px;
-      border-color: ${theme.color.primary.teal};
+      border-radius: 0px;
+      border-color: ${theme.color.primary.blue};
       font-size: 16px;
       font-weight: ${theme.font.weight.bold};
       padding: 1rem;
       text-decoration: none;
     }
+  }
+
+  &:hover {
+    background-color: ${theme.color.primary.darkBlue};
+    border-color: ${theme.color.primary.darkBlue};
   }
 
   &.addToCollectionOnEntityPageButton {

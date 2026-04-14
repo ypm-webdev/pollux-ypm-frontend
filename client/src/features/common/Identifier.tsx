@@ -47,7 +47,7 @@ const Identifier: React.FC<INames> = ({
         {identifiers.map((id: string) => (
           <dd
             key={id}
-            className="mb-0"
+            className="mb-0 ms-3"
             data-testid={`identifier-value-${index}`}
           >
             {id}

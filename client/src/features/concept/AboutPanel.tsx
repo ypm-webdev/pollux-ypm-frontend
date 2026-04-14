@@ -7,6 +7,7 @@ import IEntity from '../../types/data/IEntity'
 import LinkContainer from '../common/LinkContainer'
 import ClassContainer from '../common/ClassContainer'
 import WebPages from '../common/WebPages'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 interface IProps {
   entity: IEntity
@@ -29,7 +30,8 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
 
   return (
     <div data-testid="about-concept">
-      <h2 data-testid="concept-about-header">About {name}</h2>
+      {/* <h2 data-testid="concept-about-header">About {name}</h2> */}
+      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
       <dl>
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

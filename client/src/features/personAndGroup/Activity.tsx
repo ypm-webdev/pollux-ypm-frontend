@@ -6,6 +6,7 @@ import RecordLink from '../common/RecordLink'
 import StyledDataRow from '../../styles/shared/DataRow'
 import { ErrorFallback } from '../error/ErrorFallback'
 import StyledHr from '../../styles/shared/Hr'
+import StyledTextLabel from 'src/styles/features/common/TextLabel'
 
 interface IEntity {
   data: Array<Record<string, string>>
@@ -16,7 +17,7 @@ const ActivityColumn: React.FC<{
   dates: string
   location: string
 }> = ({ type, dates, location }) => (
-  <Col xs={12} className="d-inline-flex">
+  <Col xs={12} className="d-inline-flex ms-3">
     <dd>
       {type !== '' && <RecordLink url={type} />}
       {dates !== '' && (
@@ -40,7 +41,8 @@ const Activity: React.FC<IEntity> = ({ data }) => (
     data-testid="agent-activity-container"
   >
     <Col xs={12}>
-      <dt>Professional Activities</dt>
+      {/* <dt>Professional Activities</dt> */}
+      <StyledTextLabel>Professional Activities</StyledTextLabel>
     </Col>
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       {data.map((activity, ind) => {

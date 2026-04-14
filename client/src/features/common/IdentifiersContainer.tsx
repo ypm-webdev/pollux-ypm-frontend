@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap'
 
 import StyledDataRow from '../../styles/shared/DataRow'
 import StyledHr from '../../styles/shared/Hr'
+import StyledTextLabel from 'src/styles/features/common/TextLabel'
 
 import IdentifiersList from './IdentifiersList'
 
@@ -17,11 +18,14 @@ interface IIdentifiers {
 
 const IdentifiersContainer: React.FC<IIdentifiers> = ({ identifiers, id }) => (
   <StyledDataRow className="row ">
-    <Col xs={12} sm={12} md={3} className="identifiers-header-custom">
+    <Col xs={12} className="identifiers-header-custom">
     <button className="anchor" id="identifiers" />
-    <dt data-testid={`${id}-identifier-label`}>Identifiers</dt>
+    {/* <dt data-testid={`${id}-identifier-label`}>Identifiers</dt> */}
+    {/* <StyledTextLabel data-testid={`${id}-identifier-label`}>
+      Identifiers
+    </StyledTextLabel> */}
     </Col>
-    <Col xs={12} sm={12} md={9}>
+    <Col xs={12}>
       <IdentifiersList identifiers={identifiers} />
     </Col>
     <Col xs={12}>

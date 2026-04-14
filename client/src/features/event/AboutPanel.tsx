@@ -17,6 +17,7 @@ import TextContainer from '../common/TextContainer'
 import ExternalLink from '../common/ExternalLink'
 import StyledHr from '../../styles/shared/Hr'
 import ClassContainer from '../common/ClassContainer'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 interface IProps {
   entity: IEntity
@@ -46,7 +47,8 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
 
   return (
     <div data-testid="about-event">
-      <h2 data-testid="event-about-header">About {name}</h2>
+      {/* <h2 data-testid="event-about-header">About {name}</h2> */}
+      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
       <dl>
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

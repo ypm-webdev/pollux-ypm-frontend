@@ -28,6 +28,7 @@ import FooterBlocks from './FooterBlocksSection'
 import HeroImageSection from './HeroImageSection'
 import Infographics from './InfographicsSection'
 import MoreAboutLux from './MoreAboutLuxSection'
+import useTitle from '../../lib/hooks/useTitle'
 
 const Landing: React.FC = () => {
   const [units, setUnits] = useState([] as UnitCode[])
@@ -45,6 +46,8 @@ const Landing: React.FC = () => {
     // setUnits(pickRandomUnits())
     setUnits(pickYpmFeatured())
   }
+
+  useTitle('Collections Discovery');
 
   return (
     <StyledLandingPage id="landing-body" className="mx-0">

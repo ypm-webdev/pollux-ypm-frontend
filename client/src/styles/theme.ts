@@ -187,7 +187,7 @@ const breakpoints = {
 }
 
 const border = {
-  radius: '8px',
+  radius: '0px',
 }
 
 const colWidths = {

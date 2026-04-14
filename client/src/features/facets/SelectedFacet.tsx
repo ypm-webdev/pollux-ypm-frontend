@@ -20,7 +20,7 @@ import { facetLabels, selectedDateFacetLabels } from '../../config/facets'
 const StyledSelectedFacetContainer = styled.div`
   background: #ffffff;
   border: 1px solid #cacaca;
-  border-radius: 5px;
+  border-radius: 0;
   font-size: 1em;
   color: ${theme.color.black};
   letter-spacing: 0;

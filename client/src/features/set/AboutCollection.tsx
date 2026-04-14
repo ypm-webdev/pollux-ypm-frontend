@@ -9,6 +9,7 @@ import WorkParser from '../../lib/parse/data/WorkParser'
 import LinkContainer from '../common/LinkContainer'
 import { setEvent } from '../../config/collectionsSearchTags'
 import ApiAboutData from '../common/ApiAboutData'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 interface IObject {
   data: IEntity
@@ -26,10 +27,12 @@ const AboutCollection: React.FC<IObject> = ({ data }) => {
 
   return (
     <div data-testid="about-collection">
-      <h3 className="px-3 pt-2" data-testid="collection-name-header">
+      {/* <h3 className="px-3 pt-2" data-testid="collection-name-header">
         About {name}
-      </h3>
-      <div className="px-3">
+      </h3> */}
+      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+
+      <div>
         {names !== null && (
           <div className="row">
             <NamesContainer names={names} />

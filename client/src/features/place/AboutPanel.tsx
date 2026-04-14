@@ -6,6 +6,7 @@ import NamesContainer from '../common/NamesContainer'
 import PlaceParser from '../../lib/parse/data/PlaceParser'
 import IPlace from '../../types/data/IPlace'
 import WebPages from '../common/WebPages'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 interface IProps {
   entity: IPlace
@@ -27,7 +28,8 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
 
   return (
     <div data-testid="about-place">
-      <h2 data-testid="place-page-about-header">About {name}</h2>
+      {/* <h2 data-testid="place-page-about-header">About {name}</h2> */}
+      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
       <dl>
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

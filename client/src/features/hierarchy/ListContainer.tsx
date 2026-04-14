@@ -16,6 +16,7 @@ import { IHierarchy } from '../../redux/slices/hierarchySlice'
 import Li from './Li'
 
 interface IProps {
+  // ancestors: Array<string>
   parents: Array<string>
   descendents: ISearchResults
   currentEntity: IEntity

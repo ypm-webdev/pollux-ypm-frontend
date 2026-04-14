@@ -43,6 +43,7 @@ const EntityHeader = styled(Row)`
   a.identifier-anchor-link {
     color: ${theme.color.black};
     text-decoration: none;
+    height: 0px;
     
     &:hover {
       color: ${theme.color.black65};

@@ -146,7 +146,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             return (
               <Row key={`plan-your-visit-${ind}`}>
                 <Col>
-                  <span className="d-flex" data-testid="plan-your-visit-link">
+                  <span className="d-flex" id="plan-your-visit-link" data-testid="plan-your-visit-link">
                     <p
                       dangerouslySetInnerHTML={{
                         __html: sanitizeHtml(link._content_html),

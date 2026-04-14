@@ -9,6 +9,7 @@ const formattedDisplayName = ({ text }: SanitizeProps) => {
 
   // Format text string to display proper scientific binomial nomenclature (species / scientific names)
   // can handle sp., ssp. or variations
+  // TODO: Handle "varietal" (for botanical specimens) -- lower level than subspecies?
 
 // since we're returning HTML, we need to sanitize it to prevent XSS attacks
 // all we're really doing is adding <i> tags around the genus and species, so we can allow only <i> tags and no attributes

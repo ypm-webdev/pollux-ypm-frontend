@@ -8,6 +8,7 @@ import IEntity from '../../types/data/IEntity'
 import NamesContainer from '../common/NamesContainer'
 import ClassContainer from '../common/ClassContainer'
 import WebPages from '../common/WebPages'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 import Dates from './Dates'
 import Activity from './Activity'
@@ -51,7 +52,8 @@ const About: React.FC<IProps> = ({ data }) => {
 
   return (
     <div data-testid="about-person-group">
-      <h2 data-testid="person-page-about-header">About {name}</h2>
+      {/* <h2 data-testid="person-page-about-header">About {name}</h2> */}
+      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
       <dl className="about-person-and-group-dl">
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

@@ -20,6 +20,7 @@ import TextLabel from '../common/TextLabel'
 import { useGetUserResultsQuery } from '../../redux/api/ml_api'
 import { getOrderedItemsIds } from '../../lib/parse/search/searchResultParser'
 import { getFormattedUuidFromPathname } from '../../lib/myCollections/helper'
+import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
 
 import EditDropdown from './EditDropdown'
 import EditCollectionModal from './EditCollectionModal'
@@ -118,7 +119,8 @@ const About: React.FC<IProps> = ({ data }) => {
         />
       )}
       <span className="d-flex w-100 justify-content-between">
-        <h2 data-testid="person-page-about-header">About {name}</h2>
+        {/* <h2 data-testid="person-page-about-header">About {name}</h2> */}
+        <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
         <EditDropdown
           handleOptionSelection={handleEditSelectionOptions}
           userUuid={userUuid}

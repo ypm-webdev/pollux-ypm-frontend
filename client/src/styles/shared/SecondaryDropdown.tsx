@@ -10,8 +10,8 @@ interface IProps {
 const SecondaryDropdown = styled(Button)<IProps>`
   background-color: ${theme.color.white};
   color: ${theme.color.trueBlack};
-  border-top-left-radius: ${theme.border.radius};
-  border-top-right-radius: ${theme.border.radius};
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-color: ${theme.color.black};

@@ -11,7 +11,7 @@ interface IProps {
 const CollapseButton = styled(Button)<IProps>`
   border: 1px solid ${theme.color.black};
   border-radius: ${(props) =>
-    props.$borderRadius ? props.$borderRadius : '5px'};
+    props.$borderRadius ? props.$borderRadius : '0px'};
   background-color: ${theme.color.white};
   color: ${theme.color.black};
   margin-top: ${(props) => (props.$marginTop ? props.$marginTop : '10px')};

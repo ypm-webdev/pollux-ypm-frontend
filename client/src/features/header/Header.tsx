@@ -82,11 +82,16 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
       <Container fluid className="mx-0 main-header-container px-0">
         <Row className="mx-0 px-0">
           <Col lg={2} md={3} sm={12} className={'logo-container-left'}>
-            <img
-              src={LogoBlueTwo}
-              className="logo-left mt-2"
-              alt="Yale Peabody Museum"
-            />
+            <NavLink
+              to="/"
+              className="navbar-brand titleHeading float-right"
+              onClick={() => handlePushClientEvent('Landing Page')}>
+              <img
+                src={LogoBlueTwo}
+                className="logo-left mt-2"
+                alt="Yale Peabody Museum"
+              />
+            </NavLink>
           </Col>
           <Col lg={10} md={9} sm={0} className="main-nav px-0">
             <Navbar
@@ -210,13 +215,13 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
                 </Navbar.Collapse>
               </Container>
             </Navbar>
-            <div className="powered-by-lux mt-2">
+            {/* <div className="powered-by-lux mt-2">
               <a href="/content/about-lux">
                 <span className="lux-powered-by">Powered by </span>
                 <span className="lux-name">LUX</span>&nbsp;
                 <i className="bi bi-question-circle"></i>
               </a>
-            </div>
+            </div> */}
             <HeaderExpander $displaySearch={displaySearch}>
               <SearchContainer
                 className="headerSearchContainer"
@@ -229,6 +234,13 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
                 }}
               />
             </HeaderExpander>
+            <div className="powered-by-lux mt-2">
+              <a href="/content/about-lux">
+                <span className="lux-powered-by">Powered by </span>
+                <span className="lux-name">LUX</span>&nbsp;
+                <i className="bi bi-question-circle"></i>
+              </a>
+            </div>
           </Col>
         </Row>
       </Container>

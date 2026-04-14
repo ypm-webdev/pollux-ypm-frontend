@@ -11,11 +11,11 @@ interface IProps {
 
 const Hr = styled.hr<IProps>`
   border: solid ${(props) => props.borderWidth || '0.5px'}
-    ${(props) => props.color || theme.color.secondary.cornflowerBlue};
+    ${(props) => props.color || theme.color.black20};
   opacity: 0.75;
   padding: 0px 5px;
   width: ${(props) => (props.width ? props.width : '98%')};
-  margin: auto;
+  margin: 0.5rem auto;
 
   &.footerBlocks {
     margin-bottom: 1rem;
@@ -24,10 +24,11 @@ const Hr = styled.hr<IProps>`
     }
   }
 
-  &.productionBodyEventHr,
-  &.collectionHr,
-  &.responsibleUnitHr,
-  &.accessStatementHr {
+  // &.productionBodyEventHr,
+  // &.responsibleUnitHr,
+  // &.accessStatementHr, 
+  // &.collectionHr
+  {
     display: none;
   }
 

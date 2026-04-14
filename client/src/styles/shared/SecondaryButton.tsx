@@ -11,7 +11,7 @@ interface IProps {
 const SecondaryButton = styled(Button)<IProps>`
   background-color: ${theme.color.white};
   color: ${(props) => props.$textColor || theme.color.black};
-  border-radius: ${theme.border.radius};
+  border-radius: 0;
   border-color: ${(props) => props.$textColor || theme.color.black};
   font-size: 16px;
   padding: 6px;

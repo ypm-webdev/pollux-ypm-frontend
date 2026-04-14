@@ -5,7 +5,7 @@ import { BorderedDiv } from '../../shared/BorderedDiv'
 import theme from '../../theme'
 
 export const StyledFaqPageHeader = styled(Row)`
-  background-color: ${theme.color.white};
+  background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
   margin: 0;
   padding: ${theme.faqPage.h1.paddingY} ${theme.spacing.contentAbsMarginX};
 
@@ -13,7 +13,7 @@ export const StyledFaqPageHeader = styled(Row)`
       margin-bottom: 0;
       font-family: 'Mallory Bold', sans-serif;
       line-height: 1.1em;
-      background-color: ${theme.color.white};
+      // background-color: ${theme.color.white};
   }
 `
 
@@ -88,13 +88,13 @@ export const StyledFaqGroupSection = styled(BorderedDiv)`
     }
 
     &:last-child {
-      border-radius: 0 0 8px 8px;
+      border-radius: 0;
 
       h3.accordion-header {
-        border-radius: 0 0 8px 8px;
+        border-radius: 0;
 
         button.accordion-button {
-          border-radius: 0 0 8px 8px;
+          border-radius: 0;
 
           &:not(.collapsed) {
             border-radius: 0;

@@ -8,6 +8,7 @@ import { capitalizeLabels } from '../../lib/parse/data/helper'
 import { getColumnWidth } from '../../lib/util/ui'
 import StyledEntityEvent from '../../styles/shared/EntityEvent'
 import StyledDataRow from '../../styles/shared/DataRow'
+import StyledTextLabel from '../../styles/features/common/TextLabel'
 import StyledHr from '../../styles/shared/Hr'
 import { IEventInfo } from '../../types/derived-data/events'
 
@@ -40,21 +41,27 @@ const ProductionEvent: React.FC<IProps> = ({
   return (
     <StyledEntityEvent data-testid={`${id}-container`}>
       <StyledDataRow className="row">
-        <div className={textLabelWidth}>
-          <dt data-testid={`${id}-event-label`}>
+        {/* <div className={textLabelWidth}> */}
+          {/* <dt data-testid={`${id}-event-label`}>
             {labelNameIsReady && labelName !== null && labelName !== ''
               ? capitalizeLabels(labelName)
               : label}
-          </dt>
-        </div>
-        <div className={textValueWidth}>
+          </dt> */}
+          <StyledTextLabel data-testid={`${id}-event-label`}>
+            {labelNameIsReady && labelName !== null && labelName !== ''
+              ? capitalizeLabels(labelName)
+              : label}
+          </StyledTextLabel>
+        {/* </div> */}
+        {/* <div className={textValueWidth}> */}
+        <Col xs={12} sm={12} md={12}>
           <ProductionEventBody
             event={event}
             showReferenceLabel
             id={id}
             stackKeyValuePairs={stackKeyValuePairs}
           />
-        </div>
+        </Col>
         <Col xs={12}>
           <StyledHr className="productionEventHr" width="100%" />
         </Col>

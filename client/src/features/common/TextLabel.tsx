@@ -9,6 +9,7 @@ import {
 } from '../../lib/parse/data/helper'
 
 import Tooltip from './Tooltip'
+import StyledTextLabel from '../../styles/features/common/TextLabel'
 
 interface ITextLabelProps {
   className?: string
@@ -60,10 +61,14 @@ const TextLabel: React.FC<ITextLabelProps> = ({
   return (
     <div className={`${className} col-sm-12`} data-testid={testId}>
       {displayLabel ? (
-        <dt className="mb-1">
+        // <dt className="mb-1">
+        //   {displayLabel}
+        //   {tooltip}
+        // </dt>
+        <StyledTextLabel className="mb-1">
           {displayLabel}
           {tooltip}
-        </dt>
+        </StyledTextLabel>
       ) : (
         <dt hidden>
           Label unknown

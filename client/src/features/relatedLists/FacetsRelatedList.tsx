@@ -11,6 +11,7 @@ import {
 import { IFacetsPagination } from '../../types/IFacets'
 import { IOrderedItems } from '../../types/ISearchResults'
 import theme from '../../styles/theme'
+import PrimaryButton from 'src/styles/shared/PrimaryButton'
 import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 
 import ListItem from './ListItem'
@@ -103,27 +104,44 @@ const FacetsRelatedList: React.FC<IProps> = ({
           <StyledHr
             width="100%"
             className="mt-3 facetsRelatedListHr"
-            $hiddenOnDesktop
           />
         )}
-        {page !== lastPage && (
-          <button
-            type="button"
-            className="btn btn-link show-more ps-0"
-            onClick={() => setPage(page + 1)}
-          >
-            Show More
-          </button>
-        )}
+        <div className="d-flex justify-content-end mt-3" data-testid="pagination-container">
         {page !== 1 && (
-          <button
-            type="button"
-            className="btn btn-link show-less ps-0"
-            onClick={() => handleShowLess()}
-          >
+          // <button
+          //   type="button"
+          //   className="btn btn-link show-less ps-0"
+          //   onClick={() => handleShowLess()}
+          // >
+          //   Show Less
+          // </button>
+          <PrimaryButton
+            variant="link"
+            className="show-less me-3"
+            onClick={() =>
+              handleShowLess()
+            }>
             Show Less
-          </button>
+          </PrimaryButton>
         )}
+        {page !== lastPage && (
+          // <button
+          //   type="button"
+          //   className="btn btn-link show-more ps-0"
+          //   onClick={() => setPage(page + 1)}
+          // >
+          //   Show More
+          // </button>
+          <PrimaryButton
+            variant="link"
+            className="show-more"
+            onClick={() =>
+              setPage(page + 1)
+            }>
+            Show More
+          </PrimaryButton>
+        )}
+        </div>
       </React.Fragment>
     )
   }

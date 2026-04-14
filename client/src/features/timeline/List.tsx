@@ -7,6 +7,7 @@ import TimelineParser from '../../lib/parse/timeline/TimelineParser'
 import StyledDd from '../../styles/shared/DescriptionDetail'
 import StyledDt from '../../styles/shared/DescriptionTerm'
 import StyledResponsiveCol from '../../styles/shared/ResponsiveCol'
+import PrimaryButton from 'src/styles/shared/PrimaryButton'
 import { ITimelinesTransformed } from '../../types/ITimelines'
 import { IHalLinks } from '../../types/IHalLinks'
 
@@ -100,22 +101,38 @@ const List: React.FC<IProps> = ({
       </dl>
       {displayLength >= unitLength &&
         displayLength < sortedYearsRange.length && (
-          <button
-            type="button"
-            className="btn btn-link show-more ps-0 text-decoration-none"
-            onClick={() => handleShowMore()}
-          >
+          // <button
+          //   type="button"
+          //   className="btn btn-link show-more ps-0 text-decoration-none"
+          //   onClick={() => handleShowMore()}
+          // >
+          //   Show More
+          // </button>
+          <PrimaryButton
+            variant="link"
+            className="show-more"
+            onClick={() =>
+              handleShowMore()
+            }>
             Show More
-          </button>
+          </PrimaryButton>
         )}
       {displayLength > unitLength && (
-        <button
-          type="button"
-          className="btn btn-link show-less ps-0 text-decoration-none"
-          onClick={() => handleShowLess()}
-        >
-          Show Less
-        </button>
+        // <button
+        //   type="button"
+        //   className="btn btn-link show-less ps-0 text-decoration-none"
+        //   onClick={() => handleShowLess()}
+        // >
+        //   Show Less
+        // </button>
+         <PrimaryButton
+            variant="link"
+            className="show-less"
+            onClick={() =>
+              handleShowLess()
+            }>
+            Show Less
+          </PrimaryButton>
       )}
     </React.Fragment>
   )

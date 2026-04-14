@@ -178,8 +178,8 @@ const EntityHeader: React.FC<IEntityHeader> = ({
       }
   }
   
-  // console.log(entity);
-  // console.log("element: " , element.getType);
+  // console.log("element: " , element);
+  // console.log("entity", entity);
   // console.log("formatted scientific name: ", formatScientificName(displayName));
   // console.log(element.getPrimaryName(config.aat.langen));
   // console.log("is biological entity? ", isBiologicalEntity);

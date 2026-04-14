@@ -45,6 +45,7 @@ const ExpandableList: React.FC<IList> = ({
       <div className={`${className} col-sm-12`}>
         {children}
         <StyledHr width="100%" $hiddenOnDesktop className={hrClassName} />
+        {/* <StyledHr width="100%" className={hrClassName} /> */}
       </div>
     )
   }
@@ -63,7 +64,7 @@ const ExpandableList: React.FC<IList> = ({
         .map((value: string, ind: number) => (
           <div
             key={`${value}-${ind}`}
-            className={`${children.props.className || 'col-md-12'} col-sm-12`}
+            className={`${children.props.className || 'col-md-12 ms-3'} col-sm-12 ms-3`}
             style={rowStyle}
           >
             {value}
@@ -89,7 +90,8 @@ const ExpandableList: React.FC<IList> = ({
           Show Less
         </button>
       )}
-      <StyledHr width="100%" $hiddenOnDesktop className={hrClassName} />
+      {/* <StyledHr width="100%" $hiddenOnDesktop className={hrClassName} /> */}
+      <StyledHr width="100%" className={hrClassName} />
     </div>
   )
 }

@@ -43,9 +43,10 @@ const LuxRoutes: React.FC = () => {
 
   const { pathname, search } = useLocation()
   const [prevUrl, setPrevUrl] = useState('')
-  const [showMobileAlert] = useState<boolean>(
-    window.innerWidth < theme.breakpoints.md,
-  )
+  // const [showMobileAlert] = useState<boolean>(
+  //   window.innerWidth < theme.breakpoints.md,
+  // )
+  const showMobileAlert = false // permanently suppress
   const routes = getRouteNames()
   const isNotAnEntityPage = routes.has(pathname)
 
@@ -96,7 +97,7 @@ const LuxRoutes: React.FC = () => {
             variant="info"
             className="d-flex justify-content-center mb-0"
           >
-            LUX is optimized for desktop use. Some features are not available on
+            This website is optimized for desktop use. Some features are not available on
             mobile devices.
           </Alert>
         )}

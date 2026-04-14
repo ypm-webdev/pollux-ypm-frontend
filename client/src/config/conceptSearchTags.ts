@@ -25,17 +25,17 @@ export const relatedItems: IHalLinks = {
 // Tab content for related objects and works
 export const relatedObjectsAndWorks: IHalLinks = {
   objectsRelated: {
-    title: 'Objects Related',
+    title: 'Related Objects',
     searchTag: 'lux:conceptRelatedItems',
     tab: 'objects',
   },
   worksRelated: {
-    title: 'Works Related',
+    title: 'Related Works',
     searchTag: 'lux:conceptRelatedWorks',
     tab: 'works',
   },
   collectionsRelated: {
-    title: 'Collections Related',
+    title: 'Related Collections',
     searchTag: 'lux:conceptRelatedSets',
     tab: 'collections',
   },

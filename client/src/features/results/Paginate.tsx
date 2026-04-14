@@ -25,7 +25,7 @@ interface IPagination {
 }
 
 const StyledPagination = styled(Pagination)`
-  border-radius: 5px;
+  border-radius: 0px;
 
   li {
     width: 100%;

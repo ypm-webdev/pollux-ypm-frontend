@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const DataRow = styled.div`
   margin-bottom: 0.5rem;
@@ -21,6 +22,23 @@ const DataRow = styled.div`
   .identifiers-header-custom {
     padding-top: 0;
     margin-top: -1rem;
+  }
+
+  .concepts-list dd a::before {
+    font-family: 'bootstrap-icons';
+    content: '\\f46b';
+    margin-right: 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  #plan-your-visit-link p span a {
+    font-family: 'Mallory Medium', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  #plan-your-visit-link p span a:hover {
+    text-decoration: underline;
   }
 `
 

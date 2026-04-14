@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import theme from '../theme'
 
 export const BorderedDiv = styled.div`
-  border-radius: ${theme.border.radius};
+  // border-radius: ${theme.border.radius};
+  border-radius: 0;
   box-shadow: 2px 2px 5px ${theme.color.black20};
 `
 export const ToppedBorderedDiv = styled(BorderedDiv)`

@@ -139,7 +139,8 @@ const AdvancedSearchContainer: React.FC = () => {
                     />
                   </div>
                   {hideAdvancedSearch && queryTab === tab && (
-                    <div style={{ height: showAllRows ? '200px' : '75px' }}>
+                    // <div style={{ height: showAllRows ? '200px' : '75px' }}>
+                    <div style={{ height: showAllRows ? '2.5rem' : '75px' }}>
                       <StyledAddButton
                         type="button"
                         onClick={handleShowRows}

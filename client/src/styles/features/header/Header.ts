@@ -71,8 +71,10 @@ const Header = styled.div`
   }
 
   .logo-left {
-    width: 80%;
-    height: auto;
+    width: auto;
+    height: 75%;
+    max-height: 120px;
+    max-width: 80%;
     display: none;
 
     @media (min-width: ${theme.breakpoints.md}px) {
