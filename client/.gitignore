@@ -24,15 +24,14 @@ yarn-error.log*
 
 # use yarn.lock only
 package-lock.json
-
+# index.html
 /src/samples
 .env
-/src/lib/pushClientEvent.ts
+# /src/lib/pushClientEvent.ts
 /public/
 !/public/uv/
 !/public/index.html.template
 /public/index.html
-/src/lib/pushClientEvent.ts
 /public/testData
 !/public/favicon.ico
 !/public/touch-icon-228.png
