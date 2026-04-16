@@ -5,11 +5,12 @@ import theme from '../../theme'
 
 const StyledNavLink = styled(NavLink)`
   color: ${theme.color.black};
-  background-color: ${theme.color.tabButtonBgColor};
+  // background-color: ${theme.color.tabButtonBgColor};
+  background-color: ${theme.color.lightGray};
   letter-spacing: 0;
   text-align: center;
   display: block;
-  padding: 12px 26px;
+  padding: 12px 18px;
   text-decoration: none;
   border-radius: ${theme.border.radius};
   width: 100%;
@@ -77,6 +78,10 @@ const StyledNavLink = styled(NavLink)`
     &.nav-link.active {
       color: ${theme.color.primary.blue};
       border-bottom-color: ${theme.color.primary.blue};
+    }
+
+    &.nav-link:not(.active) > div > div > span.badge {
+      background-color: ${theme.color.gray};
     }
   }
 `

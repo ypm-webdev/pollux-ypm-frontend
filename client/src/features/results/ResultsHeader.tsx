@@ -328,12 +328,12 @@ const ResultsHeader: React.FC<IResultsHeader> = ({
                 {toggleView && (
                   <Button
                     type="button"
-                    className="btn text-center h-100 text-nowrap rounded-3 me-2 toggleViewButton w-100"
+                    className="btn text-center h-100 text-nowrap me-2 toggleViewButton w-100"
                     onClick={() =>
                       changeView(currentView === 'list' ? 'grid' : 'list')
                     }
                     style={{
-                      // borderRadius: theme.border.radius,
+                      borderRadius: '0px',
                       backgroundColor: theme.color.lightGray,
                       color: theme.color.trueBlack,
                       border: theme.color.trueBlack,

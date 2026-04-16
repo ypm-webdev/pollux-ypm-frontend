@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import theme from '../../theme'
 
-const FeaturedCollection = styled(Col)`
+const FeaturedCollection = styled(Col)<{ isInSwiper?: boolean }>`
   margin-bottom: 1.25em;
   @media (min-width: ${theme.breakpoints.md}px) {
     margin-bottom: 1.5em !important;
@@ -23,11 +23,24 @@ const FeaturedCollection = styled(Col)`
 
   .card {
     // border-radius: ${theme.border.radius};
-    border-radius: 0;
-    box-shadow: 2px 2px 5px ${theme.color.black20};
+    border-radius: 0px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     height: 100%;
     background-color: ${theme.color.offWhite};
-    margin: 0 0.5em;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card.featured-card {
+    /* More specific styles for Swiper cards */
+    border-radius: 0px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    background-color: ${theme.color.offWhite};
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .card-body-wrapper {
@@ -36,12 +49,29 @@ const FeaturedCollection = styled(Col)`
   }
 
   .image-container {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
     background-color: black;
-    width: 100%;
     object-fit: contain;
-    border-radius: 8px 8px 0px 0px;
+    // border-radius: 8px 8px 0px 0px;
+    border-radius: 0px;
   }
 
+  .image-container > a {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-container img,
+  .card-image {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
   .body {
     padding: ${theme.spacing.sectionPaddingX};
   }
@@ -90,65 +120,3 @@ const FeaturedCollection = styled(Col)`
 `
 
 export default FeaturedCollection
-
-// OLD STYLESHEET:
-
-// import { Col } from 'react-bootstrap'
-// import styled from 'styled-components'
-
-// import theme from '../../theme'
-
-// const FeaturedCollection = styled(Col)`
-//   margin-bottom: 1.25em;
-
-//   &:first-child {
-//     margin-left: 0;
-//   }
-
-//   :last-child {
-//     margin-bottom: 0px;
-//   }
-
-//   @media (min-width: 768px) {
-//     margin-bottom: 0;
-//   }
-
-//   .card {
-//     border-radius: ${theme.border.radius};
-//     box-shadow: 1px 1px 5px ${theme.color.black20};
-//     height: 100%;
-//   }
-
-//   .image-container {
-//     background-color: black;
-//     width: 100%;
-//     object-fit: contain;
-//     border-radius: 8px 8px 0px 0px;
-//   }
-
-//   .body {
-//     padding: ${theme.spacing.sectionPaddingX};
-//   }
-
-//   img {
-//     width: 100%;
-//     height: auto;
-//     border-radius: 8px 8px 0px 0px;
-//   }
-
-//   h2 {
-//     margin-bottom: 0.5rem;
-//     font-family: Inter, sans-serif;
-//     font-size: 1.5em;
-//     color: ${theme.color.black};
-//     letter-spacing: 0;
-//     line-height: 32px;
-//     font-weight: ${theme.font.weight.bold};
-//   }
-
-//   p {
-//     margin-bottom: 0.5rem;
-//   }
-// `
-
-// export default FeaturedCollection

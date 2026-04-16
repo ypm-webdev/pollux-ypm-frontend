@@ -25,13 +25,13 @@ const SecondaryButton = styled(Button)<IProps>`
   }
 
   &:hover {
-    background-color: ${(props) => props.$actionBgColor || theme.color.black};
+    background-color: ${(props) => props.$actionBgColor || theme.color.primary.blue};
     border-color: ${theme.color.white};
     color: ${theme.color.white};
   }
 
   &.btn:active {
-    background-color: ${(props) => props.$actionBgColor || theme.color.black};
+    background-color: ${(props) => props.$actionBgColor || theme.color.primary.blue};
     border-color: ${theme.color.white};
     color: ${theme.color.white};
   }

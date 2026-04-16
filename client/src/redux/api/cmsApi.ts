@@ -71,6 +71,43 @@ export const cmsApi = createApi({
         method: 'GET',
       }),
     }),
+    getAllDescriptiveTexts: builder.query<Record<OverlayKey, string>, void>({
+      queryFn: async () => {
+        try {
+          const keys: OverlayKey[] = [
+            'objects',
+            'works',
+            'collections',
+            'peopleAndOrgs',
+            'places',
+            'conceptsAndGroupings',
+            'events',
+          ]
+          const results: Record<OverlayKey, string> = {} as Record<OverlayKey, string>
+          
+          // Fetch all descriptive texts in parallel
+          const responses = await Promise.all(
+            keys.map(async (key) => {
+              const response = await fetch(`${getCmsApiBaseUrl()}${overlays[key]}`)
+              const data = await response.json()
+              return { key, data }
+            })
+          )
+          
+          responses.forEach(({ key, data }) => {
+            if (data?.data?.attributes?.body) {
+              results[key] = data.data.attributes.body
+            } else {
+              results[key] = ''
+            }
+          })
+          
+          return { data: results }
+        } catch (error) {
+          return { error: { status: 500, data: 'Failed to fetch descriptive texts' } }
+        }
+      },
+    }),
   }),
 })
 
@@ -81,4 +118,5 @@ export const {
   useGetLandingPageImagesQuery,
   useGetPageQuery,
   useGetDescriptiveTextQuery,
+  useGetAllDescriptiveTextsQuery,
 } = cmsApi

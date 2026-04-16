@@ -245,6 +245,54 @@ const GlobalStyle = createGlobalStyle`
     display: block;
     background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
   }
+
+  /* Bootstrap badge overrides */
+  .badge {
+    font-family: 'Mallory Bold', sans-serif;
+    padding: 0.35em 0.65em;
+    font-size: 0.875em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 1em;
+  }
+
+  .badge-primary {
+    background-color: ${theme.color.primary.blue};
+  }
+
+  .badge-secondary {
+    background-color: ${theme.color.gray};
+  }
+
+  .badge-success {
+    background-color: ${theme.color.barChartGreen};
+  }
+
+  .badge-danger {
+    background-color: ${theme.color.errorFg};
+  }
+
+  .badge-warning {
+    background-color: #ffc107;
+    color: #000;
+  }
+
+  .badge-info {
+    background-color: ${theme.color.primary.teal};
+  }
+
+  .badge-light {
+    background-color: ${theme.color.lightGray};
+    color: ${theme.color.black};
+  }
+
+  .badge-dark {
+    background-color: ${theme.color.black};
+  }
 `
 
 export default GlobalStyle

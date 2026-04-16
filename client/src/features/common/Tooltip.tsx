@@ -30,13 +30,16 @@ const StyledTooltip = styled(ReactTooltip)<{ placement: Placement }>`
     border-color: ${({ placement }) => arrowBorderColors[placement || 'none']};
   }
   .tooltip-inner {
-    border: solid 1px ${theme.color.gray};
+    border: solid 1px ${theme.color.black65};
+    font-family: Mallory Light, sans-serif;
     padding: 8px 16px;
     min-width: auto;
     background-color: ${theme.color.lightGray};
     color: ${theme.color.black};
-    opacity: 1;
+    font-size: 0.95rem;
+    opacity: 0.95;
     text-align: left;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   }
 `
 

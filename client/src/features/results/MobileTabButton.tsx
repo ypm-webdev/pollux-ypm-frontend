@@ -36,17 +36,17 @@ const MobileTabButton: React.FC<IProps> = ({
       role={role}
       className="border border-0 w-100"
       onClick={() => handleClick()}
-      actionBgColor={theme.color.primary.blue}
+      $actionBgColor={theme.color.lightGray}
     >
       <Row>
-        <Col xs={2}>
+        <Col xs={2} className="d-flex align-items-center justify-content-center">
           <img
             className="navIcon"
             src={getIcon(icon)}
             alt="icon"
             aria-label="icon"
-            height={45}
-            width={45}
+            height={showArrow ? 55 : 45}
+            width={showArrow ? 55 : 45}
           />
         </Col>
         <Col xs={showArrow || isCurrentTab ? 8 : 10}>
@@ -58,9 +58,9 @@ const MobileTabButton: React.FC<IProps> = ({
               {isLoading || isFetching ? (
                 <LoadingSpinner size="sm" />
               ) : (
-                estimate
+                <span className={`badge ${isCurrentTab ? 'badge-primary' : 'badge-secondary'}`}>{estimate}</span>
               )}{' '}
-              results
+              <span style={{ marginLeft: '4px' }}>result{estimate !== 1 ? 's' : ''}</span>
             </Col>
           </Row>
         </Col>

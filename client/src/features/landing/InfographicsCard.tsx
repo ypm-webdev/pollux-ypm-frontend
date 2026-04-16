@@ -15,29 +15,31 @@ const InfographicsCard: React.FC<IProps> = ({
   label,
   link,
   dataTestId,
-}) => (
-  <Col
-    xs={12}
-    sm={12}
-    md={12}
-    lg={6}
-    xl={4}
-    xxl={4}
-    className="col-lg-6 d-flex card-outer"
-    data-testid={`${dataTestId}-infographic-card`}
-  >
-    <a href={link}>
-      <Row className="d-flex align-items-center card-inner">
-        <Col xs={3} sm={3} md={3}>
-          <img className="icon" src={icon} alt="" />
-        </Col>
-        <Col xs={9} sm={9} md={9}>
-          <div className="number">{number.toLocaleString()}</div>
-          <div className="label">{label}</div>
-        </Col>
-      </Row>
-    </a>
-  </Col>
-)
+}) => {
+  return (
+    <Col
+      xs={12}
+      sm={12}
+      md={12}
+      lg={12}
+      xl={12}
+      xxl={12}
+      className="d-flex card-outer"
+      data-testid={`${dataTestId}-infographic-card`}
+    >
+      <a href={link}>
+        <Row className="d-flex align-items-center card-inner">
+          <Col xs={4} sm={4} md={3}>
+            <img className="icon" src={icon} alt="" />
+          </Col>
+          <Col xs={8} sm={8} md={9}>
+            <div className="number">{number.toLocaleString()}</div>
+            <div className="label">{label}</div>
+          </Col>
+        </Row>
+      </a>
+    </Col>
+  )
+}
 
 export default InfographicsCard

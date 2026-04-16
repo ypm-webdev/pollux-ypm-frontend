@@ -155,7 +155,7 @@ const MobileNavigation: React.FC<IProps> = ({
         }}
         role="button"
         estimate={estimates[tab]}
-        icon={getIcon(advancedSearchTitles[tab])}
+        icon={searchScope[tab]}
         tab={tab}
         handleClick={handleShow}
         showArrow

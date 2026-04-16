@@ -19,6 +19,16 @@ const FeaturedCollectionsSection = styled(ToppedBorderedDiv)`
     margin-right: 0;
   }
 
+  .featured-collections-swiper {
+    padding-bottom: 40px;
+  }
+
+  .featured-collections-swiper .swiper-pagination {
+    position: relative;
+    bottom: 0;
+    padding-top: 16px;
+  }
+
   h2 {
     font-family: 'Mallory Black', sans-serif;
     font-size: ${theme.font.mobile.h2.size};
@@ -47,6 +57,36 @@ const FeaturedCollectionsSection = styled(ToppedBorderedDiv)`
       line-height: ${theme.font.desktop.h4.lineHeight};
       font-weight: ${theme.font.desktop.h3.weight};
     }
+  }
+
+  .featured-collections-swiper {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  .featured-collections-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .featured-collections-swiper .swiper-slide {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .featured-collections-swiper .swiper-slide .image-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .featured-collections-swiper .swiper-slide .image-container img,
+  .featured-collections-swiper .swiper-slide .card-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 `
 

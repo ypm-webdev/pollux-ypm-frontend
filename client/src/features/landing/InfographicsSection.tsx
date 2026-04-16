@@ -15,6 +15,7 @@ import { IStats } from '../../redux/api/returnTypes'
 import { ICmsResponse, CmsResponseParser } from '../../lib/parse/cms/Parser'
 import { LandingPageParser } from '../../lib/parse/cms/LandingPageParser'
 import StyledInfographicsSection from '../../styles/features/landing/InfographicsSection'
+import { OverlayKey } from '../../config/cms'
 
 import InfographicsCard from './InfographicsCard'
 import InfographicsBubble from './InfographicsBubble'
@@ -25,6 +26,7 @@ interface IProps {
   cmsData: ICmsResponse
   chartType: String
   heading: String
+  descriptiveTexts?: Record<OverlayKey, string>
 }
 
 // CHART TYPES:
@@ -38,6 +40,7 @@ const InfographicsSection: React.FC<IProps> = ({
   cmsData,
   chartType,
   heading,
+  descriptiveTexts,
 }) => {
   const parser = new CmsResponseParser(cmsData)
   const content = parser.getLandingPage()
@@ -68,6 +71,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.item}
                     label="Objects*"
                     link="/view/results/objects?q="
+                    description={descriptiveTexts?.objects}
                   />
                   <InfographicsBubble
                     idx={2}
@@ -76,6 +80,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.concept}
                     label="Concepts"
                     link="/view/results/concepts?q="
+                    description={descriptiveTexts?.conceptsAndGroupings}
                   />
                   <InfographicsBubble
                     idx={3}
@@ -84,6 +89,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.set}
                     label="Collections"
                     link="/view/results/collections?q="
+                    description={descriptiveTexts?.collections}
                   />
                   <InfographicsBubble
                     idx={4}
@@ -92,6 +98,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.agent}
                     label="People & Groups"
                     link="/view/results/people?q="
+                    description={descriptiveTexts?.peopleAndOrgs}
                   />
                   <InfographicsBubble
                     idx={5}
@@ -100,6 +107,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.place}
                     label="Places"
                     link="/view/results/places?q="
+                    description={descriptiveTexts?.places}
                   />
                   <InfographicsBubble
                     idx={6}
@@ -108,6 +116,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.event}
                     label="Events"
                     link="/view/results/events?q="
+                    description={descriptiveTexts?.events}
                   />
                   <InfographicsBubble
                     idx={7}
@@ -116,6 +125,7 @@ const InfographicsSection: React.FC<IProps> = ({
                     number={stats.work}
                     label="Works"
                     link="/view/results/works?q="
+                    description={descriptiveTexts?.works}
                   />
                 </ul>
               </div>

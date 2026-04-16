@@ -28,7 +28,8 @@ const AllCollectionsSection: React.FC<IProps> = ({ data, units }) => {
         key={searchUrl}
         xs={12}
         sm={12}
-        md={4}
+        md={6}
+        lg={4}
         data-testid={`all-collection-${ind}`}
       >
         <Card>

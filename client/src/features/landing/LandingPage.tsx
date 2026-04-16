@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { Row, Col } from 'react-bootstrap'
 
+import config from '../../config/config'
+import theme from '../../styles/theme'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 import { UnitCode } from '../../config/cms'
 import {
   pickRandomUnits,
@@ -13,12 +16,14 @@ import {
   useGetFeaturedCollectionsQuery,
   useGetLandingPageQuery,
   useGetLandingPageImagesQuery,
+  useGetAllDescriptiveTextsQuery,
 } from '../../redux/api/cmsApi'
 import { useGetStatsQuery } from '../../redux/api/ml_api'
 import {
   HeaderContainerCol,
   StyledLandingPage,
 } from '../../styles/features/landing/LandingPage'
+import useTitle from '../../lib/hooks/useTitle'
 import StyledHeadingOne from '../../styles/features/landing/HeadingOne'
 import StickySearchContainer from '../search/StickySearchContainer'
 
@@ -28,7 +33,6 @@ import FooterBlocks from './FooterBlocksSection'
 import HeroImageSection from './HeroImageSection'
 import Infographics from './InfographicsSection'
 import MoreAboutLux from './MoreAboutLuxSection'
-import useTitle from '../../lib/hooks/useTitle'
 
 const Landing: React.FC = () => {
   const [units, setUnits] = useState([] as UnitCode[])
@@ -37,6 +41,7 @@ const Landing: React.FC = () => {
   const imagesResult = useGetLandingPageImagesQuery()
   const featuredResult = useGetFeaturedCollectionsQuery()
   const statsResult = useGetStatsQuery()
+  const descriptiveTextsResult = useGetAllDescriptiveTextsQuery()
 
   if (
     imagesResult.isSuccess &&
@@ -46,9 +51,16 @@ const Landing: React.FC = () => {
     // setUnits(pickRandomUnits())
     setUnits(pickYpmFeatured())
   }
-
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
   useTitle('Collections Discovery');
 
+  const cmsApiUrl = config.env.cmsApiBaseUrl || ''
+  
+
+  // console.warn("isMobile: ", isMobile);
   return (
     <StyledLandingPage id="landing-body" className="mx-0">
       <Col xs={12} className="px-0">
@@ -90,9 +102,10 @@ const Landing: React.FC = () => {
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Infographics
                     heading={'By the Numbers'}
-                    chartType={'bubbles'}
+                    chartType={isMobile?'cards':'bubbles'}
                     data={statsResult.data}
                     cmsData={landingPageResult.data}
+                    descriptiveTexts={descriptiveTextsResult.data}
                   />
                 </ErrorBoundary>
               </Col>

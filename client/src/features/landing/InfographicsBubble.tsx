@@ -1,4 +1,6 @@
 import React from 'react'
+import sanitizeHtml from 'sanitize-html'
+import Tooltip from '../common/Tooltip'
 
 interface IProps {
   icon: string
@@ -7,6 +9,7 @@ interface IProps {
   link: string
   idx: number
   total: number
+  description?: string
 }
 
 const InfographicsBubble: React.FC<IProps> = ({
@@ -16,17 +19,40 @@ const InfographicsBubble: React.FC<IProps> = ({
   link,
   idx,
   total,
-}) => (
-  <li
-    className="bubbles__item"
-    style={{ '--item-count': idx } as React.CSSProperties}
-  >
+  description,
+}) => {
+  const bubbleContent = (
     <a className="bubbles__link" href={link}>
       <img className="bubbles__icon" src={icon} alt={label} />
       <div className="bubbles__number">{number.toLocaleString()}</div>
       <div className="bubbles__label">{label}</div>
     </a>
-  </li>
-)
+  )
+
+  if (description) {
+    return (
+      <li
+        className="bubbles__item"
+        style={{ '--item-count': idx } as React.CSSProperties}
+      >
+        <Tooltip
+          html={sanitizeHtml(description, { allowedTags: ['p', 'br', 'strong', 'em', 'a'] })}
+          placement="top"
+        >
+          {bubbleContent}
+        </Tooltip>
+      </li>
+    )
+  }
+
+  return (
+    <li
+      className="bubbles__item"
+      style={{ '--item-count': idx } as React.CSSProperties}
+    >
+      {bubbleContent}
+    </li>
+  )
+}
 
 export default InfographicsBubble
