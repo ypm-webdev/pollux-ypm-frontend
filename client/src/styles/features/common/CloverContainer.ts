@@ -14,7 +14,7 @@ const CloverContainer = styled(Row)`
     // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
   }
   
-  viewer-container {
+  .viewer-container {
     // padding-top: 0!important;
     margin-top: 0!important;
   }
@@ -49,7 +49,17 @@ const CloverContainer = styled(Row)`
     }
   }  
 
-  .summary-panel-inner {
+  .solo-iiif-header {
+    position: absolute;
+    transform: translateY(12px);
+    font-family: 'Mallory Medium', sans-serif;
+    font-weight: 500;
+    padding-left: 1.5rem;
+    margin-bottom: 0px!important;
+    font-size: 1.25rem;
+  }
+  
+    .summary-panel-inner {
     padding: 1.5rem 1.618rem;
   }
 `

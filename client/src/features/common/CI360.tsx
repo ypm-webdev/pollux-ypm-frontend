@@ -7,7 +7,8 @@ import StyledCI360Container from '../../styles/features/common/CI360Container'
 type InternationalString = { [language: string]: string[] }
 
 type Params = {
-  manifest: string
+  manifest: string,
+  solo: boolean
 }
 
 type ManifestData = {
@@ -27,7 +28,7 @@ declare global {
   }
 }
 
-const CI360: React.FC<Params> = ({ manifest }) => {
+const CI360: React.FC<Params> = ({ manifest, solo }) => {
   const [manifestData, setManifestData] = useState<ManifestData | null>(null)
   
   if (manifest === '') {

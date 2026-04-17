@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import Col from 'react-bootstrap/Col'
-import Viewer from '@samvera/clover-iiif/viewer'
+import { Images } from 'react-bootstrap-icons'
+import Viewer  from '@samvera/clover-iiif/viewer'
 import { Summary } from '@samvera/clover-iiif/primitives'
 
 import StyledCloverContainer from '../../styles/features/common/CloverContainer'
@@ -8,7 +9,8 @@ import StyledCloverContainer from '../../styles/features/common/CloverContainer'
 type InternationalString = { [language: string]: string[] }
 
 type Params = {
-  manifest: string
+  manifest: string,
+  solo: boolean
 }
 
 type ManifestData = {
@@ -33,7 +35,7 @@ SummaryComponent.displayName = 'SummaryComponent'
 
 
 
-const Clover: React.FC<Params> = ({ manifest }) => {
+const Clover: React.FC<Params> = ({ manifest, solo }) => {
   const [manifestData, setManifestData] = useState<ManifestData | null>(null)
   
   if (manifest === '') {
@@ -58,11 +60,14 @@ const plugins = useMemo(() => [
   },
 ], [manifestData?.label])
 
+  console.log("Clover manifestData: ", manifestData);
+
   return (
     <StyledCloverContainer className="viewer-container mx-0 pt-0">
       {/* <Col className="clover-container d-flex justify-content-center"> */}
       <Col className="clover-container d-flex px-0">
         <article>
+          {solo? <h3 className="solo-iiif-header"><Images />{' '}Images</h3> : null}
           <Viewer 
             iiifContent={manifest} 
             plugins={plugins}
