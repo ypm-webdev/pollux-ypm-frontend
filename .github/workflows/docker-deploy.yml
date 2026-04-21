@@ -6,18 +6,13 @@ on:
       target_env:
         description: 'Target environment for deployment'
         required: true
-        default: 'DEV'
+        default: 'BYUNIT2'
         type: choice
         options:
           - PRD
           - TST
           - DEV
-          - SBX
-          - EXP
-          - DATA-DEV
-          - BYUNIT-DEV2
-          - RDATA
-          - MINIML-GRAVITON
+          - BYUNIT2
 jobs:
   deploy:
     runs-on: [self-hosted, X64]
