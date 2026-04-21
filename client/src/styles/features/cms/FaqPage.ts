@@ -5,15 +5,20 @@ import { BorderedDiv } from '../../shared/BorderedDiv'
 import theme from '../../theme'
 
 export const StyledFaqPageHeader = styled(Row)`
-  background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
+  background: linear-gradient(
+    to bottom,
+    ${theme.color.white} 0%,
+    ${theme.color.offWhite} 100%
+  );
   margin: 0;
   padding: ${theme.faqPage.h1.paddingY} ${theme.spacing.contentAbsMarginX};
 
-  h1, h1.page-title {
-      margin-bottom: 0;
-      font-family: 'Mallory Bold', sans-serif;
-      line-height: 1.1em;
-      // background-color: ${theme.color.white};
+  h1,
+  h1.page-title {
+    margin-bottom: 0;
+    font-family: 'Mallory Bold', sans-serif;
+    line-height: 1.1em;
+    // background-color: ${theme.color.white};
   }
 `
 

@@ -13,10 +13,10 @@ const CloverContainer = styled(Row)`
     // border-radius: 8px;
     // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
   }
-  
+
   .viewer-container {
     // padding-top: 0!important;
-    margin-top: 0!important;
+    margin-top: 0 !important;
   }
 
   .clover-container {
@@ -38,8 +38,8 @@ const CloverContainer = styled(Row)`
     .clover-viewer-information-panel {
       padding-top: 1rem;
     }
-    
-      .clover-viewer-content {
+
+    .clover-viewer-content {
       box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
       background-color: ${theme.color.white};
     }
@@ -47,7 +47,7 @@ const CloverContainer = styled(Row)`
     .clover-viewer-painting {
       // border-bottom-left-radius: 8px !important;
     }
-  }  
+  }
 
   .solo-iiif-header {
     position: absolute;
@@ -55,11 +55,11 @@ const CloverContainer = styled(Row)`
     font-family: 'Mallory Medium', sans-serif;
     font-weight: 500;
     padding-left: 1.5rem;
-    margin-bottom: 0px!important;
+    margin-bottom: 0px !important;
     font-size: 1.25rem;
   }
-  
-    .summary-panel-inner {
+
+  .summary-panel-inner {
     padding: 1.5rem 1.618rem;
   }
 `

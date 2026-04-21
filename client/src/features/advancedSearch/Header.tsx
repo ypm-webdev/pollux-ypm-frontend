@@ -30,35 +30,35 @@ const Header: React.FC = () => {
   return (
     <React.Fragment>
       {/* <div className='spacer'></div> */}
-    <Row className="mx-0">
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        {showModal && (
-          <AlertModal showModal={showModal} onClose={handleCloseModal} />
-        )}
-        {isError && (
-          <Col xs={12} className="mt-2 w-75">
-            <ErrorMessage onClose={setIsError} />
+      <Row className="mx-0">
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          {showModal && (
+            <AlertModal showModal={showModal} onClose={handleCloseModal} />
+          )}
+          {isError && (
+            <Col xs={12} className="mt-2 w-75">
+              <ErrorMessage onClose={setIsError} />
+            </Col>
+          )}
+          <Col xs={12} className="px-0">
+            <StyledTitleHeader className="mb-0 mx-0 top-gradient">
+              <Col sm={9} xs={12}>
+                <h2 className="page-title">Advanced Search</h2>
+              </Col>
+              <Col
+                sm={3}
+                xs={12}
+                className="d-flex align-items-center justify-content-end"
+              >
+                <ToggleButton
+                  setIsError={setIsError}
+                  setShowModal={setShowModal}
+                />
+              </Col>
+            </StyledTitleHeader>
           </Col>
-        )}
-        <Col xs={12} className="px-0">
-          <StyledTitleHeader className="mb-0 mx-0 top-gradient">
-            <Col sm={9} xs={12}>
-              <h2 className="page-title">Advanced Search</h2>
-            </Col>
-            <Col
-              sm={3}
-              xs={12}
-              className="d-flex align-items-center justify-content-end"
-            >
-              <ToggleButton
-                setIsError={setIsError}
-                setShowModal={setShowModal}
-              />
-            </Col>
-          </StyledTitleHeader>
-        </Col>
-      </ErrorBoundary>
-    </Row>
+        </ErrorBoundary>
+      </Row>
     </React.Fragment>
   )
 }

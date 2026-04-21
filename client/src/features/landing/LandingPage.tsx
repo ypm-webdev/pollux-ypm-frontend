@@ -55,10 +55,9 @@ const Landing: React.FC = () => {
     window.innerWidth < theme.breakpoints.md,
   )
   useResizeableWindow(setIsMobile)
-  useTitle('Collections Discovery');
+  useTitle('Collections Discovery')
 
   const cmsApiUrl = config.env.cmsApiBaseUrl || ''
-  
 
   // console.warn("isMobile: ", isMobile);
   return (
@@ -102,7 +101,7 @@ const Landing: React.FC = () => {
                 <ErrorBoundary FallbackComponent={ErrorFallback}>
                   <Infographics
                     heading={'By the Numbers'}
-                    chartType={isMobile?'cards':'bubbles'}
+                    chartType={isMobile ? 'cards' : 'bubbles'}
                     data={statsResult.data}
                     cmsData={landingPageResult.data}
                     descriptiveTexts={descriptiveTextsResult.data}

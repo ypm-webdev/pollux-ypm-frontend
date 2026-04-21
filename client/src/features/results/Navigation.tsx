@@ -190,7 +190,9 @@ const Navigation: React.FC<INavigation> = ({
                     <Col xs={12} sm={12} md={12} lg={12} xl={9}>
                       <Row className="d-flex float-start">
                         <Col xs={12} className="linkTitle d-flex text-start">
-                          {key=="people"? "People" : advancedSearchTitles[key]}
+                          {key == 'people'
+                            ? 'People'
+                            : advancedSearchTitles[key]}
                         </Col>
                         <Col xs={12} className="linkSubtext d-flex text-start">
                           {(simpleSearch && isLoading) ||
@@ -198,10 +200,19 @@ const Navigation: React.FC<INavigation> = ({
                           (advancedSearch && isLoading) ? (
                             <LoadingSpinner size="sm" />
                           ) : (
-                            <span className={`badge ${pathname.includes(key) ? 'badge-primary' : 'badge-secondary'}`}>{estimates[key]}</span>
+                            <span
+                              className={`badge ${pathname.includes(key) ? 'badge-primary' : 'badge-secondary'}`}
+                            >
+                              {estimates[key]}
+                            </span>
                           )}
                           <span className="d-none d-md-inline"></span>
-                          <span className="d-md-none" style={{ marginLeft: '4px' }}>results</span>
+                          <span
+                            className="d-md-none"
+                            style={{ marginLeft: '4px' }}
+                          >
+                            results
+                          </span>
                         </Col>
                       </Row>
                     </Col>

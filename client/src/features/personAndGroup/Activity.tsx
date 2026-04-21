@@ -2,11 +2,12 @@ import React from 'react'
 import { Col } from 'react-bootstrap'
 import { ErrorBoundary } from 'react-error-boundary'
 
+import StyledTextLabel from 'src/styles/features/common/TextLabel'
+
 import RecordLink from '../common/RecordLink'
 import StyledDataRow from '../../styles/shared/DataRow'
 import { ErrorFallback } from '../error/ErrorFallback'
 import StyledHr from '../../styles/shared/Hr'
-import StyledTextLabel from 'src/styles/features/common/TextLabel'
 
 interface IEntity {
   data: Array<Record<string, string>>

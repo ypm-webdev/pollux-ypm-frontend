@@ -39,8 +39,7 @@ export function getCollections(entity: IEntity): any {
   return Promise.all(promises).then((result) => ({ data: result }))
 }
 
-
-// EDIT : Deprecated : Moved to its own component file to correctly render sanitized HTML strings 
+// EDIT : Deprecated : Moved to its own component file to correctly render sanitized HTML strings
 // (features/common/FormattedDisplayName.tsx) - AM
 export function formatScientificName(text: string): string {
   // Custom function - AM
@@ -51,22 +50,26 @@ export function formatScientificName(text: string): string {
   // const binomialRegex = /\b([A-Z](?:[a-z]+|\.))\s+([a-z]+)(?:\s+(s?sp\.))?\b/g;
   // const binomialRegex = /\b([A-Z](?:[a-z]+|\.))\s+([a-z]+)(?:\s+(s?sp\.))?\b/g;
   // const binomialRegex = /\b([A-Z](?:[a-z]+|\.))\s+(?!(?:s?sp\.))([a-z]+)(?:\s+(?!(?:s?sp\.))([a-z]+))?(?:\s+(s?sp\.))?\b/g;
-  const binomialRegex = /\b([A-Z](?:[a-z]+|\.))(?:\s+(?!(?:s?sp\.))([a-z]+))?(?:\s+(s?sp\.))?\b/g;
+  const binomialRegex =
+    /\b([A-Z](?:[a-z]+|\.))(?:\s+(?!(?:s?sp\.))([a-z]+))?(?:\s+(s?sp\.))?\b/g
 
-  const formatted = text.replace(binomialRegex, (match, genus, species, subspecies, marker) => {
-    // Start italics with Genus
-    let italicPart = `<i>${genus}`;
-    
-    // Add species if it exists (and it won't be "sp." because of our regex)
-    if (species) italicPart += ` ${species}`;
-    
-    // Add subspecies if it exists
-    if (subspecies) italicPart += ` ${subspecies}`;
-    
-    italicPart += `</i>`;
+  const formatted = text.replace(
+    binomialRegex,
+    (match, genus, species, subspecies, marker) => {
+      // Start italics with Genus
+      let italicPart = `<i>${genus}`
 
-    // Add the marker outside the italics
-    return marker ? `${italicPart} ${marker}` : italicPart;
-  });
-  return formatted;
+      // Add species if it exists (and it won't be "sp." because of our regex)
+      if (species) italicPart += ` ${species}`
+
+      // Add subspecies if it exists
+      if (subspecies) italicPart += ` ${subspecies}`
+
+      italicPart += `</i>`
+
+      // Add the marker outside the italics
+      return marker ? `${italicPart} ${marker}` : italicPart
+    },
+  )
+  return formatted
 }

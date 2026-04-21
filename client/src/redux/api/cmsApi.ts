@@ -83,17 +83,22 @@ export const cmsApi = createApi({
             'conceptsAndGroupings',
             'events',
           ]
-          const results: Record<OverlayKey, string> = {} as Record<OverlayKey, string>
-          
+          const results: Record<OverlayKey, string> = {} as Record<
+            OverlayKey,
+            string
+          >
+
           // Fetch all descriptive texts in parallel
           const responses = await Promise.all(
             keys.map(async (key) => {
-              const response = await fetch(`${getCmsApiBaseUrl()}${overlays[key]}`)
+              const response = await fetch(
+                `${getCmsApiBaseUrl()}${overlays[key]}`,
+              )
               const data = await response.json()
               return { key, data }
-            })
+            }),
           )
-          
+
           responses.forEach(({ key, data }) => {
             if (data?.data?.attributes?.body) {
               results[key] = data.data.attributes.body
@@ -101,10 +106,12 @@ export const cmsApi = createApi({
               results[key] = ''
             }
           })
-          
+
           return { data: results }
         } catch (error) {
-          return { error: { status: 500, data: 'Failed to fetch descriptive texts' } }
+          return {
+            error: { status: 500, data: 'Failed to fetch descriptive texts' },
+          }
         }
       },
     }),

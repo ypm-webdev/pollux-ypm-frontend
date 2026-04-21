@@ -31,7 +31,7 @@ const ProductionLocation: React.FC<IProps> = ({ location }) => {
     }
 
     const hasMapData = mapConfig.wkt !== ''
-    
+
     return (
       <React.Fragment>
         <Row className={hasMapData ? 'mb-1' : ''}>

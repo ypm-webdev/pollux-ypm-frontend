@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from 'react'
 import Col from 'react-bootstrap/Col'
 import { Images } from 'react-bootstrap-icons'
-import Viewer  from '@samvera/clover-iiif/viewer'
+import Viewer from '@samvera/clover-iiif/viewer'
 import { Summary } from '@samvera/clover-iiif/primitives'
 
 import StyledCloverContainer from '../../styles/features/common/CloverContainer'
@@ -9,7 +9,7 @@ import StyledCloverContainer from '../../styles/features/common/CloverContainer'
 type InternationalString = { [language: string]: string[] }
 
 type Params = {
-  manifest: string,
+  manifest: string
   solo: boolean
 }
 
@@ -27,49 +27,60 @@ type ManifestData = {
 //   console.log('SummaryComponent label:', label) // Debug log
 //   return label ? <Summary summary={label} as="p" /> : <div>No summary available.</div>
 // })
-const SummaryComponent: React.FC<{ label?: InternationalString }> = ({ label }) => {
+const SummaryComponent: React.FC<{ label?: InternationalString }> = ({
+  label,
+}) => {
   // console.log('SummaryComponent label:', label) // Debug log
-  return label ? <Summary summary={label} className="summary-panel-inner" as="span" /> : <div className="summary-panel-inner">No summary available.</div>
+  return label ? (
+    <Summary summary={label} className="summary-panel-inner" as="span" />
+  ) : (
+    <div className="summary-panel-inner">No summary available.</div>
+  )
 }
 SummaryComponent.displayName = 'SummaryComponent'
 
-
-
 const Clover: React.FC<Params> = ({ manifest, solo }) => {
   const [manifestData, setManifestData] = useState<ManifestData | null>(null)
-  
+
   if (manifest === '') {
     return null
   }
-  
+
   useEffect(() => {
-    (async () => {
-      const response = await fetch(manifest);
-      const json = await response.json();
-      setManifestData(json);
-    })();
-  }, [manifest]);
+    ;(async () => {
+      const response = await fetch(manifest)
+      const json = await response.json()
+      setManifestData(json)
+    })()
+  }, [manifest])
 
-const plugins = useMemo(() => [
-  {
-    id: "SummaryPlugin",
-    informationPanel: {
-      component: () => <SummaryComponent label={manifestData?.label} />,
-      label: { none: ["Summary"] },
-    },
-  },
-], [manifestData?.label])
+  const plugins = useMemo(
+    () => [
+      {
+        id: 'SummaryPlugin',
+        informationPanel: {
+          component: () => <SummaryComponent label={manifestData?.label} />,
+          label: { none: ['Summary'] },
+        },
+      },
+    ],
+    [manifestData?.label],
+  )
 
-  console.log("Clover manifestData: ", manifestData);
+  console.log('Clover manifestData: ', manifestData)
 
   return (
     <StyledCloverContainer className="viewer-container mx-0 pt-0">
       {/* <Col className="clover-container d-flex justify-content-center"> */}
       <Col className="clover-container d-flex px-0">
         <article>
-          {solo? <h3 className="solo-iiif-header"><Images />{' '}Images</h3> : null}
-          <Viewer 
-            iiifContent={manifest} 
+          {solo ? (
+            <h3 className="solo-iiif-header">
+              <Images /> Images
+            </h3>
+          ) : null}
+          <Viewer
+            iiifContent={manifest}
             plugins={plugins}
             options={{
               showTitle: false,
@@ -78,7 +89,7 @@ const plugins = useMemo(() => [
                 open: false,
                 renderAbout: true,
                 renderAnnotation: true,
-              }
+              },
             }}
           />
           {/* {manifestData?.label && (

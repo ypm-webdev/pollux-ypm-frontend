@@ -73,15 +73,13 @@ const SnippetHeader: React.FC<IProps> = ({
   // i.e. Botany
   // Human-made and Minerals don't matter in this context -- this is just for catalog number purposes
 
-    const isBiologicalEntity = 
+  const isBiologicalEntity =
     entity.isClassifiedAs(config.aat.plantSpecimens) ||
     entity.isClassifiedAs(config.aat.animalSpecimens) ||
     entity.isClassifiedAs(config.aat.fossil) ||
-    entity.isClassifiedAs(config.aat.biologicalSpecimens); 
+    entity.isClassifiedAs(config.aat.biologicalSpecimens)
 
-  const isPlantEntity = 
-    entity.isClassifiedAs(config.aat.plantSpecimens);
-
+  const isPlantEntity = entity.isClassifiedAs(config.aat.plantSpecimens)
 
   return (
     <React.Fragment>
@@ -108,14 +106,13 @@ const SnippetHeader: React.FC<IProps> = ({
               width: 'inherit',
             }}
           >
-            {isBiologicalEntity || isPlantEntity ? 
-              primaryName.length > 150 ? 
-                `${formattedDisplayName({ text: primaryName.slice(0,170) })}...`
-              : formattedDisplayName({ text: primaryName }) 
-            : primaryName.length > 150
-              ? `${primaryName.slice(0, 150)}...`
-              : primaryName
-            }
+            {isBiologicalEntity || isPlantEntity
+              ? primaryName.length > 150
+                ? `${formattedDisplayName({ text: primaryName.slice(0, 170) })}...`
+                : formattedDisplayName({ text: primaryName })
+              : primaryName.length > 150
+                ? `${primaryName.slice(0, 150)}...`
+                : primaryName}
 
             {/* {primaryName.length > 150
               ? `${primaryName.slice(0, 150)}...`

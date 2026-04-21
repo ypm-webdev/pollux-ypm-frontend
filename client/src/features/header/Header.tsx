@@ -85,7 +85,8 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
             <NavLink
               to="/"
               className="navbar-brand titleHeading float-right"
-              onClick={() => handlePushClientEvent('Landing Page')}>
+              onClick={() => handlePushClientEvent('Landing Page')}
+            >
               <img
                 src={LogoBlueTwo}
                 className="logo-left mt-2"

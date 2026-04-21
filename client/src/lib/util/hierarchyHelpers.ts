@@ -44,7 +44,7 @@ export const getHalLinkForChildren = (
   entity: IEntity,
   ancestors: Array<{ id: string; childrenHalLink: string | null }>,
 ): string | null => {
-  let childrenHalLink = entity._links
+  const childrenHalLink = entity._links
     ? hasHierarchyHalLinks(entity._links)
     : null
   for (const ancestor of ancestors) {

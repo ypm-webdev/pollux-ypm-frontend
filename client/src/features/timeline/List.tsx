@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import styled from 'styled-components'
 
+import PrimaryButton from 'src/styles/shared/PrimaryButton'
+
 import theme from '../../styles/theme'
 import TimelineParser from '../../lib/parse/timeline/TimelineParser'
 import StyledDd from '../../styles/shared/DescriptionDetail'
 import StyledDt from '../../styles/shared/DescriptionTerm'
 import StyledResponsiveCol from '../../styles/shared/ResponsiveCol'
-import PrimaryButton from 'src/styles/shared/PrimaryButton'
 import { ITimelinesTransformed } from '../../types/ITimelines'
 import { IHalLinks } from '../../types/IHalLinks'
 
@@ -111,9 +112,8 @@ const List: React.FC<IProps> = ({
           <PrimaryButton
             variant="link"
             className="show-more"
-            onClick={() =>
-              handleShowMore()
-            }>
+            onClick={() => handleShowMore()}
+          >
             Show More
           </PrimaryButton>
         )}
@@ -125,14 +125,13 @@ const List: React.FC<IProps> = ({
         // >
         //   Show Less
         // </button>
-         <PrimaryButton
-            variant="link"
-            className="show-less"
-            onClick={() =>
-              handleShowLess()
-            }>
-            Show Less
-          </PrimaryButton>
+        <PrimaryButton
+          variant="link"
+          className="show-less"
+          onClick={() => handleShowLess()}
+        >
+          Show Less
+        </PrimaryButton>
       )}
     </React.Fragment>
   )

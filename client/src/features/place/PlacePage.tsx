@@ -81,12 +81,15 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
             <HierarchyContainer
               key={`${place.json.id}-hierarchy`}
               entity={data}
+              id="place-page"
               halLink={hierarchyChildren}
+              maxLength={10}
               getParentUris={
                 getAllNextPlaceUris as (
                   entity: IPlace | IConcept,
                 ) => Array<string>
               }
+              getNextEntityUri={getNextPlaceUris}
             />
             {/* {Object.keys(data._links).includes(locations.searchTag) && (
                   <Locations halLink={data._links[locations.searchTag]} />

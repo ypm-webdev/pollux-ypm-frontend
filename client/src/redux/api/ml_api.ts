@@ -80,7 +80,7 @@ export const mlApi: any = createApi({
           urlParams.set('rnd', `${rnd}`)
         }
         // set headers if My Collections
-        let headers: Headers = getHeaders()
+        const headers: Headers = getHeaders()
 
         return {
           url: `api/search/${scope}?${urlParams.toString()}`,

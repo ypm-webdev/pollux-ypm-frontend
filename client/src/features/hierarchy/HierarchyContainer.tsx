@@ -3,13 +3,15 @@ import { Col, Row } from 'react-bootstrap'
 
 import config from '../../config/config'
 import IEntity from '../../types/data/IEntity'
-import { useGetItemsQuery } from '../../redux/api/ml_api'
+import {
+  useGetItemsQuery,
+  useGetSearchRelationshipQuery,
+} from '../../redux/api/ml_api'
 import EntityParser from '../../lib/parse/data/EntityParser'
 import { getParentData } from '../../lib/util/hierarchyHelpers'
 import StyledEntityPageSection from '../../styles/shared/EntityPageSection'
 import ILinks from '../../types/data/ILinks'
 import { IHalLink } from '../../types/IHalLink'
-import { useGetSearchRelationshipQuery } from '../../redux/api/ml_api'
 import { ISearchResults } from '../../types/ISearchResults'
 import IPlace from '../../types/data/IPlace'
 import IConcept from '../../types/data/IConcept'
@@ -52,7 +54,7 @@ const HierarchyContainer: React.FC<IProps> = ({
   getParentUris,
   getNextEntityUri,
   linkFilter,
-  maxLength
+  maxLength,
 }) => {
   const currentState = useAppSelector(
     (hierarchyState) => hierarchyState.hierarchy as IHierarchy,
@@ -75,7 +77,7 @@ const HierarchyContainer: React.FC<IProps> = ({
 
   // const uris = getNextEntityUri(entities[0])
   // const skipP = uris.length > 0 ? false : true
- 
+
   // const { dataP, isSuccessP, isErrorP, isLoadingP } = useGetItemsQuery(
   //   {
   //     uris,
@@ -104,7 +106,6 @@ const HierarchyContainer: React.FC<IProps> = ({
   //   }
   // }
 
-
   // use this block to query child entities
   const skip = childrenUri === null
   const { data, isSuccess, isError, isLoading } = useGetSearchRelationshipQuery(
@@ -115,7 +116,7 @@ const HierarchyContainer: React.FC<IProps> = ({
       skip,
     },
   )
-  
+
   if (isError) {
     console.log(
       'An error occurred retrieving the children of the current entity.',
@@ -125,7 +126,7 @@ const HierarchyContainer: React.FC<IProps> = ({
   if (skip && parents.length === 0) {
     return null
   }
-  
+
   // console.log("parents: ", parents, "ancestors:", entities, "descendants: ", (data as ISearchResults))
 
   if ((isSuccess && data) || skip) {

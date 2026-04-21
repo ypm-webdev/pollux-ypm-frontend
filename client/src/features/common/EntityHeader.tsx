@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import StyledEntityHeader from '../../styles/features/common/EntityHeader'
-import formattedDisplayName from './FormattedDisplayName'
 import {
   useResizableName,
   shortenIfNeeded,
@@ -30,6 +29,7 @@ import { useGetUserResultsQuery } from '../../redux/api/ml_api'
 import { getOrderedItemsIds } from '../../lib/parse/search/searchResultParser'
 import { formatScientificName } from '../../lib/util/collectionHelper'
 
+import formattedDisplayName from './FormattedDisplayName'
 import Dates from './Dates'
 import AgentInHeader from './AgentInHeader'
 import AgentData from './AgentData'
@@ -139,45 +139,51 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     )
     setShowAddToCollectionModal(true)
   }
-  
-  const isBiologicalEntity = 
+
+  const isBiologicalEntity =
     element.isClassifiedAs(config.aat.plantSpecimens) ||
     element.isClassifiedAs(config.aat.animalSpecimens) ||
     element.isClassifiedAs(config.aat.fossil) ||
-    element.isClassifiedAs(config.aat.biologicalSpecimens); 
+    element.isClassifiedAs(config.aat.biologicalSpecimens)
 
-  const isPlantEntity = 
-    element.isClassifiedAs(config.aat.plantSpecimens);
+  const isPlantEntity = element.isClassifiedAs(config.aat.plantSpecimens)
 
-  const isMineralEntity = 
+  const isMineralEntity =
     element.isClassifiedAs(config.aat.gemstone) ||
     element.isClassifiedAs(config.aat.mineralSpecimens) ||
     element.isClassifiedAs(config.aat.meteoriteSpecimens) ||
-    element.isClassifiedAs(config.aat.inorganicMaterials);
+    element.isClassifiedAs(config.aat.inorganicMaterials)
 
-  const isHumanMadeEntity = 
+  const isHumanMadeEntity =
     element.isClassifiedAs(config.aat.culturalArtifacts) ||
     element.isClassifiedAs(config.aat.equipmentScienceTechnology) ||
     element.isClassifiedAs(config.aat.toolsEquipment) ||
-    element.isClassifiedAs(config.aat.scientificInstruments);
-    // TODO: add more AAT classifications for ANT, BC
+    element.isClassifiedAs(config.aat.scientificInstruments)
+  // TODO: add more AAT classifications for ANT, BC
 
   const catalogNumberDisplay = (): string => {
-      
-      // return item 0 / Catalog Number
-      // ALTERNATE: return item 1 / Repository number instead (for brevity ; potential errors)
-      
-      if( isBiologicalEntity || isPlantEntity || isMineralEntity || isHumanMadeEntity) {
-        if (element.getIdentifiers().length > 0 && element.getIdentifiers()[0].identifier.length > 0) {
-          return element.getIdentifiers()[0].identifier[0];
-        } else {
-          return '';
-        }    
+    // return item 0 / Catalog Number
+    // ALTERNATE: return item 1 / Repository number instead (for brevity ; potential errors)
+
+    if (
+      isBiologicalEntity ||
+      isPlantEntity ||
+      isMineralEntity ||
+      isHumanMadeEntity
+    ) {
+      if (
+        element.getIdentifiers().length > 0 &&
+        element.getIdentifiers()[0].identifier.length > 0
+      ) {
+        return element.getIdentifiers()[0].identifier[0]
       } else {
-        return '';
+        return ''
       }
+    } else {
+      return ''
+    }
   }
-  
+
   // console.log("element: " , element);
   // console.log("entity", entity);
   // console.log("formatted scientific name: ", formatScientificName(displayName));
@@ -220,7 +226,13 @@ const EntityHeader: React.FC<IEntityHeader> = ({
         <Col xs={12} sm={12} md={12} lg={12}>
           <Row className="mt-2">
             <Col xs={12} className="d-flex text-start p-0">
-              <h1 className={isMobile?"d-flex main-label-title": "d-flex-main-label-title ps-4"}>
+              <h1
+                className={
+                  isMobile
+                    ? 'd-flex main-label-title'
+                    : 'd-flex-main-label-title ps-4'
+                }
+              >
                 <span data-testid="entity-header">
                   {/* <Tooltip html={helperText} placement="bottom">
                     <StyledImg
@@ -233,7 +245,9 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       data-testid="entity-icon-img"
                     />
                   </Tooltip> */}
-                  {isBiologicalEntity || isPlantEntity ? formattedDisplayName({ text: displayName }) : displayName}
+                  {isBiologicalEntity || isPlantEntity
+                    ? formattedDisplayName({ text: displayName })
+                    : displayName}
                   {/* {displayName} */}
                   <Dates start={start || ''} end={end || ''} />
                   {isNameLong &&
@@ -271,17 +285,41 @@ const EntityHeader: React.FC<IEntityHeader> = ({
               </h1>
             </Col>
             {agentData && (
-              <Col  xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-agent-header-data": "text-start p-0 entity-agent-header-data ps-4"}>
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                className={
+                  isMobile
+                    ? 'text-start p-0 entity-agent-header-data'
+                    : 'text-start p-0 entity-agent-header-data ps-4'
+                }
+              >
                 <AgentInHeader data={agentData} />
               </Col>
             )}
             {catalogNumberDisplay() && (
-              <Col xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-catalog-number": "text-start p-0 entity-catalog-number ps-4"}>
-                <a href="#identifiers" data-testid="catalog-number-anchor-link" className="identifier-anchor-link">
-                <span className="catalog-number-display">
-                  <i className="bi bi-upc-scan pe-2"></i>
-                  {catalogNumberDisplay()}
-                </span>
+              <Col
+                xs={12}
+                sm={12}
+                md={12}
+                lg={12}
+                className={
+                  isMobile
+                    ? 'text-start p-0 entity-catalog-number'
+                    : 'text-start p-0 entity-catalog-number ps-4'
+                }
+              >
+                <a
+                  href="#identifiers"
+                  data-testid="catalog-number-anchor-link"
+                  className="identifier-anchor-link"
+                >
+                  <span className="catalog-number-display">
+                    <i className="bi bi-upc-scan pe-2"></i>
+                    {catalogNumberDisplay()}
+                  </span>
                 </a>
               </Col>
             )}

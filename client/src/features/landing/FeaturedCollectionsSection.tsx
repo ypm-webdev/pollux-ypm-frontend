@@ -1,14 +1,13 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import sanitizeHtml from 'sanitize-html'
-import theme from 'src/styles/theme'
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
+import theme from 'src/styles/theme'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
-SwiperCore.use([Navigation, Pagination])
 
 import { UnitCode } from '../../config/cms'
 import {
@@ -35,6 +34,7 @@ const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
       data-testid="featured-collections-container"
     >
       <Swiper
+        modules={[Navigation, Pagination]}
         className="featured-collections-swiper"
         style={{ width: '100%', minWidth: 0, flex: '1 1 0' }}
         spaceBetween={16}
@@ -68,29 +68,42 @@ const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
                 data-testid={`featured-collection-${ind}`}
               >
                 <Card className="featured-card">
-                <div className="image-container">
-                  <InternalLink uri={searchUrl} linkCategory="Featured Collection">
-                    <img alt={imageAlt} src={imageUrl} className="card-image" />
-                  </InternalLink>
-                </div>
-                <Card.Body>
-                  <h3>
+                  <div className="image-container">
                     <InternalLink
                       uri={searchUrl}
-                      name={title}
                       linkCategory="Featured Collection"
-                    />
-                  </h3>
-                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(bodyHtml) }} />
-                  <div className="search-url">
-                    <InternalLink
-                      uri={searchUrl}
-                      name={title}
-                      linkCategory="Featured Collection"
-                    />
+                    >
+                      <img
+                        alt={imageAlt}
+                        src={imageUrl}
+                        className="card-image"
+                      />
+                    </InternalLink>
                   </div>
-                </Card.Body>
-              </Card>              </StyledFeaturedCollection>            </SwiperSlide>
+                  <Card.Body>
+                    <h3>
+                      <InternalLink
+                        uri={searchUrl}
+                        name={title}
+                        linkCategory="Featured Collection"
+                      />
+                    </h3>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: sanitizeHtml(bodyHtml),
+                      }}
+                    />
+                    <div className="search-url">
+                      <InternalLink
+                        uri={searchUrl}
+                        name={title}
+                        linkCategory="Featured Collection"
+                      />
+                    </div>
+                  </Card.Body>
+                </Card>{' '}
+              </StyledFeaturedCollection>{' '}
+            </SwiperSlide>
           )
         })}
       </Swiper>

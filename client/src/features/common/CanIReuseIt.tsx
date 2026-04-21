@@ -41,7 +41,9 @@ const CanIReuseIt: React.FC<IProps> = ({ entity, entityType }) => {
   return (
     <StyledDataRow className="row" data-testid="can-i-reuse-it">
       <Col xs={12}>
-        <h2 data-testid="can-i-reuse-it-header" className='panel-heading'>Usage</h2>
+        <h2 data-testid="can-i-reuse-it-header" className="panel-heading">
+          Usage
+        </h2>
       </Col>
       <Col xs={12}>
         {entityType === 'work' && subjectTo.length > 0 && (

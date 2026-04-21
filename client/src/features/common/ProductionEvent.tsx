@@ -42,16 +42,16 @@ const ProductionEvent: React.FC<IProps> = ({
     <StyledEntityEvent data-testid={`${id}-container`}>
       <StyledDataRow className="row">
         {/* <div className={textLabelWidth}> */}
-          {/* <dt data-testid={`${id}-event-label`}>
+        {/* <dt data-testid={`${id}-event-label`}>
             {labelNameIsReady && labelName !== null && labelName !== ''
               ? capitalizeLabels(labelName)
               : label}
           </dt> */}
-          <StyledTextLabel data-testid={`${id}-event-label`}>
-            {labelNameIsReady && labelName !== null && labelName !== ''
-              ? capitalizeLabels(labelName)
-              : label}
-          </StyledTextLabel>
+        <StyledTextLabel data-testid={`${id}-event-label`}>
+          {labelNameIsReady && labelName !== null && labelName !== ''
+            ? capitalizeLabels(labelName)
+            : label}
+        </StyledTextLabel>
         {/* </div> */}
         {/* <div className={textValueWidth}> */}
         <Col xs={12} sm={12} md={12}>

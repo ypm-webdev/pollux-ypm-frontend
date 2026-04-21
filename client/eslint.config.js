@@ -22,167 +22,180 @@ const compat = new FlatCompat({
 
 // eslint.config.js
 export default [
-  ...fixupConfigRules(compat.extends(
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
-    "plugin:jsx-a11y/strict",
-    "prettier"
-  )),
+  {
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'node_modules/**',
+      'public/**',
+      'src/serviceWorker.ts',
+      'eslint.config.js',
+      'eslint.config.js.bak',
+      'lint-summarize.*',
+    ],
+  },
+  ...fixupConfigRules(
+    compat.extends(
+      'plugin:import/errors',
+      'plugin:import/warnings',
+      'plugin:import/typescript',
+      'plugin:jsx-a11y/strict',
+      // Added 20260420 to resolve eslint issues
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      'prettier',
+    ),
+  ),
   {
     languageOptions: {
       parser: tsParser,
       ecmaVersion: 2018,
-      sourceType: "module",
+      sourceType: 'module',
 
       parserOptions: {
         requireConfigFile: false,
         ecmaFeatures: {
-            jsx: true,
+          jsx: true,
         },
       },
     },
     plugins: {
-      "@typescript-eslint": fixupPluginRules(typescriptEslint),
+      '@typescript-eslint': fixupPluginRules(typescriptEslint),
       import: fixupPluginRules(_import),
-      "jsx-a11y": fixupPluginRules(jsxA11Y),
+      'jsx-a11y': fixupPluginRules(jsxA11Y),
       prettier,
       react: fixupPluginRules(react),
-      "@stylistic": stylistic,
+      '@stylistic': stylistic,
     },
-    // files: ["src/**/*.ts", "src/**/*.tsx"],
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
-    ignores: [
-      'dist/',
-      'coverage/',
-      'node_modules/',
-      'yarn.lock',
-      'package.json',
-      '/src/serviceWorker.ts',
-      'eslint.config.js',
-      'public/'
-    ],
     rules: {
-      "@typescript-eslint/consistent-type-assertions": [2],
-      "@typescript-eslint/camelcase": 0,
-      "@typescript-eslint/explicit-function-return-type": [
-        "error",
+      '@typescript-eslint/consistent-type-assertions': [2],
+      '@typescript-eslint/camelcase': 0,
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
         {
-          allowExpressions: true
-        }
+          allowExpressions: true,
+        },
       ],
-      "@stylistic/member-delimiter-style": [
+      '@stylistic/member-delimiter-style': [
         2,
         {
           multiline: {
-            delimiter: "none"
-          }
-        }
+            delimiter: 'none',
+          },
+        },
       ],
-      "@typescript-eslint/naming-convention": [
-        "error",
+      '@typescript-eslint/naming-convention': [
+        'error',
         {
-          selector: "interface",
-          format: ["PascalCase"],
+          selector: 'interface',
+          format: ['PascalCase'],
           custom: {
-            regex: "^I[A-Z]",
-            match: true
-          }
-        }
+            regex: '^I[A-Z]',
+            match: true,
+          },
+        },
       ],
-      "@typescript-eslint/no-explicit-any": 1,
-      "@typescript-eslint/no-shadow": 2,
+      '@typescript-eslint/no-explicit-any': 1,
+      '@typescript-eslint/no-shadow': 2,
       // "@typescript-eslint/no-unused-vars": "error",
       // "@typescript-eslint/no-unused-vars": 1,
-      "@typescript-eslint/no-unused-vars": "off",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-use-before-define": [1],
-      "eol-last": 2,
-      "import/extensions": [
-        "error",
-        "ignorePackages",
+      '@typescript-eslint/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-use-before-define': [1],
+      'eol-last': 2,
+      'import/extensions': [
+        'error',
+        'ignorePackages',
         {
-          js: "never",
-          jsx: "never",
-          ts: "never",
-          tsx: "never",
-          mjs: "never",
-          cjs: "never"
-        }
+          js: 'never',
+          jsx: 'never',
+          ts: 'never',
+          tsx: 'never',
+          mjs: 'never',
+          cjs: 'never',
+        },
       ],
-      "import/namespace": [
+      'import/namespace': [
         2,
         {
-          allowComputed: true
-        }
+          allowComputed: true,
+        },
       ],
-      "import/no-extraneous-dependencies": [
-        "error",
+      'import/no-extraneous-dependencies': [
+        'error',
         {
-          devDependencies: true
-        }
+          devDependencies: true,
+        },
       ],
-      "import/no-named-as-default": 0,
-      "import/order": [
-        "error",
+      'import/no-named-as-default': 0,
+      'import/order': [
+        'error',
         {
           groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index"
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
           ],
-          "newlines-between": "always"
-        }
+          'newlines-between': 'always',
+        },
       ],
-      "import/prefer-default-export": 0,
-      "jsx-a11y/label-has-associated-control": [
+      'import/prefer-default-export': 0,
+      'jsx-a11y/label-has-associated-control': [
         2,
         {
           required: {
-            some: ["nesting", "id"]
-          }
-        }
+            some: ['nesting', 'id'],
+          },
+        },
       ],
-      "no-empty": [
-        "error",
+      'no-empty': [
+        'error',
         {
-          allowEmptyCatch: true
-        }
+          allowEmptyCatch: true,
+        },
       ],
-      "no-param-reassign": [2, { props: false }],
-      "no-prototype-builtins": 0,
-      "no-shadow": 0,
-      "no-underscore-dangle": 0,
-      "no-use-before-define": [0],
-      "prettier/prettier": 1,
-      "react/forbid-prop-types": 0,
-      "react/jsx-filename-extension": [
+      'no-param-reassign': [2, { props: false }],
+      'no-prototype-builtins': 0,
+      'no-shadow': 0,
+      'no-underscore-dangle': 0,
+      'no-use-before-define': [0],
+      'prettier/prettier': 1,
+      'react/forbid-prop-types': 0,
+      'react/jsx-filename-extension': [
         1,
         {
-          extensions: [".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx"]
-        }
+          extensions: ['.js', '.mjs', '.cjs', '.jsx', '.ts', '.tsx'],
+        },
       ],
-      "react/jsx-fragments": [2, "element"],
-      "no-console": 0,
-      "react/jsx-one-expression-per-line": 0,
-      "react/require-default-props": 0
+      'react/jsx-fragments': [2, 'element'],
+      'no-console': 0,
+      'react/jsx-one-expression-per-line': 0,
+      'react/require-default-props': 0,
     },
     settings: {
       react: {
-        version: "detect"
+        version: 'detect',
       },
-      "import/resolver": {
+      'import/resolver': {
         node: {
-          extensions: [".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx"]
+          extensions: ['.js', '.mjs', '.cjs', '.jsx', '.ts', '.tsx'],
         },
         typescript: {
           alwaysTryTypes: true,
-          project: ["./tsconfig.json"]
-        }
-      }
+          project: ['./tsconfig.json'],
+        },
+      },
     },
-  }
+  },
+  {
+    // three/examples/jsm ships as ESM and requires the explicit .js suffix on imports.
+    files: ['**/features/common/Three.tsx'],
+    rules: {
+      'import/extensions': 'off',
+    },
+  },
 ]

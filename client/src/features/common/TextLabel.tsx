@@ -7,9 +7,9 @@ import {
   capitalizeLabels,
   transformStringForTestId,
 } from '../../lib/parse/data/helper'
+import StyledTextLabel from '../../styles/features/common/TextLabel'
 
 import Tooltip from './Tooltip'
-import StyledTextLabel from '../../styles/features/common/TextLabel'
 
 interface ITextLabelProps {
   className?: string

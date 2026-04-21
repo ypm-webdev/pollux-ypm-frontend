@@ -33,7 +33,6 @@ import IEntity from '../../types/data/IEntity'
 import Carries from './Carries'
 import About from './About'
 
-
 const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
   data,
 }) => {
@@ -43,43 +42,43 @@ const ObjectsPage: React.FC<{ data: IObject | IDigitalObject }> = ({
   const memberOf = element.getMemberOf()
   const objectsWithImagesHalLink = element.getHalLink(archive.searchTag)
   const halLinkTitle = archive.title
-  const manifestId = element.getManifestId()  // original IIIF manifest from LUX (2D imagery)
-  
+  const manifestId = element.getManifestId() // original IIIF manifest from LUX (2D imagery)
+
   // ==========================================================================================
   // DUMMY DATA FOR DEVELOPMENT
   // ==========================================================================================
-  // For testing purposes, let's generate dummy manifest URIs for the other types of imagery. In production, these would be pulled from LUX as shown in the comments in the multiImageManifests object below. 
+  // For testing purposes, let's generate dummy manifest URIs for the other types of imagery. In production, these would be pulled from LUX as shown in the comments in the multiImageManifests object below.
   // The presence/absence of manifest URIs will be determined by the new middleware modifications, which will similarly return a blank string if missing, or a proper URI if present.
 
   const generateDummyManifestUri = (length: number = 16): string => {
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+    const chars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let result = ''
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length))
+    }
+    return result
   }
-  return result;
-};
 
-// Helper to return either a random string or a blank string
-const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
-  return Math.random() < chanceOfBlank ? "" : generateDummyManifestUri();
-};
+  // Helper to return either a random string or a blank string
+  const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
+    return Math.random() < chanceOfBlank ? '' : generateDummyManifestUri()
+  }
 
   // ==========================================================================================
   // Declarations below, real data needed later
   // ==========================================================================================
 
   const multiImageManifests = {
-    '2d' : manifestId,  // original IIIF manifest from LUX (2D imagery)
-    '2d360': getRandomManifest(1.0),  // rewrite this later as method such as element.get360ManifestId() to pull from LUX
-    '2dzst': getRandomManifest(1.0),  // rewrite this later as method such as element.getZStackManifestId() to pull from LUX
-    '2drti': getRandomManifest(1.0),  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
-    '3dobj': getRandomManifest(0.0),  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
-    '3dvol': getRandomManifest(1.0),  // rewrite this later as method such as element.get3DVolumeManifestId() to pull from LUX
+    '2d': manifestId, // original IIIF manifest from LUX (2D imagery)
+    '2d360': getRandomManifest(1.0), // rewrite this later as method such as element.get360ManifestId() to pull from LUX
+    '2dzst': getRandomManifest(1.0), // rewrite this later as method such as element.getZStackManifestId() to pull from LUX
+    '2drti': getRandomManifest(1.0), // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
+    '3dobj': getRandomManifest(0.0), // rewrite this later as method such as element.get3DManifestId() to pull from LUX
+    '3dvol': getRandomManifest(1.0), // rewrite this later as method such as element.get3DVolumeManifestId() to pull from LUX
   }
 
   // ==========================================================================================
-  
 
   const hierarchyData: {
     entity: IEntity
@@ -95,7 +94,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
   // console.log("data: ", data )
   // console.log(element.getAboutData())
 
-  console.log(multiImageManifests);
+  console.log(multiImageManifests)
 
   return (
     <React.Fragment>
@@ -117,14 +116,20 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
 
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         {/* {manifestId !== '' ? ( */}
-        { multiImageManifests['2d'] !== '' || multiImageManifests['2drti'] !== '' || multiImageManifests['2dzst'] !== '' || multiImageManifests['2d360'] !== '' || multiImageManifests['3dobj'] !== '' || multiImageManifests['3dvol'] !== '' ? (
+        {multiImageManifests['2d'] !== '' ||
+        multiImageManifests['2drti'] !== '' ||
+        multiImageManifests['2dzst'] !== '' ||
+        multiImageManifests['2d360'] !== '' ||
+        multiImageManifests['3dobj'] !== '' ||
+        multiImageManifests['3dvol'] !== '' ? (
           <ImageryMultiContainer
             manifestIiif={multiImageManifests['2d']}
             manifest2dRti={multiImageManifests['2drti']}
             manifest2dZst={multiImageManifests['2dzst']}
             manifest2d360={multiImageManifests['2d360']}
             manifest3dObj={multiImageManifests['3dobj']}
-            manifest3dVol={multiImageManifests['3dvol']} />
+            manifest3dVol={multiImageManifests['3dvol']}
+          />
         ) : (
           <WikiDataImageViewer entity={data} />
         )}

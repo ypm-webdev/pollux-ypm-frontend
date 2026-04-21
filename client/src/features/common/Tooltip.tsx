@@ -31,7 +31,9 @@ const StyledTooltip = styled(ReactTooltip)<{ placement: Placement }>`
   }
   .tooltip-inner {
     border: solid 1px ${theme.color.black65};
-    font-family: Mallory Light, sans-serif;
+    font-family:
+      Mallory Light,
+      sans-serif;
     padding: 8px 16px;
     min-width: auto;
     background-color: ${theme.color.lightGray};

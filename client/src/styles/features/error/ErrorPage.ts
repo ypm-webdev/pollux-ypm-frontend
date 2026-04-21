@@ -29,7 +29,11 @@ const ErrorPage = styled.div`
   .spacer {
     height: 1rem;
     display: block;
-    background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
+    background: linear-gradient(
+      to bottom,
+      ${theme.color.white} 0%,
+      ${theme.color.offWhite} 100%
+    );
   }
 
   .image-container {

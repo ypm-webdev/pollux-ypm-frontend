@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 import theme from '../../theme'
 
-
 const OpenLimeContainer = styled(Row)`  
   padding: 0.75rem;
   background-color: ${theme.color.offWhite};

@@ -124,7 +124,9 @@ const FaqPage: React.FC<IProps> = ({ groupKeys }) => {
   return (
     <StyledFaqPage data-testid="faq-page">
       <StyledFaqPageHeader>
-        <h1 data-testid="faq-page-header" className="page-title">{title}</h1>
+        <h1 data-testid="faq-page-header" className="page-title">
+          {title}
+        </h1>
       </StyledFaqPageHeader>
       {/* <Row className="spacer"></Row> */}
       <Row className="mx-0">

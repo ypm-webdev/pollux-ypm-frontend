@@ -97,7 +97,9 @@ const InfographicsSection = styled(ToppedBorderedDiv)`
 
   div.label {
     padding-left: 3px;
-    font-family: Mallory Bold, sans-serif;
+    font-family:
+      Mallory Bold,
+      sans-serif;
     font-size: 1.5em;
     font-weight: ${theme.font.weight.medium};
     color: ${theme.color.black};

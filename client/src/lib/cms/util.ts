@@ -31,7 +31,7 @@ export const pickYpmFeatured = (): UnitCode[] => {
   const candidates = [UnitCode.YPM]
   // let index = Math.floor(Math.random() * candidates.length)
   // let result: UnitCode[] = [...candidates.splice(index, 1)]
-  let result: UnitCode[] = []
+  const result: UnitCode[] = []
   for (let i = 0; i < 4; i += 1) {
     // index = Math.floor(Math.random() * candidates.length)
     // result = [...result, ...candidates.splice(index, 1)]
@@ -45,7 +45,7 @@ export const allYpmDivisions = (): UnitCode[] => {
   const candidates = [UnitCode.YPM]
   // let index = Math.floor(Math.random() * candidates.length)
   // let result: UnitCode[] = [...candidates.splice(index, 1)]
-  let result: UnitCode[] = []
+  const result: UnitCode[] = []
   for (let i = 0; i < 13; i += 1) {
     // index = Math.floor(Math.random() * candidates.length)
     // result = [...result, ...candidates.splice(index, 1)]

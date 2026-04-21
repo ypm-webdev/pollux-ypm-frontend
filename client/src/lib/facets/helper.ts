@@ -72,7 +72,6 @@ const getIfValidQuery = (str: string): ICriteria | null => {
   if (/^\{.*\}$/.test(str)) {
     try {
       return JSON.parse(str)
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (e) {
       return null
     }

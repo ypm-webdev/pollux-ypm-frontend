@@ -1,5 +1,6 @@
 import React from 'react'
 import sanitizeHtml from 'sanitize-html'
+
 import Tooltip from '../common/Tooltip'
 
 interface IProps {
@@ -36,7 +37,9 @@ const InfographicsBubble: React.FC<IProps> = ({
         style={{ '--item-count': idx } as React.CSSProperties}
       >
         <Tooltip
-          html={sanitizeHtml(description, { allowedTags: ['p', 'br', 'strong', 'em', 'a'] })}
+          html={sanitizeHtml(description, {
+            allowedTags: ['p', 'br', 'strong', 'em', 'a'],
+          })}
           placement="top"
         >
           {bubbleContent}

@@ -11,20 +11,20 @@ const ThreeContainer = styled(Row)`
   article {
     width: 100%;
     // border-radius: 8px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   }
-  
+
   .three-container {
-      position: relative;
-      width: 100%;
-      // padding: 0 1rem;
-      // background-color: ${theme.color.white};
-      margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    // padding: 0 1rem;
+    // background-color: ${theme.color.white};
+    margin-bottom: 0;
   }
 
   .viewer-container {
     // padding-top: 0!important;
-    margin-top: 0!important;
+    margin-top: 0 !important;
   }
 
   .three-swiper {
@@ -56,7 +56,6 @@ const ThreeContainer = styled(Row)`
       }
     }
   }
+`
 
-  `
-
-  export default ThreeContainer
+export default ThreeContainer

@@ -24,8 +24,8 @@ import InfographicsBubble from './InfographicsBubble'
 interface IProps {
   data: IStats
   cmsData: ICmsResponse
-  chartType: String
-  heading: String
+  chartType: string
+  heading: string
   descriptiveTexts?: Record<OverlayKey, string>
 }
 

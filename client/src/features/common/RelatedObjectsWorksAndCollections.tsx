@@ -101,7 +101,10 @@ const RelatedObjectsWorksAndCollections: React.FC<IRelated> = ({
 
   return (
     <StyledEntityPageSection>
-      <p className="mb-0 fs-3 p-2 no-results" data-testid="no-related-objects-works">
+      <p
+        className="mb-0 fs-3 p-2 no-results"
+        data-testid="no-related-objects-works"
+      >
         {`Yale Peabody Museum does not have any objects or works directly related to this ${type}.`}
       </p>
     </StyledEntityPageSection>

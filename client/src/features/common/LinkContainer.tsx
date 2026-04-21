@@ -78,7 +78,11 @@ const LinkContainer: React.FC<ILinkData> = ({
           <TextValue
             values={formatRecordLinks(content)}
             // className={`${textValueWidth} ${desiredClassName}`}
-            className={label == 'Categorized As' ? `${textValueWidth} ${desiredClassName} concepts-list` : `${textValueWidth} ${desiredClassName}`}
+            className={
+              label == 'Categorized As'
+                ? `${textValueWidth} ${desiredClassName} concepts-list`
+                : `${textValueWidth} ${desiredClassName}`
+            }
             itemSpacing={itemSpacing}
           />
         </ExpandableList>

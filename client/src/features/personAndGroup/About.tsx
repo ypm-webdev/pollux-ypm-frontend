@@ -53,7 +53,9 @@ const About: React.FC<IProps> = ({ data }) => {
   return (
     <div data-testid="about-person-group">
       {/* <h2 data-testid="person-page-about-header">About {name}</h2> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader className="about-panel-header">
+        About {name}
+      </AboutPanelHeader>
       <dl className="about-person-and-group-dl">
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

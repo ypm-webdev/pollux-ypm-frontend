@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import theme from '../../theme'
 
 const ContentPage = styled(Row)`
-  h1, h1.page-title {
+  h1,
+  h1.page-title {
     margin-bottom: 0;
     font-family: 'Mallory Bold', sans-serif;
     line-height: 1.1em;

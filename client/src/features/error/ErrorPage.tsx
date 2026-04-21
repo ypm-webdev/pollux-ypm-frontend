@@ -21,15 +21,14 @@ const getMessage = (code: number | undefined): string => {
   }
 }
 
-
 const ErrorPage: React.FC<IProps> = ({ code }) => {
   const spacerStyle: React.CSSProperties = {
-    height: "1rem",
-    display: "block",
-    width: "100%",
-    background: "linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%)"
-  };
-  
+    height: '1rem',
+    display: 'block',
+    width: '100%',
+    background: 'linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%)',
+  }
+
   useEffect(() => {
     pushClientEvent('Error', 'Triggered', 'Page Not Found 404')
   }, [])
@@ -50,7 +49,7 @@ const ErrorPage: React.FC<IProps> = ({ code }) => {
                   bgColor={theme.color.white}
                   id="error-page-search-box"
                   isBelowFold={false}
-                  />
+                />
               </div>
             </Col>
             {/* TODO: add image

@@ -8,7 +8,8 @@ export interface ILandingPage {
   }
 }
 
-const moreAboutLuxButton = "<p><a role='button' tabindex='0' href='https://lux.collections.yale.edu/content/about-lux' className='btn btn-primary'>More Info - LUX</a></p>"
+const moreAboutLuxButton =
+  "<p><a role='button' tabindex='0' href='https://lux.collections.yale.edu/content/about-lux' className='btn btn-primary'>More Info - LUX</a></p>"
 
 export class LandingPageParser {
   content: ILandingPage
@@ -22,7 +23,7 @@ export class LandingPageParser {
   }
 
   getMoreAboutLux(): string {
-    let hardcodedText = this.content.attributes.field_more_about_lux
+    const hardcodedText = this.content.attributes.field_more_about_lux
       .split('</p>')
       .join('</p><p>' + this.getPeabodyLuxRelationship() + '</p>')
     // return this.content.attributes.field_more_about_lux

@@ -23,10 +23,11 @@ const EntityPageSection = styled.div<IProps>`
 
   p.no-results {
     line-height: 1.25em;
-    font-size: 1.25rem!important;
+    font-size: 1.25rem !important;
   }
 
-  h2, h2.panel-heading {
+  h2,
+  h2.panel-heading {
     font-family: 'Mallory Bold', sans-serif;
     text-transform: none;
     font-weight: 700;
@@ -34,7 +35,7 @@ const EntityPageSection = styled.div<IProps>`
   }
 
   .resultsSearchContainer {
-    background-color: cyan!important;
+    background-color: cyan !important;
   }
 
   .accordion-item {

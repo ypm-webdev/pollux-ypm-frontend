@@ -97,8 +97,8 @@ const LuxRoutes: React.FC = () => {
             variant="info"
             className="d-flex justify-content-center mb-0"
           >
-            This website is optimized for desktop use. Some features are not available on
-            mobile devices.
+            This website is optimized for desktop use. Some features are not
+            available on mobile devices.
           </Alert>
         )}
         <Routes>

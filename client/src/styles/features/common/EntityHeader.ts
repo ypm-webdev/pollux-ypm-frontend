@@ -7,9 +7,14 @@ const EntityHeader = styled(Row)`
   margin: 0;
   padding: 1rem;
   // background-color: ${theme.color.white};
-  background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
+  background: linear-gradient(
+    to bottom,
+    ${theme.color.white} 0%,
+    ${theme.color.offWhite} 100%
+  );
 
-  h1, h1.main-label-title {
+  h1,
+  h1.main-label-title {
     font-family: 'Mallory Bold', sans-serif;
     text-transform: none;
     font-weight: 700;
@@ -44,14 +49,12 @@ const EntityHeader = styled(Row)`
     color: ${theme.color.black};
     text-decoration: none;
     height: 0px;
-    
+
     &:hover {
       color: ${theme.color.black65};
       text-decoration: underline;
     }
-
   }
-
 `
 
 export default EntityHeader

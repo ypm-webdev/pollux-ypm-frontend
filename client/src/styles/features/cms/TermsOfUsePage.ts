@@ -14,7 +14,8 @@ const TermsOfUsePage = styled(BorderedDiv)`
   padding: ${theme.spacing.sectionPaddingX};
   background-color: ${theme.color.white};
 
-  h1, h1.page-title {
+  h1,
+  h1.page-title {
     margin-bottom: 0.5rem;
     font-family: 'Mallory Bold', sans-serif;
     line-height: 1.1em;
@@ -22,7 +23,7 @@ const TermsOfUsePage = styled(BorderedDiv)`
   }
   h2 {
     font-size: 1.75rem;
-    font-family: "Mallory Bold", sans-serif;
+    font-family: 'Mallory Bold', sans-serif;
     font-weight: ${h2.fontWeight};
     letter-spacing: ${h2.letterSpacing};
     line-height: 1.25em;

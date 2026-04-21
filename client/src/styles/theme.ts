@@ -119,6 +119,8 @@ const color = {
   trueBlack: '#000',
   barChartGreen: '#46813B',
   barChartPurple: '#6b58A6',
+  dangerRed: '#DC3545',
+  dangerRed60: 'rgba(220, 53, 69, 0.6)',
 
   // Primary colors defined by POW design
   primary: {
@@ -141,6 +143,9 @@ const color = {
     published: '#8D6E63',
     created: '#2E7D32',
     about: '#000000',
+    setAbout: '#555555',
+    setCreated: '#66BB6A',
+    setPublished: '#A1887F',
   },
 
   advancedSearch: {
@@ -148,6 +153,8 @@ const color = {
   },
   // Background color outside section panels
   offPanel: '#F7F7F7',
+  darkGray: '#A9A9A9',
+  mediumGray: '#7f7f7f',
 }
 
 const spacing = {
@@ -175,6 +182,9 @@ const spacing = {
   // Spacing between line items
   verticalItemSingleSpacing: '0.5rem',
   verticalItemDoubleSpacing: '1rem',
+
+  // Horizontal padding on tab buttons (.nav-link)
+  tabPaddingX: '1rem',
 }
 
 const breakpoints = {

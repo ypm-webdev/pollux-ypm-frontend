@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(yarn lint *)",
+      "Bash(yarn add *)",
+      "Bash(yarn --silent lint -f json)",
+      "Bash(node -e ' *)",
+      "Bash(node lint-summarize.js)"
+    ]
+  }
+}

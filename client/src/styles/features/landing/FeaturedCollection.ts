@@ -71,7 +71,7 @@ const FeaturedCollection = styled(Col)<{ isInSwiper?: boolean }>`
     max-width: 100% !important;
     height: auto !important;
   }
-  
+
   .body {
     padding: ${theme.spacing.sectionPaddingX};
   }

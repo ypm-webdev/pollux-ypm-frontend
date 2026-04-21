@@ -33,20 +33,22 @@ const TermsOfUsePage: React.FC<IProps> = ({ pageKey }) => {
 
   return (
     <React.Fragment>
-    <div className="spacer"></div>
-    <StyledTermsOfUsePage className="row" data-testid="content-page">
-      <Col>
-        {result.isSuccess && result.data && (
-          <React.Fragment>
-            <h1 data-testid="content-page-header" className="page-title">{title}</h1>
-            <div
-              dangerouslySetInnerHTML={{ __html: processHtml(body) }}
-              data-testid="content-page-body"
-            />
-          </React.Fragment>
-        )}
-      </Col>
-    </StyledTermsOfUsePage>
+      <div className="spacer"></div>
+      <StyledTermsOfUsePage className="row" data-testid="content-page">
+        <Col>
+          {result.isSuccess && result.data && (
+            <React.Fragment>
+              <h1 data-testid="content-page-header" className="page-title">
+                {title}
+              </h1>
+              <div
+                dangerouslySetInnerHTML={{ __html: processHtml(body) }}
+                data-testid="content-page-body"
+              />
+            </React.Fragment>
+          )}
+        </Col>
+      </StyledTermsOfUsePage>
     </React.Fragment>
   )
 }

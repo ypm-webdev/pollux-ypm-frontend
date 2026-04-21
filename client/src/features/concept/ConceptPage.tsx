@@ -40,7 +40,7 @@ const ConceptPage: React.FC<{ data: IConcept }> = ({ data }) => {
   const images = concept.getImages()
   const name = concept.getPrimaryName(config.aat.primaryName)
 
-// console.log("concept: ", concept)
+  // console.log("concept: ", concept)
 
   return (
     <React.Fragment>
