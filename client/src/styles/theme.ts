@@ -106,6 +106,8 @@ const color = {
   borderShadow: '#d9d9d9',
   button: '#767676',
   darkBlue60: 'rgba(0, 53, 107, 0.6)', // 60% primary.darkBlue
+  dangerRed: '#FC0D1B',
+  dangerRed60: 'rgba(252, 13, 27, 0.6)',
   teal90: 'rgb(0, 123, 148, 0.9)', // 90% primary.teal
   gray: '#999',
   lightBabyBlue: '#E7F1FF',
@@ -119,6 +121,8 @@ const color = {
   trueBlack: '#000',
   barChartGreen: '#46813B',
   barChartPurple: '#6b58A6',
+  darkGray: '#222222',
+  mediumGray: '#767676',
 
   // Primary colors defined by POW design
   primary: {
@@ -171,6 +175,8 @@ const spacing = {
   // = 40px - 12px = 28px
   // sectionPaddingX: '28px',
   sectionPaddingX: '25px',
+
+  tabPaddingX: '0.25rem',
 
   // Spacing between line items
   verticalItemSingleSpacing: '0.5rem',

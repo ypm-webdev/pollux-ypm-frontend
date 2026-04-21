@@ -54,7 +54,7 @@ const ImageryMultiContainer: React.FC<Params> = ({ manifestIiif, manifest2dRti, 
   // If solo mode, render just the content without tab structure
   if (soloKey) {
     if (soloKey === '2d') return <Clover manifest={manifestIiif} solo={isSolo['2d']} />
-    if (soloKey === '2drti') return <h2>OpenLime - TODO</h2>
+    if (soloKey === '2drti') return <OpenLime manifest={manifest2dRti} solo={isSolo['2drti']} />
     if (soloKey === '2dzst') return <CIZStack manifest={manifest2dZst} solo={isSolo['2dzst']} />
     if (soloKey === '2d360') return <CI360 manifest={manifest2d360} solo={isSolo['2d360']} />
     if (soloKey === '3dobj') return <Three manifest={manifest3dObj} solo={isSolo['3dobj']} />
@@ -81,9 +81,8 @@ const ImageryMultiContainer: React.FC<Params> = ({ manifestIiif, manifest2dRti, 
 
                 {manifest2dRti !== '' ? (
                 <Tab eventKey="2dRti" title={<span><BrightnessAltHighFill />{' '}RTI</span>}>
-                    2D RTI Manifest: {manifest2dRti}
-                    {/* <OpenLime manifest={manifest2dRti} solo={isSolo['2drti']} /> */}
-                    <h2>OpenLime - TODO</h2>
+                    {/* 2D RTI Manifest: {manifest2dRti} */}
+                    <OpenLime manifest={manifest2dRti} solo={isSolo['2drti']} isActive={activeTab === '2dRti'} />
                 </Tab>) : null}
 
                 {manifest2dZst !== '' ? (

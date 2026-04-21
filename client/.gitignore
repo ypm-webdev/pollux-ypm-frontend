@@ -34,3 +34,5 @@ package-lock.json
 /public/testData
 !/public/favicon.ico
 !/public/touch-icon-228.png
+
+/scripts

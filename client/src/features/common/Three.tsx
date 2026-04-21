@@ -68,7 +68,11 @@ export const Three: React.FC<ThreeProps> = ({
   const glbFiles = [
     [
       { uri: 'ypmvppu.014554.i_antrodemus_valens_manual_ungual.glb', label: 'Manual Ungual' },
-      { uri: 'ypm_vppu.014554.j_antrodemus_valens_pedal_ungual.glb', label: 'Pedal Ungual' }
+      { uri: 'ypm_vppu.014554.j_antrodemus_valens_pedal_ungual.glb', label: 'Pedal Ungual' },
+      { uri: 'dummy.glb', label: 'Dummy' },
+      { uri: 'dummy2.glb', label: 'Dummy' },
+      { uri: 'dummy3.glb', label: 'Dummy' }
+
     ],
     [
       { uri: 'ypm_pb.053910a_pecopteris_miltoni_fossil_leaf.glb', label: 'Fossil Leaf A' },

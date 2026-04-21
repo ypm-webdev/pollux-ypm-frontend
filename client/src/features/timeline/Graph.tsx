@@ -201,7 +201,7 @@ const Graph: React.FC<IProps> = ({
           <Bar
             dataKey="setAboutDate.totalItems"
             stackId="a"
-            fill={theme.color.graphs.setAbout}
+            fill={theme.color.graphs.about}
             name={facetNameMap.get('setAboutDate') || 'setAboutDate'}
             yAxisId="total"
             shape={(p: any) => getShape(p)}
@@ -209,7 +209,7 @@ const Graph: React.FC<IProps> = ({
           <Bar
             dataKey="setCreationDate.totalItems"
             stackId="a"
-            fill={theme.color.graphs.setCreated}
+            fill={theme.color.graphs.created}
             name={facetNameMap.get('setCreationDate') || 'setCreationDate'}
             yAxisId="total"
             shape={(p: any) => getShape(p)}
@@ -217,7 +217,7 @@ const Graph: React.FC<IProps> = ({
           <Bar
             dataKey="setPublicationDate.totalItems"
             stackId="a"
-            fill={theme.color.graphs.setPublished}
+            fill={theme.color.graphs.published}
             name={
               facetNameMap.get('setPublicationDate') || 'setPublicationDate'
             }

@@ -4,75 +4,158 @@ import { Viewer, LayerRTI } from 'openlime';
 import '/node_modules/openlime/dist/css/skin.css'; 
 import StyledOpenLimeContainer from '../../styles/features/common/OpenLimeContainer'
 
-type Params = {
-  manifest: string
-}
-
 interface OpenLIMEViewerProps {
   // Point this to the FOLDER containing the info.json from Relight Lab
-  manifest: string; 
+  manifest: string;
+  solo: boolean;
+  isActive?: boolean;
 }
 
-const customManifest = "/testData/media/2d-rti/YBC07289_o/"
-
-const OpenLime: React.FC<OpenLIMEViewerProps> = ({ manifest }) => {
-  const containerRef = useRef(null);
-  const viewerInstance = useRef(null);
+const OpenLime: React.FC<OpenLIMEViewerProps> = ({ manifest, solo, isActive = true }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const viewerInstance = useRef<Viewer | null>(null);
+  
+  // Map dummy manifest IDs to test data paths for development
+  // TODO: In production, replace this with actual LUX API call to fetch RTI manifest URL
+  // Once integrated with LUX, manifest prop will be a real URL and won't need mapping
+  const getRTIPath = (manifestId: string): string => {
+    // Development: Map placeholder ID to test data
+    if (manifestId.length === 16 && /^[A-Za-z0-9]+$/.test(manifestId)) {
+      console.log(`📍 DEV MODE: Mapping placeholder "${manifestId}" to demo RTI data`);
+      return '/testData/media/2d-rti/demo/hsh';
+    }
+    
+    // Production: manifestId should be a real URL from LUX
+    // Just return it as-is
+    return manifestId;
+  };
+  
+  const rtiPath = getRTIPath(manifest);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    // Only initialize if the tab is active
+    if (!isActive || !containerRef.current) return;
 
-    // 1. Create the Viewer instance on the ref'd div
-    const viewer = new Viewer(containerRef.current);
+    console.log('✓ OpenLime tab is active, initializing...');
+    console.log('  Manifest ID:', manifest);
+    console.log('  RTI Path:', rtiPath);
 
-    // 2. Configure the LRGB PTM Layer
-    
-    try {
-        const rtiLayer = new LayerRTI({
-        url: customManifest,
-        layout: 'deepzoom'
-        });
-        console.log("layer created: ", rtiLayer)
-        viewer.addLayer('ptm-layer',rtiLayer as any);
-    } catch(e) {
-        console.error("OpenLIME failed to initialize layer:", e);
-    }
+    // Use requestAnimationFrame to ensure DOM is fully laid out
+    const rafId = requestAnimationFrame(() => {
+      setTimeout(async () => {
+        const width = containerRef.current?.clientWidth || 0;
+        const height = containerRef.current?.clientHeight || 0;
+        const parentWidth = containerRef.current?.parentElement?.clientWidth || 0;
+        const parentHeight = containerRef.current?.parentElement?.clientHeight || 0;
+        
+        console.log(`\n>>> Container dimensions: ${width}x${height}`);
+        console.log(`>>> Parent dimensions: ${parentWidth}x${parentHeight}`);
+        console.log(`>>> Display: ${containerRef.current?.style.display}`);
+        
+        if (width === 0 || height === 0) {
+          console.warn('⚠ Container has zero dimensions, waiting for layout...');
+          return;
+        }
 
+        try {
+          // 1. Fetch info.json to get actual number of planes
+          console.log(`🔍 Fetching RTI from: ${rtiPath}/info.json`);
+          const infoResponse = await fetch(`${rtiPath}/info.json`);
+          if (!infoResponse.ok) {
+            throw new Error(`Failed to fetch info.json: ${infoResponse.status} ${infoResponse.statusText}`);
+          }
+          const infoText = await infoResponse.text();
+          console.log(`📄 Fetch response (${infoText.length} chars):`, infoText.substring(0, 200));
+          
+          let info;
+          try {
+            info = JSON.parse(infoText);
+          } catch (parseErr) {
+            console.error('✗ Failed to parse info.json:', parseErr);
+            console.error('Raw response:', infoText);
+            throw parseErr;
+          }
+          
+          const nPlanes = info.nplanes || info.planes || 6;
+          console.log(`✓ Loaded info.json, detected ${nPlanes} planes`, info);
 
-    // 3. Add necessary interaction controllers
-    // viewer.addController(new ControllerPanZoom());
-    // viewer.addController(new ControllerLight());
+          // 2. Create viewer
+          console.log("✓ Creating viewer");
+          const viewer = new Viewer(containerRef.current!);
+          console.log("✓ Viewer created successfully");
+          
+          // Force canvas to resize to match container
+          const canvas = (viewer as any).canvas;
+          if (canvas && canvas.updateSize) {
+            canvas.updateSize();
+            console.log('✓ Canvas size updated');
+          }
 
-    // viewerInstance.current = viewer;
+          // 3. Load RTI using info.json
+          const rtiUrl = `${rtiPath}/info.json`;
+          console.log(`\n>>> Attempting to load RTI from: ${rtiUrl}`);
+          console.log(`>>> RTI Type: ${info.type}`);
+          
+          // Now try to create the layer
+          console.log(`\n>>> Creating LayerRTI with layout='deepzoom'`);
+          const rtiLayer = new LayerRTI({
+            url: rtiUrl,
+            layout: 'deepzoom'
+          } as any);
+          
+          console.log('✓ LayerRTI created successfully');
+          
+          // Add to viewer
+          viewer.addLayer('plane-0', rtiLayer as any);
+          console.log('✓ Layer added to viewer successfully');
+          
+          // Make sure the layer is visible
+          (rtiLayer as any).setVisible(true);
+          console.log('✓ Layer visibility set to true');
+          
+          // Skip camera fit for now - let OpenLime handle viewport
+          console.log('⏭ Skipping camera fit (viewport not initialized)');
+          
+          // Force a redraw
+          viewer.redraw();
+          console.log('✓ Viewer redraw requested');
 
-    // Cleanup to prevent memory leaks and duplicate viewers on re-render
+          console.log(`\n>>> Viewer initialized successfully`);
+          viewerInstance.current = viewer;
+
+        } catch(e) {
+          console.error("✗ OpenLIME init error:", e);
+          console.error("  Message:", (e as any).message);
+          if ((e as any).stack) console.error("  Stack:", (e as any).stack);
+        }
+      }, 1000); // Increased from 500ms to give tab time to layout
+    });
+
     return () => {
-      if (viewerInstance.current) {
-        // Most OpenLIME versions use a destroy or similar method
-        // to clean up WebGL contexts
-        // viewerInstance.current.destroy(); 
-      }
+      cancelAnimationFrame(rafId);
     };
-  }, [customManifest]);
+  }, [isActive, rtiPath]);
 
 return (    
-    <StyledOpenLimeContainer className="viewer-container mx-0">    
+      <StyledOpenLimeContainer className="viewer-container mx-0">
         <Col className="openlime-container d-flex px-0">
-            <article>
-                <h2>OpenLIME viewer</h2>
+          <article>
+            <div style={{ width: '100%', height: '650px', overflow: 'hidden' }}>
                 <div 
                     ref={containerRef} 
                     style={{ 
                         width: '100%', 
-                        height: '600px', 
+                        height: '100%', 
                         position: 'relative', 
-                        backgroundColor: '#000' 
+                        backgroundColor: '#000',
+                        overflow: 'hidden'
                     }} 
                 />
-            </article>
-
+            </div>
+          </article>
         </Col>
-    </StyledOpenLimeContainer>
+      </StyledOpenLimeContainer>
+
 )
 }
 

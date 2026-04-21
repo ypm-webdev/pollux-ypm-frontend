@@ -51,7 +51,7 @@ const ThreeContainer = styled(Row)`
       opacity: 0.5;
 
       &.swiper-pagination-bullet-active {
-        background-color: ${theme.color.darkGray};
+        background-color: ${theme.color.primary.blue};
         opacity: 1;
       }
     }
