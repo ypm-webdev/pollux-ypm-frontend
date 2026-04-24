@@ -198,7 +198,7 @@ const Navigation: React.FC<INavigation> = ({
                           (advancedSearch && isLoading) ? (
                             <LoadingSpinner size="sm" />
                           ) : (
-                            <span className={`badge ${pathname.includes(key) ? 'badge-primary' : 'badge-secondary'}`}>{estimates[key]}</span>
+                            <span className={`badge ${pathname.includes(key) ? 'badge-primary' : 'badge-secondary'}`}>{estimates[key] === undefined ? estimates[key] : estimates[key].toLocaleString('en-US') }</span>
                           )}
                           <span className="d-none d-md-inline"></span>
                           <span className="d-md-none" style={{ marginLeft: '4px' }}>results</span>

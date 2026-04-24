@@ -147,7 +147,8 @@ const PersonSnippet: React.FC<ISearchData> = ({
                   {dates}
                 </Link>
               </StyledSnippetTitle>
-              <Card.Text>
+              {/* <Card.Text> */}
+              <React.Fragment>
                 <StyledDl>
                   {occupations.length > 0 && (
                     <React.Fragment>
@@ -172,7 +173,8 @@ const PersonSnippet: React.FC<ISearchData> = ({
                     </React.Fragment>
                   )}
                 </StyledDl>
-              </Card.Text>
+              </React.Fragment>
+              {/* </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>

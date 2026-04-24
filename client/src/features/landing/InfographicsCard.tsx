@@ -29,10 +29,10 @@ const InfographicsCard: React.FC<IProps> = ({
     >
       <a href={link}>
         <Row className="d-flex align-items-center card-inner">
-          <Col xs={4} sm={4} md={3}>
+          <Col xs={3} sm={3} md={3}>
             <img className="icon" src={icon} alt="" />
           </Col>
-          <Col xs={8} sm={8} md={9}>
+          <Col xs={9} sm={9} md={9}>
             <div className="number">{number.toLocaleString()}</div>
             <div className="label">{label}</div>
           </Col>

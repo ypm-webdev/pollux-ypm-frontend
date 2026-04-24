@@ -30,6 +30,10 @@ const SecondaryButton = styled(Button)<IProps>`
     color: ${theme.color.white};
   }
 
+  &:hover span.mobile-nav-results-label {
+    color: ${theme.color.black} !important;
+  }
+
   &.btn:active {
     background-color: ${(props) => props.$actionBgColor || theme.color.primary.blue};
     border-color: ${theme.color.white};

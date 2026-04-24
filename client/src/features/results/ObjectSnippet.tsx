@@ -209,7 +209,8 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                   linkCategory="Results Snippet"
                 />
               </StyledSnippetTitle>
-              <Card.Text>
+              <React.Fragment>
+                {/* <Card.Text> */}
                 {callNumber !== null && (
                 <React.Fragment>
                   <StyledDl className="clearfix">
@@ -243,7 +244,8 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                     </React.Fragment>
                   )}
                 </StyledDl>
-              </Card.Text>
+              </React.Fragment>
+              {/* </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>

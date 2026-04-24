@@ -69,8 +69,8 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
     '2d' : manifestId,  // original IIIF manifest from LUX (2D imagery)
     '2d360': getRandomManifest(1.0),  // rewrite this later as method such as element.get360ManifestId() to pull from LUX
     '2dzst': getRandomManifest(1.0),  // rewrite this later as method such as element.getZStackManifestId() to pull from LUX
-    '2drti': getRandomManifest(0.0),  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
-    '3dobj': getRandomManifest(0.0),  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
+    '2drti': getRandomManifest(1.0),  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
+    '3dobj': getRandomManifest(1.0),  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
     '3dvol': getRandomManifest(1.0),  // rewrite this later as method such as element.get3DVolumeManifestId() to pull from LUX
   }
 

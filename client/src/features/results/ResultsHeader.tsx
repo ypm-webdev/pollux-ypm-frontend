@@ -280,7 +280,7 @@ const ResultsHeader: React.FC<IResultsHeader> = ({
             data-testid="results-header-title"
           >
             <StyledDiv>
-              {total} {label} results
+              {total.toLocaleString('en-US')} {label} results
             </StyledDiv>
             {(tab === 'objects' || tab === 'works') && <LuxOverlay />}
           </StyledResultsHeader>

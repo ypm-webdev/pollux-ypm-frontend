@@ -34,9 +34,16 @@ const StyledNavLink = styled(NavLink)`
     line-height: ${theme.font.desktop.bodyLight.lineHeight};
   }
 
+   &:hover > div > div > div > div.linkSubtext > span.mobile-nav-results-label {
+    color: ${theme.color.black}!important;
+    font-size: 3em!important;
+  }
+
   &:hover {
     color: ${theme.color.black};
     text-decoration: underline;
+    background-color: ${theme.color.tabButtonBgColor};
+    };
   }
 
   &.active {

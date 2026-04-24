@@ -131,7 +131,8 @@ const WorksSnippet: React.FC<ISearchData> = ({
               <StyledSnippetTitle className="card-title d-flex">
                 <RecordLink url={data.id} linkCategory="Results Snippet" />
               </StyledSnippetTitle>
-              <Card.Text>
+              {/* <Card.Text> */}
+              <React.Fragment>
                 <StyledDl>
                   <ProductionSnippet
                     agents={agents}
@@ -139,7 +140,8 @@ const WorksSnippet: React.FC<ISearchData> = ({
                     label="Creator"
                   />
                 </StyledDl>
-              </Card.Text>
+              </React.Fragment>
+              {/* </Card.Text> */}
             </Card.Body>
           </Card>
         </Col>

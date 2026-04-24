@@ -90,7 +90,10 @@ const GlobalStyle = createGlobalStyle`
     src: url(${MalloryMpMedium})
   }
 
-
+  .mallory-bold {
+    font-family: 'Mallory Bold', sans-serif;
+    font-weight: 700;
+  }
 
   body {
     min-height: 100vh;

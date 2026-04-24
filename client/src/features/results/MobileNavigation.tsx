@@ -159,6 +159,7 @@ const MobileNavigation: React.FC<IProps> = ({
         tab={tab}
         handleClick={handleShow}
         showArrow
+        isCurrentTab={true}
       />
       <Modal show={show} animation={false} onHide={() => setShow(false)}>
         <Modal.Body>
@@ -172,6 +173,7 @@ const MobileNavigation: React.FC<IProps> = ({
               estimate={estimates[key]}
               icon={value}
               tab={key}
+              key={key}
               handleClick={() => handleOnLinkSelect(key)}
               isCurrentTab={tab === key}
             />

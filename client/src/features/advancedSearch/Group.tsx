@@ -108,7 +108,7 @@ const Group: React.FC<IGroup> = ({
     >
       <FormGroup>
         <StyledInputGroupDiv
-          className="bg-white advancedSearchGroupRow"
+          className="bg-white advancedSearchGroupRow rounded-0"
           data-testid="advanced-search-group-row"
         >
           <span className="w-100 d-flex ps-2">
@@ -129,7 +129,7 @@ const Group: React.FC<IGroup> = ({
                     ? `close ${labelForAria} group`
                     : `open ${labelForAria} group`
                 }
-                className="collapseNestedAdvancedSearch float-left ms-2 me-3"
+                className="collapseNestedAdvancedSearch float-left ms-2 me-3 rounded-0"
               >
                 {open ? '-' : '+'}
               </CollapseButton>
@@ -140,7 +140,7 @@ const Group: React.FC<IGroup> = ({
                 dropdownType="multipleFieldSelection"
                 options={conditionals}
                 handleChange={addOption}
-                className="multipleFieldSelection"
+                className="multipleFieldSelection rounded-0"
                 dropdownHeaderText="Have multiple fields"
                 ariaLabel={`${ariaLabelForDropdowns} Have multiple fields`}
                 selected={selectedKey}

@@ -119,7 +119,7 @@ const AdvancedSearchDropdown: React.FC<IDropdown> = ({
               if (!isUndefined(options[scopeName])) {
                 return (
                   <React.Fragment key={scopeName}>
-                    <Dropdown.ItemText className="border-bottom fw-bold">
+                    <Dropdown.ItemText className="border-bottom mallory-bold">
                       {scopeToAriaLabel[scopeName] !== undefined
                         ? capitalizeLabels(scopeToAriaLabel[scopeName])
                         : capitalizeLabels(scopeName)}

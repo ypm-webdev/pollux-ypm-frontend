@@ -28,14 +28,17 @@ const SecondaryDropdown = styled(Button)<IProps>`
   &:focus,
   &:active,
   &:disabled {
-    background-color: ${(props) =>
-      props.actionBgColor || theme.color.trueBlack};
+    background-color: ${theme.color.tabButtonBgColor};
     border-color: ${theme.color.white};
     color: ${theme.color.white};
-
+    
     div > div > h5 {
       color: ${theme.color.white};
     }
+  }
+
+  &:hover > span {
+    color: red;
   }
 `
 

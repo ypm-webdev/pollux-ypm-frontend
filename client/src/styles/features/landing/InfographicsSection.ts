@@ -51,7 +51,7 @@ const InfographicsSection = styled(ToppedBorderedDiv)`
     border-style: solid;
     border-color: ${theme.color.secondary.cornflowerBlue};
     width: 100%;
-    min-width: 400px;
+    min-width: 300px;
 
     @media (min-width: ${theme.breakpoints.sm}px) {
       // min-width: 450px;

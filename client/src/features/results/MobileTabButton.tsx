@@ -47,20 +47,21 @@ const MobileTabButton: React.FC<IProps> = ({
             aria-label="icon"
             height={showArrow ? 55 : 45}
             width={showArrow ? 55 : 45}
+            style={showArrow ? { paddingLeft: '12px' } : undefined}
           />
         </Col>
         <Col xs={showArrow || isCurrentTab ? 8 : 10}>
           <Row className="d-flex float-start">
             <Col xs={12} className="linkTitle d-flex float-start">
-              <h3>{advancedSearchTitles[tab]}</h3>
+              <h3 style={{ fontFamily: "'Mallory Medium', sans-serif" }}>{advancedSearchTitles[tab]}</h3>
             </Col>
             <Col xs={12} className="linkSubtext d-flex float-start">
               {isLoading || isFetching ? (
                 <LoadingSpinner size="sm" />
               ) : (
-                <span className={`badge ${isCurrentTab ? 'badge-primary' : 'badge-secondary'}`}>{estimate}</span>
+                <span className={`badge ${isCurrentTab ? 'badge-primary' : 'badge-secondary'}`}>{estimate.toLocaleString('en-US')}</span>
               )}{' '}
-              <span style={{ marginLeft: '4px' }}>result{estimate !== 1 ? 's' : ''}</span>
+              <span className="mobile-nav-results-label" style={{ marginLeft: '4px' }}>result{estimate !== 1 ? 's' : ''}</span>
             </Col>
           </Row>
         </Col>
@@ -78,7 +79,7 @@ const MobileTabButton: React.FC<IProps> = ({
             </h3>
           </Col>
         )}
-        {isCurrentTab && (
+        {isCurrentTab && !showArrow && (
           <Col xs={2}>
             <h3
               style={{

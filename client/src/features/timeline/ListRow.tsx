@@ -62,7 +62,7 @@ const ListRow: React.FC<{
             }
             data-testid={`${year}-${searchTag}-search-link`}
           >
-            Show all {totalItems} result
+            Show all {totalItems.toLocaleString('en-US')} result
             {totalItems !== 1 && `s`}
           </Link>
         </StyledDd>

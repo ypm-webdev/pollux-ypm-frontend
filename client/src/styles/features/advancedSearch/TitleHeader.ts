@@ -8,8 +8,12 @@ const TitleHeader = styled(Row)`
   padding: 1rem 1.5rem;
   background-color: ${theme.color.white};
 
-  h2, h2.page-title {
-    font-family: 'Mallory MP Bold', sans-serif;
+  h2, h2.page-title, h1, h1.page-title {
+    font-family: 'Mallory Bold', sans-serif;
+    font-weight: 700;
+    color: ${theme.color.black};
+    letter-spacing: 1px;
+    line-height: 1.2em;
   }
 
 `

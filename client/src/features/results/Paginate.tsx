@@ -25,7 +25,9 @@ interface IPagination {
 }
 
 const StyledPagination = styled(Pagination)`
-  border-radius: 0px;
+  button : {
+    border-radius: 0px;
+ }
 
   li {
     width: 100%;
@@ -34,14 +36,14 @@ const StyledPagination = styled(Pagination)`
   li.page-item.active > span.page-link {
     background-color: ${theme.color.primary.blue};
     border-color: ${theme.color.primary.blue};
-    font-weight: bold;
+    font-weight: 700;
   }
 
   li > a:hover {
     background: ${theme.color.primary.blue};
     border-color: ${theme.color.primary.blue};
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   li > span.page-link {
@@ -54,7 +56,16 @@ const StyledPagination = styled(Pagination)`
     height: 100%;
     display: flex;
     align-items: center;
+    border-radius: 0px!important;
   }
+
+  li.page-item.disabled > span.page-link, li.page-item.disabled > a.page-link {
+    border-radius: 0px!important;  
+  }
+
+  li.page-item:first-child, li.page-item:last-child {
+    font-family: 'Mallory Bold', sans-serif;
+    font-weight: 600;
 `
 
 const StyledInputGroupDiv = styled(InputGroup)`
@@ -62,6 +73,7 @@ const StyledInputGroupDiv = styled(InputGroup)`
     border: none;
     background-color: ${theme.color.white};
   }
+
 `
 
 /**
@@ -146,7 +158,7 @@ const Paginate: React.FC<IPagination> = ({
   ) {
     return null
   }
-
+  const lastPageString = lastPage.toLocaleString('en-US');
   return (
     <Row className="mt-4">
       <Col

@@ -101,11 +101,11 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
               variant="dark"
               className="w-auto px-4 py-3"
             >
-              <Container fluid className="mx-0 navbarContainer">
+              <Container fluid className="mx-0 px-0 navbarContainer">
                 <StyledSpan>
                   <img
                     src={LogoWhiteOne}
-                    className="logo-top mt-2"
+                    className="logo-top mt-2 ps-0"
                     alt="Yale Peabody Museum"
                   />
                 </StyledSpan>
@@ -234,13 +234,6 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
                 }}
               />
             </HeaderExpander>
-            <div className="powered-by-lux mt-2">
-              <a href="/content/about-lux">
-                <span className="lux-powered-by">Powered by </span>
-                <span className="lux-name">LUX</span>&nbsp;
-                <i className="bi bi-question-circle"></i>
-              </a>
-            </div>
           </Col>
         </Row>
       </Container>
