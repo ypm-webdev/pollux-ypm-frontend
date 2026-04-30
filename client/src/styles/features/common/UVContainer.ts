@@ -5,13 +5,13 @@ import theme from '../../theme'
 
 const UVContainer = styled(Row)`
   padding: 1rem 0 0 0;
-  background-color: ${theme.color.white};
+  background-color: ${theme.color.offWhite};
 
   .iframe-container {
     position: relative;
     width: 100%;
     padding: 33% 50%; // trick to reserve space for absolutely positioned children with varying height
-    background-color: ${theme.color.black};
+    background-color: ${theme.color.offWhite};
 
     @media (min-width: 1200px) {
       padding: 0;
@@ -32,6 +32,7 @@ const UVContainer = styled(Row)`
       margin: 0;
     }
   }
+
 `
 
 export default UVContainer

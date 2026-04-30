@@ -1,23 +1,23 @@
 import { UnitCode, unitCodeFromNumString } from '../../../config/cms'
 
 export interface ICmsResponse {
-  data: ICmsData[]
+  data: ICmsData[] | { [key: string]: ICmsData }
 }
 
 export interface ICmsData {
   id: string
   attributes: {
     title: string
-    body: string
+    body: { value: string; format: string; processed: string }
     field_iiif_image: {
       uri: string
       title: string
     }
     field_url_path: string
-    field_chit_unit: string[]
+    field_chit_unit?: string[]
   }
-  relationships: {
-    field_featured_image: {
+  relationships?: {
+    field_featured_image?: {
       data: {
         id: string
         meta: {
@@ -42,6 +42,7 @@ const selectCollection = (
 ): [ICollection, ICmsData[]] => {
   let items = candidates.filter(
     (item) =>
+      item.attributes.field_chit_unit && 
       unitCodeFromNumString(item.attributes.field_chit_unit[0]) === unit,
   )
 
@@ -64,7 +65,7 @@ const selectCollection = (
       imageUrl,
       imageAlt,
       title: attr.title,
-      bodyHtml: attr.body,
+      bodyHtml: typeof attr.body === 'string' ? attr.body : attr.body.value,
       searchUrl: attr.field_url_path,
     },
     remaining,
@@ -75,7 +76,12 @@ export class FeaturedCollectionParser {
   data: ICmsData[]
 
   constructor(json: ICmsResponse) {
-    this.data = json.data
+    // Handle data being either an array or an object with numeric keys
+    if (Array.isArray(json.data)) {
+      this.data = json.data
+    } else {
+      this.data = Object.values(json.data)
+    }
   }
 
   getCollections(units: UnitCode[]): ICollection[] {

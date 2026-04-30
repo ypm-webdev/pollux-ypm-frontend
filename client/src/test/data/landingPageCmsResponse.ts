@@ -27,12 +27,29 @@ export const langingPageCmsResponse = {
         status: true,
         title: 'LUX Landing Page Content',
         field_footer_blocks: [
-          '<h2>Open Access</h2>\n\n<p>Open access information.</p>',
-          '<h2>Interoperability</h2>\n\n<p>Interoperability information.</p>',
-          '<h2>Bias in Collections</h2>\n\n<p>Bias in collections information.</p>',
+          {
+            value: '<h2>Open Access</h2>\n\n<p>Open access information.</p>',
+            format: 'basic_html',
+            processed: '<h2>Open Access</h2>\n\n<p>Open access information.</p>',
+          },
+          {
+            value: '<h2>Interoperability</h2>\n\n<p>Interoperability information.</p>',
+            format: 'basic_html',
+            processed: '<h2>Interoperability</h2>\n\n<p>Interoperability information.</p>',
+          },
+          {
+            value: '<h2>Bias in Collections</h2>\n\n<p>Bias in collections information.</p>',
+            format: 'basic_html',
+            processed: '<h2>Bias in Collections</h2>\n\n<p>Bias in collections information.</p>',
+          },
         ],
-        field_more_about_lux:
-          '<h2>More About LUX</h2>\n\n<h3>Yale\'s Cultural Heritage IT Collaboration</h3>\n\n<p><span><span><span><span><span><span>More about LUX</span></span></span></span></span></span></p>\n\n<ul><li><a href="https://library.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Library</span></span></span></span></span></span></a></li>\n\t<li><a href="https://britishart.yale.edu/" target="new"><span><span><span><span><span><span>Yale Center for British Art</span></span></span></span></span></span></a></li>\n\t<li><a href="https://peabody.yale.edu/" target="new"><span><span><span><span><span><span>Yale Peabody Museum</span></span></span></span></span></span></a></li>\n\t<li><a href="https://artgallery.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Art Gallery</span></span></span></span></span></span></a></li>\n</ul>',
+        field_more_about_lux: {
+          value:
+            '<h2>More About LUX</h2>\n\n<h3>Yale\'s Cultural Heritage IT Collaboration</h3>\n\n<p><span><span><span><span><span><span>More about LUX</span></span></span></span></span></span></p>\n\n<ul><li><a href="https://library.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Library</span></span></span></span></span></span></a></li>\n\t<li><a href="https://britishart.yale.edu/" target="new"><span><span><span><span><span><span>Yale Center for British Art</span></span></span></span></span></span></a></li>\n\t<li><a href="https://peabody.yale.edu/" target="new"><span><span><span><span><span><span>Yale Peabody Museum</span></span></span></span></span></span></a></li>\n\t<li><a href="https://artgallery.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Art Gallery</span></span></span></span></span></span></a></li>\n</ul>',
+          format: 'basic_html',
+          processed:
+            '<h2>More About LUX</h2>\n\n<h3>Yale\'s Cultural Heritage IT Collaboration</h3>\n\n<p><span><span><span><span><span><span>More about LUX</span></span></span></span></span></span></p>\n\n<ul><li><a href="https://library.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Library</span></span></span></span></span></span></a></li>\n\t<li><a href="https://britishart.yale.edu/" target="new"><span><span><span><span><span><span>Yale Center for British Art</span></span></span></span></span></span></a></li>\n\t<li><a href="https://peabody.yale.edu/" target="new"><span><span><span><span><span><span>Yale Peabody Museum</span></span></span></span></span></span></a></li>\n\t<li><a href="https://artgallery.yale.edu/" target="new"><span><span><span><span><span><span>Yale University Art Gallery</span></span></span></span></span></span></a></li>\n</ul>',
+        },
         field_what_is_lu: {
           value:
             "<h2>What Is LUX</h2>\r\n\r\n<h3>Yale's Cultural Heritage IT Collaboration</h3>\r\n\r\n<p>What is LUX?</p>\r\n",
@@ -243,7 +260,11 @@ export const featuredBlockCmsResponse: ICmsResponse = {
       id: 'test-id-YUAG',
       attributes: {
         title: 'YUAG attributes title',
-        body: 'YUAG body',
+        body: {
+          value: 'YUAG body',
+          format: 'basic_html',
+          processed: 'YUAG body',
+        },
         field_iiif_image: {
           uri: 'https://YUAG-image-url.jpeg',
           title: 'field IIIF image title',
@@ -266,7 +287,11 @@ export const featuredBlockCmsResponse: ICmsResponse = {
       id: 'test-id-YUL',
       attributes: {
         title: 'YUL attributes title',
-        body: 'YUL body',
+        body: {
+          value: 'YUL body',
+          format: 'basic_html',
+          processed: 'YUL body',
+        },
         field_iiif_image: {
           uri: 'https://YUL-image-url.jpeg',
           title: 'field IIIF image title',
@@ -289,7 +314,11 @@ export const featuredBlockCmsResponse: ICmsResponse = {
       id: 'test-id-YPM',
       attributes: {
         title: 'YPM attributes title',
-        body: 'YPM body',
+        body: {
+          value: 'YPM body',
+          format: 'basic_html',
+          processed: 'YPM body',
+        },
         field_iiif_image: {
           uri: 'https://YPM-image-url.jpeg',
           title: 'field IIIF image title',

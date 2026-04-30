@@ -58,12 +58,21 @@ const WhatIsLux = styled.div`
 
   a:link,
   a:visited {
-    text-decoration: underline;
+    text-decoration: none;
+    color: ${theme.color.trueBlack};
+    font-size: 0.9em;
+    background-color: ${theme.color.white};
+    padding: 10px 20px;
+    border: none;
+  
+    @media (min-width: ${theme.breakpoints.lg}px) {
+      font-size: 0.8em;
+    }
   }
 
   a:hover,
   a:focus {
-    text-decoration: none;
+    background-color: ${theme.color.offWhite};
   }
 
   @media (min-width: 552px) {

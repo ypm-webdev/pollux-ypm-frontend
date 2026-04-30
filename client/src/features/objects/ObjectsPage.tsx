@@ -22,6 +22,7 @@ import { archive } from '../../config/setsSearchTags'
 import HowDoISeeIt from '../common/HowDoISeeIt'
 import IObject from '../../types/data/IObject'
 import IDigitalObject from '../../types/data/IDigitalObject'
+import UV from '../common/UV'
 import WikiDataImageViewer from '../common/WikiDataImageViewer'
 import ImageryMultiContainer from '../common/ImageryMultiContainer'
 import IEntity from '../../types/data/IEntity'
@@ -91,7 +92,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
   // console.log("data: ", data )
   // console.log(element.getAboutData())
 
-  console.log(multiImageManifests);
+  // console.log(multiImageManifests);
 
   return (
     <React.Fragment>
@@ -110,9 +111,10 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
           )}
         </EntityHeader>
       </ErrorBoundary>
-
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        {/* {manifestId !== '' ? ( */}
+      
+      {/* // this section is being deprecated temporarily.
+      // UV viewer will be maintained at present, and MultiImageViewer, including Clover IIIF, will be implememented later. */}
+      {/* <ErrorBoundary FallbackComponent={ErrorFallback}>
         { multiImageManifests['2d'] !== '' || multiImageManifests['2drti'] !== '' || multiImageManifests['2dzst'] !== '' || multiImageManifests['2d360'] !== '' || multiImageManifests['3dobj'] !== '' || multiImageManifests['3dvol'] !== '' ? (
           <ImageryMultiContainer
             manifestIiif={multiImageManifests['2d']}
@@ -124,8 +126,14 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
         ) : (
           <WikiDataImageViewer entity={data} />
         )}
+      </ErrorBoundary> */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {manifestId !== '' ? (
+          <UV manifest={manifestId} />
+        ) : (
+          <WikiDataImageViewer entity={data} />
+        )}
       </ErrorBoundary>
-
       <StyledEntityBody>
         <Col>
           <Row>
