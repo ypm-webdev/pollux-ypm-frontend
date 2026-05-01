@@ -14,6 +14,7 @@ import {
 import { ErrorFallback } from '../error/ErrorFallback'
 import {
   useGetFeaturedCollectionsQuery,
+  useGetAllCollectionsDivisionsQuery,
   useGetLandingPageQuery,
   useGetLandingPageImagesQuery,
   useGetAllDescriptiveTextsQuery,
@@ -40,6 +41,7 @@ const Landing: React.FC = () => {
   const landingPageResult = useGetLandingPageQuery()
   const imagesResult = useGetLandingPageImagesQuery()
   const featuredResult = useGetFeaturedCollectionsQuery()
+  const allCollectionsResult = useGetAllCollectionsDivisionsQuery()
   const statsResult = useGetStatsQuery()
   const descriptiveTextsResult = useGetAllDescriptiveTextsQuery()
 
@@ -111,13 +113,14 @@ const Landing: React.FC = () => {
               </Col>
             </Row>
           )}
-        {featuredResult.isSuccess && units.length > 0 && (
+        {allCollectionsResult.isSuccess && units.length > 0 && (
           <Row className="mx-0">
             <Col xs={12}>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <AllCollectionsSection
-                  data={featuredResult.data}
+                  data={allCollectionsResult.data}
                   units={units}
+                  isMobile={isMobile}
                 />
               </ErrorBoundary>
             </Col>

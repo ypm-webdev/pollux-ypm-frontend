@@ -39,7 +39,12 @@ export interface ICollection {
 const selectCollection = (
   unit: UnitCode,
   candidates: ICmsData[],
-): [ICollection, ICmsData[]] => {
+): [ICollection | null, ICmsData[]] => {
+  // Return early if no candidates left
+  if (candidates.length === 0) {
+    return [null, []]
+  }
+
   let items = candidates.filter(
     (item) =>
       item.attributes.field_chit_unit && 
@@ -85,22 +90,26 @@ export class FeaturedCollectionParser {
   }
 
   getCollections(units: UnitCode[]): ICollection[] {
-    const colls: ICollection[] = []
+    const colls: (ICollection | null)[] = []
     let candidates = this.data
-
-    for (let i = 0; i < 3; i += 1) {
+    let maxToShow = candidates.length < 6 ? candidates.length : 6
+    for (let i = 0; i < maxToShow; i += 1) {
       ;[colls[i], candidates] = selectCollection(units[i], candidates)
     }
-    return colls
+    // Filter out null values and return only valid collections
+    return colls.filter((c) => c !== null) as ICollection[]
   }
 
   getCollectionsAll(units: UnitCode[]): ICollection[] {
-    const colls: ICollection[] = []
+    const colls: (ICollection | null)[] = []
     let candidates = this.data
+    const totalItems = candidates.length
 
-    for (let i = 0; i < 14; i += 1) {
+    for (let i = 0; i < totalItems; i += 1) {
+      if (candidates.length === 0) break
       ;[colls[i], candidates] = selectCollection(units[i], candidates)
     }
-    return colls
+    // Filter out null values and return only valid collections
+    return colls.filter((c) => c !== null) as ICollection[]
   }
 }

@@ -69,8 +69,8 @@ const HeroImageSection: React.FC<IProps> = ({ imagesData, landingPageData, unit 
                   }
                   data-testid="hero-image-caption-link"
                 >
-                  {imageData.caption.length > 30
-                    ? `${imageData.caption.slice(0, 30)}...`
+                  {imageData.caption.length > 40
+                    ? `${imageData.caption.slice(0, 40)}...`
                     : imageData.caption}
                 </Link>
               </div>

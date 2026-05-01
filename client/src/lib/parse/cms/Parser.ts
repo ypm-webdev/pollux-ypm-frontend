@@ -31,6 +31,10 @@ export class CmsResponseParser {
   }
 
   getLandingPageImages(): ILandingPageImage[] {
-    return this.json.data as ILandingPageImage[]
+    if (Array.isArray(this.json.data)) {
+      return this.json.data as ILandingPageImage[]
+    }
+    // Handle object-keyed data (numeric string keys)
+    return Object.values(this.json.data) as ILandingPageImage[]
   }
 }

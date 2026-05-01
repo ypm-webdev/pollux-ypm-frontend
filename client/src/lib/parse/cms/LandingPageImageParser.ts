@@ -5,7 +5,7 @@ export interface ILandingPageImage {
 
   attributes: {
     title: string
-    field_chit_unit: string[] // unit code (number string, e.g. "2")
+    field_chit_unit?: string[] // unit code (number string, e.g. "2") - optional for new endpoints
     field_iiif_image: {
       uri: string // URL of hero image
     }
@@ -30,6 +30,7 @@ export class LandingPageImageParser {
   getHeroImage(unit: UnitCode): IImageData {
     let images = this.items.filter(
       (item) =>
+        item.attributes.field_chit_unit &&
         unitCodeFromNumString(item.attributes.field_chit_unit[0]) === unit,
     )
 
