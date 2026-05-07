@@ -41,7 +41,8 @@
     "vite-plugin-eslint": "1.8.1",
     "vite-tsconfig-paths": "5.1.2",
     "wellknown": "0.5.0",
-    "ws": "8.18.0"
+    "ws": "8.18.0",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@cloudimage/360-view": "^4.9.5",
