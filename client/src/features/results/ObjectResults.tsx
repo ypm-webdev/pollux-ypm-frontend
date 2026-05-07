@@ -79,6 +79,7 @@ const ObjectResults: React.FC<IProps> = ({ searchResponse, isMobile }) => {
             label="Objects"
             overlay="objects"
             resultsData={data}
+            toggleView={true}
           />
         </Col>
       )}

@@ -118,6 +118,19 @@ const ObjectSnippet: React.FC<ISearchData> = ({
     const snippetDataComponent = (
       <React.Fragment>
         <StyledDl>
+           {callNumber !== null && (
+            <Row>
+              <Col>
+                {/* <StyledDt>Identifiers</StyledDt> */}
+                <StyledDt data-testid="object-snippet-identifiers">
+                  <span className="pb-2 d-block">
+                    <i className="bi bi-upc-scan pe-1"></i><strong className="results-object-callnumber">{callNumber}</strong>
+                  </span>
+                  {/* {identifiers.length > 1 && '...'} */}
+                </StyledDt>
+              </Col>
+            </Row>
+          )}
           <ProductionSnippet
             agents={eventAgents}
             date={eventDate}
@@ -237,6 +250,7 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                   <StyledDl className="clearfix">
                     <StyledDt data-testid="object-snippet-identifiers">
                       <span className="pb-2 d-block">
+                        <i className="bi bi-upc-scan pe-1"></i>
                         <strong className="results-object-callnumber">{callNumber}</strong>
                       </span>
                       {/* {identifiers.length > 1 && '...'} */}

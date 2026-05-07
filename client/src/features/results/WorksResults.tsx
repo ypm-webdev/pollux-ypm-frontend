@@ -75,8 +75,7 @@ const WorksResults: React.FC<IProps> = ({ searchResponse, isMobile }) => {
             total={estimate}
             label="Works"
             overlay="works"
-            resultsData={data}
-          />
+            resultsData={data}            toggleView={true}          />
         </Col>
       )}
       <Col xs={12}>
