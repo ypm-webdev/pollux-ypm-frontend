@@ -9,6 +9,7 @@ import NamesContainer from '../common/NamesContainer'
 import ClassContainer from '../common/ClassContainer'
 import WebPages from '../common/WebPages'
 import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
+import StyledHr from '../../styles/shared/Hr'
 
 import Dates from './Dates'
 import Activity from './Activity'

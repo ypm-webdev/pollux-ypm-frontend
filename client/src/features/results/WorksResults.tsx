@@ -55,7 +55,7 @@ const WorksResults: React.FC<IProps> = ({ searchResponse, isMobile }) => {
     return null
   }
 
-  const resultsList = (results: Array<IOrderedItems>): Array<JSX.Element> =>
+  const resultsList = (results: Array<IOrderedItems>): Array<React.JSX.Element> =>
     results.map((result, ind) => (
       <WorksSnippet
         key={result.id}

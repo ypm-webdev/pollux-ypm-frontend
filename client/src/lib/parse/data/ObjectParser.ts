@@ -42,6 +42,7 @@ export default class ObjectParser extends EntityParser {
     }>,
   ): string | null {
     if (identifiers.length > 0) {
+      // First, look for an identifier marked as a call number
       for (const id of identifiers) {
         if (
           !isUndefined(id.equivalent) &&
@@ -50,6 +51,8 @@ export default class ObjectParser extends EntityParser {
           return id.identifier[0]
         }
       }
+      // Fall back to the first identifier if no call number is found
+      return identifiers[0].identifier[0]
     }
 
     return null

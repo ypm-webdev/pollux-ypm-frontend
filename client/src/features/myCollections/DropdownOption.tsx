@@ -28,7 +28,7 @@ const DropdownCheckbox = ({
   onCheck,
   isCheckboxDisabled = false,
   ref,
-}: IProps): JSX.Element => (
+}: IProps): React.JSX.Element => (
   <Form.Group
     className="mx-2 fw-normal d-flex mb-2"
     ref={ref}

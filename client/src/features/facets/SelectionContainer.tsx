@@ -83,7 +83,7 @@ const SelectionContainer: React.FC<IProps> = ({
     navigate(`${location.pathname}?${updatedQuery}`)
   }
 
-  const getSelectedFacets = (): JSX.Element[] | null => {
+  const getSelectedFacets = (): React.JSX.Element[] | null => {
     if (selectedFacets === null) {
       return null
     }

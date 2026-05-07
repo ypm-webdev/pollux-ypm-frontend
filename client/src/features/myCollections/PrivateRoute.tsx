@@ -3,7 +3,7 @@ import { useAuth } from 'react-oidc-context'
 
 import ErrorPage from '../error/ErrorPage'
 
-const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
+const PrivateRoute: React.FC<{ children: React.JSX.Element }> = ({ children }) => {
   const { isAuthenticated, signinRedirect } = useAuth()
 
   React.useEffect(() => {

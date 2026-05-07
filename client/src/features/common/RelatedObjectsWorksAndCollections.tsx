@@ -25,7 +25,7 @@ const tabsChildren = (
   relationships: IHalLinks,
   isMobile: boolean,
   user?: ISearchResults,
-): Array<JSX.Element> =>
+): Array<React.JSX.Element> =>
   Object.keys(relationships)
     .map((key) => {
       const tabSection = relationships[key]
@@ -66,7 +66,7 @@ const tabsChildren = (
       }
       return null
     })
-    .filter((entry) => entry !== null) as Array<JSX.Element>
+    .filter((entry) => entry !== null) as Array<React.JSX.Element>
 
 const RelatedObjectsWorksAndCollections: React.FC<IRelated> = ({
   links,

@@ -1,7 +1,7 @@
 import React, { type JSX } from 'react'
 
 const SelectionList: React.FC<{
-  children: Array<JSX.Element>
+  children: Array<React.JSX.Element>
 }> = ({ children }) => (
   <div
     className="rounded-2 border"

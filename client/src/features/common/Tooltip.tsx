@@ -10,7 +10,7 @@ type Placement = 'top' | 'bottom' | 'left' | 'right'
 
 interface IProps {
   html: string
-  children: JSX.Element
+  children: React.JSX.Element
   placement?: Placement
 }
 
@@ -48,7 +48,7 @@ const Tooltip: React.FC<IProps> = ({
   children,
   placement = 'bottom',
 }) => {
-  const renderTooltip = (inPlacement: Placement): JSX.Element => (
+  const renderTooltip = (inPlacement: Placement): React.JSX.Element => (
     <StyledTooltip placement={inPlacement}>
       <span
         dangerouslySetInnerHTML={{

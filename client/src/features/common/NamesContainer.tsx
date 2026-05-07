@@ -44,7 +44,7 @@ const NamesContainer: React.FC<INames> = ({
 
   useResizeableWindow(setIsMobile)
 
-  const name = (namesData: Array<INoteContent>): JSX.Element[] =>
+  const name = (namesData: Array<INoteContent>): React.JSX.Element[] =>
     namesData.map((nameData, ind) => {
       const { content, language, notation } = nameData
       const languageSuperscriptId =

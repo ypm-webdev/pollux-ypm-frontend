@@ -22,7 +22,7 @@ const NamedCollections: React.FC<IApiText> = ({ entity }) => {
     },
   )
 
-  const formatRecordLinks = (links: Array<string>): JSX.Element[] =>
+  const formatRecordLinks = (links: Array<string>): React.JSX.Element[] =>
     links
       .map((link, ind) => {
         if (link !== null) {

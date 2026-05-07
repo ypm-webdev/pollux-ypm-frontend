@@ -5,7 +5,7 @@ import StyledDataRow from '../../styles/shared/DataRow'
 import TextLabel from './TextLabel'
 
 interface IContainer {
-  children: JSX.Element | Array<JSX.Element>
+  children: React.JSX.Element | Array<React.JSX.Element>
   label?: string | undefined
   additionalClassName?: string
   textLabelClassName?: string

@@ -253,6 +253,7 @@ const theme = {
   searchBox: {
     width: '816px',
     borderRadius: '0px',
+    borderRadiusMobile: '0px',
     borderStyle: 'solid 1px #cccccc',
   },
 

@@ -36,7 +36,7 @@ const NotesContainer: React.FC<INotes> = ({
   )
   const [textValueWidth, textLabelWidth] = getColumnWidth(expandColumns)
 
-  const formatTextNote = (noteData: Array<INoteContent>): JSX.Element[] =>
+  const formatTextNote = (noteData: Array<INoteContent>): React.JSX.Element[] =>
     noteData.map((note, ind) => (
       <TextNote
         key={ind}

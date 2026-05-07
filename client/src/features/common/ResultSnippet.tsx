@@ -14,7 +14,7 @@ const ResultSnippet = (
   uri: string,
   tab: string,
   title: string,
-): JSX.Element | null => {
+): React.JSX.Element | null => {
   if (tab === 'objects') {
     return <ObjectSnippet uri={uri} view="list" titleOfTabbedContent={title} />
   }

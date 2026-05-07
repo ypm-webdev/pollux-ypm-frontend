@@ -80,6 +80,8 @@ const ObjectSnippet: React.FC<ISearchData> = ({
     let locationLabel
     let location
 
+    // console.log('callnumber: ', ObjectParser.getCallNumber(identifiers));
+
     const { produced_by, created_by, encountered_by } = data
 
     const producedBy = object.getProductionEvent()
@@ -235,7 +237,7 @@ const ObjectSnippet: React.FC<ISearchData> = ({
                   <StyledDl className="clearfix">
                     <StyledDt data-testid="object-snippet-identifiers">
                       <span className="pb-2 d-block">
-                        <strong className="results-object-callnumber">{callNumber.identifier}</strong>
+                        <strong className="results-object-callnumber">{callNumber}</strong>
                       </span>
                       {/* {identifiers.length > 1 && '...'} */}
                     </StyledDt>

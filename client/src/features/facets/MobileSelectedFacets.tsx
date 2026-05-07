@@ -36,7 +36,7 @@ const MobileSelectedFacets: React.FC<IProps> = ({
   const getSelectedFacets = (
     selectedFacets: Map<string, Set<string>>,
     facetQuery: ICriteria,
-  ): JSX.Element[] | null => {
+  ): React.JSX.Element[] | null => {
     const selectedFacetComponents = [] as JSX.Element[]
     selectedFacets.forEach((entityIds, searchTag) =>
       entityIds.forEach((entityId) => {

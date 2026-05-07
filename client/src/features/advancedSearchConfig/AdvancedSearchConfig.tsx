@@ -8,7 +8,7 @@ import {
 import { StyledFaqGroupSection } from '../../styles/features/cms/FaqPage'
 import config from '../../config/config'
 
-const createAccordionItem = (scope: string): JSX.Element => {
+const createAccordionItem = (scope: string): React.JSX.Element => {
   const headingId = `heading-${scope}`
   const collapseId = `collapse-${scope}`
   const advancedSearchName = advancedSearchTitles[scopeToTabTranslation[scope]]
@@ -60,7 +60,7 @@ const createAccordionItem = (scope: string): JSX.Element => {
   )
 }
 
-const createAccordion = (groupName: string): JSX.Element => {
+const createAccordion = (groupName: string): React.JSX.Element => {
   const id = `accordion-${groupName}`
 
   const items = Object.values(searchScope).map((scope) => {

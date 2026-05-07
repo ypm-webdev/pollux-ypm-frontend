@@ -33,7 +33,7 @@ const DetailedLinkContainer: React.FC<ILinkData> = ({
 
   useResizeableWindow(setIsMobile)
 
-  const formatRecordLinks = (links: Array<string>): JSX.Element[] =>
+  const formatRecordLinks = (links: Array<string>): React.JSX.Element[] =>
     links.map((link) => <DetailedLink uri={link} key={link} />)
 
   if (content && content.length > 0) {

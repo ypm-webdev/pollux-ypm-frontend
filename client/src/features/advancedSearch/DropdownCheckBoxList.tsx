@@ -26,7 +26,7 @@ interface IProps {
   children?: React.ReactNode
 }
 
-const DropdownCheckboxList = ({ state, stateId }: IProps): JSX.Element => {
+const DropdownCheckboxList = ({ state, stateId }: IProps): React.JSX.Element => {
   const dispatch = useAppDispatch()
   const { tab } = useParams<keyof ResultsTab>() as ResultsTab
   const scope = searchScope[tab]

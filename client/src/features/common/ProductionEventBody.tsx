@@ -88,8 +88,8 @@ const agentRow = (
   valueClassName: string,
   stackKeyValuePairs: boolean,
   componentId: string,
-): JSX.Element[] => {
-  const agentViews: JSX.Element[] = []
+): React.JSX.Element[] => {
+  const agentViews: React.JSX.Element[] = []
 
   for (const agent of agents) {
     const { role, id, references } = agent
@@ -111,7 +111,7 @@ const agentRow = (
 const referenceRow = (
   refs: IEventReference[],
   showReferenceLabel: boolean,
-): JSX.Element[] =>
+): React.JSX.Element[] =>
   refs.map((ref) => {
     const { type, content } = ref
     const auth = useAuth()
