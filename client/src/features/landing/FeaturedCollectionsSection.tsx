@@ -1,14 +1,12 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import sanitizeHtml from 'sanitize-html'
-import theme from 'src/styles/theme'
-import SwiperCore, { Navigation, Pagination } from 'swiper'
+import theme from '../../styles/theme'
+import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-
-SwiperCore.use([Navigation, Pagination])
 
 import { UnitCode } from '../../config/cms'
 import {
@@ -35,6 +33,7 @@ const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
       data-testid="featured-collections-container"
     >
       <Swiper
+        modules={[Navigation, Pagination]}
         className="featured-collections-swiper"
         style={{ width: '100%', minWidth: 0, flex: '1 1 0' }}
         spaceBetween={16}
