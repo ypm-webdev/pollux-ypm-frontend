@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Col } from 'react-bootstrap'
 import { useAuth } from 'react-oidc-context'
@@ -11,6 +11,8 @@ import StyledDataRow from '../../styles/shared/DataRow'
 import StyledTextLabel from '../../styles/features/common/TextLabel'
 import StyledHr from '../../styles/shared/Hr'
 import { IEventInfo } from '../../types/derived-data/events'
+import theme from '../../styles/theme'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 
 import ProductionEventBody from './ProductionEventBody'
 
@@ -29,6 +31,11 @@ const ProductionEvent: React.FC<IProps> = ({
   expandColumns = false,
   stackKeyValuePairs = false,
 }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
+
   const auth = useAuth()
   const loc = useLocation()
   const { value: labelName, isReady: labelNameIsReady } = useApiText({

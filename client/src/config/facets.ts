@@ -143,6 +143,7 @@ export const facetNamesLists: IFacetNamesLists = {
     'itemProductionAgentId',
     'itemProductionPlaceId',
     'itemProductionDate',
+    'itemProductionTechniqueId',
     'responsibleUnits',
     'responsibleCollections',
   ],
@@ -258,6 +259,7 @@ export const facetLabels: { [key: string]: string } = {
   itemEncounteredAgentId: 'Encountered By',
   itemEncounteredDate: 'Encounter Date',
   itemProductionDate: 'Creation Date',
+  itemProductionTechniqueId: 'Technique',
   itemProductionPlaceId: 'Created At',
   itemProductionAgentId: 'Created By',
   itemRecordType: 'Object Class',
@@ -265,7 +267,7 @@ export const facetLabels: { [key: string]: string } = {
   placeTypeId: 'Categorized As',
   responsibleCollections: 'Collection',
   responsibleUnits: 'Responsible Unit',
-  setAboutAgentId: 'About People & Groups',
+  setAboutAgentId: 'About Person or Group',
   setAboutConceptId: 'About Concept',
   setAboutEventId: 'About Event',
   setAboutItemId: 'About Object',
@@ -289,7 +291,7 @@ export const facetLabels: { [key: string]: string } = {
   workAboutItemId: 'About Object',
   workAboutWorkId: 'About Work',
   workAboutSetId: 'About Collection',
-  workAboutAgentId: 'About People & Groups',
+  workAboutAgentId: 'About Person or Group',
   workPublicationAgentId: 'Published By',
   workCreationAgentId: 'Created By',
   workAboutPlaceId: 'About Place',
@@ -344,6 +346,10 @@ export const facetSearchTerms: IFacetToSearchTermConfig = {
     itemProductionDate: {
       searchTermName: 'producedDate',
       idFacet: false,
+    },
+    itemProductionTechniqueId: {
+      searchTermName: 'producedUsing',
+      idFacet: true,
     },
     itemRecordType: {
       searchTermName: 'recordType',
@@ -695,6 +701,10 @@ export const searchTermFacets: ISearchTermToFacetConfig = {
     producedDate: {
       facetName: 'itemProductionDate',
       idFacet: false,
+    },
+    producedUsing: {
+      facetName: 'itemProductionTechniqueId',
+      idFacet: true,
     },
     recordType: {
       facetName: 'itemRecordType',

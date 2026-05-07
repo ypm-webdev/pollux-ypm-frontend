@@ -30,10 +30,7 @@ const getHalLinks = (
 
   Object.keys(providedHalLinks || {}).map((link: string) =>
     Object.keys(searchTags).map((tag) => {
-      if (
-        searchTags[tag].searchTag === link &&
-        providedHalLinks[link]._estimate > 0
-      ) {
+      if (searchTags[tag].searchTag === link) {
         filteredHalLinks.push(providedHalLinks[link].href)
       }
       return null
@@ -76,10 +73,10 @@ const TimelineContainer: React.FC<{
     setIsFullscreen(!isFullscreen)
     const elem = timelineRef.current
     if (isFullscreen) {
-      document.exitFullscreen()
+      setIsFullscreen(false)
     } else if (!isFullscreen) {
-      if (elem !== null && elem.requestFullscreen) {
-        elem.requestFullscreen()
+      if (elem !== null) {
+        setIsFullscreen(true)
       }
     }
   }
@@ -98,6 +95,7 @@ const TimelineContainer: React.FC<{
     if (sortedTimelineYears.length !== 0) {
       return (
         <StyledEntityPageSection
+          className={`timelineContainer${isFullscreen ? 'Fullscreen' : ''}`}
           data-testid={`timeline-container${isFullscreen ? '-fullscreen' : ''}`}
           ref={timelineRef}
         >

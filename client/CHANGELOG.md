@@ -2,6 +2,180 @@
 
 All notable changes to this project will be documented in this file.
 
+## v1.68.1 - 2026-05-05
+
+### Fixed
+
+- Fixed the FAQ rendering ([#731](https://github.com/project-lux/lux-frontend/issues/731)).
+
+## v1.68.0 - 2026-04-27
+
+### Added
+
+- Added underline to links on hover ([#873](https://github.com/project-lux/lux-frontend/issues/873)).
+- Added advanced search config link to FAQ menu ([#731](https://github.com/project-lux/lux-frontend/issues/731)).
+- Added search links for subject headings ([#765](https://github.com/project-lux/lux-frontend/issues/765)).
+- Added spacing between data points for event data on Objects and Works ([#675](https://github.com/project-lux/lux-frontend/issues/675)).
+
+### Changed
+
+- Changed the padding between Show All/Fewers Rows button and Search LUX button in the advanced search ([#687](https://github.com/project-lux/lux-frontend/issues/687)).
+- Changed labeling for timeline data ([#665](https://github.com/project-lux/lux-frontend/issues/665)).
+
+### Fixed
+
+- Fixed long titles from expanding past their container ([#699](https://github.com/project-lux/lux-frontend/issues/699)).
+- Fixed labeling within Creation event data rendering ([#905](https://github.com/project-lux/lux-frontend/issues/905)).
+
+### Removed
+
+- Removed sort titles from rendering ([#638](https://github.com/project-lux/lux-frontend/issues/638)).
+
+## v1.67.2 - 2026-4-24
+
+### Removed
+
+- Removed changes made regarding issue 331 ([#331](https://github.com/project-lux/lux-frontend/issues/331)).
+
+## v1.67.1 - 2026-4-14
+
+### Changed
+
+- Changed Works About on Event pages to Works About or Related To ([#581](https://github.com/project-lux/lux-frontend/issues/581)).
+
+## v1.67.0 - 2026-4-13
+
+### Added
+
+- Added spacing between Production event title and additional data ([#543](https://github.com/project-lux/lux-frontend/issues/543)).
+- Added spacing between facet name and count ([#614](https://github.com/project-lux/lux-frontend/issues/614)).
+- Added links from the web view to the data ([#286](https://github.com/project-lux/lux-frontend/issues/286)).
+
+### Changed
+
+- Changed Works About on People and Group, and Place pages to Works About or Related To ([#581](https://github.com/project-lux/lux-frontend/issues/581)).
+- Changed archival events rendering and data parsing ([#605](https://github.com/project-lux/lux-frontend/issues/605)).
+- Changed the layout of the FAQ page to match other CMS pages ([#669](https://github.com/project-lux/lux-frontend/issues/669)).
+
+### Fixed
+
+- Fixed date facets rendering when negative years are selected ([#868](https://github.com/project-lux/lux-frontend/issues/868)).
+
+### Removed
+
+- Removed instances of bugherd ([#331](https://github.com/project-lux/lux-frontend/issues/331)).
+
+## v1.66.2 - 2026-4-2
+
+### Fixed
+
+- Fixed timeline filter when there is only 1 year merging issue ([#512](https://github.com/project-lux/lux-frontend/issues/512)).
+
+## v1.66.1 - 2026-4-2
+
+### Added
+
+- Added SiteImprove event to the configuration errors.
+
+## v1.66.0 - 2026-3-30
+
+### Added
+
+- Added SiteImprove event to the objects/works info overlay button ([#529](https://github.com/project-lux/lux-frontend/issues/529)).
+- Added support for creation event AATs ([#483](https://github.com/project-lux/lux-frontend/issues/483)).
+- Added hover functionality to timeline graph legend ([#488](https://github.com/project-lux/lux-frontend/issues/488)).
+- Added Techinque facet to Object search results ([#491](https://github.com/project-lux/lux-frontend/issues/491)).
+- Added named collections ([#300](https://github.com/project-lux/lux-frontend/issues/300)).
+
+### Changed
+
+- Changed default help text in advanced search ([#521](https://github.com/project-lux/lux-frontend/issues/521)).
+- Changed the icon rendering priority ([#579](https://github.com/project-lux/lux-frontend/issues/579)).
+- Changed sorting options order in results ([#480](https://github.com/project-lux/lux-frontend/issues/480)).
+- Changed the curvature of the tabs in search results ([#479](https://github.com/project-lux/lux-frontend/issues/479)).
+
+### Fixed
+
+- Fixed icon hover text ([#426](https://github.com/project-lux/lux-frontend/issues/426)).
+- Fixed autoFocus in advanced search ([#827](https://github.com/project-lux/lux-frontend/issues/827)).
+
+### Removed
+
+- Removed timeline filter when there is only 1 year ([#512](https://github.com/project-lux/lux-frontend/issues/512)).
+- Removed the check for \_estimates when rendering data from HAL links ([#577](https://github.com/project-lux/lux-frontend/issues/577)).
+- Removed invalid relationships from the timeline legend ([#866](https://github.com/project-lux/lux-frontend/issues/866)).
+
+## v1.65.4 - 2026-3-23
+
+### Fixed
+
+- Fixed rendering of gear options ([#752](https://github.com/project-lux/lux-frontend/issues/752)).
+
+## v1.65.3 - 2026-3-19
+
+### Added
+
+- Added border around sections of the advanced search with white backgrounds ([#752](https://github.com/project-lux/lux-frontend/issues/752)).
+
+### Fixed
+
+- Fixed size of search bar in mobile ([#786](https://github.com/project-lux/lux-frontend/issues/786)).
+
+## v1.65.2 - 2026-3-16
+
+### Fixed
+
+- Fixed typescript errors ([#585](https://github.com/project-lux/lux-frontend/issues/585)).
+
+## v1.65.0 - 2026-3-16
+
+### Added
+
+- Added cartography icon and AAT config ([#561](https://github.com/project-lux/lux-frontend/issues/561)).
+- Added grid view button to Event results page ([#576](https://github.com/project-lux/lux-frontend/issues/576)).
+- Added grid view button to Place results page ([#531](https://github.com/project-lux/lux-frontend/issues/531)).
+- Added subject headings to sets pages ([#788](https://github.com/project-lux/lux-frontend/issues/788)).
+
+### Changed
+
+- Changed the objects included and works included to be capitalized ([#812](https://github.com/project-lux/lux-frontend/issues/812)).
+- Changed About People & Groups facet label to About Person or Group ([#615](https://github.com/project-lux/lux-frontend/issues/615)).
+- Changed the row background color in advanced search per POW designs ([#752](https://github.com/project-lux/lux-frontend/issues/752)).
+- Changed the advanced search collapse container button color per POW designs ([#752](https://github.com/project-lux/lux-frontend/issues/752)).
+
+### Fixed
+
+- Fixed hamburger menu alignment ([#562](https://github.com/project-lux/lux-frontend/issues/562)).
+- Fixed padding of Show All button to make it align with list ([#538](https://github.com/project-lux/lux-frontend/issues/538)).
+- Fixed grid view button on Concept results page ([#575](https://github.com/project-lux/lux-frontend/issues/575)).
+- Fixed identifiers rendering on Object snippets ([#585](https://github.com/project-lux/lux-frontend/issues/585)).
+- Fixed mobile UI issues per POW designs ([#786](https://github.com/project-lux/lux-frontend/issues/786)).
+
+### Removed
+
+- Removed the final breaking line on results page in mobile view when necessary ([#539](https://github.com/project-lux/lux-frontend/issues/539)).
+
+## v1.64.2 - 2026-3-2
+
+### Fixed
+
+- Fixed timeout error with onBlur and onFocus ([#827](https://github.com/project-lux/lux-frontend/issues/827))
+
+## v1.64.0 - 2026-3-2
+
+### Added
+
+- Added namespace to LUX ID input in the advanced search ([#714](https://github.com/project-lux/lux-frontend/issues/714)).
+
+### Changed
+
+- Changed advanced search LUX IDs to be editable ([#827](https://github.com/project-lux/lux-frontend/issues/827)).
+- Changed the styling of About sections on People and Groups, Places, Concepts, and Events pages ([#670](https://github.com/project-lux/lux-frontend/issues/670)).
+
+### Fixed
+
+- Fixed fullscreen view on timelines ([#580](https://github.com/project-lux/lux-frontend/issues/580))
+
 ## v1.63.1 - 2026-02-18
 
 ### Fixed

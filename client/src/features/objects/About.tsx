@@ -15,9 +15,11 @@ import { hasData } from '../../lib/parse/data/helper'
 import SubjectOf from '../common/SubjectOf'
 import { subjectOf } from '../../config/objectsSearchTags'
 import ClassContainer from '../common/ClassContainer'
+import StyledH2 from '../../styles/shared/H2'
 
 import DimensionsContainer from './DimensionsContainer'
 import RelatedEvents from './RelatedEvents'
+import NamedCollections from './NamedCollections'
 
 interface IObject {
   data: any
@@ -52,7 +54,7 @@ const About: React.FC<IObject> = ({ data }) => {
   return (
     <StyledEntityPageSection className="row" data-testid="about-object">
       <Col xs={12}>
-        <h2>About</h2>
+        <StyledH2>About</StyledH2>
       </Col>
       <Col xs={12}>
         <dl>
@@ -64,7 +66,7 @@ const About: React.FC<IObject> = ({ data }) => {
           <ClassContainer
             label="Object Class"
             entityClass={entityClass}
-            className="objectClassHr"
+            hrClassName="objectClassHr"
             textLabelClassName="col-md-3"
             textValueClassName="col-md-9"
           />
@@ -95,6 +97,7 @@ const About: React.FC<IObject> = ({ data }) => {
               id="object-production"
             />
           )}
+          <NamedCollections entity={data} />
           {encounteredEvent.length > 0 &&
             encounteredEvent.map((encounter: IEventInfo, ind: number) => {
               if (encounter !== null) {

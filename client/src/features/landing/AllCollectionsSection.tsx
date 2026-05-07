@@ -4,6 +4,7 @@ import sanitizeHtml from 'sanitize-html'
 import theme from 'src/styles/theme'
 import SwiperCore, { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'

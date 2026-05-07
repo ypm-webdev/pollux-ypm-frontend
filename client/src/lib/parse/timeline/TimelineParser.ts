@@ -26,6 +26,18 @@ export default class TimelineParser {
   }
 
   /**
+   * Determines if any of the years are in the BCE era
+   * @param {Array<string>} years; the array of years to check
+   * @returns {boolean}
+   */
+  static showYearEra(years: Array<string>): boolean {
+    if (parseInt(years[0], 10) < 0) {
+      return true
+    }
+    return false
+  }
+
+  /**
    * Returns the year from the date string provided
    * @param {string} facetValue; the date provided by the data as a string
    * @returns {string | null}
@@ -168,6 +180,26 @@ export default class TimelineParser {
           : upperLimit - earliestYear,
     }
     return output
+  }
+
+  /**
+   * Gets the facets returned with the data to help determine which relationships to show in the legend
+   * @param {ITimelinesTransformed} timelineData; the transformed timeline data
+   * @returns {Array<string>}
+   */
+  static getFacetsUsedForLegend(
+    timelineData: ITimelinesTransformed,
+  ): Array<string> {
+    const facetKeys: Array<string> = []
+    for (const yearKey of Object.keys(timelineData)) {
+      const yearData = timelineData[yearKey]
+      for (const facetKey of Object.keys(yearData)) {
+        if (facetKey !== 'total' && !facetKeys.includes(facetKey)) {
+          facetKeys.push(facetKey)
+        }
+      }
+    }
+    return facetKeys
   }
 
   /**

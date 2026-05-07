@@ -65,7 +65,7 @@ const AboutCollection: React.FC<IObject> = ({ data }) => {
         {data._links && (
           <ApiAboutData providedLinks={data._links} configuredLink={setEvent} />
         )}
-      </div>
+      </dl>
     </div>
   )
 }

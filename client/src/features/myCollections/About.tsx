@@ -126,7 +126,7 @@ const About: React.FC<IProps> = ({ data }) => {
           userUuid={userUuid}
         />
       </span>
-      <dl className="about-person-and-group mb-0">
+      <dl className="about-my-collections-and-group mb-0">
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />
         )}

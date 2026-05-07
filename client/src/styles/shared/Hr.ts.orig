@@ -1,0 +1,49 @@
+import styled from 'styled-components'
+
+import theme from '../theme'
+
+interface IProps {
+  borderWidth?: string
+  color?: string
+  width?: string
+  $hiddenOnDesktop?: boolean
+}
+
+const Hr = styled.hr<IProps>`
+  border: solid ${(props) => props.borderWidth || '0.5px'}
+    ${(props) => props.color || theme.color.black20};
+  opacity: 0.75;
+  padding: 0px 5px;
+  width: ${(props) => (props.width ? props.width : '98%')};
+  margin: 0.5rem auto;
+
+  &.footerBlocks {
+    margin-bottom: 1rem;
+    @media (min-width: ${theme.breakpoints.lg}px) {
+      display: none;
+    }
+  }
+
+<<<<<<< HEAD
+  // &.productionBodyEventHr,
+  // &.responsibleUnitHr,
+  // &.accessStatementHr, 
+  // &.collectionHr
+  {
+=======
+  &.productionBodyEventHr,
+  &.collectionHr,
+  &.responsibleUnitHr,
+  &.accessStatementHr,
+  &.hideOnAboutSectionSidePanels,
+  &.lastResult {
+>>>>>>> 419ebd8f4f09449766534bd147473c7c70f06aa5
+    display: none;
+  }
+
+  @media (min-width: ${theme.breakpoints.md}px) {
+    display: ${(props) => (props.$hiddenOnDesktop ? 'none' : 'block')};
+  }
+`
+
+export default Hr

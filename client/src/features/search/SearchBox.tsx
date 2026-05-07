@@ -25,10 +25,14 @@ const StyledSearchBox = styled.div`
   border-radius: ${theme.searchBox.borderRadius};
   font-size: 2rem;
 
-  input {
+  @media (min-width: ${theme.breakpoints.md}px) {
+    border-radius: ${theme.searchBox.borderRadius};
+  }
+
+  .form-control {
     border: none;
-    border-radius: ${theme.searchBox.borderRadius} 0 0
-      ${theme.searchBox.borderRadius} !important;
+    border-radius: ${theme.searchBox.borderRadiusMobile} 0 0
+      ${theme.searchBox.borderRadiusMobile} !important;
     margin-left: 0px !important;
     max-width: ${theme.searchBox.width};
     font-weight: 300;

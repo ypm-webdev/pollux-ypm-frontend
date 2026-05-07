@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
 import { stripYaleIdPrefix } from '../../lib/parse/data/helper'
@@ -19,6 +19,9 @@ import {
   getNextSetUris,
   isEntityAnArchive,
 } from '../../lib/util/hierarchyHelpers'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
+import theme from '../../styles/theme'
+import config from '../../config/config'
 
 import ProductionSnippet from './ProductionSnippet'
 import SnippetHeader from './SnippetHeader'
@@ -26,14 +29,25 @@ import SnippetHeader from './SnippetHeader'
 interface ISearchData {
   uri: string
   view: string
+  totalResults?: number
+  index?: number
+  pageLength?: number
   titleOfTabbedContent?: string
 }
 
 const ObjectSnippet: React.FC<ISearchData> = ({
   uri,
   view,
+  totalResults,
+  index,
+  pageLength = 20,
   titleOfTabbedContent,
 }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
+
   const { data, isSuccess, isLoading, isError } = useGetItemQuery({
     uri: stripYaleIdPrefix(uri),
     profile: 'results',
@@ -43,16 +57,23 @@ const ObjectSnippet: React.FC<ISearchData> = ({
     data: collections,
     isSuccess: collectionIsSuccess,
     isLoading: collectionIsLoading,
-  } = useGetCollectionQuery(data, {
-    skip: isError || data === undefined || data.member_of === undefined,
-  })
+  } = useGetCollectionQuery(
+    { entity: data, aatClassification: config.aat.collection },
+    {
+      skip: isError || data === undefined || data.member_of === undefined,
+    },
+  )
 
   if (isSuccess && data) {
     const object = new ObjectParser(data)
     const types = object.getTypes()
     const images = object.getImages()
     const identifiers = object.getIdentifiers()
-    const callNumber = object.getCallNumber()
+    const callNumber = ObjectParser.getCallNumber(identifiers)
+    // Get the number of identifiers to determine whether to show "..." in the snippet
+    const numOfIdentifiers = identifiers.reduce((total, identifier) => {
+      return total + identifier.identifier.length
+    }, 0)
     const eventAgents = object.getAgentsFromProductionEvent()
     const eventDate = object.getDateFromProductionEvent()
     let label = 'Produced By'
@@ -95,19 +116,6 @@ const ObjectSnippet: React.FC<ISearchData> = ({
     const snippetDataComponent = (
       <React.Fragment>
         <StyledDl>
-          {callNumber !== null && (
-            <Row>
-              <Col>
-                {/* <StyledDt>Identifiers</StyledDt> */}
-                <StyledDt data-testid="object-snippet-identifiers">
-                  <span className="pb-2 d-block">
-                    <i className="bi bi-upc-scan pe-1"></i><strong className="results-object-callnumber">{callNumber.identifier}</strong>
-                  </span>
-                  {/* {identifiers.length > 1 && '...'} */}
-                </StyledDt>
-              </Col>
-            </Row>
-          )}
           <ProductionSnippet
             agents={eventAgents}
             date={eventDate}
@@ -155,7 +163,18 @@ const ObjectSnippet: React.FC<ISearchData> = ({
               titleOfTabbedContent={titleOfTabbedContent}
             />
           </div>
-          <StyledHr width="100%" className="my-3 objectSnippetHr" />
+          <StyledHr
+            width="100%"
+            className={`objectSnippetHr ${
+              isMobile &&
+              totalResults &&
+              index &&
+              totalResults <= pageLength &&
+              index === totalResults
+                ? 'lastResult'
+                : ''
+            }`}
+          />
         </React.Fragment>
       )
     }

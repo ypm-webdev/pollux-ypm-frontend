@@ -61,6 +61,7 @@ interface IGroup {
   parentStateId: string
   nestedLevel: number
   bgColor: 'bg-light' | 'bg-white'
+  rowBgColor: string
 }
 
 /**
@@ -82,6 +83,7 @@ const Group: React.FC<IGroup> = ({
   parentStateId,
   nestedLevel,
   bgColor,
+  rowBgColor,
 }) => {
   const [open, setOpen] = useState<boolean>(true)
 

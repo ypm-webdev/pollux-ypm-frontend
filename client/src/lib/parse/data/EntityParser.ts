@@ -153,8 +153,11 @@ export default class EntityParser {
 
         // Get the label of the list of names from either the nested classified_as or nested identified_by
         if (classifiedAs.length > 0) {
-          // Filter out inverted terms classifications
-          const ids = getClassifiedAs(classifiedAs, [config.aat.invertedTerms])
+          // Filter out inverted terms classifications and sort title classifications
+          const ids = getClassifiedAs(classifiedAs, [
+            config.aat.invertedTerms,
+            config.aat.sortTitle,
+          ])
           // check if there are multiple classifications for a name
           if (ids.length > 0) {
             ;[label] = ids
@@ -529,37 +532,37 @@ export default class EntityParser {
     // For unspecified types
     switch (type) {
       case 'HumanMadeObject':
-        return [objectsIcon, 'physical object']
+        return [objectsIcon, 'Physical Objects']
       case 'DigitalObject':
-        return [softwareElectronicMediaIcon, 'digital object']
+        return [softwareElectronicMediaIcon, 'Digital Objects']
       case 'VisualItem':
-        return [visualWorksIcon, 'visual work']
+        return [visualWorksIcon, 'Visual Works']
       case 'Set':
-        return [collectionsIcon, 'set and collection']
+        return [collectionsIcon, 'Collections']
       case 'LinguisticObject':
-        return [textualWorksIcon, 'linguistic object']
+        return [textualWorksIcon, 'Textual Works']
       case 'Person':
-        return [peopleOrgsIcon, 'person and group']
+        return [peopleOrgsIcon, 'People & Groups']
       case 'Group':
-        return [peopleOrgsIcon, 'person and group']
+        return [peopleOrgsIcon, 'People & Groups']
       case 'Place':
-        return [placesIcon, 'place']
+        return [placesIcon, 'Places']
       case 'Currency':
-        return [conceptsIcon, 'concept']
+        return [conceptsIcon, 'Concepts']
       case 'Language':
-        return [conceptsIcon, 'concept']
+        return [conceptsIcon, 'Concepts']
       case 'Material':
-        return [conceptsIcon, 'concept']
+        return [conceptsIcon, 'Concepts']
       case 'MeasurementUnit':
-        return [conceptsIcon, 'concept']
+        return [conceptsIcon, 'Concepts']
       case 'Type':
-        return [conceptsIcon, 'concept']
+        return [conceptsIcon, 'Concepts']
       case 'Activity':
-        return [eventsIcon, 'event']
+        return [eventsIcon, 'Events']
       case 'Period':
-        return [eventsIcon, 'event']
+        return [eventsIcon, 'Events']
       case 'Event':
-        return [eventsIcon, 'event']
+        return [eventsIcon, 'Events']
       default:
         return ['', '']
     }
@@ -744,13 +747,33 @@ export default class EntityParser {
     }
 
     if (Object.keys(_links).includes(requestedLink)) {
-      const { _estimate } = _links[requestedLink]
-      if (_estimate > 0 || _estimate === null) {
-        return _links[requestedLink].href
-      }
+      return _links[requestedLink].href
     }
 
     return null
+  }
+
+  /**
+   * Returns array of transformed publication event data
+   * @returns {Array<IEventInfo>}
+   */
+  getAboutSubsection(): Array<Array<string> | string> {
+    const about = forceArray(this.json.about)
+    const aboutIds = getClassifiedAs(about)
+
+    const aboutData = about
+      .map((obj) => {
+        const ids: Array<string | undefined> = []
+        if (obj.hasOwnProperty('created_by')) {
+          obj.created_by.influenced_by.map((influencedBy: IEntity) => {
+            ids.push(influencedBy.id)
+          })
+        }
+        return ids.filter((id) => id !== undefined)
+      })
+      .filter((arr) => arr.length !== 0)
+
+    return [...aboutData, ...aboutIds]
   }
 
   /**

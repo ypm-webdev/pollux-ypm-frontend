@@ -2,7 +2,6 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap'
 
 import { advancedSearchTitles } from '../../config/searchTypes'
-import { getIcon } from '../../lib/advancedSearch/searchHelper'
 import StyledHr from '../../styles/shared/Hr'
 import theme from '../../styles/theme'
 import SecondaryButton from '../../styles/shared/SecondaryButton'
@@ -30,6 +29,8 @@ const MobileTabButton: React.FC<IProps> = ({
   isCurrentTab = false,
 }) => {
   const { isFetching, isLoading } = requestState
+  const imgStyle =
+    !isCurrentTab && !showArrow ? { filter: 'grayscale(100%)' } : undefined
 
   return (
     <SecondaryButton
@@ -41,8 +42,8 @@ const MobileTabButton: React.FC<IProps> = ({
       <Row>
         <Col xs={2} className="d-flex align-items-center justify-content-center">
           <img
-            className="navIcon"
-            src={getIcon(icon)}
+            className="navIcon ms-2 mt-1"
+            src={icon}
             alt="icon"
             aria-label="icon"
             height={showArrow ? 55 : 45}
@@ -57,7 +58,7 @@ const MobileTabButton: React.FC<IProps> = ({
             </Col>
             <Col xs={12} className="linkSubtext d-flex float-start">
               {isLoading || isFetching ? (
-                <LoadingSpinner size="sm" />
+                <LoadingSpinner size="sm" className="mt-2" />
               ) : (
                 <span className={`badge ${isCurrentTab ? 'badge-primary' : 'badge-secondary'}`}>{estimate.toLocaleString('en-US')}</span>
               )}{' '}

@@ -54,11 +54,21 @@ const EntityPageSection = styled.div<IProps>`
 
   &.results,
   &.resultsAlert {
-    box-shadow: 0px 4px 5px 0px ${theme.color.black20};
+    box-shadow: 0px 2px 5px 5px ${theme.color.black10};
   }
 
   &.resultsEntityPageSection {
     padding: 0px;
+  }
+
+  &.timelineContainerFullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    margin-bottom: 0;
   }
 `
 
