@@ -9,9 +9,8 @@ on:
         default: 'BYUNIT2'
         type: choice
         options:
-          - PRD
-          - TST
-          - DEV
+          - BLUE
+          - GREEN
           - BYUNIT2
 jobs:
   deploy:
@@ -47,6 +46,7 @@ jobs:
           env-to-json.py _env config.json
       - name: Deploy Docker Image
         run: |
+          echo "Deploying ${{ vars.TAG_TO_DEPLOY }} to ${{ inputs.target_env }}"
           set -x
           aws kms encrypt --region us-east-1 \
             --key-id ${{ vars.CDS2_KMS_KEY_ID_DEV }} \
