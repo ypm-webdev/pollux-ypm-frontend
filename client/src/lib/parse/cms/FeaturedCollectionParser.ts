@@ -1,3 +1,5 @@
+import lodash from 'lodash'
+
 import { UnitCode, unitCodeFromNumString } from '../../../config/cms'
 
 export interface ICmsResponse {
@@ -47,7 +49,7 @@ const selectCollection = (
 
   let items = candidates.filter(
     (item) =>
-      item.attributes.field_chit_unit && 
+      item.attributes.field_chit_unit &&
       unitCodeFromNumString(item.attributes.field_chit_unit[0]) === unit,
   )
 
@@ -57,12 +59,13 @@ const selectCollection = (
     items = candidates
   }
 
+  const placeholderImageUrl = '/public/img/placeholder-archelon.png'
   const numItems = items.length
   const chosenIndex = Math.floor(Math.random() * numItems)
   const item = items[chosenIndex]
   const attr = item.attributes
-  const imageUrl = attr.field_iiif_image.uri
-  const imageAlt = attr.field_iiif_image.title
+  const imageUrl = attr.field_iiif_image?.uri ?? placeholderImageUrl
+  const imageAlt = attr.field_iiif_image?.title ?? 'no title'
   const remaining = candidates.filter((c) => c.id !== item.id)
 
   return [
@@ -90,14 +93,26 @@ export class FeaturedCollectionParser {
   }
 
   getCollections(units: UnitCode[]): ICollection[] {
-    const colls: (ICollection | null)[] = []
-    let candidates = this.data
-    let maxToShow = candidates.length < 6 ? candidates.length : 6
-    for (let i = 0; i < maxToShow; i += 1) {
-      ;[colls[i], candidates] = selectCollection(units[i], candidates)
+    const colls: ICollection[] = []
+    let candidates = [...this.data]
+    const maxToShow = candidates.length < 6 ? candidates.length : 6
+    let candidatesFiltered = lodash.sampleSize(candidates, maxToShow)
+    for (let i = 0; i < maxToShow && maxToShow > 0; i += 1) {
+      // Pick a random item from remaining candidates
+      const item = candidatesFiltered[i]
+      const attr = item.attributes
+      const placeholderImageUrl = '/img/placeholder-archelon.png'
+      
+      colls.push({
+        imageUrl: attr.field_iiif_image?.uri ?? placeholderImageUrl,
+        imageAlt: attr.field_iiif_image?.title ?? 'no title',
+        title: attr.title,
+        bodyHtml: typeof attr.body === 'string' ? attr.body : attr.body.value,
+        searchUrl: attr.field_url_path,
+      })      
     }
-    // Filter out null values and return only valid collections
-    return colls.filter((c) => c !== null) as ICollection[]
+    
+    return colls.slice(0, 6)
   }
 
   getCollectionsAll(units: UnitCode[]): ICollection[] {

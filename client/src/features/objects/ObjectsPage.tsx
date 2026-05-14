@@ -102,7 +102,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
             <GenericBreadcrumbHierarchy
               key={element.json.id}
               entity={data}
-              columnClassName="px-0"
+              divClassName="px-0"
               id="object-page"
               getNextEntityUri={getNextSetUris}
               linkFilter={isEntityAnArchive}
@@ -157,7 +157,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
             </Col>
             <Col lg={4}>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <StyledEntityPageSection>
+                <StyledEntityPageSection className="row">
                   <HowDoISeeIt data={data} />
                   <CanIReuseIt entity={data} entityType="object" />
                 </StyledEntityPageSection>

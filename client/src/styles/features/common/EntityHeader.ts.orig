@@ -5,9 +5,15 @@ import theme from '../../theme'
 
 const EntityHeader = styled(Row)`
   margin: 0;
+<<<<<<< HEAD
   padding: 1rem;
   // background-color: ${theme.color.white};
   background: linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%);
+=======
+  padding-left: 2rem;
+  padding-right: 1rem;
+  background-color: ${theme.color.white};
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
 
   h1, h1.main-label-title {
     font-family: 'Mallory Bold', sans-serif;
@@ -21,6 +27,7 @@ const EntityHeader = styled(Row)`
     // padding-left: 1.5rem;
   }
 
+<<<<<<< HEAD
   .entity-supertype-icon {
     margin-left: auto;
   }
@@ -52,9 +59,11 @@ const EntityHeader = styled(Row)`
 
   }
 
+=======
   @media (min-width: ${theme.breakpoints.md}px) {
     padding-left: 2.5rem;
   }
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
 `
 
 export default EntityHeader

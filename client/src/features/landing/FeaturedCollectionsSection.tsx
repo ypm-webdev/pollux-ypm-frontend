@@ -84,7 +84,8 @@ const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
                   <div className="search-url">
                     <InternalLink
                       uri={searchUrl}
-                      name={title}
+                      // name={title}
+                      name="View Collection"
                       linkCategory="Featured Collection"
                     />
                   </div>

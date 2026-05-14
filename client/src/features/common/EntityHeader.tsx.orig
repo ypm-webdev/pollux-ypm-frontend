@@ -16,6 +16,7 @@ import IEntity from '../../types/data/IEntity'
 import EntityParser from '../../lib/parse/data/EntityParser'
 import config from '../../config/config'
 import theme from '../../styles/theme'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 import AddToCollectionButton from '../myCollections/AddToCollectionButton'
 import AddToCollectionModal from '../myCollections/AddToCollectionModal'
 import { pushClientEvent } from '../../lib/pushClientEvent'
@@ -95,6 +96,10 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     alertVariant: 'primary',
   })
 
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
   const agentData = AgentData(primaryAgent)
 
   const element = new EntityParser(entity)
@@ -209,33 +214,27 @@ const EntityHeader: React.FC<IEntityHeader> = ({
           onClose={handleCloseCreateCollectionModal}
         />
       )}
-      <StyledEntityHeader>
 <<<<<<< HEAD
+      <StyledEntityHeader>
         {/* <Col xs={12} sm={12} md={12} lg={isMobile ? 12 : 9}> */}
         <Col xs={12} sm={12} md={12} lg={12}>
           <Row className="mt-2">
+=======
+      <StyledEntityHeader className="py-3">
+        <Col xs={12} sm={12} md={12} lg={isAuthenticated ? 9 : 12}>
+          <Row>
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
             <Col xs={12} className="d-flex text-start p-0">
               <h1 className={isMobile?"d-flex main-label-title": "d-flex-main-label-title ps-4"}>
                 <span data-testid="entity-header">
                   {/* <Tooltip html={helperText} placement="bottom">
-=======
-        <Col xs={12} sm={12} md={12} lg={isAuthenticated ? 9 : 12}>
-          <Row>
-            <Col xs={12} className="d-flex text-start p-0">
-              <h1 className="d-flex">
-                <span
-                  data-testid="entity-header"
-                  style={{ overflowWrap: 'anywhere' }}
-                >
-                  <Tooltip html={helperText} placement="bottom">
->>>>>>> 419ebd8f4f09449766534bd147473c7c70f06aa5
                     <StyledImg
                       src={typeIcon}
                       alt={`icon for ${helperText}`}
                       id="icon"
                       height={70}
                       width={70}
-                      className="mx-2"
+                      className="me-2"
                       data-testid="entity-icon-img"
                     />
                   </Tooltip> */}
@@ -277,7 +276,11 @@ const EntityHeader: React.FC<IEntityHeader> = ({
               </h1>
             </Col>
             {agentData && (
+<<<<<<< HEAD
               <Col  xs={12} sm={12} md={12} lg={12} className={isMobile? "text-start p-0 entity-agent-header-data": "text-start p-0 entity-agent-header-data ps-4"}>
+=======
+              <Col xs={12} className="text-start p-0">
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
                 <AgentInHeader data={agentData} />
               </Col>
             )}
@@ -308,7 +311,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
             xs={12}
             sm={12}
             md={12}
-            lg={3}
+            lg={isMobile ? 12 : 3}
             className="d-flex align-items-center justify-content-center"
           >
             <AddToCollectionButton

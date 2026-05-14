@@ -11,7 +11,6 @@ import StyledHr from '../../styles/shared/Hr'
 import theme from '../../styles/theme'
 import IEntity from '../../types/data/IEntity'
 import StyledDl from '../../styles/shared/DescriptionList'
-import StyledDataRow from '../../styles/shared/DataRow'
 import { searchTypes } from '../../config/searchTypes'
 import {
   useGetCollectionQuery,
@@ -80,8 +79,11 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
   }
 
   return (
-    <StyledDataRow className="row mt-0">
+<<<<<<< HEAD
+    <StyledDataRow className="row mt-0" data-testid="how-do-i-see-it">
+=======
     <div data-testid="how-do-i-see-it">
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
       <Col xs={12}>
         <h2 className='panel-heading'>Access Info</h2>
       </Col>
@@ -171,7 +173,6 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
         <StyledHr className="howDoISeeItHr" width="100%" />
       </Col>
     </div>
-    </StyledDataRow>
   )
 }
 

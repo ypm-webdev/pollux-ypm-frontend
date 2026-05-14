@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { isNull } from 'lodash'
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { searchScope } from '../../config/searchTypes'
@@ -9,6 +10,7 @@ import { checkForStopWords, translate } from '../../lib/util/translate'
 import {
   addSimpleSearchInput,
   ISimpleSearchState,
+  resetState,
 } from '../../redux/slices/simpleSearchSlice'
 import theme from '../../styles/theme'
 import LoadingSpinner from '../common/LoadingSpinner'
@@ -21,14 +23,9 @@ const SearchImg = styled.img`
 const StyledSearchBox = styled.div`
   display: flex;
   width: ${theme.searchBox.width};
-<<<<<<< HEAD
   border: ${theme.searchBox.borderStyle};
   border-radius: ${theme.searchBox.borderRadius};
   font-size: 2rem;
-=======
-  border: solid 1px #979797;
-  border-radius: ${theme.searchBox.borderRadiusMobile};
->>>>>>> 419ebd8f4f09449766534bd147473c7c70f06aa5
 
   @media (min-width: ${theme.breakpoints.md}px) {
     border-radius: ${theme.searchBox.borderRadius};
@@ -41,7 +38,6 @@ const StyledSearchBox = styled.div`
     margin-left: 0px !important;
     max-width: ${theme.searchBox.width};
     font-weight: 300;
-<<<<<<< HEAD
     height: 48px;
     font-size: inherit;
     font-size: 1.2rem;
@@ -62,7 +58,18 @@ const StyledSearchBox = styled.div`
     color: ${theme.color.white};
   }
 
+  .btn {
+    &:hover {
+      background-color: ${theme.color.lightGray};
+    }
+
+    &:focus {
+      border: 2px solid ${theme.color.link};
+    }
+  }
+
   .submitButton {
+<<<<<<< HEAD
     background-color: ${theme.color.primary.darkBlue};
     border-radius: 0 ${theme.searchBox.borderRadius}
       ${theme.searchBox.borderRadius} 0;
@@ -70,23 +77,12 @@ const StyledSearchBox = styled.div`
     font-size: inherit;
     border-color: ${theme.color.primary.darkBlue};
 =======
+    background-color: ${theme.color.white};
     height: 50px;
     font-size: 1.5rem;
-
-    @media (min-width: ${theme.breakpoints.md}px) {
-      font-size: 2rem;
-      height: 72px;
-      border-radius: ${theme.searchBox.borderRadius} 0 0
-        ${theme.searchBox.borderRadius} !important;
-    }
-  }
-
-  .submitButton {
-    background-color: ${theme.color.white};
+    border-left: 1px solid #979797;
     border-radius: 0 ${theme.searchBox.borderRadiusMobile}
       ${theme.searchBox.borderRadiusMobile} 0;
-    height: 50px;
-    font-size: 1.5rem;
 
     @media (min-width: ${theme.breakpoints.md}px) {
       font-size: 2rem;
@@ -94,7 +90,18 @@ const StyledSearchBox = styled.div`
       border-radius: 0 ${theme.searchBox.borderRadius}
         ${theme.searchBox.borderRadius} 0;
     }
->>>>>>> 419ebd8f4f09449766534bd147473c7c70f06aa5
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
+  }
+
+  .clearButton {
+    background-color: ${theme.color.white};
+    height: 50px;
+    font-size: 1.5rem;
+
+    @media (min-width: ${theme.breakpoints.md}px) {
+      font-size: 2rem;
+      height: 72px;
+    }
   }
 `
 
@@ -165,6 +172,12 @@ const SearchBox: React.FC<{
     dispatch(addSimpleSearchInput({ value }))
   }
 
+  const handleClearSearch = (): void => {
+    dispatch(resetState())
+    setIsError(false)
+    inputRef.current?.focus()
+  }
+
   const validateInput = (): boolean => {
     const { value } = currentState
     return value !== null && value.trim() !== '' // ignore empty search string
@@ -221,6 +234,7 @@ const SearchBox: React.FC<{
     }
   }, [isSearchOpen])
 
+<<<<<<< HEAD
   const [searchBoxStyle, setSearchBoxStyle] = useState<{
     backgroundColor: string
     borderColor: string
@@ -242,6 +256,10 @@ const SearchBox: React.FC<{
       })
     }
   }, [])
+=======
+  const hasInputValue =
+    !isNull(currentState.value) && currentState.value.length > 0
+>>>>>>> de75adb85b98994f9b553eaf81f6df49d1f1f802
 
   return (
     <Row className={`${isResults ? 'py-3' : ''} mx-0`}>
@@ -270,6 +288,17 @@ const SearchBox: React.FC<{
                 value={currentState.value !== null ? currentState.value : ''}
                 data-testid={`${id}-search-submit-input`}
               />
+              {hasInputValue && (
+                <button
+                  type="button"
+                  className="btn clearButton"
+                  aria-label="clear search input"
+                  onClick={handleClearSearch}
+                  data-testid={`${id}-search-clear-button`}
+                >
+                  <i className="bi bi-x-lg" />
+                </button>
+              )}
               <div className="input-group-append submitButtonDiv">
                 <button
                   disabled={!validateInput()}

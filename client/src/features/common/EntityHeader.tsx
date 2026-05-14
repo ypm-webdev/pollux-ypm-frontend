@@ -214,10 +214,9 @@ const EntityHeader: React.FC<IEntityHeader> = ({
           onClose={handleCloseCreateCollectionModal}
         />
       )}
-      <StyledEntityHeader>
-        {/* <Col xs={12} sm={12} md={12} lg={isMobile ? 12 : 9}> */}
-        <Col xs={12} sm={12} md={12} lg={12}>
-          <Row className="mt-2">
+      <StyledEntityHeader className="py-3">
+        <Col xs={12} sm={12} md={12} lg={isAuthenticated ? 9 : 12}>
+          <Row>
             <Col xs={12} className="d-flex text-start p-0">
               <h1 className={isMobile?"d-flex main-label-title": "d-flex-main-label-title ps-4"}>
                 <span data-testid="entity-header">
@@ -228,7 +227,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       id="icon"
                       height={70}
                       width={70}
-                      className="mx-2"
+                      className="me-2"
                       data-testid="entity-icon-img"
                     />
                   </Tooltip> */}

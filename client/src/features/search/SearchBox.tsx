@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Row } from 'react-bootstrap'
 import { useNavigate, useLocation, useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { isNull } from 'lodash'
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { searchScope } from '../../config/searchTypes'
@@ -9,6 +10,7 @@ import { checkForStopWords, translate } from '../../lib/util/translate'
 import {
   addSimpleSearchInput,
   ISimpleSearchState,
+  resetState,
 } from '../../redux/slices/simpleSearchSlice'
 import theme from '../../styles/theme'
 import LoadingSpinner from '../common/LoadingSpinner'
@@ -56,13 +58,35 @@ const StyledSearchBox = styled.div`
     color: ${theme.color.white};
   }
 
+  .btn {
+    &:hover {
+      background-color: ${theme.color.primary.blue};
+      border: 1px solid ${theme.color.primary.blue};
+      color: white;
+    }
+
+    &:focus {
+      border: 2px solid ${theme.color.link};
+    }
+  }
+
   .submitButton {
     background-color: ${theme.color.primary.darkBlue};
-    border-radius: 0 ${theme.searchBox.borderRadius}
-      ${theme.searchBox.borderRadius} 0;
+    border-radius: 0;
     height: 48px;
     font-size: inherit;
     border-color: ${theme.color.primary.darkBlue};
+  }
+
+  .clearButton {
+    background-color: ${theme.color.white};
+    height: 48px;
+    font-size: 1.75rem;
+
+    @media (min-width: ${theme.breakpoints.md}px) {
+      font-size: 1.5rem;;
+      height: 48px;
+    }
   }
 `
 
@@ -78,7 +102,6 @@ const SearchBox: React.FC<{
   unselectable: isUnselectable,
   closeSearchBox,
   id,
-  isBelowFold,
   isResults,
   setIsError,
   isSearchOpen = false,
@@ -87,19 +110,6 @@ const SearchBox: React.FC<{
   const currentState = useAppSelector(
     (state) => state.simpleSearch as ISimpleSearchState,
   )
-
-  // const ibf = isBelowFold?'true':'false'
-  const buttonStyle = isBelowFold
-    ? {
-        backgroundColor: theme.color.primary.blue,
-        outline: '1px ' + theme.color.primary.blue + ' solid',
-        border: 'none',
-      }
-    : {
-        backgroundColor: theme.color.primary.darkBlue,
-        outline: '1px ' + theme.color.primary.darkBlue + ' solid',
-        border: 'none',
-      }
 
   const dispatch = useAppDispatch()
 
@@ -115,12 +125,14 @@ const SearchBox: React.FC<{
     }
   }, [dispatch, simpleQuery])
 
+useEffect(() => {
   // If on the results page, get the current search query
   if (isResults) {
     if (currentState.value === null) {
       dispatch(addSimpleSearchInput({ value: simpleQuery }))
     }
   }
+}, [isResults, simpleQuery])
 
   const navigate = useNavigate()
 
@@ -131,6 +143,12 @@ const SearchBox: React.FC<{
   ): void => {
     const { value } = event.currentTarget
     dispatch(addSimpleSearchInput({ value }))
+  }
+
+  const handleClearSearch = (): void => {
+    dispatch(resetState())
+    setIsError(false)
+    inputRef.current?.focus()
   }
 
   const validateInput = (): boolean => {
@@ -189,32 +207,12 @@ const SearchBox: React.FC<{
     }
   }, [isSearchOpen])
 
-  const [searchBoxStyle, setSearchBoxStyle] = useState<{
-    backgroundColor: string
-    borderColor: string
-  }>({
-    backgroundColor: theme.color.primary.darkBlue,
-    borderColor: theme.color.primary.darkBlue,
-  })
-
-  useEffect(() => {
-    if (!isBelowFold) {
-      setSearchBoxStyle({
-        backgroundColor: theme.color.primary.darkBlue,
-        borderColor: theme.color.primary.darkBlue,
-      })
-    } else {
-      setSearchBoxStyle({
-        backgroundColor: theme.color.primary.blue,
-        borderColor: theme.color.primary.blue,
-      })
-    }
-  }, [])
+  const hasInputValue =
+    !isNull(currentState.value) && currentState.value.length > 0
 
   return (
     <Row className={`${isResults ? 'py-3' : ''} mx-0`}>
       <div className="col-12 d-flex justify-content-center">
-        <p></p>
         <StyledSearchBox>
           <form
             className="w-100"
@@ -231,13 +229,23 @@ const SearchBox: React.FC<{
                 type="text"
                 className="form-control ypm-search"
                 placeholder="Search the Collections..."
-                // placeholder={ibf}
                 onChange={handleInputChange}
                 ref={inputRef}
                 tabIndex={isUnselectable ? -1 : 0}
                 value={currentState.value !== null ? currentState.value : ''}
                 data-testid={`${id}-search-submit-input`}
               />
+              {hasInputValue && (
+                <button
+                  type="button"
+                  className="btn clearButton"
+                  aria-label="clear search input"
+                  onClick={handleClearSearch}
+                  data-testid={`${id}-search-clear-button`}
+                >
+                  <i className="bi bi-x-lg" />
+                </button>
+              )}
               <div className="input-group-append submitButtonDiv">
                 <button
                   disabled={!validateInput()}
@@ -245,7 +253,6 @@ const SearchBox: React.FC<{
                   className="btn submitButton"
                   aria-label="submit search input"
                   data-testid={`${id}-search-submit-button`}
-                  style={buttonStyle}
                 >
                   {isLoading ? (
                     <LoadingSpinner />

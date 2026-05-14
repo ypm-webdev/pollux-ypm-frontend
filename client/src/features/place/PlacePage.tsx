@@ -54,7 +54,7 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
           <GenericBreadcrumbHierarchy
             key={place.json.id}
             entity={data}
-            columnClassName="px-0"
+            divClassName="px-0"
             maxLength={8}
             getNextEntityUri={getNextPlaceUris}
             id="place-page"
@@ -80,11 +80,8 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <HierarchyContainer
               key={`${place.json.id}-hierarchy`}
-              id="place-hierarchy"
               entity={data}
               halLink={hierarchyChildren}
-              maxLength={8}
-              getNextEntityUri={getNextPlaceUris}
               getParentUris={
                 getAllNextPlaceUris as (
                   entity: IPlace | IConcept,
