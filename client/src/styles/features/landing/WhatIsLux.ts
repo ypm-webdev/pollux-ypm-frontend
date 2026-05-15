@@ -23,7 +23,7 @@ const WhatIsLux = styled.div`
     color: ${theme.color.white};
     background-color: ${theme.color.primary.darkBlue};
     font-family: 'Mallory Bold', sans-serif;
-    font-size: 2.25rem;
+    font-size: ${theme.font.mobile.h1.size};
     font-weight: ${theme.font.weight.extraLight};
     letter-spacing: 0px;
     z-index: 2;

@@ -6,7 +6,7 @@ const AboutPanelHeader = styled.h2`
     font-weight: 700;
     font-size: 1.75rem;
     line-height: 2rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.75rem!important;
     margin-top: 0.5rem;
 `
 

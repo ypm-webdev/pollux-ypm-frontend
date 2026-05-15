@@ -30,7 +30,7 @@ const AboutCollection: React.FC<IObject> = ({ data }) => {
       {/* <h3 className="px-3 pt-2" data-testid="collection-name-header">
         About {name}
       </h3> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader>About {name}</AboutPanelHeader>
 
       <React.Fragment>
         {names !== null && (

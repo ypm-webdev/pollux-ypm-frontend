@@ -20,7 +20,7 @@ const MoreAboutLux: React.FC<IProps> = ({ data }) => {
     <React.Fragment>
       <StyledMoreAboutLuxSection id="more-about-section" data-testid="more-about-lux-container">
         <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(moreAboutLux) }} />
-        <Button variant="primary" className="rounded-0" href="/content/about-lux" target="_blank" data-testid="more-about-lux-button">
+        <Button className="rounded-0 about-lux-button" href="/content/about-lux" target="_blank" data-testid="more-about-lux-button">
           More Info - LUX
         </Button>
       </StyledMoreAboutLuxSection>

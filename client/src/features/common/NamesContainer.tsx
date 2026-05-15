@@ -63,7 +63,7 @@ const NamesContainer: React.FC<INames> = ({
 
   return (
     <React.Fragment>
-      {showHeader && <h3>Names</h3>}
+      {/* {showHeader && <h3>Names</h3>} */}
       {Object.keys(names).map((nameLabel) => {
         if (names[nameLabel].length === 0) {
           return null
@@ -71,7 +71,7 @@ const NamesContainer: React.FC<INames> = ({
 
         return (
           <StyledDataRow
-            className="row"
+            className="row mt-3"
             key={nameLabel}
             data-testid="names-container"
           >

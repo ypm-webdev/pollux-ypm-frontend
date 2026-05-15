@@ -48,6 +48,11 @@ const Header = styled.div`
     white-space: pre-wrap;
     order: 2;
     font-size: 1.75rem!important;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
 
     @media (min-width: ${theme.breakpoints.lg}px) {
       font-size: 2em!important;

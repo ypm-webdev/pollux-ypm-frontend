@@ -52,7 +52,10 @@ const EntityPageSection = styled.div<IProps>`
     border-bottom-right-radius: 0px;
   }
 
-  &.results,
+  &.results {
+    // box-shadow: 0px 2px 5px 5px ${theme.color.black10};
+  }
+  
   &.resultsAlert {
     box-shadow: 0px 2px 5px 5px ${theme.color.black10};
   }

@@ -36,7 +36,7 @@ const AllCollectionsSection: React.FC<IProps> = ({ data, units, isMobile }) => {
         id="all-collections-section"
         data-testid="all-collections-container"
       >
-        <h2>About our Collections</h2>
+        <h2>The Collections</h2>
         <p>
           Click on any of the images below to browse each of our unique
           collections divisions:
@@ -86,7 +86,7 @@ const AllCollectionsSection: React.FC<IProps> = ({ data, units, isMobile }) => {
                         <div className="search-url">
                           <InternalLink
                             uri={searchUrl}
-                            name={title}
+                            name="View Collection"
                             linkCategory="All Collections"
                           />
                         </div>

@@ -120,7 +120,7 @@ const About: React.FC<IProps> = ({ data }) => {
       )}
       <span className="d-flex w-100 justify-content-between">
         {/* <h2 data-testid="person-page-about-header">About {name}</h2> */}
-        <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+        <AboutPanelHeader>About {name}</AboutPanelHeader>
         <EditDropdown
           handleOptionSelection={handleEditSelectionOptions}
           userUuid={userUuid}

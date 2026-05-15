@@ -22,7 +22,7 @@ const font = {
     h2: {
       weight: weight.extraLight,
       size: '2rem',
-      lineHeight: '56px',
+      lineHeight: '1.1em',
     },
     h3: {
       weight: weight.light,
@@ -276,9 +276,9 @@ const theme = {
       fontSize: '3em',
       fontWeight: font.weight.extraLight,
       letterSpacing: 0,
-      lineHeight: '56px',
+      lineHeight: '1.1em',
       color: color.black,
-      marginBottom: '15px',
+      marginBottom: '20px',
     },
     ul: {
       paddingLeft: '32px',

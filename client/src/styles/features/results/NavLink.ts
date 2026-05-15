@@ -12,7 +12,7 @@ const StyledNavLink = styled(NavLink)`
   display: block;
   padding: 12px 18px;
   text-decoration: none;
-  border-radius: ${theme.border.radius};
+  border-radius: 0px;
   width: 100%;
   align-items: start;
   flex-direction: column;
@@ -59,14 +59,14 @@ const StyledNavLink = styled(NavLink)`
 
     &:before {
       left: -14px;
-      border-bottom-right-radius: 14px;
-      box-shadow: 7px 7px 0 7px ${theme.color.white};
+      border-bottom-right-radius: 0px!important;
+      // box-shadow: 7px 7px 0 7px ${theme.color.white};
     }
 
     &:after {
       right: -14px;
-      border-bottom-left-radius: 14px;
-      box-shadow: -7px 7px 0 7px ${theme.color.white};
+      border-bottom-left-radius: 0px!important;
+      // box-shadow: -7px 7px 0 7px ${theme.color.white};
     }
 
     & > div > div > img {
