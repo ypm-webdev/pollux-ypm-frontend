@@ -36,3 +36,4 @@ package-lock.json
 !/public/touch-icon-228.png
 
 /scripts
+*.orig
