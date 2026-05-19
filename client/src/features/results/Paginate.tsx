@@ -26,7 +26,7 @@ interface IPagination {
 
 const StyledPagination = styled(Pagination)`
   button : {
-    border-radius: 0px;
+    border-radius: 0px!important;
  }
 
   li {
@@ -58,6 +58,10 @@ const StyledPagination = styled(Pagination)`
     align-items: center;
     border-radius: 0px!important;
   }
+
+  li.page-item.active {
+    background-color: ${theme.color.primary.blue};
+    border-radius: 0px!important;
 
   li.page-item.disabled > span.page-link, li.page-item.disabled > a.page-link {
     border-radius: 0px!important;  

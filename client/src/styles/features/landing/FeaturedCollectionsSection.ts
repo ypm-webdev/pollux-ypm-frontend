@@ -20,7 +20,7 @@ const FeaturedCollectionsSection = styled(ToppedBorderedDiv)`
   }
 
   .featured-collections-swiper {
-    padding-bottom: 40px;
+    // padding-bottom: 40px;
   }
 
   .featured-collections-swiper .swiper-pagination {
@@ -67,6 +67,7 @@ const FeaturedCollectionsSection = styled(ToppedBorderedDiv)`
 
   .featured-collections-swiper .swiper-wrapper {
     align-items: stretch;
+    height: inherit!important;
   }
 
   .featured-collections-swiper .swiper-slide {
