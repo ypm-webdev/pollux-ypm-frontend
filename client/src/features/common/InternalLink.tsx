@@ -7,7 +7,7 @@ interface ILinkParams {
   uri: string
   linkCategory: string
   name?: string
-  children?: JSX.Element
+  children?: React.JSX.Element
 }
 
 const InternalLink: React.FC<ILinkParams> = ({

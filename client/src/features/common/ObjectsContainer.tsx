@@ -141,7 +141,7 @@ const ObjectsContainer: React.FC<IObjectsBy> = ({ uri, tab, title, user }) => {
             <Col xs={12}>
               <PrimaryButton
                 variant="link"
-                className="objectsContainerSearchLink"
+                className={estimate > 1 ? "objectsContainerSearchLink" : "d-none" }
                 href={`/view/results/${tab}?${formatHalLink(
                   uri,
                   searchScope[tab],
@@ -151,7 +151,7 @@ const ObjectsContainer: React.FC<IObjectsBy> = ({ uri, tab, title, user }) => {
                 }
                 data-testid="objects-container-show-all-button"
               >
-                Show all {estimate} result
+                Show all {estimate.toLocaleString('en-US')} result
                 {estimate !== 1 && `s`}
               </PrimaryButton>
             </Col>

@@ -43,7 +43,7 @@ const Header: React.FC = () => {
         <Col xs={12} className="px-0">
           <StyledTitleHeader className="mb-0 mx-0 top-gradient">
             <Col sm={9} xs={12}>
-              <h2 className="page-title">Advanced Search</h2>
+              <h1 className="page-title">Advanced Search</h1>
             </Col>
             <Col
               sm={3}

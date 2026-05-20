@@ -10,12 +10,14 @@ export interface IAat {
 export function defaultAats(): IAat {
   return {
     accessStatement: 'http://vocab.getty.edu/aat/300133046',
+    additionalEvents: 'http://vocab.getty.edu/aat/300403974',
     active: 'http://vocab.getty.edu/aat/300393177',
     alternateName: 'http://vocab.getty.edu/aat/300264273',
     animalSpecimens: 'http://vocab.getty.edu/aat/300420186',
     archive: 'http://vocab.getty.edu/aat/300375748',
     biologicalSpecimens: 'http://vocab.getty.edu/aat/300421897',
     callNumber: 'http://vocab.getty.edu/aat/300311706',
+    causedByEvent: 'http://vocab.getty.edu/aat/300386174',
     collection: 'http://vocab.getty.edu/aat/300025976',
     collectionItem: 'http://vocab.getty.edu/aat/300404024',
     copyrightLicensingStatement: 'http://vocab.getty.edu/aat/300435434',
@@ -38,6 +40,7 @@ export function defaultAats(): IAat {
     languageStatement: 'http://vocab.getty.edu/aat/300435433',
     meteoriteSpecimens: 'http://vocab.getty.edu/aat/300266159', // new
     mineralSpecimens: 'http://vocab.getty.edu/aat/300011068', // new
+    namedCollection: 'http://vocab.getty.edu/aat/300456764',
     nationality: 'http://vocab.getty.edu/aat/300379842',
     occupation: 'http://vocab.getty.edu/aat/300263369',
     // TODO: change once an AAT is assigned
@@ -46,6 +49,7 @@ export function defaultAats(): IAat {
     primaryName: 'http://vocab.getty.edu/aat/300404670',
     role: 'http://vocab.getty.edu/aat/300435108',
     scientificInstruments: 'http://vocab.getty.edu/aat/300122283',  // new
+    sortTitle: 'http://vocab.getty.edu/aat/300451544',
     sortValue: 'http://vocab.getty.edu/aat/300456575',
     toolsEquipment: 'http://vocab.getty.edu/aat/300022238', // new
     typeOfPart: 'http://vocab.getty.edu/aat/300241583',

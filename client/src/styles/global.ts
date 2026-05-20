@@ -90,7 +90,10 @@ const GlobalStyle = createGlobalStyle`
     src: url(${MalloryMpMedium})
   }
 
-
+  .mallory-bold {
+    font-family: 'Mallory Bold', sans-serif;
+    font-weight: 700;
+  }
 
   body {
     min-height: 100vh;
@@ -203,6 +206,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${theme.color.link};
     text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   dt {

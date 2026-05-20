@@ -10,7 +10,7 @@ const PrimaryButton = styled(Button)`
   border-color: ${theme.color.primary.blue};
   font-size: 0.9rem;
   font-family: 'Mallory Medium', sans-serif;
-  font-weight: ${theme.font.weight.bold};
+  font-weight: 500;
   padding: 0.75rem;
   text-decoration: none;
   box-shadow: 1px 1px 5px ${theme.color.black20};
@@ -25,7 +25,7 @@ const PrimaryButton = styled(Button)`
     background-color: ${theme.color.primary.darkBlue};
     border-color: ${theme.color.primary.darkBlue};
     color: ${theme.color.white};
-    text-decoration: underline;
+    text-decoration: none;
   }
 
   &.btn:active {

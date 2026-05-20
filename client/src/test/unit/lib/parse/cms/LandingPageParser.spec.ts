@@ -6,9 +6,28 @@ import {
 const mockLandingPageData: ILandingPage = {
   type: 'type',
   attributes: {
-    field_what_is_lu: 'field_what_is_lu',
-    field_more_about_lux: 'field_more_about_lux',
-    field_footer_blocks: ['field_footer_blocks'],
+    field_what_is_lu: {
+      value: 'field_what_is_lu',
+      format: 'basic_html',
+      processed: 'field_what_is_lu',
+    },
+    field_more_about_lux: {
+      value: 'field_more_about_lux',
+      format: 'basic_html',
+      processed: 'field_more_about_lux',
+    },
+    field_footer_blocks: [
+      {
+        value: 'block1',
+        format: 'basic_html',
+        processed: 'block1',
+      },
+      {
+        value: 'block2',
+        format: 'basic_html',
+        processed: 'block2',
+      },
+    ],
   },
 }
 

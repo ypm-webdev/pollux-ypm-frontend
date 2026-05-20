@@ -43,19 +43,25 @@ export const cmsApi = createApi({
     }),
     getFeaturedCollections: builder.query<IFeaturedCollectionsResponse, void>({
       query: () => ({
-        url: 'node/featured_block?page[limit]=100',
+        url: 'node/ypm_landing_featured_block?page[limit]=100',
+        method: 'GET',
+      }),
+    }),
+    getAllCollectionsDivisions: builder.query<IFeaturedCollectionsResponse, void>({
+      query: () => ({
+        url: 'node/ypm_collections_division?page[limit]=100',
         method: 'GET',
       }),
     }),
     getLandingPage: builder.query<ICmsResponse, void>({
       query: () => ({
-        url: 'node/landing_page',
+        url: 'node/ypm_landing_page',
         method: 'GET',
       }),
     }),
     getLandingPageImages: builder.query<ICmsResponse, void>({
       query: () => ({
-        url: 'node/landing_page_image?page[limit]=100',
+        url: 'node/ypm_landing_hero_image?page[limit]=100',
         method: 'GET',
       }),
     }),
@@ -114,6 +120,7 @@ export const cmsApi = createApi({
 export const {
   useGetFaqQuery,
   useGetFeaturedCollectionsQuery,
+  useGetAllCollectionsDivisionsQuery,
   useGetLandingPageQuery,
   useGetLandingPageImagesQuery,
   useGetPageQuery,

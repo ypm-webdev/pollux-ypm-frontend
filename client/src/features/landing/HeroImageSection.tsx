@@ -6,6 +6,7 @@ import {
   IImageData,
   LandingPageImageParser,
 } from '../../lib/parse/cms/LandingPageImageParser'
+import { LandingPageParser } from '../../lib/parse/cms/LandingPageParser'
 import { UnitCode } from '../../config/cms'
 import StyledHeroImageSection from '../../styles/features/landing/HeroImageSection'
 import { pushClientEvent } from '../../lib/pushClientEvent'
@@ -13,26 +14,34 @@ import { pushClientEvent } from '../../lib/pushClientEvent'
 import WhatIsLux from './WhatIsLux'
 
 interface IProps {
-  data: ICmsResponse
+  imagesData: ICmsResponse
+  landingPageData: ICmsResponse
   unit: UnitCode
 }
 
-const HeroImageSection: React.FC<IProps> = ({ data, unit }) => {
+const HeroImageSection: React.FC<IProps> = ({ imagesData, landingPageData, unit }) => {
   const [imageData, setImageData] = useState<IImageData | null>(null)
+  const [whatIsLuxText, setWhatIsLuxText] = useState<string>('')
 
   useEffect(() => {
-    const parser = new CmsResponseParser(data)
-    const content = parser.getLandingPageImages()
-    const landingPageImageParser = new LandingPageImageParser(content)
+    const imageParser = new CmsResponseParser(imagesData)
+    const imageContent = imageParser.getLandingPageImages()
+    const landingPageImageParser = new LandingPageImageParser(imageContent)
 
     setImageData(landingPageImageParser.getHeroImage(unit))
-  }, [data, unit])
+
+    // Extract field_what_is_lu from landing page data
+    const landingPageParser = new CmsResponseParser(landingPageData)
+    const landingPageContent = landingPageParser.getLandingPage()
+    const parser = new LandingPageParser(landingPageContent)
+    setWhatIsLuxText(parser.getWhatIsLux())
+  }, [imagesData, landingPageData, unit])
 
   return (
     <StyledHeroImageSection className="hero">
       {imageData && (
         <React.Fragment>
-          <WhatIsLux />
+          <WhatIsLux whatIsLuxText={whatIsLuxText} />
           <div
             className="hero-image-container"
             data-testid="hero-image-container"
@@ -60,8 +69,8 @@ const HeroImageSection: React.FC<IProps> = ({ data, unit }) => {
                   }
                   data-testid="hero-image-caption-link"
                 >
-                  {imageData.caption.length > 30
-                    ? `${imageData.caption.slice(0, 30)}...`
+                  {imageData.caption.length > 40
+                    ? `${imageData.caption.slice(0, 40)}...`
                     : imageData.caption}
                 </Link>
               </div>

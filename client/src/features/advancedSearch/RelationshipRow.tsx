@@ -27,6 +27,7 @@ import AdvancedSearchForm from './Form'
 import OptionsButton, { RELATIONSHIP_ROW_TYPE } from './OptionsButton'
 import RemoveButton from './RemoveButton'
 import InputFieldSet from './InputFieldset'
+import DescriptiveText from './DescriptiveText'
 
 // const StyledBorderDiv = styled.div`
 //   position: absolute;
@@ -86,7 +87,8 @@ interface IRelationshipRow {
   parentScope: string
   parentStateId: string
   nestedLevel: number
-  bgColor: 'bg-light' | 'bg-white'
+  parentBgColor: 'bg-light' | 'bg-white'
+  rowBgColor: string
   hasYoungerSiblings?: boolean
   parentGroupName?: string
 }
@@ -99,7 +101,8 @@ interface IRelationshipRow {
  * @param {string} parentScope the scope of the parent object
  * @param {string} parentStateId id of the parent object within the advanced search state
  * @param {number} nestedLevel level of depth within the advanced search state
- * @param {string} bgColor the background color of the child container
+ * @param {string} parentBgColor the background color of the parent container
+ * @param {string} rowBgColor the background color of the current row
  * @param {boolean} hasYoungerSiblings the background color of the child container
  * @returns {JSX.Element}
  */
@@ -110,7 +113,8 @@ const RelationshipRow: React.FC<IRelationshipRow> = ({
   parentScope,
   parentStateId,
   nestedLevel,
-  bgColor,
+  parentBgColor,
+  rowBgColor,
   hasYoungerSiblings = false,
   parentGroupName = undefined,
 }) => {
@@ -135,7 +139,8 @@ const RelationshipRow: React.FC<IRelationshipRow> = ({
         className={`col-12 ${!hasChildInputField ? 'mb-3' : ''}`}
       >
         <StyledInputGroupDiv
-          className="jusify-content-between flex-nowrap bg-white"
+          className="jusify-content-between flex-nowrap"
+          backgroundColor={rowBgColor}
           data-testid={`${selectedKey}-${stateId}-relationship-row`}
         >
           <span className="w-100 d-flex ps-2">
@@ -147,7 +152,7 @@ const RelationshipRow: React.FC<IRelationshipRow> = ({
                 dropdownType="singleFieldSelection"
                 options={getSingleFieldDropdownOptions(parentScope)}
                 handleChange={addOption}
-                className="singleFieldSelection"
+                className="singleFieldSelection rounded-0"
                 dropdownHeaderText="Has single field"
                 ariaLabel={`${scopeToAriaLabel[parentScope]} single field selection`}
                 selected={selectedKey}
@@ -161,9 +166,10 @@ const RelationshipRow: React.FC<IRelationshipRow> = ({
                 nestedLevel={nestedLevel}
                 rowType={RELATIONSHIP_ROW_TYPE}
               />
-              <p className="mb-0 d-flex align-items-center text-nowrap w-auto mb-0 me-2">
-                {scopeToAriaLabel[scopeToPassToNestedForm]} that
-              </p>
+              <DescriptiveText
+                text={`${scopeToAriaLabel[scopeToPassToNestedForm]} that`}
+                className="me-2"
+              />
               {hasChildInputField && (
                 <InputFieldSet
                   stateId={state._stateId as string}
@@ -188,7 +194,7 @@ const RelationshipRow: React.FC<IRelationshipRow> = ({
               parentScope={scopeToPassToNestedForm}
               parentStateId={stateId}
               nestedLevel={nestedLevel + 1}
-              parentBgColor={bgColor}
+              parentBgColor={parentBgColor}
             />
           </Col>
           {/* <StyledBorderDiv /> */}

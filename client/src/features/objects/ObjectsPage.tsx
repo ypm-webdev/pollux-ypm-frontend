@@ -22,6 +22,7 @@ import { archive } from '../../config/setsSearchTags'
 import HowDoISeeIt from '../common/HowDoISeeIt'
 import IObject from '../../types/data/IObject'
 import IDigitalObject from '../../types/data/IDigitalObject'
+import UV from '../common/UV'
 import WikiDataImageViewer from '../common/WikiDataImageViewer'
 import ImageryMultiContainer from '../common/ImageryMultiContainer'
 import IEntity from '../../types/data/IEntity'
@@ -69,8 +70,8 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
     '2d' : manifestId,  // original IIIF manifest from LUX (2D imagery)
     '2d360': getRandomManifest(1.0),  // rewrite this later as method such as element.get360ManifestId() to pull from LUX
     '2dzst': getRandomManifest(1.0),  // rewrite this later as method such as element.getZStackManifestId() to pull from LUX
-    '2drti': getRandomManifest(0.0),  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
-    '3dobj': getRandomManifest(0.0),  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
+    '2drti': getRandomManifest(1.0),  // rewrite this later as method such as element.getRTIManifestId() to pull from LUX
+    '3dobj': getRandomManifest(1.0),  // rewrite this later as method such as element.get3DManifestId() to pull from LUX
     '3dvol': getRandomManifest(1.0),  // rewrite this later as method such as element.get3DVolumeManifestId() to pull from LUX
   }
 
@@ -91,7 +92,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
   // console.log("data: ", data )
   // console.log(element.getAboutData())
 
-  console.log(multiImageManifests);
+  // console.log(multiImageManifests);
 
   return (
     <React.Fragment>
@@ -101,7 +102,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
             <GenericBreadcrumbHierarchy
               key={element.json.id}
               entity={data}
-              columnClassName="px-0"
+              divClassName="px-0"
               id="object-page"
               getNextEntityUri={getNextSetUris}
               linkFilter={isEntityAnArchive}
@@ -110,9 +111,10 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
           )}
         </EntityHeader>
       </ErrorBoundary>
-
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
-        {/* {manifestId !== '' ? ( */}
+      
+      {/* // this section is being deprecated temporarily.
+      // UV viewer will be maintained at present, and MultiImageViewer, including Clover IIIF, will be implememented later. */}
+      {/* <ErrorBoundary FallbackComponent={ErrorFallback}>
         { multiImageManifests['2d'] !== '' || multiImageManifests['2drti'] !== '' || multiImageManifests['2dzst'] !== '' || multiImageManifests['2d360'] !== '' || multiImageManifests['3dobj'] !== '' || multiImageManifests['3dvol'] !== '' ? (
           <ImageryMultiContainer
             manifestIiif={multiImageManifests['2d']}
@@ -124,8 +126,14 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
         ) : (
           <WikiDataImageViewer entity={data} />
         )}
+      </ErrorBoundary> */}
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        {manifestId !== '' ? (
+          <UV manifest={manifestId} />
+        ) : (
+          <WikiDataImageViewer entity={data} />
+        )}
       </ErrorBoundary>
-
       <StyledEntityBody>
         <Col>
           <Row>
@@ -149,7 +157,7 @@ const getRandomManifest = (chanceOfBlank: number = 0.5): string => {
             </Col>
             <Col lg={4}>
               <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <StyledEntityPageSection>
+                <StyledEntityPageSection className="row">
                   <HowDoISeeIt data={data} />
                   <CanIReuseIt entity={data} entityType="object" />
                 </StyledEntityPageSection>

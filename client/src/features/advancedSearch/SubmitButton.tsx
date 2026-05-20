@@ -23,9 +23,9 @@ const SubmitButton: React.FC<ISubmitButton> = ({ state }) => {
         <PrimaryButton
           disabled={!validated}
           type="submit"
-          className="addNewQueryButton"
+          className="addNewQueryButton px-4"
           value="searchButton"
-          aria-label="search LUX"
+          aria-label="Search the Collections"
           data-testid="advanced-search-submit-button"
         >
           Search

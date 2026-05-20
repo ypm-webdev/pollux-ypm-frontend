@@ -11,7 +11,7 @@ import PrimaryButton from '../../styles/shared/PrimaryButton'
  */
 const AddToCollectionButton: React.FC<{
   setShowModal: (x: boolean) => void
-  children: JSX.Element
+  children: React.JSX.Element
   disabled?: boolean
   additionalClassName?: string
 }> = ({ disabled = true, additionalClassName, setShowModal, children }) => (

@@ -27,6 +27,7 @@ import AdvancedSearchDropdown from './Dropdown'
 import AdvancedSearchForm from './Form'
 import OptionsButton, { GROUP_ROW_TYPE } from './OptionsButton'
 import RemoveButton from './RemoveButton'
+import DescriptiveText from './DescriptiveText'
 // import Connector from './Connector'
 
 interface IProps {
@@ -61,6 +62,7 @@ interface IGroup {
   parentStateId: string
   nestedLevel: number
   bgColor: 'bg-light' | 'bg-white'
+  rowBgColor: string
 }
 
 /**
@@ -82,6 +84,7 @@ const Group: React.FC<IGroup> = ({
   parentStateId,
   nestedLevel,
   bgColor,
+  rowBgColor,
 }) => {
   const [open, setOpen] = useState<boolean>(true)
 
@@ -108,7 +111,7 @@ const Group: React.FC<IGroup> = ({
     >
       <FormGroup>
         <StyledInputGroupDiv
-          className="bg-white advancedSearchGroupRow"
+          className="bg-white advancedSearchGroupRow rounded-0"
           data-testid="advanced-search-group-row"
         >
           <span className="w-100 d-flex ps-2">
@@ -129,7 +132,7 @@ const Group: React.FC<IGroup> = ({
                     ? `close ${labelForAria} group`
                     : `open ${labelForAria} group`
                 }
-                className="collapseNestedAdvancedSearch float-left ms-2 me-3"
+                className="collapseNestedAdvancedSearch float-left ms-2 me-3 rounded-0"
               >
                 {open ? '-' : '+'}
               </CollapseButton>
@@ -140,15 +143,13 @@ const Group: React.FC<IGroup> = ({
                 dropdownType="multipleFieldSelection"
                 options={conditionals}
                 handleChange={addOption}
-                className="multipleFieldSelection"
+                className="multipleFieldSelection rounded-0"
                 dropdownHeaderText="Have multiple fields"
                 ariaLabel={`${ariaLabelForDropdowns} Have multiple fields`}
                 selected={selectedKey}
                 id={id}
               />
-              <p className="d-flex mb-0 text-nowrap justify-content-center align-items-center">
-                the following
-              </p>
+              <DescriptiveText text="the following" />
               <OptionsButton
                 state={state}
                 stateId={stateId}

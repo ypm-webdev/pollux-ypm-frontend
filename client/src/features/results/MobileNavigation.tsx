@@ -146,6 +146,7 @@ const MobileNavigation: React.FC<IProps> = ({
 
   useResizeableWindow(handleModalStateOnWindowResize)
 
+  const currentTabIcon = getIcon(searchScope[tab])
   return (
     <React.Fragment>
       <MobileTabButton
@@ -155,12 +156,18 @@ const MobileNavigation: React.FC<IProps> = ({
         }}
         role="button"
         estimate={estimates[tab]}
-        icon={searchScope[tab]}
+        icon={currentTabIcon}
         tab={tab}
         handleClick={handleShow}
         showArrow
+        isCurrentTab={true}
       />
-      <Modal show={show} animation={false} onHide={() => setShow(false)}>
+      <Modal
+        show={show}
+        animation={false}
+        onHide={() => setShow(false)}
+        className="d-flex align-items-center mobile-navigation-modal"
+      >
         <Modal.Body>
           {Object.entries(searchScope).map(([key, value]) => (
             <MobileTabButton
@@ -170,8 +177,9 @@ const MobileNavigation: React.FC<IProps> = ({
                 isFetching,
               }}
               estimate={estimates[key]}
-              icon={value}
+              icon={getIcon(value)}
               tab={key}
+              key={key}
               handleClick={() => handleOnLinkSelect(key)}
               isCurrentTab={tab === key}
             />

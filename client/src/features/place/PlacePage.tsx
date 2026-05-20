@@ -35,7 +35,7 @@ import IConcept from '../../types/data/IConcept'
 import TimelineContainer from '../timeline/TimelineContainer'
 import config from '../../config/config'
 
-import AboutPanel from './AboutPanel'
+import About from './About'
 
 const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
   const place = new EntityParser(data)
@@ -54,7 +54,7 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
           <GenericBreadcrumbHierarchy
             key={place.json.id}
             entity={data}
-            columnClassName="px-0"
+            divClassName="px-0"
             maxLength={8}
             getNextEntityUri={getNextPlaceUris}
             id="place-page"
@@ -80,11 +80,8 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <HierarchyContainer
               key={`${place.json.id}-hierarchy`}
-              id="place-hierarchy"
               entity={data}
               halLink={hierarchyChildren}
-              maxLength={8}
-              getNextEntityUri={getNextPlaceUris}
               getParentUris={
                 getAllNextPlaceUris as (
                   entity: IPlace | IConcept,
@@ -119,7 +116,7 @@ const PlacePage: React.FC<{ data: IPlace }> = ({ data }) => {
               </ErrorBoundary>
             </Col>
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <AboutPanel entity={data} />
+              <About entity={data} />
             </ErrorBoundary>
             {/* <WhatWeHave
                     configuredHalLinks={relatedTypes}

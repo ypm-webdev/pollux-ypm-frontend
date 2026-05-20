@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { useAppDispatch } from '../../app/hooks'
 import config from '../../config/config'
@@ -10,7 +10,6 @@ import {
   addHoverHelpText,
   addSelectedHelpText,
 } from '../../redux/slices/helpTextSlice'
-// import theme from '../../styles/theme'
 
 interface IInputType {
   label: string
@@ -27,8 +26,8 @@ interface IInputType {
  * @param {string} currentValue current input value
  * @param {string} parentScope the scope of the parent object
  * @param {string} stateId id of the current object within the advanced search state
- * @param {boolean} autoFocus optional; move keyboard focus onto the input field
  * @param {string} scope optional; the scope of the row for updating the help text
+ * @param {boolean} autoFocus optional; move keyboard focus onto the input field
  * @returns {JSX.Element}
  */
 const TextInput: React.FC<IInputType> = ({
@@ -36,11 +35,31 @@ const TextInput: React.FC<IInputType> = ({
   currentValue,
   field,
   stateId,
-  autoFocus,
   scope,
+  autoFocus,
 }) => {
+  const [isFocused, setIsFocused] = React.useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [isValid, setIsValid] = React.useState(true)
+
   const dispatch = useAppDispatch()
+
   const handleOnChange = (userInput: string): void => {
+    // Validate that the input starts with the correct URL prefix if the field is 'id'
+    if (
+      field === 'id' &&
+      userInput &&
+      !userInput.startsWith('https://lux.collections.yale.edu/data/')
+    ) {
+      inputRef.current?.setCustomValidity(
+        "Input must start with 'https://lux.collections.yale.edu/data/'",
+      )
+      inputRef.current?.reportValidity()
+      setIsValid(false)
+    } else {
+      inputRef.current?.setCustomValidity('')
+      setIsValid(true)
+    }
     dispatch(addTextValue({ field, value: userInput, stateId, scope }))
   }
 
@@ -69,24 +88,27 @@ const TextInput: React.FC<IInputType> = ({
 
   return (
     <div className="form-group me-2">
-      <div className="input-group h-100" style={{ minWidth: '100px' }}>
+      <div className="input-group h-100 rounded-0" style={{ minWidth: '100px' }}>
         {label && (
           <label htmlFor={id} hidden>
             {label}
           </label>
         )}
         <StyledInput
-          // eslint-disable-next-line jsx-a11y/no-autofocus
-          autoFocus={autoFocus}
+          ref={inputRef}
           type="text"
           value={displayName !== currentValue ? displayName : currentValue}
-          className="form-control advancedSearchInput bg-white"
+          className="form-control advancedSearchInput bg-white rounded-0"
           placeholder={label}
           onChange={(e) => handleOnChange(e.currentTarget.value)}
           onSelect={() => handleOnSelect()}
           data-testid={`${field}-${stateId}-text-input`}
           id={id}
-          disabled={displayName !== currentValue}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          aria-invalid={!isValid}
+          // eslint-disable-next-line jsx-a11y/no-autofocus
+          autoFocus={autoFocus}
         />
       </div>
     </div>

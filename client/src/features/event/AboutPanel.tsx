@@ -48,7 +48,7 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
   return (
     <div data-testid="about-event">
       {/* <h2 data-testid="event-about-header">About {name}</h2> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader>About {name}</AboutPanelHeader>
       <dl>
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />
@@ -56,7 +56,7 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
         <ClassContainer
           label="Event Class"
           entityClass={entityClass}
-          className="eventClassHr"
+          hrClassName="eventClassHr"
           hideBreaklineOnDesktop
         />
         <LinkContainer

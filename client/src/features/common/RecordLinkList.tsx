@@ -2,7 +2,7 @@ import React, { type JSX } from 'react'
 
 import RecordLink from './RecordLink'
 
-const RecordLinksList = (links: Array<string>): JSX.Element[] =>
+const RecordLinksList = (links: Array<string>): React.JSX.Element[] =>
   links.map((link, ind) => (
     <React.Fragment key={`${link}_${ind}`}>
       <RecordLink url={link} />

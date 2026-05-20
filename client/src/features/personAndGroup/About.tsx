@@ -9,6 +9,7 @@ import NamesContainer from '../common/NamesContainer'
 import ClassContainer from '../common/ClassContainer'
 import WebPages from '../common/WebPages'
 import AboutPanelHeader from '../../styles/features/common/AboutPanelHeader'
+import StyledHr from '../../styles/shared/Hr'
 
 import Dates from './Dates'
 import Activity from './Activity'
@@ -53,17 +54,26 @@ const About: React.FC<IProps> = ({ data }) => {
   return (
     <div data-testid="about-person-group">
       {/* <h2 data-testid="person-page-about-header">About {name}</h2> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader>About {name}</AboutPanelHeader>
       <dl className="about-person-and-group-dl">
         {names !== null && (
-          <NamesContainer names={names} expandColumns length={5} />
+          <NamesContainer
+            names={names}
+            expandColumns
+            length={5}
+            showHeader
+            expandableListHrClassName="hideOnAboutSectionSidePanels"
+          />
         )}
         <ClassContainer
           label="Person or Group Class"
           entityClass={entityClass}
-          className="personOrGroupClassHr"
           hideBreaklineOnDesktop
+          headerTitle="Person or Group Class"
+          hrClassName="hideOnAboutSectionSidePanels"
         />
+        <StyledHr width="100%" className="personOrGroupBackgroundHr" />
+        <h3>{entityClass === 'Person' ? 'Biography' : 'Background'}</h3>
         <Dates
           date={birthDate}
           place={birthPlace}
@@ -98,13 +108,16 @@ const About: React.FC<IProps> = ({ data }) => {
           expandColumns
           itemSpacing="single"
           id="group-formed-by-links-container"
+          hrClassName="hideOnAboutSectionSidePanels"
         />
         <LinkContainer
           label="Dissolved By"
           content={dissolvedBy}
           expandColumns
           id="group-dissolved-by-links-container"
+          hrClassName="hideOnAboutSectionSidePanels"
         />
+        {/* Nationality data */}
         {classifiedAs.length > 0 &&
           classifiedAs.map((obj: { [key: string]: Array<string> }) =>
             Object.keys(obj).map((key: string, ind: number) => (
@@ -116,6 +129,7 @@ const About: React.FC<IProps> = ({ data }) => {
                 length={5}
                 expandColumns
                 id={`classified-as-links-container-${ind}`}
+                hrClassName="hideOnAboutSectionSidePanels"
               />
             )),
           )}
@@ -125,6 +139,7 @@ const About: React.FC<IProps> = ({ data }) => {
           expandColumns
           itemSpacing="single"
           id="member-of-links-container"
+          hrClassName="hideOnAboutSectionSidePanels"
         />
         <LinkContainer
           label="Residence"
@@ -133,12 +148,23 @@ const About: React.FC<IProps> = ({ data }) => {
           itemSpacing="single"
           rowClassName="mb-2"
           id="group-residence-links-container"
+          hrClassName="hideOnAboutSectionSidePanels"
         />
         {professionalActivity.length > 0 && (
           <Activity data={professionalActivity} />
         )}
         <WebPages webPages={webPages} />
-        {notes !== null && <NotesContainer notes={notes} expandColumns />}
+        {notes !== null && (
+          <React.Fragment>
+            <StyledHr width="100%" className="personOrGroupNotesHr" />
+            <h3>Notes</h3>
+            <NotesContainer
+              notes={notes}
+              expandColumns
+              hrClassName="hideOnAboutSectionSidePanels"
+            />
+          </React.Fragment>
+        )}
       </dl>
     </div>
   )

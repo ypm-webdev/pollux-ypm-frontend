@@ -27,12 +27,12 @@ const ContentPageSideBar = styled.div`
     color: ${theme.color.black};
 
     &:first-child {
-      border-radius: 8px 8px 0 0;
+      border-radius: 0;
     }
 
     &:last-child {
       border-bottom: none;
-      border-radius: 0 0 8px 8px;
+      border-radius: 0;
     }
 
     &:hover {
@@ -40,7 +40,7 @@ const ContentPageSideBar = styled.div`
     }
 
     &.active {
-      background-color: ${theme.color.primary.teal};
+      background-color: ${theme.color.primary.blue};
       color: ${theme.color.white};
     }
   }
@@ -54,7 +54,7 @@ const ContentPageSideBar = styled.div`
     }
 
     &.active {
-      background-color: ${theme.color.primary.teal};
+      background-color: ${theme.color.primary.blue};
 
       a {
         color: ${theme.color.white};

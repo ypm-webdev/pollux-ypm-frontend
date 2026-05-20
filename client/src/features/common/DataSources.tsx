@@ -27,7 +27,7 @@ const DataSources: React.FC<IProps> = ({ entity }) => {
   const formatExternalLinks = (
     links: Array<string>,
     id: string,
-  ): JSX.Element[] =>
+  ): React.JSX.Element[] =>
     links.map((link, ind) => (
       <ExternalLink
         key={link}

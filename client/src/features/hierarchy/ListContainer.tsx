@@ -20,7 +20,7 @@ interface IProps {
   parents: Array<string>
   descendents: ISearchResults
   currentEntity: IEntity
-  children: JSX.Element | boolean
+  children: React.JSX.Element | boolean
 }
 
 const ListContainer: React.FC<IProps> = ({

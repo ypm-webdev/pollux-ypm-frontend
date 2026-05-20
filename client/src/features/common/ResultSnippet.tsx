@@ -14,7 +14,7 @@ const ResultSnippet = (
   uri: string,
   tab: string,
   title: string,
-): JSX.Element | null => {
+): React.JSX.Element | null => {
   if (tab === 'objects') {
     return <ObjectSnippet uri={uri} view="list" titleOfTabbedContent={title} />
   }
@@ -38,15 +38,15 @@ const ResultSnippet = (
   }
 
   if (tab === 'places') {
-    return <PlaceSnippet uri={uri} titleOfTabbedContent={title} />
+    return <PlaceSnippet uri={uri} view="list" titleOfTabbedContent={title} />
   }
 
   if (tab === 'concepts') {
-    return <ConceptSnippet uri={uri} titleOfTabbedContent={title} />
+    return <ConceptSnippet uri={uri} view="list" titleOfTabbedContent={title} />
   }
 
   if (tab === 'events') {
-    return <EventSnippet uri={uri} titleOfTabbedContent={title} />
+    return <EventSnippet uri={uri} view="list" titleOfTabbedContent={title} />
   }
 
   return null

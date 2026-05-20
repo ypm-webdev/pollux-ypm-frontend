@@ -1,5 +1,6 @@
 import React from 'react'
 import sanitizeHtml from 'sanitize-html'
+import { Button } from 'react-bootstrap'
 
 import { ICmsResponse, CmsResponseParser } from '../../lib/parse/cms/Parser'
 import { LandingPageParser } from '../../lib/parse/cms/LandingPageParser'
@@ -17,12 +18,12 @@ const MoreAboutLux: React.FC<IProps> = ({ data }) => {
 
   return (
     <React.Fragment>
-      {}
-      <StyledMoreAboutLuxSection
-        dangerouslySetInnerHTML={{ __html: sanitizeHtml(moreAboutLux) }}
-        id="more-about-section"
-        data-testid="more-about-lux-container"
-      />
+      <StyledMoreAboutLuxSection id="more-about-section" data-testid="more-about-lux-container">
+        <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(moreAboutLux) }} />
+        <Button className="rounded-0 about-lux-button" href="/content/about-lux" target="_blank" data-testid="more-about-lux-button">
+          More Info - LUX
+        </Button>
+      </StyledMoreAboutLuxSection>
     </React.Fragment>
   )
 }

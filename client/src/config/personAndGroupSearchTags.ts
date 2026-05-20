@@ -24,7 +24,7 @@ export const relatedObjectsAndWorks: IHalLinks = {
     tab: 'works',
   },
   worksAbout: {
-    title: 'Works About',
+    title: 'Works About or Related To',
     searchTag: 'lux:agentWorkAbout',
     tab: 'works',
   },
@@ -69,43 +69,36 @@ export const timelines: IHalLinks = {
   itemProductionDate: {
     searchTag: 'lux:agentItemMadeTime',
     tab: 'objects',
-    jsonSearchTerm: 'producedDate',
   },
   // Objects Encountered By
   itemEncounteredDate: {
     searchTag: 'lux:agentItemEncounteredTime',
     tab: 'objects',
-    jsonSearchTerm: 'encounteredDate',
   },
   // Works Created By
   workCreationDate: {
     searchTag: 'lux:agentWorkCreatedTime',
     tab: 'works',
-    jsonSearchTerm: 'createdDate',
   },
   // Works Published By
   workPublicationDate: {
     searchTag: 'lux:agentWorkPublishedTime',
     tab: 'works',
-    jsonSearchTerm: 'publishedDate',
   },
   // Collections About
   setAboutDate: {
     searchTag: 'lux:agentSetAboutTime',
     tab: 'collections',
-    jsonSearchTerm: 'publishedDate,createdDate',
   },
   // Collections Created By
   setCreationDate: {
     searchTag: 'lux:agentSetCreatedTime',
     tab: 'collections',
-    jsonSearchTerm: 'createdDate',
   },
   // Collections Published By
   setPublicationDate: {
     searchTag: 'lux:agentSetPublishedTime',
     tab: 'collections',
-    jsonSearchTerm: 'publishedDate',
   },
 }
 

@@ -29,7 +29,7 @@ const AboutPanel: React.FC<IProps> = ({ entity }) => {
   return (
     <div data-testid="about-place">
       {/* <h2 data-testid="place-page-about-header">About {name}</h2> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader>About {name}</AboutPanelHeader>
       <dl>
         {names !== null && (
           <NamesContainer names={names} expandColumns length={5} />

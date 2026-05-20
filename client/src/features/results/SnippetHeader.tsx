@@ -22,9 +22,9 @@ import { ResultsTab } from '../../types/ResultsTab'
 
 interface IProps {
   data: any
-  snippetData: JSX.Element
-  mapComponent?: JSX.Element
-  children?: JSX.Element
+  snippetData: React.JSX.Element
+  mapComponent?: React.JSX.Element
+  children?: React.JSX.Element
   titleOfTabbedContent?: string
 }
 

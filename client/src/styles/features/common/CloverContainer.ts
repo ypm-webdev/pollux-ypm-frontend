@@ -58,6 +58,18 @@ const CloverContainer = styled(Row)`
     margin-bottom: 0px!important;
     font-size: 1.25rem;
   }
+
+  .iiif-header-download-link {
+    position: absolute;
+    transform: translateY(12px);
+    padding-left: 1.5rem;
+    margin-bottom: 0px!important;
+  }
+  
+  .iiif-header-download-link button {
+    // font-size: 0.8rem;
+    border-radius: 0px!important;
+  }
   
     .summary-panel-inner {
     padding: 1.5rem 1.618rem;

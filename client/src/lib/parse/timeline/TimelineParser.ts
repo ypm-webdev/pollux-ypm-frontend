@@ -26,6 +26,18 @@ export default class TimelineParser {
   }
 
   /**
+   * Determines if any of the years are in the BCE era
+   * @param {Array<string>} years; the array of years to check
+   * @returns {boolean}
+   */
+  static showYearEra(years: Array<string>): boolean {
+    if (parseInt(years[0], 10) < 0) {
+      return true
+    }
+    return false
+  }
+
+  /**
    * Returns the year from the date string provided
    * @param {string} facetValue; the date provided by the data as a string
    * @returns {string | null}
@@ -61,6 +73,7 @@ export default class TimelineParser {
   static addSearchTagToFacetValues(
     items: Array<IOrderedItems>,
     searchTag: string,
+    halLink: string,
   ): Array<ITransformedData> {
     const transformedFacets: Array<ITransformedData> = []
     for (const item of items) {
@@ -71,6 +84,7 @@ export default class TimelineParser {
           totalItems: totalItems as number,
           searchTag,
           id: this.convertIdToSearchQueryParams(id),
+          halLink,
         })
       }
     }
@@ -171,6 +185,26 @@ export default class TimelineParser {
   }
 
   /**
+   * Gets the facets returned with the data to help determine which relationships to show in the legend
+   * @param {ITimelinesTransformed} timelineData; the transformed timeline data
+   * @returns {Array<string>}
+   */
+  static getHalLinksUsedForLegend(
+    timelineData: ITimelinesTransformed,
+  ): Array<string> {
+    const halLinkKeys: Array<string> = []
+    for (const yearKey of Object.keys(timelineData)) {
+      const yearData = timelineData[yearKey]
+      for (const halLinkKey of Object.keys(yearData)) {
+        if (halLinkKey !== 'total' && !halLinkKeys.includes(halLinkKey)) {
+          halLinkKeys.push(halLinkKey)
+        }
+      }
+    }
+    return halLinkKeys
+  }
+
+  /**
    * Returns the transformed timeline data for rendering
    * @param {Array<{[key: string]: ISearchResults}>} data; the data from the HAL link requests
    * @returns {ITimelinesTransformed}
@@ -187,44 +221,47 @@ export default class TimelineParser {
     for (const result of this.timeline) {
       // the key is the api endpoint to retreive the facet values
       for (const key of Object.keys(result)) {
-        const { orderedItems } = result[key]
-        const searchTag = TimelineParser.getSearchTagFromFacetedSearch(key)
-
+        const { orderedItems, id } = result[key]
+        const searchTag = TimelineParser.getSearchTagFromFacetedSearch(id)
         if (orderedItems !== null && orderedItems.length > 0) {
           transformedData = [
             ...transformedData,
             ...TimelineParser.addSearchTagToFacetValues(
               orderedItems,
               searchTag,
+              key,
             ),
           ]
         }
       }
     }
-
+    // filter out any null values for years
     transformedData.filter((value) => value !== null)
 
     const dateCounts: { [key: string]: any } = {}
     for (const tData of transformedData) {
-      const { value, totalItems, searchTag, id } = tData as ITransformedData
+      const { value, totalItems, searchTag, id, halLink } =
+        tData as ITransformedData
       const date = String(value)
       const individualDate = dateCounts[date]
       if (dateCounts.hasOwnProperty(date)) {
         individualDate.total += totalItems
-        if (!individualDate.hasOwnProperty(searchTag)) {
-          individualDate[searchTag] = {
+        if (!individualDate.hasOwnProperty(halLink)) {
+          individualDate[halLink] = {
             totalItems,
             searchParams: id,
+            searchTag,
           }
         } else {
-          dateCounts[date][searchTag].totalItems += totalItems
+          dateCounts[date][halLink].totalItems += totalItems
         }
       } else {
         dateCounts[date] = {
           total: totalItems,
-          [searchTag]: {
+          [halLink]: {
             totalItems,
             searchParams: id,
+            searchTag,
           },
         }
       }

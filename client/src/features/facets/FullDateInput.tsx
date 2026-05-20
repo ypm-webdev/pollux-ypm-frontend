@@ -54,16 +54,18 @@ interface IFacets {
 const StyledInput = styled.input`
   height: auto;
   width: 100%;
+  border-color: ${theme.color.mediumGray};
 `
 
 const StyledSubmit = styled.button`
-  margin-top: 5px;
-  background: ${theme.color.primary.darkBlue};
+  margin-top: 1em;
+  background: ${theme.color.primary.blue};
   color: ${theme.color.white};
+  border-radius: 0px;
 
   &:hover {
-    background-color: ${theme.color.white};
-    color: ${theme.color.primary.darkBlue};
+    background-color: ${theme.color.primary.darkBlue};
+    color: ${theme.color.white};
     border-color: ${theme.color.primary.darkBlue};
   }
 `
@@ -103,10 +105,9 @@ const FullDateInput: React.FC<IFacets> = ({
         !isUndefined(currentFacetDateValues)
       ) {
         const setAsArray = [...currentFacetDateValues]
-        const userSelectedEarliestDate = new Date(
-          setAsArray[0].split(' to ')[0],
-        )
-        earliestFacet = getDefaultDate(userSelectedEarliestDate.toISOString())
+        const earliestDate = setAsArray[0].split(' to ')[0]
+        const [month, day, year] = earliestDate.split('/')
+        earliestFacet = getDefaultDate(`${year}-${month}-${day}T00:00:00.000Z`)
       }
       defaultLatestFacet = dates[dates.length - 1]
     }
@@ -116,7 +117,6 @@ const FullDateInput: React.FC<IFacets> = ({
   const [latest, setLatest] = useState<IDateObj>(defaultLatestFacet)
   // This will only change upon retrieving the last date year
   const [maxDate, setMaxDate] = useState<IDateObj>(defaultLatestFacet)
-
   const { data, isSuccess } = useGetFacetsSearchQuery({
     q: JSON.stringify(combinedQuery),
     facets: {},
@@ -337,7 +337,7 @@ const FullDateInput: React.FC<IFacets> = ({
           <StyledInput
             id={`${earliestDateId}-year-input`}
             type="number"
-            className="form-control"
+            className="form-control rounded-0"
             onChange={(e) => handleEarliestYearChange(e.target.value)}
             placeholder="Enter a year"
             value={getYearToDisplay(earliest.year)}
@@ -385,7 +385,7 @@ const FullDateInput: React.FC<IFacets> = ({
           <StyledInput
             id={`${latestDateId}-year-input`}
             type="number"
-            className="form-control"
+            className="form-control rounded-0"
             onChange={(e) => handleLatestYearChange(e.target.value)}
             placeholder="Enter a year"
             value={getYearToDisplay(latest.year)}

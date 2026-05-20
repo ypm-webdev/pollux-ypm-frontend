@@ -13,6 +13,8 @@ import { IEventInfo } from '../../types/derived-data/events'
 import IdentifiersContainer from '../common/IdentifiersContainer'
 import DetailedLinkContainer from '../works/DetailedLinkContainer'
 import { hasData } from '../../lib/parse/data/helper'
+import AboutSubsection from '../works/AboutSubsection'
+import StyledH2 from '../../styles/shared/H2'
 
 interface IObject {
   data: IEntity
@@ -42,7 +44,7 @@ const About: React.FC<IObject> = ({ data }) => {
   return (
     <StyledEntityPageSection className="row" data-testid="about-set">
       <Col xs={12}>
-        <h2>About</h2>
+        <StyledH2>About</StyledH2>
       </Col>
       <Col xs={12}>
         <dl>
@@ -70,6 +72,13 @@ const About: React.FC<IObject> = ({ data }) => {
                 id="set-publication"
               />
             ))}
+          {setCreationEvent !== null && hasData(setCreationEvent) && (
+            <ProductionEvent
+              event={setCreationEvent}
+              label="Creation of Archive"
+              id="set-creation"
+            />
+          )}
           {sourceObjectCreationEvent !== null &&
             hasData(sourceObjectCreationEvent) && (
               <ProductionEvent
@@ -78,22 +87,13 @@ const About: React.FC<IObject> = ({ data }) => {
                 id="set-source-object-creation"
               />
             )}
-          {setCreationEvent !== null && hasData(setCreationEvent) && (
-            <ProductionEvent
-              event={setCreationEvent}
-              label="Creation of Archive"
-              id="set-creation"
-            />
-          )}
           {notes !== null && <NotesContainer notes={notes} showBreakline />}
           {about.length > 0 && (
-            <React.Fragment>
-              <DetailedLinkContainer
-                content={about}
-                label="About"
-                id="set-about-link-container"
-              />
-            </React.Fragment>
+            <AboutSubsection
+              content={about}
+              label="About"
+              id="about-subject-headings"
+            />
           )}
           {represents.length > 0 && (
             <React.Fragment>

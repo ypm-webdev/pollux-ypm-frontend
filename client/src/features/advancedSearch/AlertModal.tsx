@@ -65,10 +65,10 @@ const AlertModal: React.FC<IAlertModal> = ({ showModal, onClose }) => {
           lost. Do you wish to continue?
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => onClose()}>
+          <Button className="rounded-0" variant="secondary" onClick={() => onClose()}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleContinueToSimpleSearch}>
+          <Button className="rounded-0" variant="primary" onClick={handleContinueToSimpleSearch}>
             Continue
           </Button>
         </Modal.Footer>

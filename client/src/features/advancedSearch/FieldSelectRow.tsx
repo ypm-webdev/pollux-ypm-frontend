@@ -13,13 +13,14 @@ import StyledInputGroupDiv from '../../styles/features/advancedSearch/InputGroup
 import AdvancedSearchDropdown from './Dropdown'
 import RemoveButton from './RemoveButton'
 import TextInput from './TextInput'
+import DescriptiveText from './DescriptiveText'
 
 interface IFieldSelectRow {
   stateId: string
   scope: string
-
   state: Record<string, any>
   parentStateId: string
+  rowBgColor: string
   childInd?: number | undefined
   siblings?: Array<Record<string, any>> | undefined
   parentBgColor?: 'bg-white' | 'bg-light'
@@ -40,6 +41,7 @@ const FieldSelectRow: React.FC<IFieldSelectRow> = ({
   scope,
   state,
   parentStateId,
+  rowBgColor,
   childInd = undefined,
   siblings = undefined,
   parentBgColor,
@@ -68,38 +70,40 @@ const FieldSelectRow: React.FC<IFieldSelectRow> = ({
 
   return (
     <Col
-      className="bg-white"
       data-testid={`field-select-row-${stateId}${
         childInd ? `-${childInd}` : ''
       }`}
       aria-describedby="help-text"
     >
-      <StyledInputGroupDiv className="px-0 d-flex align-content-start flex-nowrap">
+      <StyledInputGroupDiv
+        className="px-0 d-flex align-content-start flex-nowrap"
+        backgroundColor={rowBgColor}
+      >
         <span className="w-100 d-flex py-2 ps-2">
           <AdvancedSearchDropdown
             dropdownType="multipleFieldSelection"
             options={conditionals}
             handleChange={addOption}
-            className="multipleFieldSelection mx-0"
+            className="multipleFieldSelection mx-0 rounded-0"
             dropdownHeaderText="Have multiple fields"
             ariaLabel={`${ariaLabel} Have multiple fields`}
             id={`multiple-fields-${stateId}`}
           />
           <div className="d-flex w-auto align-items-center">
-            <p className="mx-2 mb-0 text-nowrap">or</p>
+            <DescriptiveText text="or" className="mx-2" />
           </div>
           <AdvancedSearchDropdown
             dropdownType="singleFieldSelection"
             options={getSingleFieldDropdownOptions(scope)}
             handleChange={addOption}
-            className="singleFieldSelection ms-2"
+            className="singleFieldSelection ms-2 rounded-0"
             dropdownHeaderText="Have a single field"
             ariaLabel={`${ariaLabel} single field selection`}
             id={`single-fields-${stateId}`}
             scope={scope}
           />
           <div className="d-flex w-auto align-items-center">
-            <p className="mx-2 mb-0 text-nowrap">or Have Name</p>
+            <DescriptiveText text="or Have Name" className="me-2" />
           </div>
           <TextInput
             key={state.name}

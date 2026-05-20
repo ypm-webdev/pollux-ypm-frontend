@@ -2,15 +2,20 @@ import styled from 'styled-components'
 
 import theme from '../../theme'
 
-const StyledInputGroupDiv = styled.div`
+interface IProps {
+  backgroundColor?: string
+}
+
+const StyledInputGroupDiv = styled.div<IProps>`
   border: solid 1px ${theme.color.gray};
-  border-radius: ${theme.border.radius};
+  border-radius: 0px!important;
+  background-color: ${(props) => props.backgroundColor};
 
   .dropdown-toggle {
     color: ${theme.color.button};
     background-color: ${theme.color.white};
     border: 1px solid ${theme.color.button};
-    border-radius: 5px;
+    border-radius: 0px!important;
 
     &.mobileNavigationDropdown {
       color: ${theme.color.button};
@@ -27,6 +32,8 @@ const StyledInputGroupDiv = styled.div`
   .dropdown-menu.show {
     max-height: 400px;
     overflow-y: scroll;
+    border-radius: 0px!important;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   }
 
   .dropdown-item.active {

@@ -17,7 +17,7 @@ const StyledToggle = styled(ToggleButton)`
   color: ${theme.color.button};
   background-color: ${theme.color.white};
   border: 1px solid ${theme.color.button} !important;
-  border-radius: 5px !important;
+  border-radius: 0px !important;
 
   &.checked {
     color: ${theme.color.white};

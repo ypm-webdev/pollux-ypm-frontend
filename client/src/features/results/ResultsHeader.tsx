@@ -280,7 +280,7 @@ const ResultsHeader: React.FC<IResultsHeader> = ({
             data-testid="results-header-title"
           >
             <StyledDiv>
-              {total} {label} results
+              {total.toLocaleString('en-US')} {label} results
             </StyledDiv>
             {(tab === 'objects' || tab === 'works') && <LuxOverlay />}
           </StyledResultsHeader>
@@ -323,7 +323,7 @@ const ResultsHeader: React.FC<IResultsHeader> = ({
               className={`d-flex ${width < theme.breakpoints.sm ? 'w-100' : 'w-auto'} ${justifyContent} resultsHeaderSortingCol`}
             >
               <div
-                className={`d-flex toggleViewButtonDiv ${isMobile ? 'w-100' : ''}`}
+                className={`d-flex toggleViewButtonDiv ${isMobile ? 'w-100 order-2' : 'order-1'}`}
               >
                 {toggleView && (
                   <Button

@@ -38,7 +38,7 @@ interface IMyCollectionsModal {
 const CreateCollectionModal = ({
   showModal,
   onClose,
-}: IMyCollectionsModal): JSX.Element => {
+}: IMyCollectionsModal): React.JSX.Element => {
   // const auth = useAuth()
   const dispatch = useDispatch()
   const navigate = useNavigate()

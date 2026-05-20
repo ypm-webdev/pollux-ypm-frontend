@@ -7,17 +7,18 @@ import { setUnit } from '../../config/setsSearchTags'
 import { access } from '../../config/tooltips'
 import EntityParser from '../../lib/parse/data/EntityParser'
 import ObjectParser from '../../lib/parse/data/ObjectParser'
-import StyledDataRow from '../../styles/shared/DataRow'
 import StyledHr from '../../styles/shared/Hr'
 import theme from '../../styles/theme'
 import IEntity from '../../types/data/IEntity'
 import StyledDl from '../../styles/shared/DescriptionList'
+import StyledDataRow from '../../styles/shared/DataRow'
 import { searchTypes } from '../../config/searchTypes'
 import {
   useGetCollectionQuery,
   useGetSearchRelationshipQuery,
 } from '../../redux/api/ml_api'
 import { getFacetsOrderedItems } from '../../lib/facets/helper'
+import config from '../../config/config'
 
 import ExternalLink from './ExternalLink'
 import NotesContainer from './NotesContainer'
@@ -43,9 +44,12 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
     data: collections,
     isSuccess: collectionsIsSuccess,
     isLoading: collectionsIsLoading,
-  } = useGetCollectionQuery(data, {
-    skip: data === undefined || data.member_of === undefined,
-  })
+  } = useGetCollectionQuery(
+    { entity: data, aatClassification: config.aat.collection },
+    {
+      skip: data === undefined || data.member_of === undefined,
+    },
+  )
   const collectionData = collections
     ? collections.filter((collection: string) => collection !== null)
     : []
@@ -76,20 +80,23 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
   }
 
   return (
-    <StyledDataRow className="row mt-0" data-testid="how-do-i-see-it">
+    <StyledDataRow className="row mt-0">
+    <div data-testid="how-do-i-see-it">
       <Col xs={12}>
         <h2 className='panel-heading'>Access Info</h2>
       </Col>
       {accessStatement.length > 0 && (
-        <StyledDl data-testid="access-statement-dl mb-0">
-          <NotesContainer
-            notes={{ Access: accessStatement }}
-            id="access-statement"
-            expandColumns
-            labelTooltipText={access}
-            hrClassName="accessStatementHr"
-          />
-        </StyledDl>
+        <Col xs={12}>
+          <StyledDl data-testid="access-statement-dl mb-0">
+            <NotesContainer
+              notes={{ Access: accessStatement }}
+              id="access-statement"
+              expandColumns
+              labelTooltipText={access}
+              hrClassName="accessStatementHr"
+            />
+          </StyledDl>
+        </Col>
       )}
       {accessPoints.length > 0 &&
         accessPoints.map((accessPoint) => (
@@ -163,6 +170,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
       <Col xs={12}>
         <StyledHr className="howDoISeeItHr" width="100%" />
       </Col>
+    </div>
     </StyledDataRow>
   )
 }

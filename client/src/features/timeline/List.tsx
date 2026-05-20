@@ -7,8 +7,11 @@ import TimelineParser from '../../lib/parse/timeline/TimelineParser'
 import StyledDd from '../../styles/shared/DescriptionDetail'
 import StyledDt from '../../styles/shared/DescriptionTerm'
 import StyledResponsiveCol from '../../styles/shared/ResponsiveCol'
+import {
+  ITimelineCriteria,
+  ITimelinesTransformed,
+} from '../../types/ITimelines'
 import PrimaryButton from 'src/styles/shared/PrimaryButton'
-import { ITimelinesTransformed } from '../../types/ITimelines'
 import { IHalLinks } from '../../types/IHalLinks'
 
 import ListRow from './ListRow'
@@ -64,6 +67,7 @@ const List: React.FC<IProps> = ({
     setDisplayLength(displayLength - unitLength)
   }
 
+  const showEras = TimelineParser.showYearEra(yearsArray)
   return (
     <React.Fragment>
       <dl data-testid="timeline-list-container">
@@ -72,7 +76,7 @@ const List: React.FC<IProps> = ({
             <HoverableRow>
               <Col xs={12} sm={12} md={6} lg={12} xl={6}>
                 <StyledDt data-testid={`${year}-label`}>
-                  {TimelineParser.getYearWithLabel(year)}
+                  {showEras ? TimelineParser.getYearWithLabel(year) : year}
                 </StyledDt>
               </Col>
               <StyledResponsiveCol xs={12} sm={12} md={6} lg={12} xl={6}>
@@ -81,15 +85,19 @@ const List: React.FC<IProps> = ({
                 </StyledDd>
               </StyledResponsiveCol>
             </HoverableRow>
-            {Object.keys(transformedData[year]).map((searchTag, ind) => {
-              if (searchTag !== 'total' && searchTag !== 'criteria') {
+            {Object.keys(transformedData[year]).map((halLink, ind) => {
+              const yearData = transformedData[year][
+                halLink
+              ] as ITimelineCriteria
+              if (halLink !== 'total' && halLink !== 'criteria') {
                 return (
-                  <dl className="my-0" key={`${year}-${searchTag}-${ind}`}>
+                  <dl className="my-0" key={`${year}-${halLink}-${ind}`}>
                     <ListRow
                       searchTags={searchTags}
                       data={transformedData}
                       year={year}
-                      searchTag={searchTag}
+                      halLink={halLink}
+                      searchTag={yearData.searchTag}
                     />
                   </dl>
                 )
@@ -101,13 +109,6 @@ const List: React.FC<IProps> = ({
       </dl>
       {displayLength >= unitLength &&
         displayLength < sortedYearsRange.length && (
-          // <button
-          //   type="button"
-          //   className="btn btn-link show-more ps-0 text-decoration-none"
-          //   onClick={() => handleShowMore()}
-          // >
-          //   Show More
-          // </button>
           <PrimaryButton
             variant="link"
             className="show-more"
@@ -118,13 +119,6 @@ const List: React.FC<IProps> = ({
           </PrimaryButton>
         )}
       {displayLength > unitLength && (
-        // <button
-        //   type="button"
-        //   className="btn btn-link show-less ps-0 text-decoration-none"
-        //   onClick={() => handleShowLess()}
-        // >
-        //   Show Less
-        // </button>
          <PrimaryButton
             variant="link"
             className="show-less"

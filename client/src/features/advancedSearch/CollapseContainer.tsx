@@ -7,7 +7,7 @@ import theme from '../../styles/theme'
 interface ICollapseContainer {
   open: boolean
   id: string
-  children: JSX.Element | JSX.Element[]
+  children: React.JSX.Element | React.JSX.Element[]
   className: string
 }
 

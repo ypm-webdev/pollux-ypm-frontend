@@ -12,7 +12,7 @@ const StyledNavLink = styled(NavLink)`
   display: block;
   padding: 12px 18px;
   text-decoration: none;
-  border-radius: ${theme.border.radius};
+  border-radius: 0px;
   width: 100%;
   align-items: start;
   flex-direction: column;
@@ -34,37 +34,92 @@ const StyledNavLink = styled(NavLink)`
     line-height: ${theme.font.desktop.bodyLight.lineHeight};
   }
 
+   &:hover > div > div > div > div.linkSubtext > span.mobile-nav-results-label {
+    color: ${theme.color.black}!important;
+    font-size: 3em!important;
+  }
+
   &:hover {
     color: ${theme.color.black};
     text-decoration: underline;
+    background-color: ${theme.color.tabButtonBgColor};
+    };
   }
 
   &.active {
-    box-shadow: -1px -1px 5px ${theme.color.black20};
+    box-shadow:
+      -8px 0px 8px -6px ${theme.color.black20},
+      5px 0px 8px -6px ${theme.color.black20},
+      0px -5px 8px -6px ${theme.color.black20};
     background: ${theme.color.white};
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
-    margin-bottom: -5px;
-    z-index: -1;
+    margin-bottom: 0px;
+    z-index: 2;
+
+    &:before {
+      left: -14px;
+      border-bottom-right-radius: 0px!important;
+      // box-shadow: 7px 7px 0 7px ${theme.color.white};
+    }
+
+    &:after {
+      right: -14px;
+      border-bottom-left-radius: 0px!important;
+      // box-shadow: -7px 7px 0 7px ${theme.color.white};
+    }
 
     & > div > div > img {
       filter: none;
     }
 
+    &#objects {
+      box-shadow:
+        -8px 0px 8px -6px ${theme.color.black20},
+        5px 0px 8px -6px ${theme.color.black20},
+        0px -5px 8px -6px ${theme.color.black20};
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        width: 14px;
+        height: 14px;
+        background: transparent;
+        pointer-events: none;
+      }
+    }
+
     &#events {
-      box-shadow: 4px -1px 5px ${theme.color.black20};
+      box-shadow: 0px -2px 5px ${theme.color.black20};
+
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        width: 14px;
+        height: 14px;
+        background: transparent;
+        pointer-events: none;
+      }
     }
 
     &#works,
-    $#people,
+    &#collections,
+    &#people,
     &#places,
     &#concepts {
-      box-shadow: -1px -1px 5px ${theme.color.black20};
+      &:before,
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        width: 14px;
+        height: 14px;
+        background: transparent;
+        pointer-events: none;
+      }
     }
-  }
-
-  &.active.simple {
-    box-shadow: 0px 3px 5px ${theme.color.black20};
   }
 
   @media (min-width: 1469px) {

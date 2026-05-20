@@ -1,5 +1,6 @@
 import React, { type JSX } from 'react'
 import { Col, Row } from 'react-bootstrap'
+import { useLocation } from 'react-router-dom'
 
 import { FaqGroupKey, faqGroupLabels } from '../../config/cms'
 import useTitle from '../../lib/hooks/useTitle'
@@ -12,10 +13,11 @@ import {
   StyledFaqPageHeader,
   StyledFaqGroupSection,
 } from '../../styles/features/cms/FaqPage'
+import AdvancedSearchTermsGroupElems from '../advancedSearchConfig/AdvancedSearchConfig'
 
 import FaqSideBar from './FaqSideBar'
 
-const createAccordionItem = (faq: IFaq, parentId: string): JSX.Element => {
+const createAccordionItem = (faq: IFaq, parentId: string): React.JSX.Element => {
   const title2 = faq.title
     .toLowerCase()
     .replace(/\s/g, '-')
@@ -52,7 +54,7 @@ const createAccordionItem = (faq: IFaq, parentId: string): JSX.Element => {
   )
 }
 
-const createAccordion = (faqGroup: IFaqGroup): JSX.Element => {
+const createAccordion = (faqGroup: IFaqGroup): React.JSX.Element => {
   const id = `accordion-${faqGroup.key}`
 
   const items = faqGroup.faqs.map((faq) => {
@@ -74,7 +76,7 @@ const scrollToTop = (): void => {
   window.scrollTo(0, 0)
 }
 
-const createGroupElems = (faqGroups: IFaqGroup[]): JSX.Element[] =>
+const createGroupElems = (faqGroups: IFaqGroup[]): React.JSX.Element[] =>
   faqGroups.map((group, ind) => {
     const accordion = createAccordion(group)
     const groupKey = group.key
@@ -110,14 +112,14 @@ const title = 'Frequently Asked Questions'
  */
 const FaqPage: React.FC<IProps> = ({ groupKeys }) => {
   const result = useGetFaqQuery()
-  let groups: JSX.Element[] = []
+  let groups: React.JSX.Element[] = []
+  const { pathname } = useLocation()
 
   useTitle(title)
 
   if (result.isSuccess && result.data) {
     const parser = new FaqParser(result.data)
     const faqs = parser.getFaqs(groupKeys)
-
     groups = createGroupElems(faqs)
   }
 
@@ -131,14 +133,14 @@ const FaqPage: React.FC<IProps> = ({ groupKeys }) => {
         <Col xs={12} sm={12} md={12} lg={3} className="side-column order-lg-2">
           <FaqSideBar />
         </Col>
-        <Col
-          xs={12}
-          sm={12}
-          md={12}
-          lg={9}
-          className="d-xl-flex faq-body order-lg-1"
-        >
-          <div className="main-column flex-fill">{groups}</div>
+        <Col xs={12} sm={12} md={12} lg={9} className="d-xl-flex faq-body">
+          <div className="main-column flex-fill">
+            {pathname.includes('advanced-search-terms') ? (
+              <AdvancedSearchTermsGroupElems />
+            ) : (
+              groups
+            )}
+          </div>
         </Col>
       </Row>
     </StyledFaqPage>

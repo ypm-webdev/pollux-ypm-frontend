@@ -52,6 +52,9 @@ const EntityHeader = styled(Row)`
 
   }
 
+  @media (min-width: ${theme.breakpoints.md}px) {
+    padding-left: 2.5rem;
+  }
 `
 
 export default EntityHeader

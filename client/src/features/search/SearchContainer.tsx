@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { HashLink } from 'react-router-hash-link'
 
 import { LinksContainerRow } from '../../styles/features/search/LinksContainerRow'
 import theme from '../../styles/theme'
 import ToggleButton from '../advancedSearch/ToggleSearchButton'
 import { pushClientEvent } from '../../lib/pushClientEvent'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 
 import AdvancedSearchButton from './AdvancedSearchButton'
 import SearchBox from './SearchBox'
@@ -35,10 +35,14 @@ const SearchContainer: React.FC<IProps> = ({
   isResultsPage = false,
 }) => {
   const [isError, setIsError] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
 
   return (
     <Row
-      className={`d-flex mx-0 py-3 ${className}`}
+      className={`d-flex mx-0 ${className} ${isMobile ? 'py-1' : 'py-3'}`}
       style={{ backgroundColor: bgColor }}
       id={id}
     >
@@ -70,23 +74,24 @@ const SearchContainer: React.FC<IProps> = ({
               <AdvancedSearchButton setIsError={setIsError} id={id} />
             </Col>
             <Col xs={6} className="d-inline-flex justify-content-end">
-              <HashLink
-                to="/content/simple-search"
-                style={{
-                  ...searchTipsStyle,
-                  fontWeight: '400',
-                  fontSize: '1rem',
-                }}
-                onClick={() =>
-                  pushClientEvent(
-                    'Internal Link',
-                    'Selected',
-                    'Internal Search Tips',
-                  )
-                }
-              >
-                Search Tips
-              </HashLink>
+              <a href="/content/about-lux">
+                <div className="powered-by" style={{ color: searchTipsStyle.color }}>
+                  <span
+                    className="lux-powered-by"
+                    style={{ color: searchTipsStyle.color }}
+                  >
+                    Powered by
+                  </span>
+                  <span
+                    className="lux-name"
+                    style={{ color: searchTipsStyle.color }}
+                  >
+                    {' '}LUX
+                  </span>
+                  &nbsp;
+                  <i className="bi bi-question-circle"></i>
+                </div>
+              </a>
             </Col>
           </LinksContainerRow>
         </Col>

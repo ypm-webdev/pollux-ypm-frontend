@@ -30,9 +30,9 @@ const AboutCollection: React.FC<IObject> = ({ data }) => {
       {/* <h3 className="px-3 pt-2" data-testid="collection-name-header">
         About {name}
       </h3> */}
-      <AboutPanelHeader className="about-panel-header">About {name}</AboutPanelHeader>
+      <AboutPanelHeader>About {name}</AboutPanelHeader>
 
-      <div>
+      <React.Fragment>
         {names !== null && (
           <div className="row">
             <NamesContainer names={names} />
@@ -65,7 +65,7 @@ const AboutCollection: React.FC<IObject> = ({ data }) => {
         {data._links && (
           <ApiAboutData providedLinks={data._links} configuredLink={setEvent} />
         )}
-      </div>
+      </React.Fragment>
     </div>
   )
 }

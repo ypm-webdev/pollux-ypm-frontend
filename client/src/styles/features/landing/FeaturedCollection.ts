@@ -48,6 +48,12 @@ const FeaturedCollection = styled(Col)<{ isInSwiper?: boolean }>`
     padding-left: 0px;
   }
 
+  .featured-card .card-body {
+    height: 375px;
+    max-height: 375px;
+    overflow-y: scroll;
+  }
+
   .image-container {
     display: block;
     width: 100% !important;

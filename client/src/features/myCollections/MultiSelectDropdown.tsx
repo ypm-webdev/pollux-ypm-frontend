@@ -40,7 +40,7 @@ const MultiSelectDropdown = ({
   selectedOptions,
   indexOfData,
   onCheck,
-}: IMultiSelectDropdown): JSX.Element => {
+}: IMultiSelectDropdown): React.JSX.Element => {
   const auth = useAuth()
   const loc = useLocation()
   const [show, setShow] = useState<boolean>(false)

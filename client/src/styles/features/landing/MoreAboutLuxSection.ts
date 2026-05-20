@@ -20,7 +20,7 @@ const MoreAboutLux = styled(ToppedBorderedDiv)`
 
   h2 {
     font-family: 'Mallory Black', sans-serif;
-    font-size: ${theme.font.mobile.h2.size};
+    font-size: ${theme.font.mobile.h1.size};
     font-weight: ${theme.font.mobile.h2.weight};
     line-height: ${theme.font.mobile.h2.lineHeight};
     letter-spacing: 1px;
@@ -48,14 +48,8 @@ const MoreAboutLux = styled(ToppedBorderedDiv)`
 
   p,
   ul {
-    font-size: 1.5em;
     letter-spacing: 0;
-    line-height: 40px;
     color: #222;
-  }
-
-  p {
-    font-weight: ${theme.font.weight.extraLight};
     font-size: ${theme.font.mobile.bodyRegular.size};
     line-height: ${theme.font.mobile.bodyRegular.lineHeight};
 
@@ -63,20 +57,39 @@ const MoreAboutLux = styled(ToppedBorderedDiv)`
       font-size: 1em;
       line-height: 32px;
     }
+
+    a,
+    span {
+      font-size: inherit;
+    }
+  }
+
+  p {
+    font-weight: ${theme.font.weight.extraLight};
   }
 
   ul {
     list-style-type: none;
     font-weight: 500;
-    line-height: 32px;
-
-    @media (min-width: ${theme.breakpoints.md}px) {
-      font-size: 1em;
-    }
   }
 
   li:not(:last-child) {
     margin-bottom: 10px;
+  }
+
+  .about-lux-button {
+    background-color: ${theme.color.primary.darkBlue} !important;
+    border-color: ${theme.color.primary.darkBlue} !important;
+    color: ${theme.color.white} !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: ${theme.color.primary.darkBlue} !important;
+      border-color: ${theme.color.primary.darkBlue} !important;
+      color: ${theme.color.white} !important;
+      opacity: 0.9;
+    }
   }
 `
 

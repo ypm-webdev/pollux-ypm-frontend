@@ -48,7 +48,7 @@ const Checklist: React.FC<IFacets> = ({
     setPage(page - 1)
   }
 
-  const list = (): JSX.Element[] => {
+  const list = (): React.JSX.Element[] => {
     const facetListCombined: Array<IOrderedItems> = []
 
     Object.keys(facetValues.requests).map((key) => {
