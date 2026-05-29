@@ -49,8 +49,8 @@ const FeaturedCollection = styled(Col)<{ isInSwiper?: boolean }>`
   }
 
   .featured-card .card-body {
-    height: 375px;
-    max-height: 375px;
+    height: 400px;
+    max-height: 400px;
     overflow-y: scroll;
   }
 
