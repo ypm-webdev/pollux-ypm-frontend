@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import theme from '../theme'
 
 interface IProps {
-  $textColor?: string
-  $actionBgColor?: string
+  textColor?: string
+  actionBgColor?: string
 }
 
 const SecondaryButton = styled(Button)<IProps>`
@@ -19,7 +19,7 @@ const SecondaryButton = styled(Button)<IProps>`
   text-decoration: none;
 
   &:disabled {
-    background-color: ${(props) => props.$actionBgColor || theme.color.black};
+    background-color: ${(props) => props.actionBgColor || theme.color.black};
     color: ${theme.color.white};
     border-color: ${theme.color.white};
   }
