@@ -16,6 +16,10 @@ interface IProps {
   headerTitle?: string
 }
 
+const ClassContainerHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const ClassContainer: React.FC<IProps> = ({
   label,
   entityClass,
@@ -27,7 +31,7 @@ const ClassContainer: React.FC<IProps> = ({
 }) => (
   <React.Fragment>
     {headerTitle && <StyledHr width="100%" className="classContainerHr" />}
-    {headerTitle && <h3>{headerTitle}</h3>}
+    {headerTitle && <h3 className="classContainerHeader" style={ClassContainerHeaderStyle}>{headerTitle}</h3>}
     <TextContainer
       label={isUndefined(headerTitle) ? label : undefined}
       textLabelClassName={textLabelClassName}

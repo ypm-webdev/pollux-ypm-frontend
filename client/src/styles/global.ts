@@ -212,6 +212,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  hr.hideOnAboutSectionSidePanels {
+    display: none;
+  }
+
   dt {
     overflow-wrap: break-word;
   }

@@ -1,5 +1,7 @@
-import React, { type JSX } from 'react'
+import React, { type JSX, useState } from 'react'
 
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
+import theme from '../../styles/theme'
 import { StyledTextValue } from '../../styles/features/common/TextValue'
 
 interface ITextValue {
@@ -15,19 +17,27 @@ const TextValue: React.FC<ITextValue> = ({
   values,
   displayType = 'block',
   itemSpacing = 'single',
-}) => (
-  <StyledTextValue
-    className={`${className} col-sm-12`}
-    $displayType={displayType}
-    $itemSpacing={itemSpacing}
-    data-testid="text-value"
-  >
-    {values.map((value: string | JSX.Element, ind: number) => (
-      <dd key={`${value}-${ind}`} data-testid="text-value-detail-description" className="ms-3">
-        {value}
-      </dd>
-    ))}
-  </StyledTextValue>
-)
+}) => {
+
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
+
+  return (
+    <StyledTextValue
+      className={`${className} col-sm-12`}
+      $displayType={displayType}
+      $itemSpacing={itemSpacing}
+      data-testid="text-value"
+    >
+      {values.map((value: string | JSX.Element, ind: number) => (
+        <dd key={`${value}-${ind}`} data-testid="text-value-detail-description" className={isMobile ? 'ms-3' : 'ms-0'}>
+          {value}
+        </dd>
+      ))}
+    </StyledTextValue>
+  )
+}
 
 export default TextValue

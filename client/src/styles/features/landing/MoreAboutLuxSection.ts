@@ -20,7 +20,7 @@ const MoreAboutLux = styled(ToppedBorderedDiv)`
 
   h2 {
     font-family: 'Mallory Black', sans-serif;
-    font-size: ${theme.font.mobile.h1.size};
+    font-size: ${theme.font.mobile.h2.size};
     font-weight: ${theme.font.mobile.h2.weight};
     line-height: ${theme.font.mobile.h2.lineHeight};
     letter-spacing: 1px;
@@ -28,8 +28,8 @@ const MoreAboutLux = styled(ToppedBorderedDiv)`
     margin-bottom: 19px;
 
     @media (min-width: ${theme.breakpoints.md}px) {
-      font-size: 3.1em;
-      line-height: ${theme.font.desktop.h1.lineHeight};
+      font-size: ${theme.font.desktop.h2.size};
+      line-height: ${theme.font.desktop.h2.lineHeight};
       font-weight: ${theme.font.desktop.h2.weight};
     }
   }

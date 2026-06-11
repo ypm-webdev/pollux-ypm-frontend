@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import sanitizeHtml from 'sanitize-html'
 
@@ -19,6 +19,7 @@ import {
 } from '../../redux/api/ml_api'
 import { getFacetsOrderedItems } from '../../lib/facets/helper'
 import config from '../../config/config'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 
 import ExternalLink from './ExternalLink'
 import NotesContainer from './NotesContainer'
@@ -29,11 +30,16 @@ interface IProps {
 }
 
 const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
+
   const entity = new EntityParser(data)
   const accessStatement = entity.getAccessStatement()
-  // const links = [...entity.getAllSiteLinks(), ...entity.getHowDoISeeItLinks()]
-  const links = [...entity.getHowDoISeeItLinks()]
-  let accessPoints: Array<{ content: string; id: string }> = []
+  const links = [...entity.getAllSiteLinks(), ...entity.getHowDoISeeItLinks()]
+  // const links = [...entity.getHowDoISeeItLinks()]
+  let accessPoints: Array<{ content: string; id: string; }> = []
   // Parse the entity to get the appropriate HAL links for rendering the unit(s)
   const planYourVisitLinks = entity.getPlanYourVisitLink()
   const unitHalLink =
@@ -78,7 +84,6 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
   ) {
     return null
   }
-
   return (
     <StyledDataRow className="row mt-0">
     <div data-testid="how-do-i-see-it">
@@ -136,6 +141,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             hrClassName="collectionHr"
           />
         )}
+      </dl>
         {/* {unitUris.length > 0 && (
           <LinkContainer
             label="Responsible Unit"
@@ -146,8 +152,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             hrClassName="responsibleUnitHr"
           />
         )} */}
-      </dl>
-      {planYourVisitLinks.length > 0 &&
+      {/* {planYourVisitLinks.length > 0 &&
         planYourVisitLinks.map((link, ind) => {
           if (link._content_html !== undefined) {
             return (
@@ -166,7 +171,7 @@ const HowDoISeeIt: React.FC<IProps> = ({ data }) => {
             )
           }
           return null
-        })}
+        })} */}
       <Col xs={12}>
         <StyledHr className="howDoISeeItHr" width="100%" />
       </Col>

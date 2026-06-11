@@ -18,6 +18,10 @@ interface IProps {
   data: IEntity
 }
 
+const aboutPanelHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const About: React.FC<IProps> = ({ data }) => {
   const agent = new PersonAndGroupParser(data)
   const aboutData = agent.getAboutData()
@@ -73,7 +77,7 @@ const About: React.FC<IProps> = ({ data }) => {
           hrClassName="hideOnAboutSectionSidePanels"
         />
         <StyledHr width="100%" className="personOrGroupBackgroundHr" />
-        <h3>{entityClass === 'Person' ? 'Biography' : 'Background'}</h3>
+        <h3 className="backgroundHeader" style={aboutPanelHeaderStyle}>{entityClass === 'Person' ? 'Biography' : 'Background'}</h3>
         <Dates
           date={birthDate}
           place={birthPlace}
@@ -157,7 +161,7 @@ const About: React.FC<IProps> = ({ data }) => {
         {notes !== null && (
           <React.Fragment>
             <StyledHr width="100%" className="personOrGroupNotesHr" />
-            <h3>Notes</h3>
+            <h3 className="notesHeader" style={aboutPanelHeaderStyle}>Notes</h3>
             <NotesContainer
               notes={notes}
               expandColumns

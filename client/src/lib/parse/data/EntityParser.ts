@@ -584,13 +584,16 @@ export default class EntityParser {
         const accessPoint = forceArray(digital.access_point)
         const classifiedAs = digital.classified_as
         const identifiedBy = digital.identified_by
+        const d = new EntityParser(digital)
+        
         if (identifiedBy !== undefined) {
           contentIdentifier = identifiedBy[0].content
         }
 
         if (classifiedAs !== undefined) {
           if (
-            validateClassifiedAsIdMatches(classifiedAs, [config.aat.webPage])
+            validateClassifiedAsIdMatches(classifiedAs, [config.aat.webPage]) &&
+            !d.isYpmRecordLink()
           ) {
             for (const p of accessPoint) {
               links.push({ contentIdentifier, link: p.id })
@@ -605,6 +608,7 @@ export default class EntityParser {
 
   /**
    * Returns array of transformed link data from /subject_of that are not web pages or IIIF manifests
+   * MOD: Remove links to YPM website, because it is THIS website (not LUX)
    * @returns {Array<IWebpages>}
    */
   getHowDoISeeItLinks(): Array<IWebpages> {
@@ -617,8 +621,7 @@ export default class EntityParser {
       for (const digital of digitallyCarriedBy) {
         const accessPoint = forceArray(digital.access_point)
         const d = new EntityParser(digital)
-
-        if (!d.isIIIFManifest() && !d.isClassifiedAs(config.aat.webPage)) {
+        if (!d.isIIIFManifest() && !d.isClassifiedAs(config.aat.webPage) && !d.isYpmRecordLink()) {
           const name = d.getPrimaryName(config.aat.langen)
 
           for (const p of accessPoint) {
@@ -796,6 +799,17 @@ export default class EntityParser {
 
     for (const protocol of conformsTo) {
       if (/^https?:\/\/iiif.io\/api\/presentation/.test(protocol.id)) {
+        return true
+      }
+    }
+    return false
+  }
+
+  isYpmRecordLink(): boolean {
+    const identifiedBy = forceArray(this.json.identified_by)
+
+    for (const point of identifiedBy) {
+      if (point.content && point.content.includes('Yale Peabody Museum website')) {
         return true
       }
     }

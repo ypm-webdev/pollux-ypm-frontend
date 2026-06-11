@@ -16,28 +16,28 @@ const font = {
   desktop: {
     h1: {
       weight: weight.bold,
-      size: '3.1em',
-      lineHeight: '72px',
+      size: '48px',
+      lineHeight: '52px',
     },
     h2: {
       weight: weight.extraLight,
-      size: '2rem',
-      lineHeight: '1.1em',
+      size: '36px',
+      lineHeight: '40px',
     },
     h3: {
       weight: weight.light,
-      size: '1.5em',
-      lineHeight: '40px',
+      size: '24px',
+      lineHeight: '28px',
     },
     h4: {
       weight: weight.bold,
-      size: '24px',
-      lineHeight: '32px',
+      size: '22px',
+      lineHeight: '24px',
     },
     h5: {
       weight: weight.medium,
-      size: '24px',
-      lineHeight: '32px',
+      size: '20px',
+      lineHeight: '24px',
     },
     h6: {
       weight: weight.bold,
@@ -63,23 +63,23 @@ const font = {
   mobile: {
     h1: {
       weight: weight.extraLight,
-      size: '40px',
+      size: '2em',
       lineHeight: '48px',
     },
     h2: {
       weight: weight.extraLight,
-      size: '1.5em',
+      size: '1.75em',
       lineHeight: '40px',
     },
     h3: {
       weight: weight.extraLight,
       size: '1.25em',
-      lineHeight: '30px',
+      lineHeight: '28px',
     },
     h4: {
       weight: weight.medium,
       size: '18px',
-      lineHeight: '26px',
+      lineHeight: '24px',
     },
     h5: {
       weight: weight.bold,

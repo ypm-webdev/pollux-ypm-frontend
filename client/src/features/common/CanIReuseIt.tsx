@@ -18,6 +18,10 @@ interface IProps {
   entityType: 'object' | 'work'
 }
 
+const compactLink = {
+  lineHeight: '1.1em!important'
+}
+
 const CanIReuseIt: React.FC<IProps> = ({ entity, entityType }) => {
   // get work specific data
   let subjectTo: Array<{ url: string; text: string }> = []
@@ -39,7 +43,7 @@ const CanIReuseIt: React.FC<IProps> = ({ entity, entityType }) => {
   }
 
   return (
-    <div data-testid="can-i-reuse-it">
+    <div data-testid="can-i-reuse-it" className="mb-3">
       <Col xs={12}>
         <h2 data-testid="can-i-reuse-it-header" className='panel-heading'>Usage</h2>
       </Col>
@@ -93,7 +97,7 @@ const CanIReuseIt: React.FC<IProps> = ({ entity, entityType }) => {
       <Col xs={12}>
         <InternalLink
           uri="/content/rights-usage"
-          name="For more information about Rights and Usage, visit the FAQ page."
+          name="FAQ: Rights & Usage Info"
           linkCategory="FAQ Rights Info"
         />
       </Col>

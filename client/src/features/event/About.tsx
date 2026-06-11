@@ -22,6 +22,10 @@ interface IProps {
   entity: IEntity
 }
 
+const aboutPanelHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const About: React.FC<IProps> = ({ entity }) => {
   const event = new EventParser(entity)
   const aboutData = event.getAboutData()
@@ -67,7 +71,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {agents.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventCarriedOutByHr" />
-            <h3>Carried Out By</h3>
+            <h3 className="carriedOutByHeader" style={aboutPanelHeaderStyle}>Carried Out By</h3>
             <LinkContainer
               content={agents}
               itemSpacing="single"
@@ -80,7 +84,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {dates.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventDatesOfEventHr" />
-            <h3>Date(s) of Event</h3>
+            <h3 className="datesOfEventHeader" style={aboutPanelHeaderStyle}>Date(s) of Event</h3>
             <StyledDataRow className="row" data-testid="event-date-container">
               <ExpandableList
                 className="col-12"
@@ -94,7 +98,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {locations.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventPlaceOfEventHr" />
-            <h3>Place of Event</h3>
+            <h3 className="placeOfEventHeader" style={aboutPanelHeaderStyle}>Place of Event</h3>
             <LinkContainer
               content={locations}
               itemSpacing="single"
@@ -107,7 +111,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {types.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventCategorizedAsHr" />
-            <h3>Categorized As</h3>
+            <h3 className="categorizedAsHeader" style={aboutPanelHeaderStyle}>Categorized As</h3>
             <LinkContainer
               content={types}
               itemSpacing="single"
@@ -120,14 +124,14 @@ const About: React.FC<IProps> = ({ entity }) => {
         {identifiers.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventIdentifiersHr" />
-            <h3>Identifiers</h3>
+            <h3 className="identifiersHeader" style={aboutPanelHeaderStyle}>Identifiers</h3>
             <IdentifiersList identifiers={identifiers} expandIdentiferColumn />
           </React.Fragment>
         )}
         {webPages.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventWebPagesHr" />
-            <h3>Web Pages</h3>
+            <h3 className="webPagesHeader" style={aboutPanelHeaderStyle}>Web Pages</h3>
             <TextValue
               values={webPages.map(
                 (webPage: { content: string; link: string }, ind: number) => (
@@ -147,7 +151,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {part.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="eventPartHr" />
-            <h3>Part</h3>
+            <h3 className="partHeader" style={aboutPanelHeaderStyle}>Part</h3>
             {part.map((p: IEventPart) =>
               Object.keys(p).map((key: string, ind: number) => (
                 <div
@@ -171,7 +175,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {notes !== null && (
           <React.Fragment>
             <StyledHr width="100%" className="eventNotesHr" />
-            <h3>Notes</h3>
+            <h3 className="notesHeader" style={aboutPanelHeaderStyle}>Notes</h3>
             <NotesContainer
               notes={notes}
               expandColumns

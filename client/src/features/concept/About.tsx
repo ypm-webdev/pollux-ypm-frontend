@@ -14,6 +14,10 @@ interface IProps {
   entity: IEntity
 }
 
+const aboutPanelHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const About: React.FC<IProps> = ({ entity }) => {
   const concept = new ConceptParser(entity)
   const aboutData = concept.getAboutData()
@@ -52,7 +56,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {types.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="conceptCategorizedAsHr" />
-            <h3>Categorized As</h3>
+            <h3 className="categorizedsHeader" style={aboutPanelHeaderStyle}>Categorized As</h3>
             <LinkContainer
               content={types}
               expandColumns
@@ -65,7 +69,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {influences.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="conceptComponentTermsHr" />
-            <h3>Component Terms</h3>
+            <h3 className="componentTermsHeader" style={aboutPanelHeaderStyle}>Component Terms</h3>
             <LinkContainer
               label="Component Terms"
               content={influences}
@@ -79,7 +83,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {notes !== null && (
           <React.Fragment>
             <StyledHr width="100%" className="conceptNotesHr" />
-            <h3>Notes</h3>
+            <h3 className="notesHeader" style={aboutPanelHeaderStyle}>Notes</h3>
             <NotesContainer
               notes={notes}
               expandColumns

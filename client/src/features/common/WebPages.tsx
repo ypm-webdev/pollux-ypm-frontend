@@ -10,13 +10,18 @@ import TextLabel from './TextLabel'
 
 /**
  * @param {Array<string>} webPages IEntity representing a LUX document
- */
+*/
+const aboutPanelHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const WebPages: React.FC<{ webPages: Array<string> }> = ({ webPages }) => {
+
   if (webPages.length > 0) {
     return (
       <React.Fragment>
         <StyledHr width="100%" />
-        <h3>Web Pages</h3>
+        <h3 className="webPagesHeader" style={aboutPanelHeaderStyle}>Web Pages</h3>
         <StyledDataRow className="row">
           <TextLabel className="col-md-12" />
           <ExpandableList

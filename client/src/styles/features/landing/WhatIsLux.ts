@@ -29,7 +29,7 @@ const WhatIsLux = styled.div`
     z-index: 2;
 
     @media (min-width: ${theme.breakpoints.md}px) {
-      font-size: 3.1rem;
+      font-size: ${theme.font.desktop.h1.size};
     }
   }
 

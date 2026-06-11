@@ -13,6 +13,10 @@ interface IProps {
   entity: IPlace
 }
 
+const aboutPanelHeaderStyle: React.CSSProperties = {
+  fontFamily: "Mallory Bold, sans-serif"
+}
+
 const About: React.FC<IProps> = ({ entity }) => {
   const place = new PlaceParser(entity)
   const aboutData = place.getAboutData()
@@ -43,7 +47,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {types.length > 0 && (
           <React.Fragment>
             <StyledHr width="100%" className="placeCategorizedAsHr" />
-            <h3>Categorized As</h3>
+            <h3 className="categorizedAsHeader" style={aboutPanelHeaderStyle}>Categorized As</h3>
             <LinkContainer
               content={types}
               expandColumns
@@ -57,7 +61,7 @@ const About: React.FC<IProps> = ({ entity }) => {
         {notes !== null && (
           <React.Fragment>
             <StyledHr width="100%" className="placeNotesHr" />
-            <h3>Notes</h3>
+            <h3 className="notesHeader" style={aboutPanelHeaderStyle}>Notes</h3>
             <NotesContainer
               notes={notes}
               expandColumns

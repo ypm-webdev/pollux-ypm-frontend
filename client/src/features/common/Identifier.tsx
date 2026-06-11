@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { getColumnWidth } from '../../lib/util/ui'
 import theme from '../../styles/theme'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 
 import RecordLink from './RecordLink'
 import TextLabel from './TextLabel'
@@ -31,6 +32,11 @@ const Identifier: React.FC<INames> = ({
     ? textValueWidth
     : theme.colWidths.valueClass
 
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
+
   return (
     <div className="row" data-testid="identifier-div">
       {location !== undefined && location !== '' && (
@@ -47,7 +53,7 @@ const Identifier: React.FC<INames> = ({
         {identifiers.map((id: string) => (
           <dd
             key={id}
-            className="mb-0 ms-3"
+            className={`mb-0 ${isMobile ? 'ms-3' : 'ms-0'}`}
             data-testid={`identifier-value-${index}`}
           >
             {id}
