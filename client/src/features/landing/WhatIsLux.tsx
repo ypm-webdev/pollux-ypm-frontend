@@ -13,7 +13,7 @@ const WhatIsLux: React.FC<IProps> = ({ whatIsLuxText }) => {
 
   return (
   <React.Fragment>
-  <StyledWhatIsLux data-testid="marketing-paragraph">
+  <StyledWhatIsLux data-testid="marketing-paragraph" className="marketing-paragraph">
     <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
   </StyledWhatIsLux>
   </React.Fragment>

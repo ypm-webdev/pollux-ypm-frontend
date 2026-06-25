@@ -10,7 +10,7 @@ const HeroImageSection = styled.div`
   .hero-image-container {
     left: 0;
     top: 0;
-    padding-top: 33px;
+    padding-top: 0px;
     overflow: hidden;
 
     img {
@@ -20,8 +20,13 @@ const HeroImageSection = styled.div`
       &:focus {
         border: 3px solid ${theme.color.primary.blue};
       }
+
+      @media (min-width: ${theme.breakpoints.md}px) {
+        padding-top: 33px;
+      }
     }
   }
+
 
   .captionDiv {
     position: absolute;
@@ -59,6 +64,18 @@ const HeroImageSection = styled.div`
     a {
       color: #fff;
       text-decoration: underline;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+
+      @media (min-width: ${theme.breakpoints.md}px) {
+        max-width: 40%;
+      }
+      @media (min-width: ${theme.breakpoints.lg}px) {
+        max-width: 50%;
+      }
     }
   }
 

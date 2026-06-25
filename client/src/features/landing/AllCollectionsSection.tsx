@@ -41,16 +41,27 @@ const AllCollectionsSection: React.FC<IProps> = ({ data, units, isMobile }) => {
           Click on any of the images below to browse each of our unique
           collections divisions:
         </p>
-        <div style={{ flex: '1 1 auto', minHeight: 0 }}>
+        <div style={{ position: 'relative', width: '100%', flex: '1 1 auto', minHeight: 0 }}>
           <Swiper
             modules={[Navigation, Pagination]}
             className="all-collections-swiper"
-            style={{ width: '100%', height: '100%', paddingBottom: '2rem' }}
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              paddingBottom: '2rem',
+              '--swiper-navigation-size': '44px',
+              '--swiper-navigation-top-offset': '50%',
+              '--swiper-navigation-sides-offset': '10px',
+            } as any}
             spaceBetween={16}
             loop={false}
             pagination={{
               clickable: true,
               type: 'bullets',
+            }}
+            navigation={{
+              prevEl: '#all-collections-section .swiper-button-prev',
+              nextEl: '#all-collections-section .swiper-button-next',
             }}
             slidesPerView={1}
           >
@@ -97,6 +108,17 @@ const AllCollectionsSection: React.FC<IProps> = ({ data, units, isMobile }) => {
               )
             })}
           </Swiper>
+          <button 
+            className="swiper-button-prev"
+            aria-label="Previous slide"
+          >
+          </button>
+
+          <button 
+            className="swiper-button-next"
+            aria-label="Next slide"
+          >
+          </button>
         </div>
       </StyledFeaturedCollectionsSection>
     )

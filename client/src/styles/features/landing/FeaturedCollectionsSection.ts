@@ -89,6 +89,69 @@ const FeaturedCollectionsSection = styled(ToppedBorderedDiv)`
     max-width: 100%;
     height: auto;
   }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    padding: 0.5rem 0.5rem;
+    height: 6rem;
+    width: 2rem;
+    border: none;
+    background: ${theme.color.offWhite};
+  }
+
+  .swiper-button-prev:hover,
+  .swiper-button-prev:active {
+    background: linear-gradient(to left, ${theme.color.offWhite}, ${theme.color.white});
+    
+    @media (min-width: ${theme.breakpoints.md}px) {
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.1);
+      background: ${theme.color.offWhite};
+    }
+  }
+
+  .swiper-button-next:hover,
+  .swiper-button-next:active {
+    background: linear-gradient(to right, ${theme.color.offWhite}, ${theme.color.white});
+    
+    @media (min-width: ${theme.breakpoints.md}px) {
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.1);
+      background: ${theme.color.offWhite};
+    }
+  }
+
+  .swiper-button-prev {
+    transform: translateX(-29px);
+    box-shadow: -2px 0px 2px 0px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to left, ${theme.color.offWhite}, ${theme.color.lightGray}) 1;
+
+    @media (min-width: ${theme.breakpoints.md}px) {
+      transform: translateX(-70px);
+      border: 1px ${theme.color.lightGray} solid;
+      box-shadow: -2px 0px 6px 2px rgba(0, 0, 0, 0.1);
+      background: ${theme.color.white};
+    }
+  }
+
+  .swiper-button-next {
+    transform: translateX(29px);
+    box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.05);
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, ${theme.color.offWhite}, ${theme.color.lightGray}) 1;
+
+    @media (min-width: ${theme.breakpoints.md}px) {
+      transform: translateX(70px);
+      border: 1px ${theme.color.lightGray} solid;
+      box-shadow: 2px 0px 6px 2px rgba(0, 0, 0, 0.1);
+      background: ${theme.color.white};
+    }
+  }
+
+  .swiper-button-disabled {
+    opacity: 0.1;
+  }
 `
 
 export default FeaturedCollectionsSection

@@ -99,6 +99,13 @@ const Header = styled.div`
   #nav-links a {
     color: ${theme.color.white};
     font-weight: ${theme.font.weight.medium};
+    background-color: none!important;
+    background: none!important;
+  }
+
+  .titleHeading, .titleHeading.active {
+    background: none!important;
+    background-color: none!important;
   }
 
   .navbar-dark .navbar-toggler {

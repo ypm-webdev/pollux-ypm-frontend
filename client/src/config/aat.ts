@@ -21,6 +21,7 @@ export function defaultAats(): IAat {
     collection: 'http://vocab.getty.edu/aat/300025976',
     collectionItem: 'http://vocab.getty.edu/aat/300404024',
     copyrightLicensingStatement: 'http://vocab.getty.edu/aat/300435434',
+    cultivar: 'https://www.wikidata.org/entity/Q4886', // new
     culturalArtifacts: 'http://vocab.getty.edu/aat/300265421',
     descriptionStatement: 'http://vocab.getty.edu/aat/300435416',
     dimensionStatement: 'http://vocab.getty.edu/aat/300435430',
@@ -28,9 +29,11 @@ export function defaultAats(): IAat {
     equipmentScienceTechnology: 'http://vocab.getty.edu/aat/300024517', // new
     exhibition: 'http://vocab.getty.edu/aat/300054766',
     first: 'http://vocab.getty.edu/aat/300404050',
+    forma: 'https://www.wikidata.org/entity/Q279749', // new
     fossil: 'http://vocab.getty.edu/aat/300247919',
     gemstone: 'http://vocab.getty.edu/aat/300201964', // new
     gender: 'http://vocab.getty.edu/aat/300055147',
+    genus: 'https://www.wikidata.org/entity/Q34740', //new
     imprintStatement: 'http://vocab.getty.edu/aat/300202362',
     inorganicMaterials: 'http://vocab.getty.edu/aat/300010360', // new
     invertedTerms: 'http://vocab.getty.edu/aat/300404672',
@@ -51,9 +54,12 @@ export function defaultAats(): IAat {
     scientificInstruments: 'http://vocab.getty.edu/aat/300122283',  // new
     sortTitle: 'http://vocab.getty.edu/aat/300451544',
     sortValue: 'http://vocab.getty.edu/aat/300456575',
+    species: 'https://www.wikidata.org/entity/Q7432', // new
+    subspecies: 'https://www.wikidata.org/entity/Q68947', // new
     toolsEquipment: 'http://vocab.getty.edu/aat/300022238', // new
     typeOfPart: 'http://vocab.getty.edu/aat/300241583',
     username: 'http://www.wikidata.org/entity/Q15901043',
+    variety: 'https://www.wikidata.org/entity/Q767728', // new
     visitors: 'http://vocab.getty.edu/aat/300025883',
     webPage: 'http://vocab.getty.edu/aat/300264578',
   }

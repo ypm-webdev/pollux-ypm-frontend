@@ -22,26 +22,33 @@ interface IProps {
   units: UnitCode[]
 }
 
-const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
+  const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
   const featuredCollectionParser = new FeaturedCollectionParser(data)
   const collections = featuredCollectionParser.getCollections(units)
 
   return (
     <StyledFeaturedCollectionsSection
-      className="d-flex justify-content-between"
       id="featured-collections-section"
       data-testid="featured-collections-container"
     >
-      <Swiper
-        modules={[Navigation, Pagination]}
-        className="featured-collections-swiper"
-        style={{ width: '100%', minWidth: 0, flex: '1 1 0' }}
-        spaceBetween={16}
-        loop={false}
-        pagination={{
-          clickable: true,
-          type: 'bullets',
-        }}
+      <div style={{ position: 'relative', width: '100%' }}>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          className="featured-collections-swiper"
+          style={{ 
+            width: '100%', 
+            minWidth: 0
+          } as any}
+          spaceBetween={16}
+          loop={false}
+          pagination={{
+            clickable: true,
+            type: 'bullets',
+          }}
+          navigation={{
+            prevEl: '#featured-collections-section .swiper-button-prev',
+            nextEl: '#featured-collections-section .swiper-button-next',
+          }}
         slidesPerView={1}
         breakpoints={{
           [theme.breakpoints.md]: {
@@ -94,6 +101,10 @@ const FeaturedCollectionsSection: React.FC<IProps> = ({ data, units }) => {
           )
         })}
       </Swiper>
+      
+      <button className="swiper-button-prev" aria-label="Previous slide"></button>
+      <button className="swiper-button-next" aria-label="Next slide"></button>
+      </div>
     </StyledFeaturedCollectionsSection>
   )
 }

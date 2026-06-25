@@ -596,7 +596,13 @@ export default class EntityParser {
             !d.isYpmRecordLink()
           ) {
             for (const p of accessPoint) {
-              links.push({ contentIdentifier, link: p.id })
+              if( p.id.indexOf('cdli.ucla.edu/') == -1){
+                links.push({ contentIdentifier, link: p.id })
+              } else { 
+                let newlink = p.id
+                newlink = p.id.replace('cdli.ucla.edu/', 'cdli.network/entity/')
+                links.push({ contentIdentifier, link: newlink })
+              }
             }
           }
         }
@@ -814,6 +820,58 @@ export default class EntityParser {
       }
     }
     return false
+  }
+
+  isGenusOrLower(): boolean {
+    // If it's a mineral, fail the check
+    const broader = (this.json as any).broader
+    if (broader && Array.isArray(broader) && broader.length > 0) {
+      const broaderLabel = broader[0]?._label?.toLowerCase() || ''
+      if (broaderLabel.includes('mineral')) {
+        return false
+      }
+    }
+
+    const classifiedAs = forceArray(this.json.classified_as)
+    const targetLabels = [
+      'species',
+      'subspecies',
+      'variety',
+      'genus',
+      'genre',
+      'forma',
+      'form',
+      'cultivar',
+    ]
+
+    return classifiedAs.some((item) =>
+      targetLabels.includes(item._label?.toLowerCase()),
+    )
+  }
+
+  isSpeciesOrLower(): boolean {
+    // If it's a mineral, fail the check
+    const broader = (this.json as any).broader
+    if (broader && Array.isArray(broader) && broader.length > 0) {
+      const broaderLabel = broader[0]?._label?.toLowerCase() || ''
+      if (broaderLabel.includes('mineral')) {
+        return false
+      }
+    }
+
+    const classifiedAs = forceArray(this.json.classified_as)
+    const targetLabels = [
+      'species',
+      'subspecies',
+      'variety',
+      'forma',
+      'form',
+      'cultivar',
+    ]
+
+    return classifiedAs.some((item) =>
+      targetLabels.includes(item._label?.toLowerCase()),
+    )
   }
 
   /**

@@ -62,7 +62,7 @@ const LinkContainer: React.FC<ILinkData> = ({
 
   const formatRecordLinks = (links: Array<string>): React.JSX.Element[] =>
     links.map((link, ind) => <RecordLink key={`${link}_${ind}`} url={link} />)
-
+  
   if (content && content.length > 0) {
     return (
       <StyledDataRow className={`row ${rowClassName}`} id={id} data-testid={id}>

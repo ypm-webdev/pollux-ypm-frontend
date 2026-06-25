@@ -15,9 +15,9 @@ const WhatIsLux = styled.div`
 
   h2 {
     position: absolute;
-    left: -${theme.spacing.contentAbsMarginX};
+    left: 0px;
     top: 33px;
-    width: auto;
+    width: 110%;
     height: auto;
     padding: 25px ${theme.spacing.contentAbsMarginX};
     color: ${theme.color.white};
@@ -27,16 +27,20 @@ const WhatIsLux = styled.div`
     font-weight: ${theme.font.weight.extraLight};
     letter-spacing: 0px;
     z-index: 2;
+    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
 
-    @media (min-width: ${theme.breakpoints.md}px) {
+    @media (min-width: ${theme.breakpoints.sm}px) {
       font-size: ${theme.font.desktop.h1.size};
+      left: -${theme.spacing.contentAbsMarginX};
+      width: auto;
+      // box-shadow: none;
     }
   }
 
   p {
     padding-left: 2rem;
     padding-right: 2rem;
-    padding-top: 150px;
+    padding-top: 140px;
     font-family: 'Mallory Light', sans-serif;
     font-size: 1.2rem;
     color: ${theme.color.offWhite};
@@ -44,11 +48,13 @@ const WhatIsLux = styled.div`
     text-align: left;
     line-height: 1.8rem;
     font-weight: ${theme.font.weight.light};
-
-    @media (min-width: ${theme.breakpoints.sm}px) {
-      padding-top: 170px;
+  
+    @media (min-width: ${theme.breakpoints.md}px) {
+      padding-top: 150px;
       padding-left: 47px;
       padding-right: 56px;
+      font-size: ${theme.font.desktop.h3.size};
+      line-height: 1.25em;
     }
   }
 
@@ -77,6 +83,12 @@ const WhatIsLux = styled.div`
 
   @media (min-width: 552px) {
     max-width: 460px;
+    margin-right: 0;
+  }
+
+  @media (max-width: ${theme.breakpoints.sm}px) {
+    left: 0;
+    width: 65%;
     margin-right: 0;
   }
 

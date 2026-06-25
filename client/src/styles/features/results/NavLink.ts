@@ -51,7 +51,7 @@ const StyledNavLink = styled(NavLink)`
       -8px 0px 8px -6px ${theme.color.black20},
       5px 0px 8px -6px ${theme.color.black20},
       0px -5px 8px -6px ${theme.color.black20};
-    background: ${theme.color.white};
+    background: none!important;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
     margin-bottom: 0px;

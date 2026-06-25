@@ -75,7 +75,7 @@ const Landing: React.FC = () => {
         <Row id="srch-hero-container" className="mx-0">
           {imagesResult.isSuccess && units.length > 0 && landingPageResult.isSuccess && (
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-              <Row className="d-flex row mx-0 px-0 pt-4">
+              <Row className={`d-flex row mx-0 px-0 ${isMobile ? '' : 'pt-4'}`}>
                 <Col className="px-0">
                   <HeroImageSection imagesData={imagesResult.data} landingPageData={landingPageResult.data} unit={units[0]} />
                 </Col>

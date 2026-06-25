@@ -82,7 +82,6 @@ const SnippetHeader: React.FC<IProps> = ({
   const isPlantEntity = 
     entity.isClassifiedAs(config.aat.plantSpecimens);
 
-
   return (
     <React.Fragment>
       <div className="flex-shrink-0">

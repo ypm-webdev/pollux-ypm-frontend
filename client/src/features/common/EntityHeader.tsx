@@ -161,6 +161,11 @@ const EntityHeader: React.FC<IEntityHeader> = ({
     element.isClassifiedAs(config.aat.scientificInstruments);
     // TODO: add more AAT classifications for ANT, BC
 
+  const isSpecies = element.isSpeciesOrLower();
+  const isGenus = element.isGenusOrLower();
+
+
+
   const catalogNumberDisplay = (): string => {
       
       // return item 0 / Catalog Number
@@ -178,6 +183,8 @@ const EntityHeader: React.FC<IEntityHeader> = ({
   }
   
   // console.log("element: " , element);
+  // console.log("is species? ", isSpecies);
+  // console.log("types: " , element.getTypes());
   // console.log("entity", entity);
   // console.log("formatted scientific name: ", formatScientificName(displayName));
   // console.log(element.getPrimaryName(config.aat.langen));
@@ -231,7 +238,7 @@ const EntityHeader: React.FC<IEntityHeader> = ({
                       data-testid="entity-icon-img"
                     />
                   </Tooltip> */}
-                  {isBiologicalEntity || isPlantEntity ? formattedDisplayName({ text: displayName }) : displayName}
+                  {isBiologicalEntity || isPlantEntity || isGenus ? formattedDisplayName({ text: displayName }) : displayName}
                   {/* {displayName} */}
                   <Dates start={start || ''} end={end || ''} />
                   {isNameLong &&

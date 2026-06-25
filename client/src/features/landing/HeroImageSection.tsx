@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import theme from '../../styles/theme'
 import { ICmsResponse, CmsResponseParser } from '../../lib/parse/cms/Parser'
 import {
   IImageData,
@@ -9,6 +10,7 @@ import {
 import { LandingPageParser } from '../../lib/parse/cms/LandingPageParser'
 import { UnitCode } from '../../config/cms'
 import StyledHeroImageSection from '../../styles/features/landing/HeroImageSection'
+import useResizeableWindow from '../../lib/hooks/useResizeableWindow'
 import { pushClientEvent } from '../../lib/pushClientEvent'
 
 import WhatIsLux from './WhatIsLux'
@@ -22,6 +24,11 @@ interface IProps {
 const HeroImageSection: React.FC<IProps> = ({ imagesData, landingPageData, unit }) => {
   const [imageData, setImageData] = useState<IImageData | null>(null)
   const [whatIsLuxText, setWhatIsLuxText] = useState<string>('')
+
+  const [isMobile, setIsMobile] = useState<boolean>(
+    window.innerWidth < theme.breakpoints.md,
+  )
+  useResizeableWindow(setIsMobile)
 
   useEffect(() => {
     const imageParser = new CmsResponseParser(imagesData)
@@ -69,8 +76,8 @@ const HeroImageSection: React.FC<IProps> = ({ imagesData, landingPageData, unit 
                   }
                   data-testid="hero-image-caption-link"
                 >
-                  {imageData.caption.length > 40
-                    ? `${imageData.caption.slice(0, 40)}...`
+                  {imageData.caption.length > (isMobile ? 40 : 100)
+                    ? `${imageData.caption.slice(0, isMobile ? 40 : 100)}...`
                     : imageData.caption}
                 </Link>
               </div>

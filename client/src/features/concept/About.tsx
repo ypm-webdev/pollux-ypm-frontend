@@ -1,5 +1,6 @@
 import React from 'react'
 
+import formattedDisplayName from '../common/FormattedDisplayName'
 import NamesContainer from '../common/NamesContainer'
 import NotesContainer from '../common/NotesContainer'
 import ConceptParser from '../../lib/parse/data/ConceptParser'
@@ -26,6 +27,11 @@ const About: React.FC<IProps> = ({ entity }) => {
     return null
   }
 
+   const isGenus = concept.isGenusOrLower();
+    const isSpecies = concept.isSpeciesOrLower();
+    // formattedDisplayName({ text: displayName })
+
+
   const { name, names, entityClass, types, notes, influences, webPages } =
     aboutData as Record<
       string,
@@ -35,7 +41,7 @@ const About: React.FC<IProps> = ({ entity }) => {
 
   return (
     <div data-testid="about-concept">
-      <StyledH2 data-testid="concept-about-header">About {name}</StyledH2>
+      <StyledH2 data-testid="concept-about-header">About {isSpecies || isGenus ? formattedDisplayName({ text: name }) : name}</StyledH2>
       <dl>
         {names !== null && (
           <NamesContainer
