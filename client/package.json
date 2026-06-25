@@ -99,7 +99,7 @@
     "start": "vite",
     "build": "mv .env _env || true; tsc && vite build; mv _env .env || true",
     "preview": "vite preview",
-    "lint": "eslint .",
+    "lint": "eslint . --cache",
     "test": "vitest",
     "test:unit": "vitest src/test/unit/* ",
     "test:integration": "vitest src/test/integration/* ",

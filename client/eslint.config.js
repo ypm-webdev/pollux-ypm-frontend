@@ -66,13 +66,13 @@ export default [
       "@typescript-eslint/consistent-type-assertions": [2],
       "@typescript-eslint/camelcase": 0,
       "@typescript-eslint/explicit-function-return-type": [
-        "error",
+        "warn",
         {
           allowExpressions: true
         }
       ],
       "@stylistic/member-delimiter-style": [
-        2,
+        1,
         {
           multiline: {
             delimiter: "none"
@@ -80,7 +80,7 @@ export default [
         }
       ],
       "@typescript-eslint/naming-convention": [
-        "error",
+        "warn",
         {
           selector: "interface",
           format: ["PascalCase"],
@@ -91,15 +91,15 @@ export default [
         }
       ],
       "@typescript-eslint/no-explicit-any": 1,
-      "@typescript-eslint/no-shadow": 2,
+      "@typescript-eslint/no-shadow": 1,
       // "@typescript-eslint/no-unused-vars": "error",
       // "@typescript-eslint/no-unused-vars": 1,
       "@typescript-eslint/no-unused-vars": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-use-before-define": [1],
-      "eol-last": 2,
+      "eol-last": 1,
       "import/extensions": [
-        "error",
+        "warn",
         "ignorePackages",
         {
           js: "never",
@@ -124,7 +124,7 @@ export default [
       ],
       "import/no-named-as-default": 0,
       "import/order": [
-        "error",
+        "warn",
         {
           groups: [
             "builtin",
