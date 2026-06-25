@@ -1,19 +1,51 @@
 import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import viteTsconfigPaths from 'vite-tsconfig-paths'
-import eslintPlugin from "@nabla/vite-plugin-eslint"
+import eslint from 'vite-plugin-eslint2'
 
-const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  // depending on your application, base can also be "/"
+  return {
+    base: '/',
+    plugins: [react(), viteTsconfigPaths(), eslint()],
+    // vite config
+    define: {
+      __APP_ENV__: JSON.stringify(env.APP_ENV),
+    },
+    envPrefix: 'REACT_',
+    server: {
+      // this ensures that the browser opens upon server start
+      open: true,
+      // this sets a default port to 3000
+      port: 3000,
+    },
+    test: {
+      environment: 'jsdom',
+      setupFiles: ['./src/test/setup.ts'],
+      testMatch: ['./src/test/**/*.spec.tsx'],
+      globals: true,
+    },
+  }
+})
 
-export default defineConfig({
-  base: '/',
-  plugins: [react(), viteTsconfigPaths(), eslintPlugin()],
-  define: {
-    __APP_ENV__: JSON.stringify(env.APP_ENV),
-  },
-  envPrefix: 'REACT_',
-  server: {
-    open: true,
-    port: 3000,
-  },
-});
+
+
+
+
+
+
+//const env = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+//
+//  export default defineConfig({
+//    base: '/',
+//    plugins: [react(), viteTsconfigPaths(), eslintPlugin()],
+//    define: {
+//      __APP_ENV__: JSON.stringify(env.APP_ENV),
+//    },
+//    envPrefix: 'REACT_',
+//    server: {
+//      open: true,
+//      port: 3000,
+//    },
+//  });
