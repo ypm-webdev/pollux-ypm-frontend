@@ -26,6 +26,7 @@ jobs:
     steps:
       - name: Pack environment variables
         run: |
+          echo "TAG_TO_DEPLOY=${{ vars.TAG_TO_DEPLOY }}" >> _env
           echo "APP_PORT=${{ vars.APP_PORT }}" >> _env
           echo "NUM_INSTANCES=${{ vars.NUM_INSTANCES }}" >> _env
           echo "LOG_LEVEL=${{ vars.LOG_LEVEL }}" >> _env
