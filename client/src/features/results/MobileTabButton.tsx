@@ -31,7 +31,7 @@ const MobileTabButton: React.FC<IProps> = ({
   const { isFetching, isLoading } = requestState
   const imgStyle =
     !isCurrentTab && !showArrow ? { filter: 'grayscale(100%)' } : undefined
-
+    
   return (
     <SecondaryButton
       role={role}

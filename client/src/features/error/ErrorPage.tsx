@@ -49,7 +49,7 @@ const ErrorPage: React.FC<IProps> = ({ code }) => {
                   className="errorPageSearchBox"
                   bgColor={theme.color.white}
                   id="error-page-search-box"
-                  isBelowFold={false}
+                  // isBelowFold={false}
                   />
               </div>
             </Col>

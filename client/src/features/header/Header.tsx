@@ -161,10 +161,11 @@ const Header: React.FC<{ hideSearch?: boolean }> = ({ hideSearch }) => {
             <HeaderExpander $displaySearch={displaySearch}>
               <SearchContainer
                 className="headerSearchContainer"
-                isBelowFold={true}
+                // isBelowFold={true}
                 bgColor={theme.color.primary.darkBlue}
                 id="header-search-container"
-                searchTipsStyle={{
+                linkStyle={{
+                // searchTipsStyle={{
                   color: theme.color.white,
                   textDecoration: 'underline',
                 }}

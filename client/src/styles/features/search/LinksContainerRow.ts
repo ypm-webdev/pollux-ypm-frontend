@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import theme from '../../theme'
 
 export const LinksContainerRow = styled.div`
-  width: ${theme.searchBox.width};
+  // width: ${theme.searchBox.width};
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 
   .powered-by {
     font-family: YaleDesign, serif !important;

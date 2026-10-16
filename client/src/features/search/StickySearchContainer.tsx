@@ -10,22 +10,22 @@ const StickySearchContainer: React.FC = () => {
     color: string
     textDecoration: string
   }>({ color: theme.color.link, textDecoration: 'none' })
-  const [isBelowFold, setIsBelowFold] = useState<boolean>(false)
+  const [isSticky, setIsSticky] = useState<boolean>(false)
 
   useEffect(() => {
     const listenScrollEvent = (): void => {
       if (window.scrollY < theme.stickyHeader.topOffset) {
-        setIsBelowFold(false)
         setBgColor(theme.color.white)
         setSearchTipsStyle({ color: theme.color.link, textDecoration: 'none' })
+        setIsSticky(false)
       }
       if (window.scrollY > theme.stickyHeader.topOffset) {
         setBgColor(theme.color.primary.darkBlue)
-        setIsBelowFold(true)
         setSearchTipsStyle({
           color: theme.color.white,
           textDecoration: 'none',
         })
+        setIsSticky(true)
       }
     }
 
@@ -38,9 +38,9 @@ const StickySearchContainer: React.FC = () => {
     <SearchContainer
       className="sticky-top"
       bgColor={bgColor}
-      isBelowFold={isBelowFold}
-      searchTipsStyle={searchTipsStyle}
+      linkStyle={searchTipsStyle}
       id="landing-page-search-container"
+      isStickyHeaderActive={isSticky}
     />
   )
 }
