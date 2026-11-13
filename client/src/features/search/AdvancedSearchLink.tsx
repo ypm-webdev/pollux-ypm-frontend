@@ -20,7 +20,7 @@ const AdvancedSearchLink: React.FC<{
   const { pathname, search } = useLocation()
   const newPathname = pathname.includes('/view/results')
     ? pathname
-    : `/view/results`
+    : `/view/results/objects`
   const searchParams = new URLSearchParams(search)
   if (pathname.includes('/view/results')) {
     searchParams.set('qt', tab)

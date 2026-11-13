@@ -78,7 +78,7 @@ const ResultsSearchContainer: React.FC<IProps> = ({
           <React.Fragment>
             <SearchContainer
               className="resultsSearchContainer"
-              bgColor="transparent"
+              bgColor={`linear-gradient(to bottom, ${theme.color.white} 0%, ${theme.color.offWhite} 100%)`}
               id="results-search-container"
               isResultsPage
             />

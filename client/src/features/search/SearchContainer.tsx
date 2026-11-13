@@ -51,7 +51,7 @@ const SearchContainer: React.FC<IProps> = ({
   id,
   bgColor,
   linkStyle = {
-    color: theme.color.link,
+    color: "theme.color.link",
     textDecoration: 'none',
   },
   isResultsPage = false,
@@ -209,7 +209,7 @@ const SearchContainer: React.FC<IProps> = ({
   return (
     <Row
       className={`d-flex mx-0 ${className} ${isMobile ? 'py-1' : 'py-3'}`}
-      style={{ backgroundColor: bgColor }}
+      style={{ background: bgColor }}
       id={id}
     >
       {showModal && (

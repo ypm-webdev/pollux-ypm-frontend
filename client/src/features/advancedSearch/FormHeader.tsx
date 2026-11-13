@@ -101,9 +101,9 @@ const FormHeader: React.FC<{
   return (
     <Row className="mt-3 mb-4">
       <Col
-        xxl={6}
-        xl={5}
-        lg={4}
+        xxl={9}
+        xl={8}
+        lg={7}
         md={12}
         sm={12}
         xs={12}
@@ -150,7 +150,7 @@ const FormHeader: React.FC<{
           />
         )}
         {isAiSearch ? (
-          <span className="d-flex justify-content-start align-items-center">
+          <span className="d-flex justify-content-start align-items-center searching-for-text">
             <StyledH3 className="text-nowrap">
               {isUndefined(tab) ? 'Search' : 'Searching for:'}&nbsp;
             </StyledH3>
@@ -168,9 +168,9 @@ const FormHeader: React.FC<{
         )}
       </Col>
       <Col
-        xxl={6}
-        xl={7}
-        lg={8}
+        xxl={3}
+        xl={4}
+        lg={5}
         md={12}
         sm={12}
         xs={12}

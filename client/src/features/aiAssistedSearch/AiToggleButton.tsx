@@ -60,10 +60,10 @@ const StyledSwitchSlider = styled.span<{
   inset: 0;
   border-radius: 24px;
   border: ${(props): string => {
-    return `1px solid ${props.$isActive ? `${props.$color}` : `${theme.color.gray}`}`
+    return `1px solid ${props.$isActive ? `${theme.color.primary.blue}` : `${theme.color.gray}`}`
   }};
   background-color: ${(props): string =>
-    props.$isActive ? `${props.$color}` : `${theme.color.gray}`};
+    props.$isActive ? `${theme.color.primary.blue}` : `${theme.color.gray}`};
   transition: background-color 0.2s ease-in-out;
 
   &::before {
@@ -75,8 +75,9 @@ const StyledSwitchSlider = styled.span<{
     height: 18px;
     border-radius: 50%;
     background-color: ${(props): string => {
+
       if (props.$isActive && (props.isStickyHeaderActive || props.isInHeader)) {
-        return theme.color.primary.blue
+        return theme.color.white
       }
       if (!props.$isActive && props.isStickyHeaderActive) {
         return props.$color

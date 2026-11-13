@@ -16,7 +16,7 @@ interface ITextLabelProps {
 }
 
 const TextLabel: React.FC<ITextLabelProps> = ({
-  className = 'col-md-3',
+  className = 'col-md-3 mallory-bold',
   label,
   showPopover = false,
 }) => {

@@ -9,7 +9,7 @@ const LoadingSpinner: React.FC<{ size?: 'sm'; className?: string }> = ({
     animation="border"
     role="status"
     size={size}
-    className={className}
+    className={`text-white mb-2 ${className}`}
     data-testid="loading-spinner"
   >
     <span className="visually-hidden">Loading...</span>

@@ -17,10 +17,10 @@ const ObjectsContainerLinkRow = styled(Row)`
     font-weight: ${theme.font.weight.bold};
 
     @media (min-width: ${theme.breakpoints.md}px) {
-      background-color: ${theme.color.primary.teal};
+      background-color: ${theme.color.primary.blue};
       color: ${theme.color.white};
-      border-radius: 10px;
-      border-color: ${theme.color.primary.teal};
+      border-radius: 0px;
+      border-color: ${theme.color.primary.blue};
       font-size: 16px;
       font-weight: ${theme.font.weight.bold};
       padding: 0.5rem 1rem;
