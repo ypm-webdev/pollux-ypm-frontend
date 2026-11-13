@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import { useNavigate, useLocation, useParams } from 'react-router'
 import sanitizeHtml from 'sanitize-html'
 import { Button, Col, Row } from 'react-bootstrap'
 import styled from 'styled-components'
@@ -27,6 +27,7 @@ import { useAppSelector } from '../../app/hooks'
 import { AI_REFINEMENT_PARAM } from '../../config/aiAssistedSearch/variables'
 
 import Sort from './Sort'
+import PageLengthDropdown from './PageLengthDropdown'
 
 const StyledDiv = styled.div`
   display: none;
@@ -182,45 +183,54 @@ const ResultsHeader: React.FC<IResultsHeader> = ({
               <div
                 className={`d-flex toggleViewButtonDiv ${isMobile ? 'w-100 order-2' : 'order-1'}`}
               >
-                {toggleView && (
-                  <Button
-                    type="button"
-                    className="btn text-center h-100 text-nowrap me-2 toggleViewButton w-100"
-                    onClick={() =>
-                      changeView(currentView === 'list' ? 'grid' : 'list')
-                    }
-                    style={{
-                      borderRadius: '0px',
-                      backgroundColor: theme.color.lightGray,
-                      color: theme.color.trueBlack,
-                      border: theme.color.trueBlack,
-                      paddingTop:
-                        width < theme.breakpoints.md ? '1em' : '0.5em',
-                      paddingBottom:
-                        width < theme.breakpoints.md ? '1em' : '0.5em',
-                    }}
-                    data-testid={
-                      currentView === 'list'
-                        ? 'switch-to-grid-view-button'
-                        : 'switch-to-list-view-button'
-                    }
-                  >
-                    {currentView === 'list' ? (
-                      <React.Fragment>
-                        <i className="bi bi-grid-3x3-gap-fill mx-2 d-inline-block" />
-                        Grid View
-                      </React.Fragment>
-                    ) : (
-                      <React.Fragment>
-                        <i className="bi bi-list-ul mx-2 d-inline-block" />
-                        List View
-                      </React.Fragment>
-                    )}
-                  </Button>
-                )}
+                <Button
+                  type="button"
+                  className={`btn text-center h-100 text-nowrap rounded-3 toggleViewButton w-100 ${isMobile ? '' : 'me-2'}`}
+                  onClick={() =>
+                    changeView(currentView === 'list' ? 'grid' : 'list')
+                  }
+                  style={{
+                    backgroundColor: theme.color.lightGray,
+                    color: theme.color.trueBlack,
+                    border: theme.color.trueBlack,
+                    paddingTop: width < theme.breakpoints.md ? '1em' : '0.5em',
+                    paddingBottom:
+                      width < theme.breakpoints.md ? '1em' : '0.5em',
+                  }}
+                  aria-label={
+                    currentView === 'list'
+                      ? 'Switch to grid view'
+                      : 'Switch to list view'
+                  }
+                  data-testid={
+                    currentView === 'list'
+                      ? 'switch-to-grid-view-button'
+                      : 'switch-to-list-view-button'
+                  }
+                >
+                  {currentView === 'list' ? (
+                    <i
+                      className="bi bi-grid-3x3-gap-fill mx-2 d-inline-block"
+                      style={{ color: theme.color.link }}
+                    />
+                  ) : (
+                    <i
+                      className="bi bi-list-ul mx-2 d-inline-block fw-bold"
+                      style={{ color: theme.color.link }}
+                    />
+                  )}
+                </Button>
               </div>
               <Sort />
+              {width >= theme.breakpoints.sm && (
+                <PageLengthDropdown className="ms-2 order-4" />
+              )}
             </Col>
+            {width < theme.breakpoints.sm && (
+              <Col xs={12} className="mt-2 resultsHeaderPageLengthCol">
+                <PageLengthDropdown className="w-100" />
+              </Col>
+            )}
           </Row>
         </Col>
         {isMobile && (

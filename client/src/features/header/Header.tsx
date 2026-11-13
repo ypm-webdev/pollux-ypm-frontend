@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Nav, NavDropdown, Navbar, Row, Col } from 'react-bootstrap'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 
 import config from '../../config/config'
 import LogoWhiteOne from '../../resources/images/logo/ypm-mallory-white-1.svg'
