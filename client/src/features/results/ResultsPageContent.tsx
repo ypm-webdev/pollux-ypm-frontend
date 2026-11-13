@@ -1,18 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { JSX } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router'
 import { Col, Row } from 'react-bootstrap'
 
 import { IOrderedItems } from '../../types/ISearchResults'
 import FacetContainer from '../facets/FacetContainer'
 import { ISearchResponse } from '../../types/ISearchResponse'
-import { getParamPrefix } from '../../lib/util/params'
+import { getPageLength } from '../../lib/util/params'
 import PageLoading from '../common/PageLoading'
 import { getEstimates } from '../../lib/parse/search/searchResultParser'
 import { ResultsTab } from '../../types/ResultsTab'
 import StyledResultsCol from '../../styles/features/results/ResultsCol'
 import StyledEntityResultsRow from '../../styles/features/results/EntityResultsRow'
-import { DEFAULT_PAGE_LENGTH } from '../../config/searchTypes'
 
 import Paginate from './Paginate'
 import ResultsHeader from './ResultsHeader'
@@ -36,12 +34,8 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
   const { search } = useLocation()
   const urlParams = new URLSearchParams(search)
   const { tab } = useParams<keyof ResultsTab>() as ResultsTab
-  const paramPrefix = getParamPrefix(tab)
-  const pageParam = `${paramPrefix}p`
-  const page: any = urlParams.has(pageParam) ? urlParams.get(pageParam) : 1
-  const pageLength: number = urlParams.has('pageLength')
-    ? parseInt(urlParams.get('pageLength')!, 10)
-    : DEFAULT_PAGE_LENGTH
+  const page = urlParams.has('page') ? urlParams.get('page') : '1'
+  const pageLength = getPageLength(urlParams)
   const sort = urlParams.get(`${tab}Sort`)
   const view: string = urlParams.has('view')
     ? (urlParams.get('view') as string)
@@ -75,6 +69,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -85,6 +80,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -95,6 +91,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -105,6 +102,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -115,6 +113,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -125,6 +124,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -135,6 +135,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
               uri={result.id}
               view={view}
               totalResults={estimate}
+              pageLength={pageLength}
               index={ind + 1}
             />
           )
@@ -180,7 +181,7 @@ const ResultsPageContent: React.FC<IProps> = ({ searchResponse, isMobile }) => {
                 {estimate >= pageLength && (
                   <Paginate
                     estimate={estimate}
-                    currentPage={parseInt(page, 10)}
+                    currentPage={parseInt(page!, 10)}
                     pageSize={pageLength}
                   />
                 )}
